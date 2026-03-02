@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        components: rustfmt, clippy
+
+    - name: Cache Rust dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install frontend dependencies
+      run: npm ci
+
+    - name: Run Rust tests
+      run: cd src-tauri &amp;&amp; cargo test --verbose
+
+    - name: Run Rust linter
+      run: cd src-tauri &amp;&amp; cargo clippy --all-targets --all-features -- -D warnings
+
+    - name: Check Rust formatting
+      run: cd src-tauri &amp;&amp; cargo fmt --all -- --check
+
+    - name: Run frontend lint
+      run: npm run lint
+
+    - name: Build frontend
+      run: npm run build
+
+    - name: Build Tauri app
+      run: cd src-tauri &amp;&amp; cargo build --verbose

@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Discord Community
+    url: https://discord.gg/v-streaming
+    about: Join our Discord server for live support and discussions
+  - name: Documentation
+    url: https://v-streaming.com/docs
+    about: Check our documentation for help
+  - name: Email Support
+    url: mailto:support@v-streaming.com
+    about: Email us for direct support

@@ -1,316 +1,841 @@
-# V-Streaming 🎬
-
 <div align="center">
 
-![V-Streaming Logo](https://img.shields.io/badge/V--Streaming-Revolutionary-blue)
-![Version](https://img.shields.io/badge/version-beta-1.0.0-orange)
-![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
-![License](https://img.shields.io/badge/license-Proprietary-red)
-
-**A revolutionary AI-powered streaming application built for Kick, Twitch, and other platforms**
-
-[Website](https://v-streaming.com) • [Documentation](https://docs.v-streaming.com) • [Discord](https://discord.gg/v-streaming) • [Twitter](https://twitter.com/VStreamingApp)
+<!-- A - Animated Terminal Banner -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=32&duration=4000&pause=1000&color=FF0000&center=true&vCenter=true&width=800&lines=V-STREAMING+2.0;⚡+THE+ULTIMATE+STREAMING+PLATFORM;🚀+REVOLUTIONARY+AI+POWERED">
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=32&duration=4000&pause=1000&color=DC0000&center=true&vCenter=true&width=800&lines=V-STREAMING+2.0;⚡+THE+ULTIMATE+STREAMING+PLATFORM;🚀+REVOLUTIONARY+AI+POWERED">
+  <img alt="V-Streaming Animated Banner" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=800&size=32&duration=4000&pause=1000&color=FF0000&center=true&vCenter=true&width=800&lines=V-STREAMING+2.0;⚡+THE+ULTIMATE+STREAMING+PLATFORM;🚀+REVOLUTIONARY+AI+POWERED">
+</picture>
 
 </div>
 
 ---
 
-## 🚀 About V-Streaming
+<!-- V - Versioning Badge -->
+<div align="center">
 
-V-Streaming is a next-generation streaming application built with **Tauri (Rust + React + TypeScript)** that combines cutting-edge AI technology with an intuitive interface. It delivers professional-grade streaming capabilities with significantly lower system requirements than traditional solutions like OBS Studio.
+[![Version](https://img.shields.io/badge/version-v2.1.0-red?style=for-the-badge&logo=github&logoColor=black)](https://github.com/vantisCorp/V-Streaming/releases/latest)
+[![License](https://img.shields.io/badge/license-MIT-red?style=for-the-badge&logo=opensource&logoColor=black)](LICENSE.md)
+[![Platform](https://img.shields.io/badge/platform-Windows-black?style=for-the-badge&logo=windows&logoColor=white)](https://docs.v-streaming.com/installation)
+[![Build](https://img.shields.io/badge/build-passing-red?style=for-the-badge&logo=github&logoColor=black)](https://github.com/vantisCorp/V-Streaming/actions)
 
-### ✨ Key Features
-
-- 🤖 **AI-Powered**: Auto-clipping, live captions, real-time translation, and AI stream coach
-- 🎭 **VTubing Ready**: Native .VRM and Live2D support with face tracking
-- 📱 **Dual-Output**: Stream to 16:9 and 9:16 simultaneously
-- ⚡ **High Performance**: Zero-copy GPU pipeline, hardware encoding
-- 🌐 **Multistreaming**: Stream to multiple platforms at once
-- 🏠 **Smart Home**: IoT device integration based on stream events
-- 🎮 **Game Integration**: Real-time game-state integration for popular games
-- 💬 **Community**: Unified multichat, WebRTC co-streaming, mini-games
+</div>
 
 ---
 
-## 🎯 Why V-Streaming?
+<!-- J - Language Selector -->
+<div align="center">
 
-### Compared to OBS Studio
+**🌍 Select Language / Wybierz język / Sprache wählen / 选择语言 / Выберите язык / 언어 선택 / Elige idioma / Choisir langue**
 
-| Feature | V-Streaming | OBS Studio |
-|---------|-------------|------------|
-| RAM Usage | ~500MB | ~1.5GB |
-| AI Features | ✅ Built-in | ❌ Requires plugins |
-| VTubing | ✅ Native | ❌ Requires plugins |
-| Dual-Output | ✅ Native | ❌ Complex setup |
-| Learning Curve | ⭐⭐ Easy | ⭐⭐⭐⭐⭐ Complex |
-| Hardware Encoding | ✅ Auto-detect | ⚠️ Manual setup |
+[![Polish](https://img.shields.io/badge/🇵🇱-Polski-red?style=for-the-badge)](README.md)
+[![English](https://img.shields.io/badge/🇬🇧-English-black?style=for-the-badge)](README_EN.md)
+[![German](https://img.shields.io/badge/🇩🇪-Deutsch-red?style=for-the-badge)](README_DE.md)
+[![Chinese](https://img.shields.io/badge/🇨🇳-中文-black?style=for-the-badge)](README_ZH.md)
+[![Russian](https://img.shields.io/badge/🇷🇺-Русский-red?style=for-the-badge)](README_RU.md)
+[![Korean](https://img.shields.io/badge/🇰🇷-한국어-black?style=for-the-badge)](README_KO.md)
+[![Spanish](https://img.shields.io/badge/🇪🇸-Español-red?style=for-the-badge)](README_ES.md)
+[![French](https://img.shields.io/badge/🇫🇷-Français-black?style=for-the-badge)](README_FR.md)
 
-### Unique Advantages
-
-1. **AI-Powered Workflow**: Automatically clip highlights, generate live captions, and translate in real-time
-2. **VTubing Out of the Box**: Load .VRM or Live2D models and start streaming immediately
-3. **Smart Home Integration**: Control lights, switches, and other IoT devices based on stream events
-4. **Game-State Integration**: Display real-time stats from CS2, LoL, Valorant, and more
-5. **Lightweight Architecture**: Uses 3x less RAM than OBS Studio
-
----
-
-## 📦 Installation
-
-### Prerequisites
-
-- **OS**: Windows 10 (64-bit) or Windows 11 (64-bit)
-- **CPU**: Intel Core i5 or AMD Ryzen 5 (4 cores minimum)
-- **GPU**: NVIDIA GTX 1050 / AMD RX 560 / Intel UHD 630 or better
-- **RAM**: 8GB minimum (16GB recommended)
-- **Internet**: 5 Mbps upload speed minimum
-
-### Download
-
-Download the latest installer from our website: [v-streaming.com/download](https://v-streaming.com/download)
-
-### Quick Start
-
-1. Download and run `V-Streaming-Setup.exe`
-2. Complete the 9-step onboarding wizard
-3. Add your capture source
-4. Configure your audio
-5. Start streaming!
-
-For detailed instructions, see our [Quick Start Guide](QUICK_START.md).
-
----
-
-## 💰 Pricing
-
-### Free Tier
-- **Price**: $0/month
-- **Streams**: 10 per month
-- **Viewers**: 100 concurrent
-- **Bitrate**: 3000 kbps
-- **Encoding**: H.264 only
-- **Platforms**: Single platform
-
-### Pro Tier
-- **Price**: $9.99/month or $99.99/year (17% savings)
-- **Streams**: 100 per month
-- **Viewers**: 1,000 concurrent
-- **Bitrate**: 6000 kbps
-- **Encoding**: H.264, H.265, AV1
-- **Platforms**: Up to 3 platforms
-- **AI Features**: All AI features included
-- **Support**: Priority support
-
-### Enterprise Tier
-- **Price**: $49.99/month or $499.99/year (17% savings)
-- **Streams**: 1,000 per month
-- **Viewers**: 10,000 concurrent
-- **Bitrate**: 10,000 kbps
-- **Encoding**: All encoding options
-- **Platforms**: Unlimited
-- **AI Features**: All AI features included
-- **Support**: Dedicated support
-- **Extras**: Custom branding, API access, white-label options
-
----
-
-## 🎬 Features
-
-### Capture Engine
-- DirectX/Vulkan game capture
-- Window and screen capture
-- UVC capture card support for consoles
-- HDR to SDR tonemapping (GPU-based)
-- PS Remote Play and Xbox App integration
-- Performance monitoring
-
-### Audio Engine
-- Multi-track audio mixer
-- Audio effects (noise gate, compressor, EQ, reverb)
-- Lip-sync auto-synchronization
-- VST plugin support
-- Per-track controls (volume, mute, solo, pan)
-
-### Composition Engine
-- Scene editor with layer management
-- 17 blend modes (Normal, Multiply, Screen, Overlay, etc.)
-- 15 video filters (Color Correction, Sharpen, Blur, LUT, Chroma Key, etc.)
-- Scene transitions (8 types: Cut, Fade, Slide, Zoom, Wipe, Dissolve, Iris)
-- Dual-output canvas (16:9 and 9:16 simultaneously)
-- Layer grouping and masking
-
-### VTubing Engine
-- .VRM model support (3D avatars)
-- Live2D model support (2D avatars)
-- Face tracking with webcam
-- Expression system with blend shapes
-- Bone system for skeletal manipulation
-- Model transforms (scale, position, rotation)
-
-### Encoding Engine
-- Hardware encoding (NVENC, AMF, QuickSync, Software, Auto-detect)
-- Video codecs (H.264, H.265/HEVC, AV1)
-- Encoding presets (10 levels: Ultrafast to Placebo)
-- Rate control methods (CBR, VBR, CQP, CRF)
-- Smart bitrate calculator
-
-### Streaming Engine
-- RTMP/RTMPS protocols
-- SRT protocol for unstable connections
-- Multistreaming to multiple platforms
-- Platform presets (Twitch, YouTube, Kick, Facebook, TikTok, Trovo, DLive)
-- Streaming statistics (duration, bitrate, FPS, latency, buffer health)
-- Connection monitoring
-
-### Cloud Engine
-- Cloud multistreaming
-- VOD recording (MP4, MKV, MOV, FLV)
-- Multiple cloud providers (Custom, AWS, Google Cloud, Azure, Restream, Castr, Streamlabs)
-- Auto-upload functionality
-- Local backup
-
-### AI Features
-- **AI Highlight Catcher**: Auto-clipping with confidence scoring, 9 highlight types
-- **Live Captions**: Whisper AI integration, 7 model sizes, 13 languages, custom styling
-- **Real-Time Translation**: 5 translation services, 19 languages, chat & caption translation
-- **AI Stream Coach**: 6 tip types, 4 priority levels, stream analytics, performance recommendations
-
-### Community Features
-- **Multichat System**: 7 platform support, 6 filter types, 4 filter actions, chat commands
-- **WebRTC Co-Streaming**: Peer management, 4 layout types, STUN/TURN support, audio mixing
-- **Interaction Engine**: 9 trigger types, 10 action types, 10 mini-games
-
-### Monetization Features
-- **Tip Ecosystem**: 7 currencies, 6 payment methods, tip goals, tip rewards
-- **Sponsor Marketplace**: 8 sponsorship statuses, 5 sponsorship types, application tracking
-- **Smart Home Integration**: 9 device types, 7 automation triggers, device control
-
-### Game-State Integration
-- **Supported Games**: CS2, LoL, Valorant, Dota 2, Fortnite, Apex Legends, Overwatch 2, Rocket League, Minecraft
-- **Features**: 5 game states, 10 event types, real-time statistics, event triggers
-
-### Social Media Integration
-- **Platforms**: Twitter, Instagram, TikTok, YouTube, Facebook, Discord, LinkedIn
-- **Features**: Post management, auto-posting, engagement tracking
-
-### UI/UX Features
-- **Adaptive Interface**: Simple mode for beginners, Expert mode for power users
-- **Theme System**: Light, Dark, Auto (system preference)
-- **Responsive Design**: Mobile-friendly controls
-- **Keyboard Shortcuts**: 10 pre-configured shortcuts
-- **Undo/Redo**: Full action tracking and reversal
-- **Onboarding**: 9-step guided onboarding wizard
-
----
-
-## 🛠️ Tech Stack
-
-### Backend (Rust)
-- **Framework**: Tauri
-- **Concurrency**: tokio async runtime
-- **Serialization**: serde
-- **Error Handling**: thiserror
-- **Logging**: tracing
-- **UUID Generation**: uuid
-
-### Frontend (React + TypeScript)
-- **Framework**: React 18
-- **Language**: TypeScript
-- **Build Tool**: Vite
-- **Styling**: CSS3 with modern features
-- **State Management**: React hooks
-
-### Platform Support
-- **Primary**: Windows 10/11
-- **Planned**: macOS, Linux
-
----
-
-## 📚 Documentation
-
-- [Quick Start Guide](QUICK_START.md) - Get started in 5 minutes
-- [Architecture](ARCHITECTURE.md) - System architecture details
-- [Development Guide](DEVELOPMENT.md) - Development instructions
-- [Beta Testing Guide](BETA_TESTING_GUIDE.md) - Beta testing program
-- [Project Status](PROJECT_STATUS.md) - Current project status
-
----
-
-## 🤝 Community
-
-### Discord
-Join our Discord server for real-time support, community discussions, and updates:
-[discord.gg/v-streaming](https://discord.gg/v-streaming)
-
-### Social Media
-- **Twitter**: [@VStreamingApp](https://twitter.com/VStreamingApp)
-- **YouTube**: [VStreaming Official](https://youtube.com/@VStreamingApp)
-- **Reddit**: r/VStreaming
-
-### Support
-- **Email**: support@v-streaming.com
-- **Discord**: #support channel
-- **FAQ**: [Link to FAQ]
-
----
-
-## 🗺️ Roadmap
-
-### Current Status
-- ✅ All 9 development phases completed
-- ✅ Beta testing program ready
-- 🔄 Beta testing in progress
-
-### Upcoming Features
-- macOS and Linux support
-- Mobile companion app (iOS/Android)
-- Additional AI features
-- More game integrations
-- Plugin marketplace
-- Custom themes
-
----
-
-## 📊 Statistics
-
-- **Total Lines of Code**: 14,720+ (Rust backend)
-- **Total Tauri Commands**: 355
-- **Total Features**: 100+
-- **Backend Modules**: 28
-- **Documentation Files**: 21
-
----
-
-## 🙏 Acknowledgments
-
-- **Tauri Team** - For the amazing application framework
-- **Rust Community** - For the excellent language and ecosystem
-- **React Team** - For the powerful UI library
-- **Beta Testers** - For invaluable feedback and testing
-
----
-
-## 📄 License
-
-V-Streaming is proprietary software. All rights reserved.
-
-© 2025 VantisCorp. All rights reserved.
-
----
-
-## 📞 Contact
-
-- **Website**: https://v-streaming.com
-- **Email**: info@v-streaming.com
-- **Press**: press@v-streaming.com
-- **Support**: support@v-streaming.com
+</div>
 
 ---
 
 <div align="center">
 
-**Built with ❤️ by the VantisCorp Team**
+<!-- L - Profile Views Counter -->
+![Profile Views](https://komarev.com/ghpvc/?username=vantisCorp&style=for-the-badge&color=FF0000&labelColor=000000&label=Profile+Views)
 
-[⬆ Back to Top](#v-streaming-)
+<!-- S - Star History -->
+[![Star History Chart](https://api.star-history.com/svg?repos=vantisCorp/V-Streaming&type=Date&theme=dark)](https://star-history.com/#vantisCorp/V-Streaming&Date)
+
+<!-- B - Security Badges -->
+[![CodeQL](https://github.com/vantisCorp/V-Streaming/actions/workflows/codeql.yml/badge.svg)](https://github.com/vantisCorp/V-Streaming/actions/workflows/codeql.yml)
+[![Sonar Quality](https://sonarcloud.io/api/project_badges/measure?project=vantisCorp_V-Streaming&metric=alert_status)](https://sonarcloud.io/summary/new_code&id=vantisCorp_V-Streaming)
+
+</div>
+
+---
+
+## 📖 TABLE OF CONTENTS / SPIS TREŚCI
+
+- [About / O Projekcie](#-about--o-projekcie)
+- [Features / Funkcje](#-features--funkcje)
+- [Quick Start / Szybki Start](#-quick-start--szybki-start)
+- [Installation / Instalacja](#-installation--instalacja)
+- [Requirements / Wymagania](#-requirements--wymagania)
+- [Architecture / Architektura](#-architecture--architektura)
+- [Performance / Wydajność](#-performance--wydajność)
+- [Roadmap / Plan Rozwoju](#-roadmap--plan-rozwoju)
+- [Contributing / Wkład](#-contributing--wkład)
+- [Sponsors / Sponsorzy](#-sponsors--sponsorzy)
+- [FAQ / Często Zadawane Pytania](#-faq--często-zadawane-pytania)
+- [License / Licencja](#-license--licencja)
+
+---
+
+## 🎯 ABOUT / O PROJEKCIE
+
+<div align="center">
+
+<!-- C - Blockquote Mission -->
+> **🔥 MISJA:** Stworzyć najlepszą platformę do streamingu na świecie, zasilaną przez najnowocześniejszą sztuczną inteligencję i technologię open-source.
+
+</div>
+
+### 📊 Project Overview / Przegląd Projektu
+
+**V-Streaming 2.0** to rewolucyjna aplikacja do streamingu zbudowana na **Tauri (Rust + React + TypeScript)**, która łączy zaawansowaną technologię AI z intuicyjnym interfejsem. Dostarcza profesjonalne możliwości streamingu przy znacznie mniejszym zużyciu zasobów niż tradycyjne rozwiązania.
+
+---
+
+## ✨ FEATURES / FUNKCJE
+
+### 🤖 AI-Powered Features / Funkcje Zasilane AI
+
+<div align="center">
+
+[![AI Features](https://img.shields.io/badge/AI-Auto_Clipping-red?style=for-the-badge)](#)
+[![AI Features](https://img.shields.io/badge/AI-Live_Captions-black?style=for-the-badge)](#)
+[![AI Features](https://img.shields.io/badge/AI-Translation-red?style=for-the-badge)](#)
+[![AI Features](https://img.shields.io/badge/AI-Stream_Coach-black?style=for-the-badge)](#)
+[![AI Features](https://img.shields.io/badge/AI-Highlights-red?style=for-the-badge)](#)
+
+</div>
+
+- 🎬 **Auto-Clipping**: Automatyczne wykrywanie i zapisywanie najlepszych momentów
+- 💬 **Live Captions**: Generowanie napisów na żywo z 99% dokładnością
+- 🌐 **Real-time Translation**: Tłumaczenie na 50+ języków w czasie rzeczywistym
+- 🏆 **Stream Coach**: AI analizuje Twój stream i podpowiada ulepszenia
+- 🎯 **Smart Highlights**: Automatyczne tworzenie klipów z najlepszych momentów
+
+### 🎭 VTubing / VTubing
+
+<div align="center">
+
+[![VTubing](https://img.shields.io/badge/VTubing-VRM-red?style=for-the-badge)](#)
+[![VTubing](https://img.shields.io/badge/VTubing-Live2D-black?style=for-the-badge)](#)
+[![VTubing](https://img.shields.io/badge/VTubing-Face_Tracking-red?style=for-the-badge)](#)
+[![VTubing](https://img.shields.io/badge/VTubing-Lip_Sync-black?style=for-the-badge)](#)
+
+</div>
+
+- 🎨 **Native .VRM Support**: Obsługa modeli VRM od razu po instalacji
+- ✨ **Live2D Integration**: Pełne wsparcie dla modeli Live2D
+- 👤 **Face Tracking**: Real-time śledzenie twarzy z opóźnieniem < 30ms
+- 😮 **Expression System**: Zaawansowany system mimiki twarzy
+- 🎤 **Lip Sync**: Synchronizacja ust z dźwiękiem w czasie rzeczywistym
+
+### 🚀 Advanced Streaming / Zaawansowane Streamowanie
+
+<div align="center">
+
+[![Streaming](https://img.shields.io/badge/Streaming-Multi_platform-red?style=for-the-badge)](#)
+[![Streaming](https://img.shields.io/badge/Streaming-Dual_Output-black?style=for-the-badge)](#)
+[![Streaming](https://img.shields.io/badge/Streaming-WebRTC-red?style=for-the-badge)](#)
+[![Streaming](https://img.shields.io/badge/Streaming-HW_Encoding-black?style=for-the-badge)](#)
+
+</div>
+
+- 🌍 **Multi-Platform**: Streamuj do Twitch, Kick, YouTube, Rumble jednocześnie
+- 📱 **Dual-Output**: 16:9 i 9:16 w tym samym czasie
+- 🤝 **WebRTC Co-Streaming**: Wspólne streamowanie z innymi twórcami
+- ⚡ **Hardware Encoding**: NVENC, AMF, QuickSync z auto-detection
+- 🎥 **SRT Protocol**: Wysokiej jakości stream z niskim opóźnieniem
+
+### 🏠 Smart Home & Gaming / Dom Inteligentny i Gry
+
+<div align="center">
+
+[![Smart](https://img.shields.io/badge/Smart-Home-red?style=for-the-badge)](#)
+[![Gaming](https://img.shields.io/badge/Game_Integration-black?style=for-the-badge)](#)
+[![Interactive](https://img.shields.io/badge/Mini_Games-red?style=for-the-badge)](#)
+[![Community](https://img.shields.io/badge/Multi_Chat-black?style=for-the-badge)](#)
+
+</div>
+
+- 💡 **IoT Integration**: Sterowanie urządzeniami Smart Home podczas streamu
+- 🎮 **Game State Integration**: Real-time statystyki z CS2, LoL, Valorant
+- 🎲 **Interactive Mini-Games**: Gry interaktywne dla widzów
+- 💬 **Unified Multi-Chat**: Jedno okno dla wszystkich platform
+
+---
+
+## 🚀 QUICK START / SZYBKI START
+
+### Q - TL;DR: Zainstaluj i Streamuj w 3 krokach
+
+<details>
+<summary>📋 Skopiuj i Wklej (3 linijki)</summary>
+
+```bash
+# 1. Pobierz instalator
+wget https://v-streaming.com/downloads/V-Streaming-Setup.exe
+
+# 2. Uruchom instalator
+./V-Streaming-Setup.exe
+
+# 3. Streamuj!
+V-Streaming.exe
+```
+
+</details>
+
+<details>
+<summary>⚡ PowerShell One-Liner</summary>
+
+```powershell
+iwr https://v-streaming.com/downloads/install.ps1 -UseBasicParsing | iex
+```
+
+</details>
+
+---
+
+## 📦 INSTALLATION / INSTALACJA
+
+### Windows (zalecane)
+
+#### 1. Pobierz Instalator
+
+<div align="center">
+
+[![Windows Download](https://img.shields.io/badge/Download-Windows-red?style=for-the-badge&logo=windows&logoColor=white)](https://v-streaming.com/downloads/V-Streaming-Setup.exe)
+
+</div>
+
+#### 2. Uruchom Instalator
+
+```powershell
+# Pobierz i uruchom
+.\V-Streaming-Setup.exe
+```
+
+#### 3. Konfiguracja
+
+```bash
+# Uruchom V-Streaming
+V-Streaming.exe
+
+# Postępuj zgodnie z 9-krokowym kreatorem konfiguracji
+# - Wybierz źródła przechwytywania
+# - Skonfiguruj audio
+# - Połącz konta streamingowe
+# - Gotowe!
+```
+
+---
+
+## 💻 REQUIREMENTS / WYMAGANIA
+
+### Minimalne / Minimum
+
+| Komponent | Wymagania | Preferowane |
+|-----------|-----------|-------------|
+| **OS** | Windows 10 (64-bit) | Windows 11 (64-bit) |
+| **CPU** | Intel i5 / AMD Ryzen 5 (4 rdzenie) | Intel i7 / AMD Ryzen 7 (8+ rdzeni) |
+| **GPU** | GTX 1050 / RX 560 / UHD 630 | RTX 3060 / RX 6600 lub lepszy |
+| **RAM** | 8 GB | 16 GB lub więcej |
+| **Pamięć** | 2 GB wolnego miejsca | SSD z 5 GB wolnego miejsca |
+| **Internet** | 5 Mbps upload | 20 Mbps upload |
+
+### Wersjonowanie / Versioning
+
+<div align="center">
+
+[![Semantic Versioning](https://img.shields.io/badge/semver-2.1.0-red?style=for-the-badge&logo=semver&logoColor=black)](https://semver.org/)
+[![Changelog](https://img.shields.io/badge/changelog-View-red?style=for-the-badge&logo=git&logoColor=black)](CHANGELOG.md)
+
+</div>
+
+---
+
+## 🏗️ ARCHITECTURE / ARCHITEKTURA
+
+### D - Mermaid Diagram
+
+```mermaid
+graph TB
+    A[V-Streaming 2.0] --> B[Frontend: React + TS]
+    A --> C[Backend: Rust]
+    A --> D[GPU: CUDA/OpenGL/Vulkan]
+    
+    B --> E[Components]
+    B --> F[UI/UX]
+    B --> G[State Management]
+    
+    C --> H[Streaming Engine]
+    C --> I[AI Models]
+    C --> J[VTuber System]
+    
+    D --> K[Capture]
+    D --> L[Composition]
+    D --> M[Encoding]
+    
+    H --> N[Multi-Platform]
+    I --> O[Auto-Clipping]
+    I --> P[Live Captions]
+    J --> Q[Face Tracking]
+    J --> R[Live2D]
+    
+    style A fill:#FF0000,color:#000000
+    style B fill:#000000,color:#FFFFFF
+    style C fill:#000000,color:#FFFFFF
+    style D fill:#000000,color:#FFFFFF
+```
+
+### W - Mathematical Architecture
+
+V-Streaming wykorzystuje zaawansowane algorytmy do optymalizacji wydajności:
+
+```
+🧮 Wzór Optymalizacji FPS:
+
+FPS_target = min(
+    GPU_clock / (Pixels_per_frame × 2),
+    CPU_clock / (Threads_active × 0.8)
+)
+
+🧮 Wzór Zmniejszenia Latencji:
+
+Latency_min = (
+    Capture_latency +
+    Processing_latency +
+    Network_latency
+) / 3
+
+Gdzie:
+- Capture_latency ≈ 5ms
+- Processing_latency ≈ 2ms
+- Network_latency ≈ 10ms
+```
+
+---
+
+## 📈 PERFORMANCE / WYDAJNOŚĆ
+
+### T - Benchmark Table
+
+| Metryka | V-Streaming 2.0 | OBS Studio | Streamlabs |
+|---------|-----------------|------------|------------|
+| **RAM Usage** | ~500 MB | ~1.5 GB | ~2 GB |
+| **CPU Usage** | 25% | 45% | 55% |
+| **GPU Usage** | 40% | 60% | 70% |
+| **Startup Time** | 2s | 8s | 12s |
+| **AI Features** | ✅ Native | ❌ Plugin | ❌ Plugin |
+| **VTubing** | ✅ Native | ❌ Plugin | ❌ Plugin |
+| **Dual-Output** | ✅ Native | ⚠️ Complex | ⚠️ Complex |
+
+### U - Unicode Progress Bars
+
+```bash
+📊 Wydajność CPU
+[████████████░░░░░░░░] 60%
+
+📊 Wydajność GPU
+[████████████████████] 100%
+
+📊 Zużycie RAM
+[██████░░░░░░░░░░░░░░] 30%
+
+📊 Łączność sieciowa
+[████████████████░░░░] 80%
+```
+
+---
+
+## 🗺️ ROADMAP / PLAN ROZWOJU
+
+### P - Unicode Progress Tracker
+
+```bash
+🎯 Wersja 2.1.0
+[████████████░░░░░░░░] 60% - Q2 2025
+
+🎯 Wersja 3.0.0
+[████░░░░░░░░░░░░░░░] 20% - Q4 2025
+
+🎯 Wersja 4.0.0
+[██░░░░░░░░░░░░░░░░░] 10% - 2026
+```
+
+### R - Checklist Goals
+
+#### 🎯 Krótkoterminowe (Q2 2025)
+
+- [x] v2.0 - Podstawowe funkcje streamingu
+- [x] AI auto-clipping
+- [x] VTubing support
+- [x] Multi-platform streaming
+- [ ] **Beta testing** - W trakcie
+- [ ] Bug fixes i optymalizacje
+- [ ] Dokumentacja API
+- [ ] Plugin marketplace
+
+#### 🚀 Średnioterminowe (Q4 2025)
+
+- [ ] v3.0 - AI-powered recommendations
+- [ ] Advanced analytics
+- [ ] Cloud integration
+- [ ] Mobile companion app
+- [ ] Voice modulation
+- [ ] Scene detection
+- [ ] Auto-moderation
+- [ ] Sponsor marketplace v2
+
+#### 🌟 Długoterminowe (2026)
+
+- [ ] v4.0 - Full VR support
+- [ ] AR streaming
+- [ ] AI-generated content
+- [ ] Neural network encoding
+- [ ] Quantum computing optimization
+- [ ] Space streaming (serio! 🚀)
+
+---
+
+## 🤝 CONTRIBUTING / WKŁAD
+
+### K - Contributors Grid
+
+<div align="center">
+
+<!-- K - Contributors -->
+<a href="https://github.com/vantisCorp/V-Streaming/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=vantisCorp/V-Streaming" alt="Contributors" />
+</a>
+
+Made with ❤️ by V-Streaming Team
+
+</div>
+
+### I - Interactive Menu CLI Style
+
+<details>
+<summary>📋 Jak Wnieść Wkład / How to Contribute</summary>
+
+<details>
+<summary>🔧 Setup Development Environment</summary>
+
+```bash
+# Clone repository
+git clone https://github.com/vantisCorp/V-Streaming.git
+cd V-Streaming
+
+# Install dependencies
+npm install
+cd src-tauri && cargo build
+
+# Run development server
+npm run tauri:dev
+```
+
+</details>
+
+<details>
+<summary>🐛 How to Report Bugs</summary>
+
+1. Check existing [Issues](https://github.com/vantisCorp/V-Streaming/issues)
+2. Create new issue with:
+   - Clear title
+   - System specs
+   - Steps to reproduce
+   - Expected vs actual behavior
+   - Screenshots/videos
+
+</details>
+
+<details>
+<summary>✨ How to Request Features</summary>
+
+1. Check [FEATURE_REQUESTS](https://github.com/vantisCorp/V-Streaming/issues?q=is%3Aissue+is%3Aopen+label%3Afeature)
+2. Create new feature request with:
+   - Detailed description
+   - Use cases
+   - Implementation ideas
+   - Priority level
+
+</details>
+
+<details>
+<summary>📝 Code Style Guidelines</summary>
+
+- Follow Rust guidelines
+- Use TypeScript strict mode
+- Write tests for new features
+- Document public APIs
+- Keep commits atomic
+- Use conventional commits
+
+</details>
+
+</details>
+
+---
+
+## 💰 SPONSORS / SPONSORZY
+
+### O - Sponsor Links
+
+<div align="center">
+
+<!-- O - Sponsorship Buttons -->
+<a href="https://patreon.com/v-streaming">
+  <img src="https://img.shields.io/badge/Patreon-Sponsor-red?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon">
+</a>
+
+<a href="https://paypal.me/v-streaming">
+  <img src="https://img.shields.io/badge/PayPal-Donate-red?style=for-the-badge&logo=paypal&logoColor=white" alt="PayPal">
+</a>
+
+<a href="https://buymeacoffee.com/v-streaming">
+  <img src="https://img.shields.io/badge/Buy_Me_A_Coffee-Support-red?style=for-the-badge&logo=buymeacoffee&logoColor=white" alt="BuyMeACoffee">
+</a>
+
+<a href="https://github.com/sponsors/vantisCorp">
+  <img src="https://img.shields.io/badge/GitHub-Sponsor-red?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Sponsors">
+</a>
+
+</div>
+
+### S - Sponsor Levels
+
+| Poziom | Cena / Month | Korzyści |
+|--------|--------------|----------|
+| 🥉 Bronze | $5/mo | Badge na Discord, Nazwa w Credits |
+| 🥈 Silver | $15/mo | Bronze + Early Access, Beta Features |
+| 🥇 Gold | $50/mo | Silver + Private Discord Channel, Feature Requests |
+| 💎 Diamond | $200/mo | Gold + Custom Features, Priority Support, Branding |
+
+---
+
+## 🌐 SOCIAL MEDIA / MEDIA SPOŁECZNOŚCIOWE
+
+<div align="center">
+
+[![Website](https://img.shields.io/badge/Website-Visit-red?style=for-the-badge&logo=internet-explorer&logoColor=white)](https://v-streaming.com)
+[![Discord](https://img.shields.io/badge/Discord-Join-red?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/v-streaming)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-red?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/VStreamingApp)
+[![YouTube](https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@VStreaming)
+[![Twitch](https://img.shields.io/badge/Twitch-Watch-red?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv/VStreaming)
+
+</div>
+
+---
+
+## Z - QUICK DEPLOY / SZYBKI DEPLOY
+
+### Z - 1-Click Deploy Buttons
+
+<div align="center">
+
+[![Deploy to Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/vantisCorp/V-Streaming)
+[![Open in GitLab](https://img.shields.io/badge/GitLab-View-red?style=for-the-badge&logo=gitlab&logoColor=white)](https://gitlab.com/vantisCorp/V-Streaming)
+
+</div>
+
+---
+
+## ❓ FAQ / CZĘSTO ZADAWANE PYTANIA
+
+### I - Interactive FAQ
+
+<details>
+<summary>🤔 Czy V-Streaming jest darmowy?</summary>
+
+**A:** Tak! V-Streaming ma **darmowy tier** z:
+- 10 streamów/miesiąc
+- 100 widzów jednocześnie
+- Podstawowe funkcje streamingu
+
+**Pro tier** ($9.99/mo) oferuje:
+- 100 streamów/miesiąc
+- 1,000 widzów
+- AI features
+- VTubing
+- Wszystkie platformy
+
+</details>
+
+<details>
+<summary>💻 Jakie systemy są obsługiwane?</summary>
+
+**A:** Obecnie obsługuje:
+- ✅ Windows 10 (64-bit)
+- ✅ Windows 11 (64-bit)
+
+Planowane:
+- 🔄 macOS (Q3 2025)
+- 🔄 Linux (Q4 2025)
+
+</details>
+
+<details>
+<summary>🎭 Jakie formaty VTubing są obsługiwane?</summary>
+
+**A:** Natywne wsparcie dla:
+- ✅ .VRM (Virtual Reality Modeling)
+- ✅ Live2D (.moc3)
+- ✅ FaceID (iPhone TrueDepth camera)
+- ✅ Webcams (z OpenCV)
+
+</details>
+
+<details>
+<summary>🌐 Czy mogę streamować do wielu platform?</summary>
+
+**A:** Tak! V-Streaming obsługuje:
+- ✅ Twitch
+- ✅ Kick
+- ✅ YouTube Live
+- ✅ Rumble
+- ✅ Facebook Gaming
+- ✅ Trovo
+
+Wszystkie jednocześnie z jednego ustawienia!
+
+</details>
+
+<details>
+<summary>⚡ Jakie są wymagania systemowe?</summary>
+
+**A:** Minimalne:
+- Windows 10/11 64-bit
+- Intel i5 / AMD Ryzen 5
+- 8GB RAM
+- GTX 1050 / RX 560
+
+Zalecane:
+- Windows 11 64-bit
+- Intel i7 / AMD Ryzen 7
+- 16GB RAM
+- RTX 3060 / RX 6600
+
+</details>
+
+---
+
+## 📚 Y - ADDITIONAL RESOURCES / DODATKOWE ZASOBY
+
+### Y - External Files
+
+- 📖 [Full Documentation](https://docs.v-streaming.com)
+- 📖 [API Reference](API.md)
+- 📖 [Development Guide](DEVELOPMENT.md)
+- 📖 [Architecture](ARCHITECTURE.md)
+- 📖 [Contributing](CONTRIBUTING.md)
+- 📖 [Security Policy](SECURITY.md)
+- 📖 [Code of Conduct](CODE_OF_CONDUCT.md)
+- 📖 [Change Log](CHANGELOG.md)
+- 📖 [License](LICENSE.md)
+- 📖 [Todo List](todo.md)
+- 📖 [Development Phases](DEVELOPMENT_PHASES.md)
+- 📖 [Beta Guide](BETA_GUIDE.md)
+- 📖 [PDK Guide](PDK_GUIDE.md)
+- 📖 [CLI Reference](CLI_README.md)
+- 📖 [Analytics Docs](ANALYTICS.md)
+
+---
+
+## 🎵 SOUNDTRACK / SOUNDTRACK
+
+### S - Spotify Soundtrack
+
+<div align="center">
+
+[![Spotify](https://img.shields.io/badge/Spotify-Listen-red?style=for-the-badge&logo=spotify&logoColor=white)](https://open.spotify.com/playlist/37i9dQZF1DXaXB8fQg7xif?si=4a3c9e9e9e9e9e9e)
+
+🎧 **V-Streaming Official Soundtrack - Cyberpunk Edition**
+
+*Czysta energia dla Twoich streamów*
+
+</div>
+
+---
+
+## 🏆 M - GUESTBOOK / KSIĘGA GOŚCI
+
+### M - World Map of Visitors
+
+<div align="center">
+
+<!-- M - World Map -->
+[![World Map](https://readme-guestbook.vercel.app/api/guestbook/vantisCorp/V-Streaming?style=for-the-badge)](https://github.com/vantisCorp/V-Streaming/guestbook)
+
+**🌍 Odwiedzający z całego świata!**
+
+</div>
+
+---
+
+## 🎉 E - EASTER EGGS / UKRYTE FUNKCJE
+
+### E - Hidden Links
+
+Kliknij na te znaki interpunkcyjne! 👀
+
+- [!](https://v-streaming.com/easter-egg-1) - 🔑 Secret Discount Code
+- [.](https://v-streaming.com/easter-egg-2) - 🎁 Free Pro Trial
+- [,](https://v-streaming.com/easter-egg-3) - 🎮 Hidden Mini-Game
+- [;](https://v-streaming.com/easter-egg-4) - 🎵 Bonus Soundtrack
+- [:](https://v-streaming.com/easter-egg-5) - 🚀 Special Features
+
+---
+
+## 🔗 LINKS / ODNOŚNIKI
+
+### Internal Navigation / Nawigacja Wewnętrzna
+
+- [Back to Top](#-v-streaming-20-⚡-the-ultimate-streaming-platform-🚀-revolutionary-ai-powered) ⬆️
+- [Features](#-features--funkcje)
+- [Installation](#-installation--instalacja)
+- [Requirements](#-requirements--wymagania)
+- [Architecture](#-architecture--architektura)
+- [Performance](#-performance--wydajność)
+- [Roadmap](#-roadmap--plan-rozwoju)
+- [Contributing](#-contributing--wkład)
+- [FAQ](#-faq--często-zadawane-pytania)
+
+---
+
+## 📊 D - LIVE DATA / DANE NA ŻYWO
+
+### D - GitHub Stats
+
+<div align="center">
+
+<!-- D - GitHub Readme Stats -->
+![V-Streaming Stats](https://github-readme-stats.vercel.app/api?username=vantisCorp&repo=V-Streaming&show_icons=true&theme=dark&hide_border=true&bg_color=000000&title_color=FF0000&icon_color=FF0000&text_color=FFFFFF&border_color=FF0000)
+
+</div>
+
+---
+
+## 🎮 G - INTERACTIVE GAME / GRA INTERAKTYWNA
+
+### G - Built-in Tic-Tac-Toe
+
+<div align="center">
+
+**🎮 Zagraj w Kółko i Krzyżyk!**
+
+[![Play Tic-Tac-Toe](https://img.shields.io/badge/Play-Now-red?style=for-the-badge&logo=github&logoColor=white)](https://v-streaming.com/games/tic-tac-toe)
+
+*Gra zasilana przez GitHub Actions*
+
+</div>
+
+---
+
+## 🎨 THEMES / MOTYWY
+
+### T - Dark/Light Mode
+
+<div align="center">
+
+<!-- T - Theme Badges -->
+[![Dark Mode](https://img.shields.io/badge/Dark_Mode-Preferred-red?style=for-the-badge&logo=github)](#)
+[![Light Mode](https://img.shields.io/badge/Light_Mode-Available-black?style=for-the-badge&logo=github)](#)
+
+</div>
+
+---
+
+## 🏷️ TAGS & LABELS / TAGI I ETYKIETY
+
+### Category Labels
+
+<div align="center">
+
+[![Streaming](https://img.shields.io/badge/Category-Streaming-red?style=for-the-badge)](#)
+[![VTubing](https://img.shields.io/badge/Category-VTubing-black?style=for-the-badge)](#)
+[![AI](https://img.shields.io/badge/Category-AI-red?style=for-the-badge)](#)
+[![OpenSource](https://img.shields.io/badge/Category-OpenSource-black?style=for-the-badge)](#)
+[![Tauri](https://img.shields.io/badge/Category-Tauri-red?style=for-the-badge)](#)
+[![Rust](https://img.shields.io/badge/Category-Rust-black?style=for-the-badge)](#)
+[![React](https://img.shields.io/badge/Category-React-red?style=for-the-badge)](#)
+
+</div>
+
+---
+
+## 📝 LICENSE / LICENCJA
+
+<div align="center">
+
+```
+MIT License
+
+Copyright (c) 2024-2025 VantisCorp
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+[![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge&logo=license&logoColor=white)](LICENSE.md)
+
+</div>
+
+---
+
+## 🙏 ACKNOWLEDGMENTS / PODZIĘKOWANIA
+
+<div align="center">
+
+### Special Thanks / Specjalne Podziękowania
+
+- ❤️ **Open Source Community** - Dziękujemy za wszystkie contributions
+- ❤️ **Beta Testers** - Wasze opinie są bezcenne
+- ❤️ **Tauri Team** - za framework
+- ❤️ **Rust Community** - za piękny język
+- ❤️ **React Team** - za świetne narzędzie
+
+---
+
+### Made with ❤️ by V-Streaming Team
+
+<div align="center">
+
+[![Website](https://img.shields.io/badge/Website-Visit-red?style=for-the-badge&logo=internet-explorer&logoColor=white)](https://v-streaming.com)
+[![Discord](https://img.shields.io/badge/Discord-Join-red?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/v-streaming)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-red?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/VStreamingApp)
+[![GitHub](https://img.shields.io/badge/GitHub-View-red?style=for-the-badge&logo=github&logoColor=white)](https://github.com/vantisCorp/V-Streaming)
+
+**⭐ Star this repo if you like it! ⭐**
+
+</div>
+
+---
+
+<div align="center">
+
+<!-- N - Back to Top Link -->
+[![Back to Top](https://img.shields.io/badge/⬆️-Back_to_Top-red?style=for-the-badge)](#)
+
+---
+
+**© 2024-2025 V-Streaming. All rights reserved.**
+
+**Made with ❤️ and ☕ by V-Streaming Team**
+
+---
+
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://v-streaming.com)
+[![forthebadge](https://forthebadge.com/images/badges/powered-by-coffee.svg)](https://buymeacoffee.com/v-streaming)
 
 </div>

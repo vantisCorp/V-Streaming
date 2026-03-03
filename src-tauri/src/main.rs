@@ -27,6 +27,8 @@ mod smart_home;
 mod telemetry;
 mod performance;
 mod business;
+mod analytics;
+mod analytics_commands;
 
 use tauri::Manager;
 use std::sync::{Arc, Mutex};
@@ -59,6 +61,7 @@ struct AppState {
     telemetry_engine: Mutex<telemetry::TelemetryEngine>,
     performance_engine: Mutex<performance::PerformanceEngine>,
     business_engine: Mutex<business::BusinessEngine>,
+    analytics_engine: Mutex<analytics::AnalyticsEngine>,
 }
 
 // Tauri commands
@@ -2765,6 +2768,86 @@ fn get_subscription_statuses() -> Vec<String> {
 }
 
 // ============================================================================
+// ANALYTICS COMMANDS
+// ============================================================================
+
+#[tauri::command]
+async fn analytics_get_real_time(state: tauri::State<AppState>) -> Result<analytics::RealTimeAnalytics, String> {
+    state.analytics_engine.lock().unwrap().get_real_time().await
+}
+
+#[tauri::command]
+fn analytics_get_aggregated(period: String, state: tauri::State<AppState>) -> Result<Option<analytics::AggregatedAnalytics>, String> {
+    let period = match period.as_str() {
+        "minute" => analytics::AggregationPeriod::Minute,
+        "five_minutes" => analytics::AggregationPeriod::FiveMinutes,
+        "fifteen_minutes" => analytics::AggregationPeriod::FifteenMinutes,
+        "hour" => analytics::AggregationPeriod::Hour,
+        "six_hours" => analytics::AggregationPeriod::SixHours,
+        "day" => analytics::AggregationPeriod::Day,
+        "week" => analytics::AggregationPeriod::Week,
+        "month" => analytics::AggregationPeriod::Month,
+        _ => return Err("Invalid period".to_string()),
+    };
+    Ok(state.analytics_engine.lock().unwrap().get_aggregated(period).cloned())
+}
+
+#[tauri::command]
+fn analytics_get_performance_metrics(state: tauri::State<AppState>) -> Result<Option<analytics::PerformanceMetrics>, String> {
+    Ok(state.analytics_engine.lock().unwrap().get_performance_metrics().cloned())
+}
+
+#[tauri::command]
+fn analytics_get_viewer_statistics(state: tauri::State<AppState>) -> Result<Option<analytics::ViewerStatistics>, String> {
+    Ok(state.analytics_engine.lock().unwrap().get_viewer_statistics().cloned())
+}
+
+#[tauri::command]
+fn analytics_get_revenue_statistics(state: tauri::State<AppState>) -> Result<Option<analytics::RevenueStatistics>, String> {
+    Ok(state.analytics_engine.lock().unwrap().get_revenue_statistics().cloned())
+}
+
+#[tauri::command]
+async fn analytics_update_real_time(data: analytics::RealTimeAnalytics, state: tauri::State<AppState>) -> Result<(), String> {
+    state.analytics_engine.lock().unwrap().update_real_time(data).await;
+    Ok(())
+}
+
+#[tauri::command]
+fn analytics_add_data_point(data: analytics::AnalyticsDataPoint, state: tauri::State<AppState>) -> Result<(), String> {
+    state.analytics_engine.lock().unwrap().add_data_point(data);
+    Ok(())
+}
+
+#[tauri::command]
+fn analytics_export_data(format: String, period: String, state: tauri::State<AppState>) -> Result<String, String> {
+    let format = match format.as_str() {
+        "json" => analytics::ExportFormat::Json,
+        "csv" => analytics::ExportFormat::Csv,
+        "excel" => analytics::ExportFormat::Excel,
+        "pdf" => analytics::ExportFormat::Pdf,
+        _ => return Err("Invalid format".to_string()),
+    };
+    let period = match period.as_str() {
+        "minute" => analytics::AggregationPeriod::Minute,
+        "five_minutes" => analytics::AggregationPeriod::FiveMinutes,
+        "fifteen_minutes" => analytics::AggregationPeriod::FifteenMinutes,
+        "hour" => analytics::AggregationPeriod::Hour,
+        "six_hours" => analytics::AggregationPeriod::SixHours,
+        "day" => analytics::AggregationPeriod::Day,
+        "week" => analytics::AggregationPeriod::Week,
+        "month" => analytics::AggregationPeriod::Month,
+        _ => return Err("Invalid period".to_string()),
+    };
+    state.analytics_engine.lock().unwrap().export_data(format, period)
+}
+
+#[tauri::command]
+fn analytics_get_summary(state: tauri::State<AppState>) -> Result<analytics::AnalyticsSummary, String> {
+    Ok(state.analytics_engine.lock().unwrap().get_summary())
+}
+
+// ============================================================================
 // MAIN FUNCTION
 // ============================================================================
 
@@ -2797,6 +2880,7 @@ async fn main() {
     let telemetry_engine = telemetry::TelemetryEngine::new();
     let performance_engine = performance::PerformanceEngine::new();
     let business_engine = business::BusinessEngine::new();
+    let analytics_engine = analytics::AnalyticsEngine::new().expect("Failed to initialize analytics engine");
 
     tauri::Builder::default()
         .plugin(tauri_plugin_shell::init())
@@ -2827,6 +2911,7 @@ async fn main() {
             telemetry_engine: Mutex::new(telemetry_engine),
             performance_engine: Mutex::new(performance_engine),
             business_engine: Mutex::new(business_engine),
+            analytics_engine: Mutex::new(analytics_engine),
         })
         .invoke_handler(tauri::generate_handler![
             greet,
@@ -3226,6 +3311,16 @@ async fn main() {
             update_usage_stats,
             get_subscription_tiers,
             get_subscription_statuses,
+            // Analytics commands
+            analytics_get_real_time,
+            analytics_get_aggregated,
+            analytics_get_performance_metrics,
+            analytics_get_viewer_statistics,
+            analytics_get_revenue_statistics,
+            analytics_update_real_time,
+            analytics_add_data_point,
+            analytics_export_data,
+            analytics_get_summary,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

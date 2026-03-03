@@ -24,6 +24,8 @@ pub mod smart_home;
 pub mod telemetry;
 pub mod performance;
 pub mod business;
+pub mod analytics;
+pub mod analytics_commands;
 
 pub use capture::{CaptureEngine, CaptureSource, CaptureSourceInfo, CapturePerformanceStats, CapturePreset, get_default_presets};
 pub use composition::{CompositionEngine, Scene, Layer, Filter, OutputFormat, LayerUpdate, LayerSource, BlendMode, LayerMask, LayerGroup, SceneTransition, CanvasOutputs, ComposedFrame, CompositionStats};
@@ -35,6 +37,7 @@ pub use gpu::{GpuContext, GpuInfo, Texture, Shader, TonemapMethod, ColorGrading,
 pub use vtuber::{VtuberEngine, VtuberModel, VtuberModelType, Animation, Expression, BoneTransform, FaceTracker, TrackingFeature, FaceTrackingData, MouthShape, VtuberStats};
 pub use ui::{UiEngine, UserSettings, SettingsUpdate, UiState, UiStateUpdate, InterfaceMode, Theme, WindowLayout, PanelConfig, DockLayout, PanelVisibility, UiAction, UndoRedoInfo};
 pub use onboarding::{OnboardingEngine, OnboardingStep, StepContent, UserPreferences, OnboardingProgress, OnboardingData};
+pub use analytics::{AnalyticsEngine, AnalyticsDataPoint, AggregatedAnalytics, RealTimeAnalytics, PerformanceMetrics, ViewerStatistics, RevenueStatistics, AggregationPeriod, ExportFormat};
 
 /// Core application state
 pub struct AppState {

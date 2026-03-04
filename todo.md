@@ -26,9 +26,9 @@
 
 ## 🟢 Średni Priorytet  
 - [x] Stworzyć wiki w GitHub
-- [ ] Dodać more contributors
-- [ ] Stworzyć roadmap w GitHub Projects
-- [ ] Dodać badges z statystykami
+- [x] Dodać more contributors
+- [x] Stworzyć roadmap w GitHub Projects
+- [x] Dodać badges z statystykami
 
 ---
 **Status:** Gotowe do kontynuacji

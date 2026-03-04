@@ -6,7 +6,7 @@ import App from './App';
 // Mock Tauri APIs
 const mockInvoke = vi.fn();
 
-vi.mock('@tauri-apps/api/tauri', () => ({
+vi.mock('@tauri-apps/api/core', () => ({
   invoke: (cmd: string) => {
     const mockResponses: Record<string, unknown> = {
       // GPU commands

@@ -26,6 +26,12 @@ pub mod performance;
 pub mod business;
 pub mod analytics;
 pub mod analytics_commands;
+pub mod cli;
+pub mod config;
+pub mod pdk;
+pub mod errors;
+pub mod logging;
+pub mod profiler;
 
 pub use capture::{CaptureEngine, CaptureSource, CaptureSourceInfo, CapturePerformanceStats, CapturePreset, get_default_presets};
 pub use composition::{CompositionEngine, Scene, Layer, Filter, OutputFormat, LayerUpdate, LayerSource, BlendMode, LayerMask, LayerGroup, SceneTransition, CanvasOutputs, ComposedFrame, CompositionStats};
@@ -38,6 +44,12 @@ pub use vtuber::{VtuberEngine, VtuberModel, VtuberModelType, Animation, Expressi
 pub use ui::{UiEngine, UserSettings, SettingsUpdate, UiState, UiStateUpdate, InterfaceMode, Theme, WindowLayout, PanelConfig, DockLayout, PanelVisibility, UiAction, UndoRedoInfo};
 pub use onboarding::{OnboardingEngine, OnboardingStep, StepContent, UserPreferences, OnboardingProgress, OnboardingData};
 pub use analytics::{AnalyticsEngine, AnalyticsDataPoint, AggregatedAnalytics, RealTimeAnalytics, PerformanceMetrics, ViewerStatistics, RevenueStatistics, AggregationPeriod, ExportFormat};
+pub use cli::{Cli, CliContext, run_cli};
+pub use config::{AppConfig, GeneralConfig, CaptureConfig, AudioConfig, EncodingConfig, StreamingConfig, UIConfig, AIConfig};
+pub use pdk::{Plugin, BasePlugin, PluginManager, PluginMetadata, PluginState, PluginConfig, PluginContext, PluginError, plugin_metadata};
+pub use logging::{Logger, LogLevel, LogEntry};
+pub use profiler::{Profiler, ProfilingData, ProfilingSession};
+pub use errors::{AppError, ErrorKind};
 
 /// Core application state
 pub struct AppState {

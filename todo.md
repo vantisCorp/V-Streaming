@@ -13,10 +13,10 @@
 - [x] Konsolidacja dokumentacji beta (BETA_GUIDE.md)
 
 ## 🔴 Krytyczne - Do Zrobienia
-- [ ] Dodać topics do repozytorium GitHub
-- [ ] Stworzyć GitHub Release dla v0.1.0
-- [ ] Usunąć duplikat LICENSE (LICENSE vs LICENSE.md)
-- [ ] Dokończyć implementację CLI (usunąć TODO placeholders)
+- [x] Dodać topics do repozytorium GitHub
+- [x] Stworzyć GitHub Release dla v0.1.0
+- [x] Usunąć duplikat LICENSE (LICENSE vs LICENSE.md)
+- [x] Dokończyć implementację CLI (usunąć TODO placeholders)
 
 ## 🟡 Wysoki Priorytet
 - [ ] Dodać więcej testów jednostkowych

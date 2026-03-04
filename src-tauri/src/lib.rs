@@ -81,3 +81,26 @@ impl AppState {
         })
     }
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_app_state_creation() {
+        // This is a placeholder test
+        // In a real application, this would test actual functionality
+        assert!(true);
+    }
+
+    #[test]
+    fn test_config_default() {
+        let config = config::AppConfig::default();
+        assert_eq!(config.general.app_name, "V-Streaming");
+    }
+
+    #[test]
+    fn test_error_creation() {
+        let error = errors::AppError::new(errors::ErrorKind::Configuration, "Test error");
+        assert!(error.to_string().contains("Test error"));
+    }
+}

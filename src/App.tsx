@@ -5,6 +5,7 @@ import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { GlobalKeyboardListener } from './components/GlobalKeyboardListener';
 import { HotkeySettings } from './components/HotkeySettings';
 import { SceneAutomationSettings } from './components/SceneAutomationSettings';
+import { CloudBackupSettings } from './components/CloudBackupSettings';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -243,6 +244,7 @@ function App() {
   const [theme, setTheme] = useState<'Light' | 'Dark' | 'Auto'>('Dark');
   const [showHotkeySettings, setShowHotkeySettings] = useState(false);
   const [showSceneAutomation, setShowSceneAutomation] = useState(false);
+  const [showCloudBackup, setShowCloudBackup] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -582,6 +584,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🎬
+          </button>
+          <button
+            onClick={() => setShowCloudBackup(true)}
+            className="theme-btn"
+            title="Cloud Backup"
+            style={{ marginLeft: '8px' }}
+          >
+            ☁️
           </button>
           <div className="theme-switcher">
             <button
@@ -1236,6 +1246,11 @@ function App() {
       {/* Scene Automation Settings Modal */}
       {showSceneAutomation && (
         <SceneAutomationSettings onClose={() => setShowSceneAutomation(false)} />
+      )}
+
+      {/* Cloud Backup Settings Modal */}
+      {showCloudBackup && (
+        <CloudBackupSettings onClose={() => setShowCloudBackup(false)} />
       )}
     </div>
   );

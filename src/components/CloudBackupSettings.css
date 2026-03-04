@@ -1,0 +1,512 @@
+/**
+ * CloudBackupSettings Component Styles
+ */
+
+/* MODAL */
+.cloud-backup-settings .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.cloud-backup-settings .modal-content {
+  background: #1a1a2e;
+  color: #eee;
+  border-radius: 12px;
+  width: 900px;
+  max-width: 95vw;
+  height: 700px;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+.cloud-backup-settings .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #16213e;
+  border-radius: 12px 12px 0 0;
+}
+
+.cloud-backup-settings .modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.cloud-backup-settings .close-btn {
+  background: none;
+  border: none;
+  color: #eee;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.cloud-backup-settings .close-btn:hover {
+  background: rgba(238, 238, 238, 0.1);
+}
+
+/* MODAL BODY */
+.cloud-backup-settings .modal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Status Bar */
+.cloud-backup-settings .backup-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px;
+  background: #16213e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cloud-backup-settings .status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cloud-backup-settings .status-label {
+  color: #888;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cloud-backup-settings .status-value {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cloud-backup-settings .status-value.connected {
+  color: #4ade80;
+}
+
+.cloud-backup-settings .status-value.disconnected {
+  color: #f87171;
+}
+
+/* Tabs */
+.cloud-backup-settings .tabs {
+  display: flex;
+  gap: 2px;
+  padding: 0 24px;
+  background: #16213e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cloud-backup-settings .tab {
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.cloud-backup-settings .tab:hover {
+  color: #eee;
+}
+
+.cloud-backup-settings .tab.active {
+  color: #4ade80;
+}
+
+.cloud-backup-settings .tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #4ade80;
+}
+
+/* Tab Content */
+.cloud-backup-settings .tab-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+}
+
+.cloud-backup-settings .tab-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cloud-backup-settings .tab-content::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.cloud-backup-settings .tab-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* PROVIDERS TAB */
+.cloud-backup-settings .providers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.cloud-backup-settings .provider-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.cloud-backup-settings .provider-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cloud-backup-settings .provider-card.authenticated {
+  border-left: 3px solid #4ade80;
+}
+
+.cloud-backup-settings .provider-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  background: #0f3460;
+  border-radius: 8px;
+}
+
+.cloud-backup-settings .provider-info {
+  flex: 1;
+}
+
+.cloud-backup-settings .provider-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
+.cloud-backup-settings .provider-info .status {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.cloud-backup-settings .provider-info .status.connected {
+  color: #4ade80;
+}
+
+.cloud-backup-settings .provider-info .status.disconnected {
+  color: #888;
+}
+
+/* BUTTONS */
+.cloud-backup-settings .btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.cloud-backup-settings .btn-small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.cloud-backup-settings .btn-primary {
+  background: #4ade80;
+  color: #1a1a2e;
+}
+
+.cloud-backup-settings .btn-primary:hover {
+  background: #22c55e;
+}
+
+.cloud-backup-settings .btn-primary:disabled {
+  background: #4b5563;
+  cursor: not-allowed;
+}
+
+.cloud-backup-settings .btn-secondary {
+  background: #0f3460;
+  color: #eee;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cloud-backup-settings .btn-secondary:hover {
+  background: #16213e;
+}
+
+.cloud-backup-settings .btn-danger {
+  background: #b91c1c;
+  color: #eee;
+}
+
+.cloud-backup-settings .btn-danger:hover {
+  background: #dc2626;
+}
+
+/* BACKUP ITEMS */
+.cloud-backup-settings .items-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cloud-backup-settings .header-title h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+}
+
+.cloud-backup-settings .total-size {
+  color: #888;
+  font-size: 13px;
+}
+
+.cloud-backup-settings .header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cloud-backup-settings .items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cloud-backup-settings .backup-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
+.cloud-backup-settings .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.cloud-backup-settings .checkbox-label input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.cloud-backup-settings .item-name {
+  font-size: 14px;
+}
+
+.cloud-backup-settings .item-size {
+  color: #888;
+  font-size: 13px;
+}
+
+/* BACKUP HISTORY */
+.cloud-backup-settings .backup-history-item {
+  padding: 16px;
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.cloud-backup-settings .backup-history-item.completed {
+  border-left: 3px solid #4ade80;
+}
+
+.cloud-backup-settings .backup-history-item.failed {
+  border-left: 3px solid #b91c1c;
+}
+
+.cloud-backup-settings .backup-history-item.partial {
+  border-left: 3px solid #f59e0b;
+}
+
+.cloud-backup-settings .history-item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.cloud-backup-settings .status-icon {
+  font-size: 16px;
+}
+
+.cloud-backup-settings .backup-id {
+  font-family: monospace;
+  font-size: 12px;
+  color: #888;
+}
+
+.cloud-backup-settings .backup-date {
+  margin-left: auto;
+  font-size: 12px;
+  color: #888;
+}
+
+.cloud-backup-settings .history-item-details {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 8px;
+}
+
+.cloud-backup-settings .history-item-error {
+  padding: 8px 12px;
+  background: rgba(185, 28, 28, 0.2);
+  border-radius: 4px;
+  font-size: 12px;
+  color: #f87171;
+  margin-bottom: 8px;
+}
+
+.cloud-backup-settings .history-item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* SETTINGS */
+.cloud-backup-settings .setting-group {
+  margin-bottom: 24px;
+}
+
+.cloud-backup-settings .setting-group h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #4ade80;
+}
+
+.cloud-backup-settings .setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cloud-backup-settings .setting-item label {
+  font-size: 14px;
+}
+
+.cloud-backup-settings .setting-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.cloud-backup-settings .setting-item select {
+  padding: 8px 12px;
+  background: #0f3460;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eee;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* MODAL FOOTER */
+.cloud-backup-settings .modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: #16213e;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0 0 12px 12px;
+}
+
+/* PROGRESS BAR */
+.cloud-backup-settings .progress-bar {
+  flex: 1;
+  height: 24px;
+  background: #0f3460;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.cloud-backup-settings .progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4ade80, #22c55e);
+  border-radius: 12px;
+  transition: width 0.3s;
+}
+
+.cloud-backup-settings .progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* EMPTY STATE */
+.cloud-backup-settings .empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.cloud-backup-settings .empty-state p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

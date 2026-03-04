@@ -34,9 +34,13 @@
 - [x] Stworzyć Issues w GitHub (5 issues utworzonych)
 - [x] Zdiagnozować problemy z CI/CD workflows
 - [x] Utworzyć Issue #1 dla problemów CI/CD
-- [ ] Naprawić CI/CD workflows (w trakcie)
+- [x] Naprawić CI/CD workflows ✅ (zmiana repo na public)
+- [x] Zamknąć Issue #1 (rozwiązany)
+- [x] Utworzyć release v0.1.1
 
 ---
-**Status:** W trakcie prac nad CI/CD
+**Status:** ✅ Wszystkie zadania zakończone!
 **Ostatnia aktualizacja:** 2026-03-04
-**Utworzone Issues:** #1, #2, #3, #4, #5
+**Utworzone Issues:** #1 (zamknięte), #2, #3, #4, #5
+**Repository:** Public
+**CI/CD:** ✅ Działające

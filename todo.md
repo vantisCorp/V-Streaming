@@ -19,7 +19,7 @@
 - [x] Dokończyć implementację CLI (usunąć TODO placeholders)
 
 ## 🟡 Wysoki Priorytet
-- [ ] Dodać więcej testów jednostkowych
+- [x] Dodać więcej testów jednostkowych
 - [x] Skonfigurować CI/CD workflows
 - [x] Stworzyć dokumentację API dla CLI
 - [x] Dodać Codecov lub SonarCloud integration

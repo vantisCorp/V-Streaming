@@ -78,3 +78,35 @@ pub struct PluginInfo {
     pub author: String,
     pub description: String,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_plugin_manager_creation() {
+        let manager = PluginManager::new();
+        assert_eq!(manager.plugins.len(), 0);
+    }
+
+    #[test]
+    fn test_plugin_info() {
+        let info = PluginInfo {
+            name: "Test Plugin".to_string(),
+            version: "1.0.0".to_string(),
+            author: "Test Author".to_string(),
+            description: "A test plugin".to_string(),
+        };
+
+        assert_eq!(info.name, "Test Plugin");
+        assert_eq!(info.version, "1.0.0");
+    }
+
+    #[test]
+    fn test_plugin_state() {
+        assert_eq!(PluginState::Unloaded.to_string(), "Unloaded");
+        assert_eq!(PluginState::Loaded.to_string(), "Loaded");
+        assert_eq!(PluginState::Running.to_string(), "Running");
+        assert_eq!(PluginState::Error.to_string(), "Error");
+    }
+}

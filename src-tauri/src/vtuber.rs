@@ -454,3 +454,83 @@ pub struct VtuberStats {
     pub face_tracking_enabled: bool,
     pub webcam_source: Option<String>,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_vtuber_engine_creation() {
+        let engine = VtuberEngine::new();
+        assert_eq!(engine.models.len(), 0);
+    }
+
+    #[test]
+    fn test_vtuber_model() {
+        let model = VtuberModel {
+            id: 0,
+            name: "Test Model".to_string(),
+            model_type: VtuberModelType::Live2D,
+            file_path: "/path/to/model.json".to_string(),
+            enabled: true,
+        };
+
+        assert_eq!(model.name, "Test Model");
+        assert_eq!(model.model_type, VtuberModelType::Live2D);
+    }
+
+    #[test]
+    fn test_animation() {
+        let animation = Animation {
+            name: "Idle".to_string(),
+            duration_ms: 1000,
+            loopable: true,
+            blend_mode: BlendMode::Normal,
+        };
+
+        assert_eq!(animation.name, "Idle");
+        assert!(animation.loopable);
+    }
+
+    #[test]
+    fn test_expression() {
+        let expression = Expression {
+            name: "Happy".to_string(),
+            intensity: 0.8,
+            transition_duration_ms: 200,
+        };
+
+        assert_eq!(expression.name, "Happy");
+        assert_eq!(expression.intensity, 0.8);
+    }
+
+    #[test]
+    fn test_face_tracking_data() {
+        let data = FaceTrackingData {
+            head_rotation_x: 0.0,
+            head_rotation_y: 0.0,
+            head_rotation_z: 0.0,
+            mouth_openness: 0.0,
+            left_eyebrow: 0.0,
+            right_eyebrow: 0.0,
+            left_blink: 0.0,
+            right_blink: 0.0,
+            confidence: 0.95,
+            timestamp: std::time::SystemTime::now(),
+        };
+
+        assert_eq!(data.confidence, 0.95);
+    }
+
+    #[test]
+    fn test_mouth_shape() {
+        let shape = MouthShape::Smile;
+        assert_eq!(shape, MouthShape::Smile);
+    }
+
+    #[test]
+    fn test_vtuber_model_type() {
+        assert_eq!(VtuberModelType::Live2D.to_string(), "Live2D");
+        assert_eq!(VtuberModelType::VRM.to_string(), "VRM");
+    }
+}

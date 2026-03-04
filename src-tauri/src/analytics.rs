@@ -716,3 +716,137 @@ impl Default for AlertConfig {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use chrono::Utc;
+
+    #[test]
+    fn test_analytics_engine_creation() {
+        let engine = AnalyticsEngine::new();
+        assert_eq!(engine.data_points.len(), 0);
+        assert_eq!(engine.alerts.len(), 0);
+    }
+
+    #[test]
+    fn test_add_data_point() {
+        let mut engine = AnalyticsEngine::new();
+        let data_point = AnalyticsDataPoint {
+            timestamp: Utc::now(),
+            viewer_count: 100,
+            follower_count: 1000,
+            subscriber_count: 50,
+            bitrate: 6000,
+            dropped_frames: 0.1,
+            cpu_usage: 45.0,
+            gpu_usage: 60.0,
+            ram_usage: 4_000_000_000,
+            fps: 60.0,
+            uptime_seconds: 3600,
+            chat_messages_per_minute: 50.0,
+            donations: vec![],
+        };
+
+        engine.add_data_point(data_point.clone());
+        assert_eq!(engine.data_points.len(), 1);
+        assert_eq!(engine.data_points[0].viewer_count, 100);
+    }
+
+    #[test]
+    fn test_aggregation_period() {
+        let mut engine = AnalyticsEngine::new();
+        
+        // Add multiple data points
+        for i in 0..5 {
+            let data_point = AnalyticsDataPoint {
+                timestamp: Utc::now() + chrono::Duration::seconds(i),
+                viewer_count: 100 + i,
+                follower_count: 1000,
+                subscriber_count: 50,
+                bitrate: 6000,
+                dropped_frames: 0.1,
+                cpu_usage: 45.0,
+                gpu_usage: 60.0,
+                ram_usage: 4_000_000_000,
+                fps: 60.0,
+                uptime_seconds: 3600,
+                chat_messages_per_minute: 50.0,
+                donations: vec![],
+            };
+            engine.add_data_point(data_point);
+        }
+
+        engine.aggregate(AggregationPeriod::Hourly);
+        assert!(engine.aggregated_data.contains_key(&AggregationPeriod::Hourly));
+    }
+
+    #[test]
+    fn test_alert_creation() {
+        let mut engine = AnalyticsEngine::new();
+        engine.alert_config = AlertConfig {
+            viewer_count_threshold: Some(100),
+            low_bitrate_threshold: Some(3000),
+            high_dropped_frames_threshold: Some(5.0),
+            high_cpu_threshold: Some(90.0),
+            donation_threshold: Some(100.0),
+            enable_email_alerts: true,
+            enable_push_notifications: true,
+        };
+
+        let data_point = AnalyticsDataPoint {
+            timestamp: Utc::now(),
+            viewer_count: 150, // Above threshold
+            follower_count: 1000,
+            subscriber_count: 50,
+            bitrate: 6000,
+            dropped_frames: 0.1,
+            cpu_usage: 45.0,
+            gpu_usage: 60.0,
+            ram_usage: 4_000_000_000,
+            fps: 60.0,
+            uptime_seconds: 3600,
+            chat_messages_per_minute: 50.0,
+            donations: vec![],
+        };
+
+        engine.add_data_point(data_point);
+        engine.check_alerts();
+        
+        // Should have created an alert for viewer count
+        assert!(!engine.alerts.is_empty());
+    }
+
+    #[test]
+    fn test_get_summary() {
+        let mut engine = AnalyticsEngine::new();
+        
+        let data_point = AnalyticsDataPoint {
+            timestamp: Utc::now(),
+            viewer_count: 100,
+            follower_count: 1000,
+            subscriber_count: 50,
+            bitrate: 6000,
+            dropped_frames: 0.1,
+            cpu_usage: 45.0,
+            gpu_usage: 60.0,
+            ram_usage: 4_000_000_000,
+            fps: 60.0,
+            uptime_seconds: 3600,
+            chat_messages_per_minute: 50.0,
+            donations: vec![],
+        };
+        engine.add_data_point(data_point);
+
+        let summary = engine.get_summary();
+        assert_eq!(summary.total_data_points, 1);
+        assert!(summary.time_range.is_some());
+    }
+
+    #[test]
+    fn test_export_format() {
+        let engine = AnalyticsEngine::new();
+        let json = engine.export(ExportFormat::Json).unwrap();
+        assert!(json.contains("data_points"));
+    }
+}

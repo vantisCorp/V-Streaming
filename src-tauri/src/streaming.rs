@@ -536,3 +536,77 @@ pub fn test_stream_connection(
     // In production, this would actually test the connection
     Ok(true)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_streaming_engine_creation() {
+        let engine = StreamingEngine::new();
+        assert!(!engine.is_streaming);
+        assert_eq!(engine.state, StreamingState::Stopped);
+    }
+
+    #[test]
+    fn test_stream_config_creation() {
+        let config = StreamConfig {
+            name: "Test Stream".to_string(),
+            platform: "Twitch".to_string(),
+            server_url: "rtmp://live.twitch.tv/app".to_string(),
+            stream_key: "test_key".to_string(),
+            resolution: "1920x1080".to_string(),
+            framerate: 60,
+            bitrate: 6000,
+        };
+
+        assert_eq!(config.name, "Test Stream");
+        assert_eq!(config.platform, "Twitch");
+    }
+
+    #[test]
+    fn test_streaming_state_transitions() {
+        let mut engine = StreamingEngine::new();
+        assert_eq!(engine.state, StreamingState::Stopped);
+        
+        engine.state = StreamingState::Starting;
+        assert_eq!(engine.state, StreamingState::Starting);
+        
+        engine.state = StreamingState::Live;
+        assert_eq!(engine.state, StreamingState::Live);
+    }
+
+    #[test]
+    fn test_streaming_platform() {
+        let twitch = StreamingPlatform::Twitch;
+        assert_eq!(twitch.name(), "Twitch");
+        assert_eq!(twitch.default_server(), "rtmp://live.twitch.tv/app");
+    }
+
+    #[test]
+    fn test_stream_protocol() {
+        let rtmp = StreamProtocol::RTMP;
+        assert_eq!(rtmp.name(), "RTMP");
+    }
+
+    #[test]
+    fn test_multistream_target() {
+        let target = MultistreamTarget {
+            id: "youtube".to_string(),
+            platform: "YouTube".to_string(),
+            rtmp_url: "rtmp://a.rtmp.youtube.com/live2".to_string(),
+            stream_key: "key".to_string(),
+            enabled: false,
+        };
+
+        assert_eq!(target.platform, "YouTube");
+        assert!(!target.enabled);
+    }
+
+    #[test]
+    fn test_srt_config() {
+        let config = SRTConfig::default();
+        assert_eq!(config.latency_ms, 50);
+        assert_eq!(config.max_bandwidth, 20_000_000);
+    }
+}

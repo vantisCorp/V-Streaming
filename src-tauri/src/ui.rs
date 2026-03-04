@@ -516,3 +516,73 @@ pub struct UndoRedoInfo {
     pub undo_count: usize,
     pub redo_count: usize,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_ui_engine_creation() {
+        let engine = UiEngine::new();
+        assert!(engine.settings.is_some());
+    }
+
+    #[test]
+    fn test_user_settings() {
+        let settings = UserSettings {
+            theme: Theme::Dark,
+            language: "en".to_string(),
+            auto_save: true,
+            interface_mode: InterfaceMode::Simple,
+            preview_resolution: (1920, 1080),
+            show_fps: true,
+        };
+
+        assert_eq!(settings.language, "en");
+        assert!(settings.auto_save);
+    }
+
+    #[test]
+    fn test_ui_state() {
+        let state = UiState {
+            current_scene_id: Some(0),
+            interface_mode: InterfaceMode::Simple,
+            sidebar_visible: true,
+            settings_panel_visible: false,
+        };
+
+        assert_eq!(state.current_scene_id, Some(0));
+        assert!(state.sidebar_visible);
+    }
+
+    #[test]
+    fn test_panel_visibility() {
+        let visibility = PanelVisibility::default();
+        assert!(visibility.preview);
+        assert!(visibility.controls);
+        assert!(!visibility.settings);
+    }
+
+    #[test]
+    fn test_theme() {
+        assert_eq!(Theme::Dark.to_string(), "Dark");
+        assert_eq!(Theme::Light.to_string(), "Light");
+    }
+
+    #[test]
+    fn test_interface_mode() {
+        assert_eq!(InterfaceMode::Simple.to_string(), "Simple");
+        assert_eq!(InterfaceMode::Advanced.to_string(), "Advanced");
+    }
+
+    #[test]
+    fn test_window_layout() {
+        let layout = WindowLayout {
+            name: "Default".to_string(),
+            panels: vec![],
+            layout_type: LayoutType::Grid,
+        };
+
+        assert_eq!(layout.name, "Default");
+    }
+}

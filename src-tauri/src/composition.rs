@@ -596,3 +596,89 @@ pub struct CompositionStats {
     pub total_layer_groups: usize,
     pub dual_output_enabled: bool,
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_composition_engine_creation() {
+        let engine = CompositionEngine::new();
+        assert_eq!(engine.scenes.len(), 0);
+    }
+
+    #[test]
+    fn test_scene() {
+        let scene = Scene {
+            id: 0,
+            name: "Main Scene".to_string(),
+            layers: vec![],
+            background_color: (0, 0, 0, 255),
+        };
+
+        assert_eq!(scene.name, "Main Scene");
+        assert_eq!(scene.background_color, (0, 0, 0, 255));
+    }
+
+    #[test]
+    fn test_layer() {
+        let layer = Layer {
+            id: 0,
+            name: "Video Layer".to_string(),
+            source: LayerSource::Capture("screen".to_string()),
+            visible: true,
+            position: (0, 0),
+            size: (1920, 1080),
+            rotation: 0.0,
+            opacity: 1.0,
+            blend_mode: BlendMode::Normal,
+        };
+
+        assert_eq!(layer.name, "Video Layer");
+        assert!(layer.visible);
+    }
+
+    #[test]
+    fn test_filter() {
+        let filter = Filter {
+            id: 0,
+            name: "Blur".to_string(),
+            filter_type: FilterType::Blur { radius: 5.0 },
+            enabled: true,
+        };
+
+        assert_eq!(filter.name, "Blur");
+        assert!(filter.enabled);
+    }
+
+    #[test]
+    fn test_blend_mode() {
+        assert_eq!(BlendMode::Normal.to_string(), "Normal");
+        assert_eq!(BlendMode::Add.to_string(), "Add");
+        assert_eq!(BlendMode::Multiply.to_string(), "Multiply");
+    }
+
+    #[test]
+    fn test_output_format() {
+        let format = OutputFormat {
+            width: 1920,
+            height: 1080,
+            frame_rate: 60.0,
+        };
+
+        assert_eq!(format.width, 1920);
+        assert_eq!(format.height, 1080);
+    }
+
+    #[test]
+    fn test_scene_transition() {
+        let transition = SceneTransition {
+            duration_ms: 500,
+            transition_type: TransitionType::Fade {
+                easing: TransitionEasing::EaseInOut,
+            },
+        };
+
+        assert_eq!(transition.duration_ms, 500);
+    }
+}

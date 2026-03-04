@@ -481,3 +481,78 @@ pub fn get_cloud_storage_usage(state: State<Arc<Mutex<CloudEngine>>>) -> f32 {
     let engine = state.lock().unwrap();
     engine.stats.storage_used_gb
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_cloud_engine_creation() {
+        let engine = CloudEngine::new();
+        assert_eq!(engine.multistream_targets.len(), 0);
+    }
+
+    #[test]
+    fn test_multistream_target() {
+        let target = MultistreamTarget {
+            platform: "YouTube".to_string(),
+            rtmp_url: "rtmp://a.rtmp.youtube.com/live2".to_string(),
+            stream_key: "key".to_string(),
+            enabled: false,
+        };
+
+        assert_eq!(target.platform, "YouTube");
+        assert!(!target.enabled);
+    }
+
+    #[test]
+    fn test_vod_config() {
+        let config = VodConfig {
+            enabled: false,
+            quality: "Medium".to_string(),
+            format: "MP4".to_string(),
+            auto_delete_days: 30,
+        };
+
+        assert_eq!(config.quality, "Medium");
+        assert_eq!(config.format, "MP4");
+    }
+
+    #[test]
+    fn test_vod_status() {
+        let status = VodStatus {
+            is_recording: false,
+            duration_seconds: 0,
+            file_size_bytes: 0,
+            format: "MP4".to_string(),
+        };
+
+        assert!(!status.is_recording);
+    }
+
+    #[test]
+    fn test_cloud_storage_stats() {
+        let stats = CloudStorageStats {
+            storage_used_gb: 15.5,
+            storage_limit_gb: 100.0,
+            vod_count: 5,
+        };
+
+        assert_eq!(stats.storage_used_gb, 15.5);
+        assert_eq!(stats.vod_count, 5);
+    }
+
+    #[test]
+    fn test_vod_formats() {
+        let formats = get_vod_formats();
+        assert!(!formats.is_empty());
+        assert!(formats.contains(&"MP4".to_string()));
+    }
+
+    #[test]
+    fn test_vod_qualities() {
+        let qualities = get_vod_qualities();
+        assert!(!qualities.is_empty());
+        assert!(qualities.contains(&"Original".to_string()));
+    }
+}

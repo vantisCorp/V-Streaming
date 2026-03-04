@@ -481,3 +481,79 @@ fn get_performance_metric_types() -> Vec<String> {
         "custom".to_string(),
     ]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_performance_engine_creation() {
+        let engine = PerformanceEngine::new();
+        assert!(engine.samples.is_empty());
+    }
+
+    #[test]
+    fn test_performance_sample() {
+        let sample = PerformanceSample {
+            timestamp: SystemTime::now(),
+            cpu_usage: 45.0,
+            memory_usage_bytes: 4_000_000_000,
+            gpu_usage: 60.0,
+            fps: 60.0,
+            frame_time_ms: 16.67,
+            network_bitrate: 6000,
+            disk_usage_percent: 30.0,
+        };
+
+        assert_eq!(sample.cpu_usage, 45.0);
+        assert_eq!(sample.fps, 60.0);
+    }
+
+    #[test]
+    fn test_performance_alert() {
+        let alert = PerformanceAlert {
+            id: "alert_1".to_string(),
+            alert_type: PerformanceAlertType::HighCpuUsage,
+            severity: AlertSeverity::Warning,
+            message: "High CPU usage detected".to_string(),
+            timestamp: SystemTime::now(),
+            acknowledged: false,
+        };
+
+        assert_eq!(alert.alert_type, PerformanceAlertType::HighCpuUsage);
+        assert!(!alert.acknowledged);
+    }
+
+    #[test]
+    fn test_performance_stats() {
+        let stats = PerformanceStats {
+            samples_count: 100,
+            avg_cpu_usage: 45.0,
+            avg_memory_usage: 4.0,
+            avg_gpu_usage: 60.0,
+            avg_fps: 60.0,
+            peak_cpu_usage: 80.0,
+            peak_memory_usage: 6.0,
+            peak_gpu_usage: 90.0,
+            min_fps: 55.0,
+        };
+
+        assert_eq!(stats.samples_count, 100);
+        assert_eq!(stats.avg_fps, 60.0);
+    }
+
+    #[test]
+    fn test_alert_severity() {
+        assert_eq!(AlertSeverity::Info.to_string(), "Info");
+        assert_eq!(AlertSeverity::Warning.to_string(), "Warning");
+        assert_eq!(AlertSeverity::Critical.to_string(), "Critical");
+    }
+
+    #[test]
+    fn test_performance_metric_types() {
+        let types = get_performance_metric_types();
+        assert!(!types.is_empty());
+        assert!(types.contains(&"cpu".to_string()));
+        assert!(types.contains(&"gpu".to_string()));
+    }
+}

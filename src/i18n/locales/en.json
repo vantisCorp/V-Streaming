@@ -271,5 +271,30 @@
       "sourceToggle": "Toggle Source",
       "filterToggle": "Toggle Filter"
     }
+  },
+  "cloudBackup": {
+    "title": "Cloud Backup",
+    "providers": "Providers",
+    "items": "Backup Items",
+    "history": "History",
+    "settings": "Settings",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "connected": "Connected",
+    "notConnected": "Not Connected",
+    "createBackup": "Create Backup",
+    "syncNow": "Sync Now",
+    "restore": "Restore",
+    "delete": "Delete",
+    "selectAll": "Select All",
+    "deselectAll": "Deselect All",
+    "selectItems": "Select Items to Backup",
+    "total": "Total",
+    "noHistory": "No backup history",
+    "createFirstBackup": "Create your first backup to get started",
+    "schedule": "Backup Schedule",
+    "frequency": "Frequency",
+    "encryption": "Encryption",
+    "options": "Options"
   }
 }

@@ -1,40 +1,46 @@
-# V-Streaming Development Tasks
+# V-Streaming Development Roadmap
 
-## Current Status
-- ✅ All GitHub issues completed
-- ✅ PR #6 (Mobile Companion App) merged to main
-- ✅ All 9 development phases completed
+## Version 0.2.0 - Current Development Sprint
 
-## Version 0.2.0 Roadmap Tasks (Next Release)
+### ✅ Core Platform Features
 
-### ✨ New Features
-- [ ] Multi-language support expansion (Japanese, Chinese) - i18n base implemented
-- [x] Customizable hotkey system
-- [x] Advanced scene switching automation
-- [ ] Cloud backup for settings and configurations
-- [ ] Built-in stream scheduler
+- [x] Enhanced hotkey system with multi-key sequences and profiles
+- [x] Scene automation with custom conditions and actions
+- [x] Cloud backup for settings and configurations
+- [ ] Built-in stream scheduler (NEXT)
+- [ ] Advanced audio mixer with VST plugin support
+- [ ] Customizable themes and appearance
 
-### 🔧 Improvements
-- [ ] Enhanced VTuber model performance
-- [ ] Improved AI clipping accuracy
-- [ ] Better audio mixing controls
-- [ ] Optimized streaming bandwidth usage
-- [ ] Enhanced plugin system stability
+### 🎯 In Progress
 
-### 🐛 Bug Fixes
-- [ ] Fix audio sync issues in recordings
-- [ ] Resolve VTuber model loading errors
-- [ ] Fix memory leaks during long streams
-- [ ] Address encoding compatibility issues
+- **Cloud Backup System** - Implementing complete backup/restore/sync functionality
+  - [x] Create type definitions for cloud backup system
+  - [x] Implement CloudBackupManager service
+  - [x] Create useCloudBackup React hook
+  - [x] Build CloudBackupSettings UI component
+  - [x] Integrate into main App component
+  - [x] Add i18n translations
+  - [x] Fix TypeScript compilation errors
+  - [x] Verify build passes
+  - [ ] Commit and push changes
+  - [ ] Create pull request
+  - [ ] Merge to main branch
 
-## Completed Issues
-- [x] Issue #3: Internationalization (i18n)
-- [x] Issue #5: API Documentation with OpenAPI/Swagger
-- [x] Issue #4: Mobile Companion App (React Native)
+### 📋 Planned
 
-## Mobile Companion App - Future Enhancements
-- [ ] Push notification integration
-- [ ] Secure authentication with desktop app
-- [ ] Analytics dashboard
-- [ ] VTuber controls
-- [ ] Custom layouts
+- **Built-in Stream Scheduler** - Next feature to implement
+  - Create scheduler service for automated streaming
+  - Support recurring schedules with various frequencies
+  - Notification system for upcoming streams
+  - Integration with scene automation
+
+- **Advanced Audio Mixer** - VST plugin support and advanced controls
+- **Customizable Themes** - Theme engine with multiple presets
+
+## Previous Completed Features
+
+### Version 0.1.0
+- Basic streaming functionality
+- Scene management
+- Hotkey system (basic)
+- Settings management

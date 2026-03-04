@@ -20,9 +20,9 @@
 
 ## 🟡 Wysoki Priorytet
 - [ ] Dodać więcej testów jednostkowych
-- [ ] Skonfigurować CI/CD workflows
-- [ ] Stworzyć dokumentację API dla CLI
-- [ ] Dodać Codecov lub SonarCloud integration
+- [x] Skonfigurować CI/CD workflows
+- [x] Stworzyć dokumentację API dla CLI
+- [x] Dodać Codecov lub SonarCloud integration
 
 ## 🟢 Średni Priorytet  
 - [ ] Stworzyć wiki w GitHub

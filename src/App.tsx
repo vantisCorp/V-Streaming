@@ -8,6 +8,7 @@ import { SceneAutomationSettings } from './components/SceneAutomationSettings';
 import { CloudBackupSettings } from './components/CloudBackupSettings';
 import { StreamSchedulerSettings } from './components/StreamSchedulerSettings';
 import { AudioMixerSettings } from './components/AudioMixerSettings';
+import ThemeSettings from './components/ThemeSettings';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -249,6 +250,7 @@ function App() {
   const [showCloudBackup, setShowCloudBackup] = useState(false);
   const [showStreamScheduler, setShowStreamScheduler] = useState(false);
   const [showAudioMixer, setShowAudioMixer] = useState(false);
+  const [showThemeSettings, setShowThemeSettings] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -612,6 +614,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🎛️
+          </button>
+          <button
+            onClick={() => setShowThemeSettings(true)}
+            className="theme-btn"
+            title="Theme Settings"
+            style={{ marginLeft: '8px' }}
+          >
+            🎨
           </button>
           <div className="theme-switcher">
             <button
@@ -1281,6 +1291,11 @@ function App() {
       {/* Audio Mixer Settings Modal */}
       {showAudioMixer && (
         <AudioMixerSettings onClose={() => setShowAudioMixer(false)} />
+      )}
+
+      {/* Theme Settings Modal */}
+      {showThemeSettings && (
+        <ThemeSettings isOpen={showThemeSettings} onClose={() => setShowThemeSettings(false)} />
       )}
     </div>
   );

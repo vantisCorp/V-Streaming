@@ -307,3 +307,74 @@ fn get_highlight_types() -> Vec<String> {
         "custom".to_string(),
     ]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_ai_highlight_engine_creation() {
+        let engine = AIHighlightEngine::new();
+        assert_eq!(engine.clips.len(), 0);
+    }
+
+    #[test]
+    fn test_highlight_clip() {
+        let clip = HighlightClip {
+            id: "clip_1".to_string(),
+            clip_type: HighlightType::Kill,
+            timestamp: SystemTime::now(),
+            duration_ms: 5000,
+            video_path: "/path/to/clip.mp4".to_string(),
+            thumbnail_path: "/path/to/thumb.jpg".to_string(),
+            description: "Great kill moment".to_string(),
+        };
+
+        assert_eq!(clip.clip_type, HighlightType::Kill);
+        assert_eq!(clip.duration_ms, 5000);
+    }
+
+    #[test]
+    fn test_highlight_config() {
+        let config = HighlightConfig {
+            enabled: true,
+            auto_clipping: true,
+            min_clip_duration_ms: 3000,
+            max_clip_duration_ms: 30000,
+            storage_limit_gb: 50,
+        };
+
+        assert!(config.enabled);
+        assert!(config.auto_clipping);
+    }
+
+    #[test]
+    fn test_highlight_stats() {
+        let stats = HighlightStats {
+            total_clips: 10,
+            total_duration_ms: 120000,
+            storage_used_gb: 5.5,
+            clips_by_type: vec![
+                (HighlightType::Kill, 5),
+                (HighlightType::Victory, 2),
+            ],
+        };
+
+        assert_eq!(stats.total_clips, 10);
+        assert_eq!(stats.storage_used_gb, 5.5);
+    }
+
+    #[test]
+    fn test_highlight_type() {
+        assert_eq!(HighlightType::Kill.to_string(), "kill");
+        assert_eq!(HighlightType::Victory.to_string(), "victory");
+    }
+
+    #[test]
+    fn test_highlight_types_list() {
+        let types = get_highlight_types();
+        assert!(!types.is_empty());
+        assert!(types.contains(&"kill".to_string()));
+        assert!(types.contains(&"victory".to_string()));
+    }
+}

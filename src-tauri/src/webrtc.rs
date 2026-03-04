@@ -491,3 +491,115 @@ pub fn get_webrtc_codecs() -> Vec<String> {
 pub fn generate_webrtc_room_id() -> String {
     uuid::Uuid::new_v4().to_string()[..8].to_string()
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_webrtc_peer_creation() {
+        let peer = WebRTCPeer {
+            id: "peer1".to_string(),
+            username: "guest123".to_string(),
+            display_name: "Guest123".to_string(),
+            peer_type: WebRTCPeerType::Guest,
+            connection_state: WebRTCConnectionState::Connected,
+            audio_enabled: true,
+            video_enabled: true,
+            screen_share_enabled: false,
+            volume: 1.0,
+            is_muted: false,
+            is_deafened: false,
+        };
+
+        assert_eq!(peer.id, "peer1");
+        assert_eq!(peer.peer_type, WebRTCPeerType::Guest);
+        assert_eq!(peer.connection_state, WebRTCConnectionState::Connected);
+        assert!(peer.audio_enabled);
+    }
+
+    #[test]
+    fn test_webrtc_config_default() {
+        let config = WebRTCConfig::default();
+        
+        assert_eq!(config.stun_servers.len(), 2);
+        assert_eq!(config.enable_audio, true);
+        assert_eq!(config.enable_video, true);
+        assert_eq!(config.max_peers, 10);
+        assert_eq!(config.bitrate, 3000);
+        assert_eq!(config.codec, "VP8");
+    }
+
+    #[test]
+    fn test_turn_server_creation() {
+        let turn = TurnServer {
+            url: "turn:turn.example.com:3478".to_string(),
+            username: "user123".to_string(),
+            password: "pass123".to_string(),
+        };
+
+        assert_eq!(turn.url, "turn:turn.example.com:3478");
+        assert_eq!(turn.username, "user123");
+    }
+
+    #[test]
+    fn test_webrtc_stats_creation() {
+        let stats = WebRTCStats {
+            connected_peers: 3,
+            total_bytes_sent: 1000000,
+            total_bytes_received: 500000,
+            audio_bitrate: 128.0,
+            video_bitrate: 3000.0,
+            packet_loss: 0.5,
+            rtt: 25.0,
+            jitter: 10.0,
+        };
+
+        assert_eq!(stats.connected_peers, 3);
+        assert_eq!(stats.total_bytes_sent, 1000000);
+        assert_eq!(stats.video_bitrate, 3000.0);
+    }
+
+    #[test]
+    fn test_webrtc_connection_state_variants() {
+        let states = vec![
+            WebRTCConnectionState::New,
+            WebRTCConnectionState::Connecting,
+            WebRTCConnectionState::Connected,
+            WebRTCConnectionState::Disconnected,
+            WebRTCConnectionState::Failed,
+            WebRTCConnectionState::Closed,
+        ];
+
+        assert_eq!(states.len(), 6);
+        assert_eq!(states[0], WebRTCConnectionState::New);
+    }
+
+    #[test]
+    fn test_webrtc_peer_type_variants() {
+        let types = vec![
+            WebRTCPeerType::Host,
+            WebRTCPeerType::Guest,
+        ];
+
+        assert_eq!(types.len(), 2);
+        assert_eq!(types[0], WebRTCPeerType::Host);
+    }
+
+    #[test]
+    fn test_webrtc_config_creation() {
+        let config = WebRTCConfig {
+            stun_servers: vec!["stun:stun.example.com:3478".to_string()],
+            turn_servers: vec![],
+            enable_audio: true,
+            enable_video: true,
+            enable_screen_share: false,
+            max_peers: 5,
+            bitrate: 5000,
+            codec: "H264".to_string(),
+        };
+
+        assert_eq!(config.stun_servers.len(), 1);
+        assert_eq!(config.max_peers, 5);
+        assert_eq!(config.codec, "H264");
+    }
+}

@@ -464,3 +464,91 @@ pub struct OnboardingData {
     pub completed_steps: Vec<OnboardingStep>,
     pub skipped_steps: Vec<OnboardingStep>,
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_onboarding_engine_creation() {
+        let engine = OnboardingEngine::new();
+        assert!(engine.is_ok());
+        
+        let engine = engine.unwrap();
+        assert_eq!(engine.is_onboarding_active().unwrap(), false);
+    }
+
+    #[test]
+    fn test_onboarding_step_next() {
+        let step = OnboardingStep::Welcome;
+        let next = step.next();
+        assert_eq!(next, Some(OnboardingStep::InterfaceMode));
+
+        let step = OnboardingStep::Completion;
+        let next = step.next();
+        assert_eq!(next, None);
+    }
+
+    #[test]
+    fn test_onboarding_step_previous() {
+        let step = OnboardingStep::AudioSetup;
+        let prev = step.previous();
+        assert_eq!(prev, Some(OnboardingStep::CaptureSetup));
+
+        let step = OnboardingStep::Welcome;
+        let prev = step.previous();
+        assert_eq!(prev, None);
+    }
+
+    #[test]
+    fn test_user_preferences_default() {
+        let prefs = UserPreferences::default();
+        assert_eq!(prefs.interface_mode, None);
+        assert_eq!(prefs.capture_source, None);
+        assert!(prefs.preferences.is_empty());
+    }
+
+    #[test]
+    fn test_onboarding_progress_default() {
+        let progress = OnboardingProgress::default();
+        assert_eq!(progress.current_step_index, 0);
+        assert_eq!(progress.total_steps, 9);
+        assert_eq!(progress.completed_steps, 0);
+        assert_eq!(progress.completed, false);
+    }
+
+    #[test]
+    fn test_onboarding_engine_start() {
+        let engine = OnboardingEngine::new().unwrap();
+        engine.start_onboarding().unwrap();
+        
+        assert_eq!(engine.is_onboarding_active().unwrap(), true);
+        assert_eq!(engine.get_current_step().unwrap(), Some(OnboardingStep::Welcome));
+    }
+
+    #[test]
+    fn test_onboarding_engine_stop() {
+        let engine = OnboardingEngine::new().unwrap();
+        engine.start_onboarding().unwrap();
+        engine.stop_onboarding().unwrap();
+        
+        assert_eq!(engine.is_onboarding_active().unwrap(), false);
+        assert_eq!(engine.get_current_step().unwrap(), None);
+    }
+
+    #[test]
+    fn test_onboarding_step_variants() {
+        let steps = vec![
+            OnboardingStep::Welcome,
+            OnboardingStep::InterfaceMode,
+            OnboardingStep::CaptureSetup,
+            OnboardingStep::AudioSetup,
+            OnboardingStep::SceneCreation,
+            OnboardingStep::StreamingSetup,
+            OnboardingStep::KeyboardShortcuts,
+            OnboardingStep::TipsAndTricks,
+            OnboardingStep::Completion,
+        ];
+
+        assert_eq!(steps.len(), 9);
+    }
+}

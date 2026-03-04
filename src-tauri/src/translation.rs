@@ -315,3 +315,80 @@ fn get_translation_services() -> Vec<String> {
         "custom".to_string(),
     ]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_translation_engine_creation() {
+        let engine = TranslationEngine::new();
+        assert_eq!(engine.translations.len(), 0);
+    }
+
+    #[test]
+    fn test_translation_result() {
+        let result = TranslationResult {
+            id: "trans_1".to_string(),
+            original_text: "Hello world".to_string(),
+            translated_text: "Hola mundo".to_string(),
+            source_language: "english".to_string(),
+            target_language: "spanish".to_string(),
+            timestamp: SystemTime::now(),
+        };
+
+        assert_eq!(result.original_text, "Hello world");
+        assert_eq!(result.translated_text, "Hola mundo");
+    }
+
+    #[test]
+    fn test_translation_config() {
+        let config = TranslationConfig {
+            enabled: true,
+            auto_translate: true,
+            source_language: "english".to_string(),
+            target_languages: vec!["spanish".to_string(), "french".to_string()],
+            service: TranslationService::Google,
+        };
+
+        assert!(config.enabled);
+        assert_eq!(config.source_language, "english");
+    }
+
+    #[test]
+    fn test_translation_stats() {
+        let stats = TranslationStats {
+            total_translations: 1000,
+            translations_by_language: vec![
+                ("spanish".to_string(), 500),
+                ("french".to_string(), 300),
+            ],
+            avg_latency_ms: 150.0,
+        };
+
+        assert_eq!(stats.total_translations, 1000);
+        assert_eq!(stats.avg_latency_ms, 150.0);
+    }
+
+    #[test]
+    fn test_translation_service() {
+        assert_eq!(TranslationService::Google.to_string(), "google");
+        assert_eq!(TranslationService::DeepL.to_string(), "deepl");
+    }
+
+    #[test]
+    fn test_translation_languages_list() {
+        let languages = get_translation_languages();
+        assert!(!languages.is_empty());
+        assert!(languages.contains(&"english".to_string()));
+        assert!(languages.contains(&"spanish".to_string()));
+    }
+
+    #[test]
+    fn test_translation_services_list() {
+        let services = get_translation_services();
+        assert!(!services.is_empty());
+        assert!(services.contains(&"google".to_string()));
+        assert!(services.contains(&"deepl".to_string()));
+    }
+}

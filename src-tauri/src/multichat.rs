@@ -610,3 +610,125 @@ pub fn get_chat_filter_actions() -> Vec<String> {
         "Ban".to_string(),
     ]
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_chat_message_creation() {
+        let msg = ChatMessage {
+            id: "msg123".to_string(),
+            platform: ChatPlatform::Twitch,
+            username: "testuser".to_string(),
+            display_name: "TestUser".to_string(),
+            message: "Hello chat!".to_string(),
+            timestamp: 1234567890,
+            badges: vec!["subscriber".to_string()],
+            emotes: Vec::new(),
+            color: Some("#FF0000".to_string()),
+            is_moderator: false,
+            is_vip: false,
+            is_subscriber: true,
+            is_owner: false,
+        };
+
+        assert_eq!(msg.id, "msg123");
+        assert_eq!(msg.platform, ChatPlatform::Twitch);
+        assert_eq!(msg.message, "Hello chat!");
+        assert!(msg.is_subscriber);
+    }
+
+    #[test]
+    fn test_chat_emote_creation() {
+        let emote = ChatEmote {
+            id: "emote1".to_string(),
+            name: "Kappa".to_string(),
+            url: "https://example.com/kappa.png".to_string(),
+            position: (0, 5),
+        };
+
+        assert_eq!(emote.id, "emote1");
+        assert_eq!(emote.name, "Kappa");
+        assert_eq!(emote.position, (0, 5));
+    }
+
+    #[test]
+    fn test_chat_user_creation() {
+        let user = ChatUser {
+            username: "testuser".to_string(),
+            display_name: "TestUser".to_string(),
+            platform: ChatPlatform::YouTube,
+            color: Some("#00FF00".to_string()),
+            badges: vec!["verified".to_string()],
+            is_moderator: false,
+            is_vip: false,
+            is_subscriber: false,
+            is_owner: false,
+        };
+
+        assert_eq!(user.username, "testuser");
+        assert_eq!(user.platform, ChatPlatform::YouTube);
+        assert_eq!(user.badges.len(), 1);
+    }
+
+    #[test]
+    fn test_chat_stats_creation() {
+        let stats = ChatStats {
+            total_messages: 1000,
+            unique_users: 50,
+            messages_per_minute: 25.5,
+            active_users: 20,
+            emote_count: 500,
+        };
+
+        assert_eq!(stats.total_messages, 1000);
+        assert_eq!(stats.messages_per_minute, 25.5);
+    }
+
+    #[test]
+    fn test_chat_filter_creation() {
+        let filter = ChatFilter {
+            id: "filter1".to_string(),
+            name: "Block Links".to_string(),
+            enabled: true,
+            filter_type: ChatFilterType::Links,
+            pattern: "https?://".to_string(),
+            action: ChatFilterAction::Hide,
+        };
+
+        assert_eq!(filter.id, "filter1");
+        assert_eq!(filter.filter_type, ChatFilterType::Links);
+        assert!(filter.enabled);
+    }
+
+    #[test]
+    fn test_chat_platform_variants() {
+        let platforms = vec![
+            ChatPlatform::Twitch,
+            ChatPlatform::YouTube,
+            ChatPlatform::Kick,
+            ChatPlatform::Facebook,
+            ChatPlatform::TikTok,
+            ChatPlatform::Trovo,
+            ChatPlatform::DLive,
+        ];
+
+        assert_eq!(platforms.len(), 7);
+        assert_eq!(platforms[0], ChatPlatform::Twitch);
+    }
+
+    #[test]
+    fn test_chat_filter_type_variants() {
+        let types = vec![
+            ChatFilterType::Profanity,
+            ChatFilterType::Spam,
+            ChatFilterType::Links,
+            ChatFilterType::Caps,
+            ChatFilterType::EmoteSpam,
+            ChatFilterType::Custom,
+        ];
+
+        assert_eq!(types.len(), 6);
+        assert_eq!(types[0], ChatFilterType::Profanity);
+    }
+}

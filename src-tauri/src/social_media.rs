@@ -357,3 +357,110 @@ fn auto_post_stream_end(
 ) -> Result<(), String> {
     state.social_media_engine.lock().unwrap().auto_post_stream_end(stream_duration)
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_social_media_engine_creation() {
+        let config = SocialMediaConfig::default();
+        let engine = SocialMediaEngine {
+            config: config.clone(),
+            posts: Vec::new(),
+            stats: SocialMediaStats {
+                total_posts: 0,
+                scheduled_posts: 0,
+                posted_posts: 0,
+                failed_posts: 0,
+                total_likes: 0,
+                total_comments: 0,
+                total_shares: 0,
+            },
+        };
+
+        assert_eq!(engine.config.platforms.len(), 3);
+        assert_eq!(engine.config.auto_post, false);
+        assert!(engine.posts.is_empty());
+    }
+
+    #[test]
+    fn test_social_post_creation() {
+        let post = SocialPost {
+            id: "post123".to_string(),
+            platform: SocialPlatform::Twitter,
+            content: "Test post".to_string(),
+            media_urls: vec!["https://example.com/image.jpg".to_string()],
+            status: PostStatus::Draft,
+            scheduled_time: Some(1234567890),
+            posted_time: None,
+            likes: 0,
+            comments: 0,
+            shares: 0,
+            created_at: 1234567890,
+        };
+
+        assert_eq!(post.id, "post123");
+        assert_eq!(post.platform, SocialPlatform::Twitter);
+        assert_eq!(post.status, PostStatus::Draft);
+        assert_eq!(post.media_urls.len(), 1);
+    }
+
+    #[test]
+    fn test_social_media_config_default() {
+        let config = SocialMediaConfig::default();
+        
+        assert_eq!(config.platforms.len(), 3);
+        assert_eq!(config.auto_post, false);
+        assert_eq!(config.post_on_stream_start, false);
+        assert_eq!(config.default_hashtags.len(), 3);
+        assert!(config.mention_accounts.is_empty());
+    }
+
+    #[test]
+    fn test_social_media_stats() {
+        let stats = SocialMediaStats {
+            total_posts: 100,
+            scheduled_posts: 20,
+            posted_posts: 75,
+            failed_posts: 5,
+            total_likes: 5000,
+            total_comments: 1000,
+            total_shares: 500,
+        };
+
+        assert_eq!(stats.total_posts, 100);
+        assert_eq!(stats.posted_posts, 75);
+        assert_eq!(stats.total_likes, 5000);
+    }
+
+    #[test]
+    fn test_social_platform_variants() {
+        let platforms = vec![
+            SocialPlatform::Twitter,
+            SocialPlatform::Instagram,
+            SocialPlatform::TikTok,
+            SocialPlatform::YouTube,
+            SocialPlatform::Facebook,
+            SocialPlatform::Discord,
+            SocialPlatform::LinkedIn,
+        ];
+
+        assert_eq!(platforms.len(), 7);
+        assert_eq!(platforms[0], SocialPlatform::Twitter);
+        assert_eq!(platforms[6], SocialPlatform::LinkedIn);
+    }
+
+    #[test]
+    fn test_post_status_variants() {
+        let statuses = vec![
+            PostStatus::Draft,
+            PostStatus::Scheduled,
+            PostStatus::Posted,
+            PostStatus::Failed,
+        ];
+
+        assert_eq!(statuses.len(), 4);
+        assert_eq!(statuses[0], PostStatus::Draft);
+        assert_eq!(statuses[2], PostStatus::Posted);
+    }
+}

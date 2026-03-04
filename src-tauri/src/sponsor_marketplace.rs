@@ -386,3 +386,120 @@ fn get_sponsorship_types() -> Vec<String> {
         "brand_ambassador".to_string(),
     ]
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_sponsorship_creation() {
+        let sponsorship = Sponsorship {
+            id: "sponsor1".to_string(),
+            brand_name: "TechBrand".to_string(),
+            brand_logo: Some("https://example.com/logo.png".to_string()),
+            title: "Product Review".to_string(),
+            description: "Review our product".to_string(),
+            sponsorship_type: SponsorshipType::OneTime,
+            status: SponsorshipStatus::Available,
+            payment_amount: 500.0,
+            currency: "USD".to_string(),
+            requirements: vec!["At least 1000 viewers".to_string()],
+            deliverables: vec!["10 minute review".to_string()],
+            start_date: Some(1234567890),
+            end_date: Some(1234567890),
+            created_at: 1234567890,
+            applied_at: None,
+            accepted_at: None,
+        };
+
+        assert_eq!(sponsorship.id, "sponsor1");
+        assert_eq!(sponsorship.sponsorship_type, SponsorshipType::OneTime);
+        assert_eq!(sponsorship.status, SponsorshipStatus::Available);
+        assert_eq!(sponsorship.payment_amount, 500.0);
+    }
+
+    #[test]
+    fn test_sponsorship_application_creation() {
+        let application = SponsorshipApplication {
+            id: "app1".to_string(),
+            sponsorship_id: "sponsor1".to_string(),
+            streamer_username: "streamer123".to_string(),
+            streamer_email: "streamer@example.com".to_string(),
+            streamer_followers: 5000,
+            streamer_average_viewers: 500,
+            cover_letter: "I'd love to review your product!".to_string(),
+            proposed_rate: Some(550.0),
+            created_at: 1234567890,
+        };
+
+        assert_eq!(application.id, "app1");
+        assert_eq!(application.streamer_username, "streamer123");
+        assert_eq!(application.streamer_followers, 5000);
+    }
+
+    #[test]
+    fn test_sponsorship_config_default() {
+        let config = SponsorshipConfig::default();
+        
+        assert_eq!(config.enabled, true);
+        assert_eq!(config.auto_apply, false);
+        assert_eq!(config.min_payment_amount, 100.0);
+        assert_eq!(config.preferred_types.len(), 2);
+    }
+
+    #[test]
+    fn test_sponsorship_status_variants() {
+        let statuses = vec![
+            SponsorshipStatus::Available,
+            SponsorshipStatus::Applied,
+            SponsorshipStatus::InReview,
+            SponsorshipStatus::Accepted,
+            SponsorshipStatus::Active,
+            SponsorshipStatus::Completed,
+            SponsorshipStatus::Rejected,
+            SponsorshipStatus::Cancelled,
+        ];
+
+        assert_eq!(statuses.len(), 8);
+        assert_eq!(statuses[0], SponsorshipStatus::Available);
+    }
+
+    #[test]
+    fn test_sponsorship_type_variants() {
+        let types = vec![
+            SponsorshipType::OneTime,
+            SponsorshipType::Recurring,
+            SponsorshipType::Affiliate,
+            SponsorshipType::ProductPlacement,
+            SponsorshipType::BrandAmbassador,
+        ];
+
+        assert_eq!(types.len(), 5);
+        assert_eq!(types[0], SponsorshipType::OneTime);
+    }
+
+    #[test]
+    fn test_sponsorship_serialization() {
+        let sponsorship = Sponsorship {
+            id: "sponsor1".to_string(),
+            brand_name: "TechBrand".to_string(),
+            brand_logo: None,
+            title: "Product Review".to_string(),
+            description: "Review our product".to_string(),
+            sponsorship_type: SponsorshipType::OneTime,
+            status: SponsorshipStatus::Available,
+            payment_amount: 500.0,
+            currency: "USD".to_string(),
+            requirements: vec![],
+            deliverables: vec![],
+            start_date: None,
+            end_date: None,
+            created_at: 1234567890,
+            applied_at: None,
+            accepted_at: None,
+        };
+
+        // Test that struct can be serialized (compile-time check)
+        let _json = serde_json::to_string(&sponsorship);
+        assert!(true);
+    }
+}

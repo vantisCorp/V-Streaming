@@ -559,3 +559,133 @@ pub fn get_interaction_stats(state: State<Arc<Mutex<InteractionEngine>>>) -> Int
     let engine = state.lock().unwrap();
     engine.stats.clone()
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_interaction_trigger_creation() {
+        let trigger = InteractionTrigger {
+            id: "trigger123".to_string(),
+            name: "Test Trigger".to_string(),
+            trigger_type: InteractionTriggerType::ChatCommand,
+            pattern: "!test".to_string(),
+            enabled: true,
+            cooldown: 30,
+            last_triggered: None,
+            action: InteractionAction {
+                action_type: InteractionActionType::PlaySound,
+                parameters: HashMap::new(),
+            },
+        };
+
+        assert_eq!(trigger.id, "trigger123");
+        assert_eq!(trigger.trigger_type, InteractionTriggerType::ChatCommand);
+        assert_eq!(trigger.enabled, true);
+    }
+
+    #[test]
+    fn test_interaction_action_creation() {
+        let mut params = HashMap::new();
+        params.insert("file".to_string(), "sound.mp3".to_string());
+        
+        let action = InteractionAction {
+            action_type: InteractionActionType::PlaySound,
+            parameters: params,
+        };
+
+        assert_eq!(action.action_type, InteractionActionType::PlaySound);
+        assert_eq!(action.parameters.len(), 1);
+    }
+
+    #[test]
+    fn test_mini_game_creation() {
+        let game = MiniGame {
+            id: "game123".to_string(),
+            name: "Trivia Game".to_string(),
+            game_type: MiniGameType::Trivia,
+            state: MiniGameState::Waiting,
+            duration: 300,
+            remaining_time: 300,
+            participants: vec!["user1".to_string(), "user2".to_string()],
+            questions: Vec::new(),
+            current_question: None,
+            results: HashMap::new(),
+            prize: Some("Points".to_string()),
+        };
+
+        assert_eq!(game.id, "game123");
+        assert_eq!(game.game_type, MiniGameType::Trivia);
+        assert_eq!(game.state, MiniGameState::Waiting);
+        assert_eq!(game.participants.len(), 2);
+    }
+
+    #[test]
+    fn test_interaction_trigger_type_variants() {
+        let types = vec![
+            InteractionTriggerType::ChatCommand,
+            InteractionTriggerType::Keyword,
+            InteractionTriggerType::Emote,
+            InteractionTriggerType::Follow,
+            InteractionTriggerType::Subscribe,
+            InteractionTriggerType::Donation,
+            InteractionTriggerType::Raid,
+            InteractionTriggerType::Cheer,
+            InteractionTriggerType::Custom,
+        ];
+
+        assert_eq!(types.len(), 9);
+        assert_eq!(types[0], InteractionTriggerType::ChatCommand);
+    }
+
+    #[test]
+    fn test_interaction_action_type_variants() {
+        let types = vec![
+            InteractionActionType::PlaySound,
+            InteractionActionType::ShowOverlay,
+            InteractionActionType::TriggerEffect,
+            InteractionActionType::StartMiniGame,
+            InteractionActionType::SendChatMessage,
+            InteractionActionType::ExecuteCommand,
+            InteractionActionType::ChangeScene,
+            InteractionActionType::PlayVideo,
+            InteractionActionType::ShowImage,
+            InteractionActionType::Custom,
+        ];
+
+        assert_eq!(types.len(), 10);
+        assert_eq!(types[0], InteractionActionType::PlaySound);
+    }
+
+    #[test]
+    fn test_mini_game_type_variants() {
+        let types = vec![
+            MiniGameType::Trivia,
+            MiniGameType::Poll,
+            MiniGameType::Prediction,
+            MiniGameType::Bingo,
+            MiniGameType::SlotMachine,
+            MiniGameType::Roulette,
+            MiniGameType::RockPaperScissors,
+            MiniGameType::GuessNumber,
+            MiniGameType::WordScramble,
+            MiniGameType::Custom,
+        ];
+
+        assert_eq!(types.len(), 10);
+        assert_eq!(types[0], MiniGameType::Trivia);
+    }
+
+    #[test]
+    fn test_mini_game_state_variants() {
+        let states = vec![
+            MiniGameState::Waiting,
+            MiniGameState::Active,
+            MiniGameState::Paused,
+            MiniGameState::Completed,
+        ];
+
+        assert_eq!(states.len(), 4);
+        assert_eq!(states[0], MiniGameState::Waiting);
+    }
+}

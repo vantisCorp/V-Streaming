@@ -412,3 +412,137 @@ fn get_game_event_types() -> Vec<String> {
         "custom".to_string(),
     ]
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_game_state_creation() {
+        let data = GameData {
+            game_type: GameType::CS2,
+            game_state: GameState::InGame,
+            map_name: Some("de_dust2".to_string()),
+            round: Some(15),
+            teams: Vec::new(),
+            local_player: None,
+            match_time: Some(900),
+            is_spectating: false,
+        };
+
+        assert_eq!(data.game_type, GameType::CS2);
+        assert_eq!(data.game_state, GameState::InGame);
+        assert_eq!(data.map_name, Some("de_dust2".to_string()));
+    }
+
+    #[test]
+    fn test_player_stats_creation() {
+        let stats = PlayerStats {
+            username: "Player1".to_string(),
+            kills: 10,
+            deaths: 5,
+            assists: 8,
+            score: 1500,
+            level: 5,
+            health: 100.0,
+            armor: 50.0,
+            money: Some(5000),
+        };
+
+        assert_eq!(stats.kills, 10);
+        assert_eq!(stats.score, 1500);
+        assert_eq!(stats.health, 100.0);
+    }
+
+    #[test]
+    fn test_team_stats_creation() {
+        let team = TeamStats {
+            name: "Team A".to_string(),
+            score: 12,
+            rounds_won: 8,
+            players: vec![
+                PlayerStats {
+                    username: "Player1".to_string(),
+                    kills: 10,
+                    deaths: 5,
+                    assists: 8,
+                    score: 1500,
+                    level: 5,
+                    health: 100.0,
+                    armor: 50.0,
+                    money: Some(5000),
+                }
+            ],
+        };
+
+        assert_eq!(team.name, "Team A");
+        assert_eq!(team.players.len(), 1);
+        assert_eq!(team.rounds_won, 8);
+    }
+
+    #[test]
+    fn test_game_event_creation() {
+        let event = GameEvent {
+            id: "event123".to_string(),
+            event_type: GameEventType::Kill,
+            description: "Player killed enemy".to_string(),
+            timestamp: 1234567890,
+            data: HashMap::new(),
+        };
+
+        assert_eq!(event.id, "event123");
+        assert_eq!(event.event_type, GameEventType::Kill);
+        assert_eq!(event.data.len(), 0);
+    }
+
+    #[test]
+    fn test_game_type_variants() {
+        let types = vec![
+            GameType::CS2,
+            GameType::LoL,
+            GameType::Valorant,
+            GameType::Dota2,
+            GameType::Overwatch2,
+            GameType::ApexLegends,
+            GameType::Fortnite,
+            GameType::Minecraft,
+            GameType::Custom,
+        ];
+
+        assert_eq!(types.len(), 9);
+        assert_eq!(types[0], GameType::CS2);
+        assert_eq!(types[8], GameType::Custom);
+    }
+
+    #[test]
+    fn test_game_state_variants() {
+        let states = vec![
+            GameState::Menu,
+            GameState::InGame,
+            GameState::Paused,
+            GameState::Loading,
+            GameState::Ended,
+        ];
+
+        assert_eq!(states.len(), 5);
+        assert_eq!(states[1], GameState::InGame);
+    }
+
+    #[test]
+    fn test_game_event_type_variants() {
+        let event_types = vec![
+            GameEventType::Kill,
+            GameEventType::Death,
+            GameEventType::Assist,
+            GameEventType::RoundStart,
+            GameEventType::RoundEnd,
+            GameEventType::MatchStart,
+            GameEventType::MatchEnd,
+            GameEventType::LevelUp,
+            GameEventType::Achievement,
+            GameEventType::Custom,
+        ];
+
+        assert_eq!(event_types.len(), 10);
+        assert_eq!(event_types[0], GameEventType::Kill);
+    }
+}

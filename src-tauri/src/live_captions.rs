@@ -357,3 +357,99 @@ fn get_caption_model_sizes() -> Vec<String> {
         "large_v3".to_string(),
     ]
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_caption_segment_creation() {
+        let segment = CaptionSegment {
+            id: "seg123".to_string(),
+            text: "Hello world".to_string(),
+            start_time: 0.0,
+            end_time: 2.5,
+            confidence: 0.95,
+            speaker: Some("Speaker1".to_string()),
+            language: CaptionLanguage::English,
+        };
+
+        assert_eq!(segment.id, "seg123");
+        assert_eq!(segment.text, "Hello world");
+        assert_eq!(segment.confidence, 0.95);
+        assert_eq!(segment.language, CaptionLanguage::English);
+    }
+
+    #[test]
+    fn test_caption_style_default() {
+        let style = CaptionStyle::default();
+        
+        assert_eq!(style.font_family, "Arial");
+        assert_eq!(style.font_size, 24);
+        assert_eq!(style.font_color, "#FFFFFF");
+        assert_eq!(style.background_opacity, 0.7);
+    }
+
+    #[test]
+    fn test_caption_config_default() {
+        let config = CaptionConfig::default();
+        
+        assert_eq!(config.enabled, true);
+        assert_eq!(config.language, CaptionLanguage::English);
+        assert_eq!(config.model_size, CaptionModelSize::Base);
+    }
+
+    #[test]
+    fn test_caption_language_variants() {
+        let languages = vec![
+            CaptionLanguage::English,
+            CaptionLanguage::Spanish,
+            CaptionLanguage::French,
+            CaptionLanguage::German,
+            CaptionLanguage::Italian,
+            CaptionLanguage::Portuguese,
+            CaptionLanguage::Russian,
+            CaptionLanguage::Japanese,
+            CaptionLanguage::Korean,
+            CaptionLanguage::Chinese,
+            CaptionLanguage::Arabic,
+            CaptionLanguage::Hindi,
+            CaptionLanguage::Custom,
+        ];
+
+        assert_eq!(languages.len(), 13);
+        assert_eq!(languages[0], CaptionLanguage::English);
+    }
+
+    #[test]
+    fn test_caption_model_size_variants() {
+        let sizes = vec![
+            CaptionModelSize::Tiny,
+            CaptionModelSize::Base,
+            CaptionModelSize::Small,
+            CaptionModelSize::Medium,
+            CaptionModelSize::Large,
+            CaptionModelSize::LargeV2,
+            CaptionModelSize::LargeV3,
+        ];
+
+        assert_eq!(sizes.len(), 7);
+        assert_eq!(sizes[1], CaptionModelSize::Base);
+    }
+
+    #[test]
+    fn test_caption_style_creation() {
+        let style = CaptionStyle {
+            font_family: "Roboto".to_string(),
+            font_size: 28,
+            font_color: "#FFFF00".to_string(),
+            background_color: "#000000".to_string(),
+            background_opacity: 0.8,
+            position: "top".to_string(),
+            animation: "slide".to_string(),
+        };
+
+        assert_eq!(style.font_family, "Roboto");
+        assert_eq!(style.font_size, 28);
+        assert_eq!(style.position, "top");
+    }
+}

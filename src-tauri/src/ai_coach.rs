@@ -452,3 +452,79 @@ fn get_coach_tip_priorities() -> Vec<String> {
         "critical".to_string(),
     ]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_ai_coach_engine_creation() {
+        let engine = AICoachEngine::new();
+        assert_eq!(engine.tips.len(), 0);
+    }
+
+    #[test]
+    fn test_coach_tip() {
+        let tip = CoachTip {
+            id: "tip_1".to_string(),
+            tip_type: TipType::Engagement,
+            priority: TipPriority::Medium,
+            message: "Consider asking chat a question".to_string(),
+            created_at: SystemTime::now(),
+            acknowledged: false,
+        };
+
+        assert_eq!(tip.tip_type, TipType::Engagement);
+        assert!(!tip.acknowledged);
+    }
+
+    #[test]
+    fn test_stream_analytics() {
+        let analytics = StreamAnalytics {
+            stream_id: "stream_1".to_string(),
+            started_at: SystemTime::now(),
+            ended_at: Some(SystemTime::now()),
+            avg_viewers: 150.0,
+            peak_viewers: 250,
+            total_chat_messages: 5000,
+            unique_chatters: 120,
+            avg_chat_rate: 25.0,
+        };
+
+        assert_eq!(analytics.stream_id, "stream_1");
+        assert_eq!(analytics.peak_viewers, 250);
+    }
+
+    #[test]
+    fn test_coach_stats() {
+        let stats = CoachStats {
+            total_tips: 50,
+            acknowledged_tips: 30,
+            dismissed_tips: 10,
+            improvement_score: 15.5,
+            streams_analyzed: 25,
+        };
+
+        assert_eq!(stats.total_tips, 50);
+        assert_eq!(stats.streams_analyzed, 25);
+    }
+
+    #[test]
+    fn test_tip_type() {
+        assert_eq!(TipType::Engagement.to_string(), "engagement");
+        assert_eq!(TipType::Technical.to_string(), "technical");
+    }
+
+    #[test]
+    fn test_tip_priority() {
+        assert_eq!(TipPriority::Low.to_string(), "low");
+        assert_eq!(TipPriority::High.to_string(), "high");
+    }
+
+    #[test]
+    fn test_coach_tip_types_list() {
+        let types = get_coach_tip_types();
+        assert!(!types.is_empty());
+        assert!(types.contains(&"engagement".to_string()));
+    }
+}

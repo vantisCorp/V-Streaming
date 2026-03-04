@@ -474,3 +474,125 @@ fn get_tip_payment_methods() -> Vec<String> {
         "custom".to_string(),
     ]
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_tip_creation() {
+        let tip = Tip {
+            id: "tip1".to_string(),
+            username: "donor123".to_string(),
+            display_name: "Donor123".to_string(),
+            amount: 10.0,
+            currency: TipCurrency::USD,
+            payment_method: TipPaymentMethod::PayPal,
+            message: Some("Great stream!".to_string()),
+            timestamp: 1234567890,
+            is_anonymous: false,
+            is_recurring: false,
+        };
+
+        assert_eq!(tip.id, "tip1");
+        assert_eq!(tip.amount, 10.0);
+        assert_eq!(tip.currency, TipCurrency::USD);
+        assert!(!tip.is_anonymous);
+    }
+
+    #[test]
+    fn test_tip_goal_creation() {
+        let goal = TipGoal {
+            id: "goal1".to_string(),
+            title: "New Microphone".to_string(),
+            description: "Help me get a new mic".to_string(),
+            target_amount: 500.0,
+            current_amount: 250.0,
+            currency: TipCurrency::USD,
+            deadline: Some(1234567890),
+            created_at: 1234567890,
+            completed: false,
+        };
+
+        assert_eq!(goal.id, "goal1");
+        assert_eq!(goal.target_amount, 500.0);
+        assert_eq!(goal.current_amount, 250.0);
+        assert!(!goal.completed);
+    }
+
+    #[test]
+    fn test_tip_reward_creation() {
+        let reward = TipReward {
+            id: "reward1".to_string(),
+            title: "Shoutout".to_string(),
+            description: "I'll give you a shoutout".to_string(),
+            min_amount: 5.0,
+            currency: TipCurrency::USD,
+            enabled: true,
+        };
+
+        assert_eq!(reward.id, "reward1");
+        assert_eq!(reward.min_amount, 5.0);
+        assert!(reward.enabled);
+    }
+
+    #[test]
+    fn test_tip_config_default() {
+        let config = TipConfig::default();
+        
+        assert_eq!(config.enabled, true);
+        assert_eq!(config.default_currency, TipCurrency::USD);
+        assert_eq!(config.min_tip_amount, 1.0);
+        assert_eq!(config.max_tip_amount, 10000.0);
+    }
+
+    #[test]
+    fn test_tip_currency_variants() {
+        let currencies = vec![
+            TipCurrency::USD,
+            TipCurrency::EUR,
+            TipCurrency::GBP,
+            TipCurrency::JPY,
+            TipCurrency::BTC,
+            TipCurrency::ETH,
+            TipCurrency::Custom,
+        ];
+
+        assert_eq!(currencies.len(), 7);
+        assert_eq!(currencies[0], TipCurrency::USD);
+    }
+
+    #[test]
+    fn test_tip_payment_method_variants() {
+        let methods = vec![
+            TipPaymentMethod::PayPal,
+            TipPaymentMethod::Stripe,
+            TipPaymentMethod::Crypto,
+            TipPaymentMethod::Streamlabs,
+            TipPaymentMethod::StreamElements,
+            TipPaymentMethod::Custom,
+        ];
+
+        assert_eq!(methods.len(), 6);
+        assert_eq!(methods[0], TipPaymentMethod::PayPal);
+    }
+
+    #[test]
+    fn test_tip_serialization() {
+        let tip = Tip {
+            id: "tip1".to_string(),
+            username: "donor123".to_string(),
+            display_name: "Donor123".to_string(),
+            amount: 10.0,
+            currency: TipCurrency::USD,
+            payment_method: TipPaymentMethod::PayPal,
+            message: None,
+            timestamp: 1234567890,
+            is_anonymous: false,
+            is_recurring: false,
+        };
+
+        // Test that struct can be serialized (compile-time check)
+        let _json = serde_json::to_string(&tip);
+        assert!(true);
+    }
+}

@@ -472,3 +472,108 @@ fn get_automation_trigger_types() -> Vec<String> {
         "custom".to_string(),
     ]
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_smart_device_creation() {
+        let mut properties = HashMap::new();
+        properties.insert("brightness".to_string(), "80".to_string());
+        
+        let device = SmartDevice {
+            id: "device1".to_string(),
+            name: "Living Room Light".to_string(),
+            device_type: SmartDeviceType::Light,
+            status: SmartDeviceStatus::Online,
+            is_on: true,
+            properties: properties,
+            room: Some("Living Room".to_string()),
+            last_updated: 1234567890,
+        };
+
+        assert_eq!(device.id, "device1");
+        assert_eq!(device.device_type, SmartDeviceType::Light);
+        assert_eq!(device.status, SmartDeviceStatus::Online);
+        assert!(device.is_on);
+    }
+
+    #[test]
+    fn test_smart_automation_creation() {
+        let automation = SmartAutomation {
+            id: "auto1".to_string(),
+            name: "Stream Start Lights".to_string(),
+            description: "Turn on lights when stream starts".to_string(),
+            trigger_type: AutomationTriggerType::StreamStart,
+            trigger_value: "start".to_string(),
+            actions: vec![
+                AutomationAction {
+                    device_id: "device1".to_string(),
+                    action: "turn_on".to_string(),
+                    value: Some("true".to_string()),
+                }
+            ],
+            enabled: true,
+        };
+
+        assert_eq!(automation.id, "auto1");
+        assert_eq!(automation.trigger_type, AutomationTriggerType::StreamStart);
+        assert!(automation.enabled);
+        assert_eq!(automation.actions.len(), 1);
+    }
+
+    #[test]
+    fn test_smart_home_config_default() {
+        let config = SmartHomeConfig::default();
+        
+        assert_eq!(config.enabled, true);
+        assert_eq!(config.auto_connect, true);
+        assert_eq!(config.enable_automations, true);
+    }
+
+    #[test]
+    fn test_smart_device_type_variants() {
+        let types = vec![
+            SmartDeviceType::Light,
+            SmartDeviceType::Switch,
+            SmartDeviceType::Thermostat,
+            SmartDeviceType::Camera,
+            SmartDeviceType::Sensor,
+            SmartDeviceType::Lock,
+            SmartDeviceType::Speaker,
+            SmartDeviceType::Display,
+            SmartDeviceType::Custom,
+        ];
+
+        assert_eq!(types.len(), 9);
+        assert_eq!(types[0], SmartDeviceType::Light);
+    }
+
+    #[test]
+    fn test_smart_device_status_variants() {
+        let statuses = vec![
+            SmartDeviceStatus::Online,
+            SmartDeviceStatus::Offline,
+            SmartDeviceStatus::Error,
+        ];
+
+        assert_eq!(statuses.len(), 3);
+        assert_eq!(statuses[0], SmartDeviceStatus::Online);
+    }
+
+    #[test]
+    fn test_automation_trigger_type_variants() {
+        let types = vec![
+            AutomationTriggerType::StreamStart,
+            AutomationTriggerType::StreamEnd,
+            AutomationTriggerType::Donation,
+            AutomationTriggerType::Follower,
+            AutomationTriggerType::Subscriber,
+            AutomationTriggerType::Raid,
+            AutomationTriggerType::Custom,
+        ];
+
+        assert_eq!(types.len(), 7);
+        assert_eq!(types[0], AutomationTriggerType::StreamStart);
+    }
+}

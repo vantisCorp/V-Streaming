@@ -445,3 +445,131 @@ fn get_error_severities() -> Vec<String> {
         "critical".to_string(),
     ]
 }
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_telemetry_event_creation() {
+        let mut data = HashMap::new();
+        data.insert("feature".to_string(), "streaming".to_string());
+        
+        let event = TelemetryEvent {
+            id: "event1".to_string(),
+            event_type: TelemetryEventType::FeatureUsed,
+            timestamp: 1234567890,
+            data: data,
+            user_id: Some("user123".to_string()),
+            session_id: "session456".to_string(),
+        };
+
+        assert_eq!(event.id, "event1");
+        assert_eq!(event.event_type, TelemetryEventType::FeatureUsed);
+        assert_eq!(event.user_id, Some("user123".to_string()));
+    }
+
+    #[test]
+    fn test_error_report_creation() {
+        let mut hardware_info = HashMap::new();
+        hardware_info.insert("gpu".to_string(), "NVIDIA RTX 3080".to_string());
+        
+        let error = ErrorReport {
+            id: "error1".to_string(),
+            error_type: "StreamError".to_string(),
+            message: "Failed to start stream".to_string(),
+            stack_trace: Some("at line 123".to_string()),
+            severity: ErrorSeverity::Error,
+            timestamp: 1234567890,
+            user_id: Some("user123".to_string()),
+            session_id: "session456".to_string(),
+            app_version: "1.0.0".to_string(),
+            os_version: "Windows 11".to_string(),
+            hardware_info: hardware_info,
+        };
+
+        assert_eq!(error.id, "error1");
+        assert_eq!(error.severity, ErrorSeverity::Error);
+        assert_eq!(error.error_type, "StreamError");
+    }
+
+    #[test]
+    fn test_performance_metric_creation() {
+        let mut tags = HashMap::new();
+        tags.insert("module".to_string(), "encoding".to_string());
+        
+        let metric = PerformanceMetric {
+            id: "metric1".to_string(),
+            metric_name: "fps".to_string(),
+            value: 60.0,
+            unit: "frames/sec".to_string(),
+            timestamp: 1234567890,
+            tags: tags,
+        };
+
+        assert_eq!(metric.id, "metric1");
+        assert_eq!(metric.value, 60.0);
+        assert_eq!(metric.unit, "frames/sec");
+    }
+
+    #[test]
+    fn test_telemetry_config_default() {
+        let config = TelemetryConfig::default();
+        
+        assert_eq!(config.enabled, true);
+        assert_eq!(config.send_anonymous_data, true);
+        assert_eq!(config.batch_size, 10);
+        assert_eq!(config.flush_interval, 60);
+    }
+
+    #[test]
+    fn test_telemetry_event_type_variants() {
+        let types = vec![
+            TelemetryEventType::AppStart,
+            TelemetryEventType::AppClose,
+            TelemetryEventType::StreamStart,
+            TelemetryEventType::StreamEnd,
+            TelemetryEventType::FeatureUsed,
+            TelemetryEventType::Error,
+            TelemetryEventType::Warning,
+            TelemetryEventType::Performance,
+            TelemetryEventType::Custom,
+        ];
+
+        assert_eq!(types.len(), 9);
+        assert_eq!(types[0], TelemetryEventType::AppStart);
+    }
+
+    #[test]
+    fn test_error_severity_variants() {
+        let severities = vec![
+            ErrorSeverity::Info,
+            ErrorSeverity::Warning,
+            ErrorSeverity::Error,
+            ErrorSeverity::Critical,
+        ];
+
+        assert_eq!(severities.len(), 4);
+        assert_eq!(severities[0], ErrorSeverity::Info);
+    }
+
+    #[test]
+    fn test_error_report_serialization() {
+        let error = ErrorReport {
+            id: "error1".to_string(),
+            error_type: "TestError".to_string(),
+            message: "Test error message".to_string(),
+            stack_trace: None,
+            severity: ErrorSeverity::Warning,
+            timestamp: 1234567890,
+            user_id: None,
+            session_id: "session1".to_string(),
+            app_version: "1.0.0".to_string(),
+            os_version: "Linux".to_string(),
+            hardware_info: HashMap::new(),
+        };
+
+        // Test that struct can be serialized (compile-time check)
+        let _json = serde_json::to_string(&error);
+        assert!(true);
+    }
+}

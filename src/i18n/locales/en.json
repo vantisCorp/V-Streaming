@@ -233,5 +233,43 @@
     "recordingFailed": "Failed to start recording",
     "gpuInfoFailed": "Failed to get GPU info",
     "encodersFailed": "Failed to get available encoders"
+  },
+  "automation": {
+    "title": "Scene Automation",
+    "rules": "Rules",
+    "groups": "Groups",
+    "logs": "Logs",
+    "settings": "Settings",
+    "addRule": "Add Rule",
+    "addGroup": "Add Group",
+    "clearLogs": "Clear Logs",
+    "status": {
+      "active": "Active",
+      "paused": "Paused"
+    },
+    "rule": {
+      "name": "Rule Name",
+      "description": "Description",
+      "priority": "Priority",
+      "cooldown": "Cooldown",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "trigger": "Trigger",
+      "actions": "Actions",
+      "execute": "Execute"
+    },
+    "trigger": {
+      "time": "Time-based",
+      "event": "Event-based",
+      "condition": "Condition-based",
+      "manual": "Manual"
+    },
+    "action": {
+      "switch": "Switch Scene",
+      "preview": "Preview Scene",
+      "transition": "Apply Transition",
+      "sourceToggle": "Toggle Source",
+      "filterToggle": "Toggle Filter"
+    }
   }
 }

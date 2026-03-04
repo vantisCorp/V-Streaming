@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
+import { GlobalKeyboardListener } from './components/GlobalKeyboardListener';
+import { HotkeySettings } from './components/HotkeySettings';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -238,6 +240,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('Capture');
   const [interfaceMode, setInterfaceMode] = useState<'Simple' | 'Expert'>('Simple');
   const [theme, setTheme] = useState<'Light' | 'Dark' | 'Auto'>('Dark');
+  const [showHotkeySettings, setShowHotkeySettings] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -562,6 +565,14 @@ function App() {
         </div>
         <div className="header-right">
           <LanguageSwitcher />
+          <button
+            onClick={() => setShowHotkeySettings(true)}
+            className="theme-btn"
+            title="Keyboard Shortcuts"
+            style={{ marginLeft: '8px' }}
+          >
+            ⌨️
+          </button>
           <div className="theme-switcher">
             <button
               className={`theme-btn ${theme === 'Light' ? 'active' : ''}`}
@@ -1199,6 +1210,18 @@ function App() {
           </div>
         )}
       </main>
+
+      {/* Global Keyboard Listener */}
+      <GlobalKeyboardListener />
+
+      {/* Hotkey Settings Modal */}
+      {showHotkeySettings && (
+        <div className="modal-overlay" onClick={() => setShowHotkeySettings(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <HotkeySettings onClose={() => setShowHotkeySettings(false)} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -21,6 +21,24 @@
 
 </div>
 
+<!-- Additional Statistics Badges -->
+<div align="center">
+
+[![GitHub stars](https://img.shields.io/github/stars/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming/pulls)
+[![GitHub contributors](https://img.shields.io/github/contributors/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming/graphs/contributors)
+[![GitHub last commit](https://img.shields.io/github/last-commit/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming/commits/main)
+[![GitHub release date](https://img.shields.io/github/release-date/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming/releases)
+[![Repo Size](https://img.shields.io/github/repo-size/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming)
+[![Lines of code](https://img.shields.io/tokei/lines/github/vantisCorp/V-Streaming?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming)
+[![Maintenance](https://img.shields.io/maintenance/yes/2026?style=flat-square&logo=github)](https://github.com/vantisCorp/V-Streaming)
+[![CodeFactor](https://www.codefactor.io/repository/github/vantisCorp/V-Streaming/badge?style=flat-square&logo=github)](https://www.codefactor.io/repository/github/vantisCorp/V-Streaming)
+[![codecov](https://codecov.io/gh/vantisCorp/V-Streaming/branch/main/graph/badge.svg?token=XXXXX&style=flat-square)](https://codecov.io/gh/vantisCorp/V-Streaming)
+
+</div>
+
 ---
 
 <!-- J - Language Selector -->

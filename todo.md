@@ -25,7 +25,7 @@
 - [x] Dodać Codecov lub SonarCloud integration
 
 ## 🟢 Średni Priorytet  
-- [ ] Stworzyć wiki w GitHub
+- [x] Stworzyć wiki w GitHub
 - [ ] Dodać more contributors
 - [ ] Stworzyć roadmap w GitHub Projects
 - [ ] Dodać badges z statystykami

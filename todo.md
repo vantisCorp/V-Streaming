@@ -8,33 +8,20 @@
 - [x] Scene automation with custom conditions and actions
 - [x] Cloud backup for settings and configurations
 - [x] Built-in stream scheduler
-- [ ] Advanced audio mixer with VST plugin support
+- [x] Advanced audio mixer with VST plugin support
 - [ ] Customizable themes and appearance
 
-### ✅ Completed
+### ✅ Completed Features (v0.2.0)
 
-- **Built-in Stream Scheduler** - Fully implemented and built
-  - [x] Create type definitions for scheduler system
-  - [x] Implement StreamScheduler service
-  - [x] Create useStreamScheduler React hook
-  - [x] Build StreamSchedulerSettings UI component
-  - [x] Create recurring schedule patterns
-  - [x] Add notification system for upcoming streams
-  - [x] Integrate with scene automation
-  - [x] Integrate into main App component
-  - [x] Add i18n translations
-  - [x] Test and verify functionality
-  - [ ] Commit and push changes
-  - [ ] Create pull request
-  - [ ] Merge to main branch
+- **Enhanced Hotkey System** - Multi-key sequences and profiles (PR #7)
+- **Scene Automation** - Custom conditions and actions (PR #8)
+- **Cloud Backup System** - Multi-provider backup with encryption (PR #9)
+- **Built-in Stream Scheduler** - Automated scheduling with notifications (PR #10)
+- **Advanced Audio Mixer** - VST plugin support and professional mixing (PR #11)
 
-### 📋 Planned
+### 📋 Remaining v0.2.0 Features
 
-- **Advanced Audio Mixer** - VST plugin support and advanced controls
-- **Customizable Themes** - Theme engine with multiple presets
-
-- **Advanced Audio Mixer** - VST plugin support and advanced controls
-- **Customizable Themes** - Theme engine with multiple presets
+- **Customizable Themes** - Theme engine with multiple presets (NEXT)
 
 ## Previous Completed Features
 

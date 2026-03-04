@@ -1,16 +1,23 @@
-# V-Streaming Internationalization (Issue #3)
+# V-Streaming API Documentation with OpenAPI/Swagger (Issue #5)
 
 ## Completed
-- [x] Install i18n packages (react-i18next, i18next, i18next-browser-languagedetector)
-- [x] Create i18n configuration file
-- [x] Create translation files for 9 languages (en, pl, de, zh, ru, ko, es, fr, ja)
-- [x] Create LanguageSwitcher component
-- [x] Initialize i18n in main.tsx
-- [x] Update App.tsx to use translation keys for all UI strings
-- [x] Add LanguageSwitcher to header
-- [x] Fix TypeScript build errors
-- [x] Test application build successfully
+- [x] Analyze existing Rust backend commands
+- [x] Create OpenAPI specification (docs/api/openapi.yaml)
+- [x] Document core Tauri IPC commands
+- [x] Document request/response schemas
+- [x] Create API reference documentation (docs/api-reference.md)
+- [x] Document all major API endpoints:
+  - Capture API
+  - Audio API
+  - GPU API
+  - Encoding API
+  - Streaming API
+  - VTuber API
+  - Cloud API
+  - Analytics API
 
 ## In Progress
+- [ ] Set up Swagger UI integration
+- [ ] Generate client SDKs (TypeScript, Python, Rust)
 - [ ] Commit and push changes
-- [ ] Close Issue #3 on GitHub
+- [ ] Close Issue #5 on GitHub

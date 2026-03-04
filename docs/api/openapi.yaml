@@ -1,0 +1,1712 @@
+openapi: 3.0.3
+info:
+  title: V-Streaming API
+  description: |
+    V-Streaming is a professional streaming and VTubing platform with comprehensive capture, encoding, and streaming capabilities.
+    
+    This API provides access to all V-Streaming functionality including:
+    - Capture engine (screen, window, camera)
+    - Audio processing and mixing
+    - GPU operations and effects
+    - Scene composition
+    - VTubing features (VRM, Live2D)
+    - Video encoding
+    - Streaming to multiple platforms
+    - Cloud services integration
+    - Analytics and telemetry
+    
+    ## Authentication
+    
+    All API calls require proper Tauri context. The API is exposed through Tauri's IPC mechanism.
+    
+    ## Error Handling
+    
+    All operations return `Result<T, String>` where `String` contains error messages.
+    
+    ## Rate Limiting
+    
+    No rate limiting for local IPC calls.
+  version: 0.1.0
+  contact:
+    name: V-Streaming Team
+    url: https://github.com/vantisCorp/V-Streaming
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: ipc://localhost
+    description: Local IPC (Tauri)
+
+tags:
+  - name: Capture
+    description: Screen and capture source management
+  - name: Audio
+    description: Audio processing and mixing
+  - name: GPU
+    description: GPU operations and effects
+  - name: Composition
+    description: Scene and layer composition
+  - name: VTuber
+    description: VTubing features (VRM, Live2D, face tracking)
+  - name: Encoding
+    description: Video and audio encoding
+  - name: Streaming
+    description: Streaming to platforms
+  - name: Cloud
+    description: Cloud services integration
+  - name: Analytics
+    description: Analytics and performance metrics
+
+paths:
+  /greet:
+    get:
+      tags:
+        - General
+      summary: Greeting endpoint
+      description: Returns a greeting message
+      operationId: greet
+      parameters:
+        - name: name
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Name to greet
+      responses:
+        '200':
+          description: Successful greeting
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Hello, World! Welcome to V-Streaming!"
+
+  /capture/sources:
+    get:
+      tags:
+        - Capture
+      summary: Enumerate capture sources
+      description: Get list of available capture sources (screens, windows, cameras)
+      operationId: enumerate_capture_sources
+      responses:
+        '200':
+          description: List of capture sources
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CaptureSourceInfo'
+        '400':
+          description: Error enumerating sources
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /capture/start:
+    post:
+      tags:
+        - Capture
+      summary: Start capture
+      description: Start capturing from specified source
+      operationId: start_capture
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaptureSource'
+      responses:
+        '200':
+          description: Capture started successfully
+        '400':
+          description: Failed to start capture
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /capture/stop:
+    post:
+      tags:
+        - Capture
+      summary: Stop capture
+      description: Stop all capture operations
+      operationId: stop_capture
+      responses:
+        '200':
+          description: Capture stopped successfully
+        '400':
+          description: Failed to stop capture
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /capture/status:
+    get:
+      tags:
+        - Capture
+      summary: Check if capturing
+      description: Get current capture status
+      operationId: is_capturing
+      responses:
+        '200':
+          description: Capture status
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /capture/active-sources:
+    get:
+      tags:
+        - Capture
+      summary: Get active sources
+      description: Get list of currently active capture sources
+      operationId: get_active_sources
+      responses:
+        '200':
+          description: List of active sources
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CaptureSource'
+
+  /capture/performance:
+    get:
+      tags:
+        - Capture
+      summary: Get capture performance stats
+      description: Get current capture performance metrics
+      operationId: get_capture_performance_stats
+      responses:
+        '200':
+          description: Performance statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturePerformanceStats'
+
+  /capture/presets:
+    get:
+      tags:
+        - Capture
+      summary: Get capture presets
+      description: Get list of available capture presets
+      operationId: get_capture_presets
+      responses:
+        '200':
+          description: List of presets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CapturePreset'
+
+  /audio/devices:
+    get:
+      tags:
+        - Audio
+      summary: Enumerate audio devices
+      description: Get list of available audio input/output devices
+      operationId: enumerate_audio_devices
+      responses:
+        '200':
+          description: List of audio devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AudioDeviceInfo'
+        '400':
+          description: Error enumerating devices
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /audio/start:
+    post:
+      tags:
+        - Audio
+      summary: Start audio processing
+      description: Start audio engine and processing
+      operationId: start_audio_processing
+      responses:
+        '200':
+          description: Audio processing started
+        '400':
+          description: Failed to start audio processing
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /audio/stop:
+    post:
+      tags:
+        - Audio
+      summary: Stop audio processing
+      description: Stop audio engine
+      operationId: stop_audio_processing
+      responses:
+        '200':
+          description: Audio processing stopped
+        '400':
+          description: Failed to stop audio processing
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /audio/status:
+    get:
+      tags:
+        - Audio
+      summary: Check audio processing status
+      description: Get current audio processing status
+      operationId: is_audio_processing
+      responses:
+        '200':
+          description: Audio processing status
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /audio/tracks:
+    get:
+      tags:
+        - Audio
+      summary: Get audio tracks
+      description: Get list of all audio tracks
+      operationId: get_audio_tracks
+      responses:
+        '200':
+          description: List of audio tracks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AudioTrack'
+
+  /audio/tracks:
+    post:
+      tags:
+        - Audio
+      summary: Create audio track
+      description: Create a new audio track
+      operationId: create_audio_track
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - device_id
+              properties:
+                name:
+                  type: string
+                  description: Track name
+                device_id:
+                  type: string
+                  description: Device ID to capture from
+      responses:
+        '200':
+          description: Created audio track
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioTrack'
+        '400':
+          description: Failed to create track
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /audio/tracks/{track_id}:
+    delete:
+      tags:
+        - Audio
+      summary: Remove audio track
+      description: Remove an audio track
+      operationId: remove_audio_track
+      parameters:
+        - name: track_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Track removed
+        '400':
+          description: Failed to remove track
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /audio/master-volume:
+    get:
+      tags:
+        - Audio
+      summary: Get master volume
+      description: Get current master volume
+      operationId: get_master_volume
+      responses:
+        '200':
+          description: Master volume (0.0-1.0)
+          content:
+            application/json:
+              schema:
+                type: number
+                format: float
+
+  /audio/master-volume:
+    put:
+      tags:
+        - Audio
+      summary: Set master volume
+      description: Set master volume
+      operationId: set_master_volume
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: number
+              format: float
+              minimum: 0.0
+              maximum: 1.0
+      responses:
+        '200':
+          description: Volume set
+        '400':
+          description: Failed to set volume
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /audio/sync:
+    post:
+      tags:
+        - Audio
+      summary: Sync audio with video
+      description: Synchronize audio with video timestamp
+      operationId: sync_audio_with_video
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - video_timestamp
+              properties:
+                video_timestamp:
+                  type: integer
+                  format: uint64
+                  description: Video timestamp in milliseconds
+      responses:
+        '200':
+          description: Sync offset in milliseconds
+          content:
+            application/json:
+              schema:
+                type: integer
+        '400':
+          description: Failed to sync
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /audio/performance:
+    get:
+      tags:
+        - Audio
+      summary: Get audio performance stats
+      description: Get current audio performance metrics
+      operationId: get_audio_performance_stats
+      responses:
+        '200':
+          description: Audio performance statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AudioPerformanceStats'
+
+  /gpu/info:
+    get:
+      tags:
+        - GPU
+      summary: Get GPU info
+      description: Get information about available GPU
+      operationId: get_gpu_info
+      responses:
+        '200':
+          description: GPU information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GpuInfo'
+
+  /gpu/memory-usage:
+    get:
+      tags:
+        - GPU
+      summary: Get GPU memory usage
+      description: Get current GPU memory usage
+      operationId: get_gpu_memory_usage
+      responses:
+        '200':
+          description: GPU memory usage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GpuMemoryUsage'
+
+  /gpu/texture:
+    post:
+      tags:
+        - GPU
+      summary: Create texture
+      description: Create a GPU texture
+      operationId: create_texture
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - width
+                - height
+                - format
+              properties:
+                width:
+                  type: integer
+                  format: uint32
+                  description: Texture width
+                height:
+                  type: integer
+                  format: uint32
+                  description: Texture height
+                format:
+                  $ref: '#/components/schemas/TextureFormat'
+      responses:
+        '200':
+          description: Created texture
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Texture'
+        '400':
+          description: Failed to create texture
+          content:
+            application/json:
+              schema:
+                type: string
+
+/encoding/encoders:
+    get:
+      tags:
+        - Encoding
+      summary: Get available encoders
+      description: Get list of available hardware/software encoders
+      operationId: get_available_encoders
+      responses:
+        '200':
+          description: List of encoders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EncoderInfo'
+
+  /encoding/start:
+    post:
+      tags:
+        - Encoding
+      summary: Start encoding
+      description: Start video and audio encoding
+      operationId: start_encoding
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - videoConfig
+                - audioConfig
+              properties:
+                videoConfig:
+                  $ref: '#/components/schemas/VideoEncodingConfig'
+                audioConfig:
+                  $ref: '#/components/schemas/AudioEncodingConfig'
+      responses:
+        '200':
+          description: Encoding started
+        '400':
+          description: Failed to start encoding
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /encoding/stop:
+    post:
+      tags:
+        - Encoding
+      summary: Stop encoding
+      description: Stop all encoding operations
+      operationId: stop_encoding
+      responses:
+        '200':
+          description: Encoding stopped
+        '400':
+          description: Failed to stop encoding
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /encoding/status:
+    get:
+      tags:
+        - Encoding
+      summary: Get encoding status
+      description: Check if encoding is active
+      operationId: is_encoding_active
+      responses:
+        '200':
+          description: Encoding status
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /encoding/stats:
+    get:
+      tags:
+        - Encoding
+      summary: Get encoding statistics
+      description: Get current encoding performance statistics
+      operationId: get_encoding_stats
+      responses:
+        '200':
+          description: Encoding statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EncodingStats'
+
+  /encoding/bitrate:
+    post:
+      tags:
+        - Encoding
+      summary: Get recommended bitrate
+      description: Get recommended bitrate for given parameters
+      operationId: get_recommended_bitrate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                width:
+                  type: integer
+                height:
+                  type: integer
+                fps:
+                  type: integer
+                codec:
+                  type: string
+      responses:
+        '200':
+          description: Recommended bitrate in kbps
+          content:
+            application/json:
+              schema:
+                type: integer
+
+  /streaming/platform/{platform}:
+    get:
+      tags:
+        - Streaming
+      summary: Get platform preset
+      description: Get streaming preset for a specific platform
+      operationId: get_platform_preset
+      parameters:
+        - name: platform
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [Twitch, YouTube, Kick, Facebook, TikTok, Trovo, DLive, Custom]
+      responses:
+        '200':
+          description: Platform preset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamingPlatformConfig'
+        '400':
+          description: Platform not found
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /streaming/start:
+    post:
+      tags:
+        - Streaming
+      summary: Start streaming
+      description: Start streaming to configured platform
+      operationId: start_streaming
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - config
+              properties:
+                config:
+                  $ref: '#/components/schemas/StreamingConfig'
+      responses:
+        '200':
+          description: Streaming started
+        '400':
+          description: Failed to start streaming
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /streaming/stop:
+    post:
+      tags:
+        - Streaming
+      summary: Stop streaming
+      description: Stop all streaming
+      operationId: stop_streaming
+      responses:
+        '200':
+          description: Streaming stopped
+        '400':
+          description: Failed to stop streaming
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /streaming/status:
+    get:
+      tags:
+        - Streaming
+      summary: Get streaming status
+      description: Check if streaming is active
+      operationId: is_streaming_active
+      responses:
+        '200':
+          description: Streaming status
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /streaming/stats:
+    get:
+      tags:
+        - Streaming
+      summary: Get streaming statistics
+      description: Get current streaming performance metrics
+      operationId: get_streaming_stats
+      responses:
+        '200':
+          description: Streaming statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamingStats'
+
+  /streaming/multistream/targets:
+    get:
+      tags:
+        - Streaming
+      summary: Get multistream targets
+      description: Get list of multistreaming targets
+      operationId: get_multistream_targets
+      responses:
+        '200':
+          description: List of targets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MultistreamTarget'
+
+  /vtuber/vrm/load:
+    post:
+      tags:
+        - VTuber
+      summary: Load VRM model
+      description: Load a VRM model file
+      operationId: load_vrm_model
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+              properties:
+                file_path:
+                  type: string
+                  description: Path to VRM model file
+      responses:
+        '200':
+          description: Model loaded successfully
+        '400':
+          description: Failed to load model
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /vtuber/live2d/load:
+    post:
+      tags:
+        - VTuber
+      summary: Load Live2D model
+      description: Load a Live2D model file
+      operationId: load_live2d_model
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - file_path
+              properties:
+                file_path:
+                  type: string
+                  description: Path to Live2D model file
+      responses:
+        '200':
+          description: Model loaded successfully
+        '400':
+          description: Failed to load model
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /vtuber/model-info:
+    get:
+      tags:
+        - VTuber
+      summary: Get model info
+      description: Get information about loaded model
+      operationId: get_model_info
+      responses:
+        '200':
+          description: Model information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelInfo'
+
+  /vtuber/tracking/start:
+    post:
+      tags:
+        - VTuber
+      summary: Start face tracking
+      description: Start face tracking for VTuber model
+      operationId: start_face_tracking
+      responses:
+        '200':
+          description: Face tracking started
+        '400':
+          description: Failed to start tracking
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /vtuber/tracking/stop:
+    post:
+      tags:
+        - VTuber
+      summary: Stop face tracking
+      description: Stop face tracking
+      operationId: stop_face_tracking
+      responses:
+        '200':
+          description: Face tracking stopped
+        '400':
+          description: Failed to stop tracking
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /vtuber/tracking/status:
+    get:
+      tags:
+        - VTuber
+      summary: Get tracking status
+      description: Check if face tracking is active
+      operationId: is_face_tracking_active
+      responses:
+        '200':
+          description: Face tracking status
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /vtuber/tracking/data:
+    get:
+      tags:
+        - VTuber
+      summary: Get face tracking data
+      description: Get current face tracking data
+      operationId: get_face_tracking_data
+      responses:
+        '200':
+          description: Face tracking data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FaceTrackingData'
+
+  /cloud/connect:
+    post:
+      tags:
+        - Cloud
+      summary: Connect to cloud
+      description: Connect to cloud services
+      operationId: connect_cloud
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                provider:
+                  type: string
+                  enum: [Custom, AWS, GCP, Azure]
+                api_key:
+                  type: string
+                api_secret:
+                  type: string
+      responses:
+        '200':
+          description: Connected successfully
+        '400':
+          description: Failed to connect
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /cloud/disconnect:
+    post:
+      tags:
+        - Cloud
+      summary: Disconnect from cloud
+      description: Disconnect from cloud services
+      operationId: disconnect_cloud
+      responses:
+        '200':
+          description: Disconnected
+        '400':
+          description: Failed to disconnect
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /cloud/status:
+    get:
+      tags:
+        - Cloud
+      summary: Get cloud connection status
+      description: Check if connected to cloud
+      operationId: is_cloud_connected
+      responses:
+        '200':
+          description: Cloud connection status
+          content:
+            application/json:
+              schema:
+                type: boolean
+
+  /cloud/stats:
+    get:
+      tags:
+        - Cloud
+      summary: Get cloud statistics
+      description: Get cloud service statistics
+      operationId: get_cloud_stats
+      responses:
+        '200':
+          description: Cloud statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CloudStats'
+
+  /cloud/vod/start:
+    post:
+      tags:
+        - Cloud
+      summary: Start VOD recording
+      description: Start VOD recording to cloud
+      operationId: start_vod_recording
+      responses:
+        '200':
+          description: VOD recording started
+        '400':
+          description: Failed to start recording
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /cloud/vod/stop:
+    post:
+      tags:
+        - Cloud
+      summary: Stop VOD recording
+      description: Stop VOD recording
+      operationId: stop_vod_recording
+      responses:
+        '200':
+          description: VOD recording stopped
+        '400':
+          description: Failed to stop recording
+          content:
+            application/json:
+              schema:
+                type: string
+
+  /cloud/vod/status:
+    get:
+      tags:
+        - Cloud
+      summary: Get VOD status
+      description: Get current VOD recording status
+      operationId: get_vod_status
+      responses:
+        '200':
+          description: VOD status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VODRecordingStatus'
+
+  /analytics/dashboard:
+    get:
+      tags:
+        - Analytics
+      summary: Get analytics dashboard data
+      description: Get all analytics data for dashboard
+      operationId: get_analytics_dashboard
+      responses:
+        '200':
+          description: Dashboard data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsDashboard'
+
+  /analytics/performance:
+    get:
+      tags:
+        - Analytics
+      summary: Get performance metrics
+      description: Get current performance metrics
+      operationId: get_performance_metrics
+      responses:
+        '200':
+          description: Performance metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceMetrics'
+
+  /analytics/viewers:
+    get:
+      tags:
+        - Analytics
+      summary: Get viewer analytics
+      description: Get viewer statistics
+      operationId: get_viewer_analytics
+      responses:
+        '200':
+          description: Viewer analytics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewerAnalytics'
+
+components:
+  schemas:
+    CaptureSourceInfo:
+      type: object
+      required:
+        - id
+        - name
+        - type
+      properties:
+        id:
+          type: string
+          description: Unique source identifier
+        name:
+          type: string
+          description: Source display name
+        type:
+          type: string
+          enum: [screen, window, camera]
+          description: Source type
+
+    CaptureSource:
+      type: object
+      required:
+        - id
+        - name
+        - type
+        - active
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum: [screen, window, camera]
+        active:
+          type: boolean
+
+    CapturePerformanceStats:
+      type: object
+      properties:
+        fps:
+          type: number
+          format: float
+          description: Current FPS
+        bitrate:
+          type: integer
+          description: Current bitrate in kbps
+        dropped_frames:
+          type: integer
+          description: Number of dropped frames
+        cpu_usage:
+          type: number
+          format: float
+          description: CPU usage percentage
+        gpu_usage:
+          type: number
+          format: float
+          description: GPU usage percentage
+
+    CapturePreset:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        fps:
+          type: integer
+        resolution:
+          type: string
+
+    AudioDeviceInfo:
+      type: object
+      required:
+        - id
+        - name
+        - type
+      properties:
+        id:
+          type: string
+          description: Device ID
+        name:
+          type: string
+          description: Device name
+        type:
+          type: string
+          enum: [input, output]
+          description: Device type
+        channels:
+          type: integer
+          description: Number of channels
+
+    AudioTrack:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        device_id:
+          type: string
+        volume:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+        muted:
+          type: boolean
+        solo:
+          type: boolean
+        effects:
+          type: array
+          items:
+            $ref: '#/components/schemas/AudioEffect'
+
+    AudioEffect:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [equalizer, compressor, noise_gate, reverb]
+        parameters:
+          type: object
+
+    AudioPerformanceStats:
+      type: object
+      properties:
+        cpu_usage:
+          type: number
+          format: float
+        latency:
+          type: number
+          format: float
+          description: Latency in milliseconds
+        sample_rate:
+          type: integer
+        channels:
+          type: integer
+
+    GpuInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        vendor:
+          type: string
+          enum: [NVIDIA, AMD, Intel, Apple]
+        vram:
+          type: integer
+          description: VRAM in MB
+        supported_features:
+          type: array
+          items:
+            type: string
+        max_resolution:
+          type: array
+          items:
+            type: integer
+          description: [width, height]
+
+    GpuMemoryUsage:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total memory in MB
+        used:
+          type: integer
+          description: Used memory in MB
+        free:
+          type: integer
+          description: Free memory in MB
+
+    TextureFormat:
+      type: string
+      enum:
+        - R8G8B8A8_UNORM
+        - R8G8B8A8_SRGB
+        - B8G8R8A8_UNORM
+        - B8G8R8A8_SRGB
+        - R16G16B16A16_FLOAT
+
+    Texture:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: uint32
+        width:
+          type: integer
+        height:
+          type: integer
+        format:
+          $ref: '#/components/schemas/TextureFormat'
+
+    Error:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+
+    EncoderInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        vendor:
+          type: string
+          enum: [NVIDIA, AMD, Intel, Apple, Software]
+        supported_codecs:
+          type: array
+          items:
+            type: string
+        max_resolution:
+          type: array
+          items:
+            type: integer
+        max_fps:
+          type: integer
+        hardware_accelerated:
+          type: boolean
+
+    VideoEncodingConfig:
+      type: object
+      properties:
+        encoder:
+          type: string
+        codec:
+          type: string
+          enum: [H264, H265, AV1]
+        preset:
+          type: string
+          enum: [Ultrafast, Superfast, Veryfast, Faster, Fast, Medium, Slow, Slower, Veryslow, Placebo]
+        rate_control:
+          type: string
+          enum: [CBR, VBR, CQP, CRF]
+        bitrate:
+          type: integer
+          description: Bitrate in kbps
+        max_bitrate:
+          type: integer
+        keyframe_interval:
+          type: integer
+        profile:
+          type: string
+        level:
+          type: string
+        b_frames:
+          type: integer
+        reference_frames:
+          type: integer
+        gop_size:
+          type: integer
+        multipass:
+          type: boolean
+        lookahead:
+          type: boolean
+        psycho_visual:
+          type: boolean
+
+    AudioEncodingConfig:
+      type: object
+      properties:
+        codec:
+          type: string
+          enum: [AAC, MP3, OPUS, FLAC]
+        bitrate:
+          type: integer
+          description: Bitrate in kbps
+        sample_rate:
+          type: integer
+        channels:
+          type: integer
+        format:
+          type: string
+
+    EncodingStats:
+      type: object
+      properties:
+        fps:
+          type: number
+          format: float
+        bitrate:
+          type: integer
+        cpu_usage:
+          type: number
+          format: float
+        gpu_usage:
+          type: number
+          format: float
+        encoded_frames:
+          type: integer
+        dropped_frames:
+          type: integer
+        average_frame_time:
+          type: number
+          format: float
+          description: Average frame time in ms
+        encoding_time:
+          type: integer
+          description: Total encoding time in ms
+
+    StreamingPlatformConfig:
+      type: object
+      properties:
+        platform:
+          type: string
+        name:
+          type: string
+        rtmp_url:
+          type: string
+        stream_key:
+          type: string
+        backup_url:
+          type: string
+          nullable: true
+        max_bitrate:
+          type: integer
+        recommended_bitrate:
+          type: integer
+        supported_codecs:
+          type: array
+          items:
+            type: string
+        supports_srt:
+          type: boolean
+
+    StreamingConfig:
+      type: object
+      properties:
+        platform:
+          $ref: '#/components/schemas/StreamingPlatformConfig'
+        protocol:
+          type: string
+          enum: [RTMP, RTMPS, SRT, WebRTC, HLS, DASH]
+        video_bitrate:
+          type: integer
+        audio_bitrate:
+          type: integer
+        keyframe_interval:
+          type: integer
+        enable_low_latency:
+          type: boolean
+        enable_adaptive_bitrate:
+          type: boolean
+        srt_config:
+          type: object
+          nullable: true
+
+    StreamingStats:
+      type: object
+      properties:
+        is_streaming:
+          type: boolean
+        duration:
+          type: integer
+          description: Duration in seconds
+        bytes_sent:
+          type: integer
+        bitrate:
+          type: integer
+        fps:
+          type: number
+          format: float
+        dropped_frames:
+          type: integer
+        total_frames:
+          type: integer
+        cpu_usage:
+          type: number
+          format: float
+        gpu_usage:
+          type: number
+          format: float
+        network_latency:
+          type: integer
+          description: Latency in ms
+        buffer_health:
+          type: number
+          format: float
+          description: Buffer health percentage
+        reconnect_count:
+          type: integer
+
+    MultistreamTarget:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        platform:
+          type: string
+        rtmp_url:
+          type: string
+        stream_key:
+          type: string
+        enabled:
+          type: boolean
+        status:
+          type: string
+          enum: [active, inactive, error]
+
+    ModelInfo:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum: [VRM, Live2D]
+        file_path:
+          type: string
+        vertex_count:
+          type: integer
+        texture_count:
+          type: integer
+
+    FaceTrackingData:
+      type: object
+      properties:
+        head_rotation:
+          type: object
+          properties:
+            pitch:
+              type: number
+              format: float
+            yaw:
+              type: number
+              format: float
+            roll:
+              type: number
+              format: float
+        head_position:
+          type: object
+          properties:
+            x:
+              type: number
+              format: float
+            y:
+              type: number
+              format: float
+            z:
+              type: number
+              format: float
+        eye_gaze:
+          type: object
+          properties:
+            x:
+              type: number
+              format: float
+            y:
+              type: number
+              format: float
+        mouth_open:
+          type: number
+          format: float
+          description: Mouth openness (0.0-1.0)
+        confidence:
+          type: number
+          format: float
+          description: Tracking confidence (0.0-1.0)
+
+    CloudStats:
+      type: object
+      properties:
+        connected:
+          type: boolean
+        provider:
+          type: string
+        uptime:
+          type: integer
+          description: Uptime in seconds
+        bytes_transferred:
+          type: integer
+        active_streams:
+          type: integer
+        recordings_count:
+          type: integer
+        storage_used_gb:
+          type: number
+          format: float
+        api_calls_count:
+          type: integer
+
+    VODRecordingConfig:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        provider:
+          type: string
+        storage_location:
+          type: string
+        format:
+          type: string
+          enum: [MP4, MKV, MOV, FLV]
+        quality:
+          type: string
+          enum: [Original, High, Medium, Low]
+        auto_upload:
+          type: boolean
+        local_backup:
+          type: boolean
+        local_path:
+          type: string
+          nullable: true
+        max_storage_gb:
+          type: integer
+          nullable: true
+
+    VODRecordingStatus:
+      type: object
+      properties:
+        is_recording:
+          type: boolean
+        duration:
+          type: integer
+          description: Recording duration in seconds
+        file_size:
+          type: integer
+          description: File size in bytes
+        file_path:
+          type: string
+          nullable: true
+        upload_progress:
+          type: number
+          format: float
+          description: Upload progress (0.0-1.0)
+        upload_status:
+          type: string
+          enum: [Disconnected, Uploading, Complete, Error]
+
+    AnalyticsDashboard:
+      type: object
+      properties:
+        performance_metrics:
+          $ref: '#/components/schemas/PerformanceMetrics'
+        viewer_analytics:
+          $ref: '#/components/schemas/ViewerAnalytics'
+        viewer_history:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: integer
+                format: int64
+              count:
+                type: integer
+        performance_history:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: integer
+                format: int64
+              cpu:
+                type: number
+              gpu:
+                type: number
+              fps:
+                type: number
+              bitrate:
+                type: integer
+        stream_health_history:
+          type: array
+          items:
+            type: object
+            properties:
+              timestamp:
+                type: integer
+                format: int64
+              score:
+                type: number
+
+    PerformanceMetrics:
+      type: object
+      properties:
+        cpu_efficiency:
+          type: number
+          format: float
+          description: CPU efficiency score (0-100)
+        gpu_efficiency:
+          type: number
+          format: float
+          description: GPU efficiency score (0-100)
+        network_quality_score:
+          type: number
+          format: float
+          description: Network quality score (0-100)
+        stream_health_score:
+          type: number
+          format: float
+          description: Stream health score (0-100)
+        frame_time:
+          type: number
+          format: float
+          description: Average frame time in ms
+        dropped_frame_rate:
+          type: number
+          format: float
+          description: Dropped frame rate percentage
+
+    ViewerAnalytics:
+      type: object
+      properties:
+        current_viewers:
+          type: integer
+        peak_viewers:
+          type: integer
+        average_viewers:
+          type: number
+          format: float
+        total_unique_viewers:
+          type: integer
+        new_viewers:
+          type: integer
+        returning_viewers:
+          type: integer
+        watch_time:
+          type: integer
+          description: Total watch time in minutes
+        average_watch_time:
+          type: number
+          format: float
+          description: Average watch time in minutes

@@ -37,9 +37,12 @@
 - [x] Naprawić CI/CD workflows ✅ (zmiana repo na public)
 - [x] Zamknąć Issue #1 (rozwiązany)
 - [x] Utworzyć release v0.1.1
+- [x] Dodać testy do modułów Rust (analytics, streaming, vtuber, plugin)
+- [ ] Dodać testy do pozostałych modułów (audio, capture, encoding, gpu)
+- [ ] Dodać testy do komponentów React
 
 ---
-**Status:** ✅ Wszystkie zadania zakończone!
+**Status:** 🔄 W trakcie dodawania testów
 **Ostatnia aktualizacja:** 2026-03-04
 **Utworzone Issues:** #1 (zamknięte), #2, #3, #4, #5
 **Repository:** Public

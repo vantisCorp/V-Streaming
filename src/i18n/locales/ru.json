@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "V-Streaming",
+    "version": "v0.1.0"
+  },
+  "header": {
+    "simpleMode": "Простой",
+    "expertMode": "Эксперт"
+  },
+  "theme": {
+    "light": "Светлая",
+    "dark": "Тёмная",
+    "auto": "Авто"
+  },
+  "tabs": {
+    "capture": "Захват",
+    "audio": "Аудио",
+    "composition": "Композиция",
+    "vtuber": "VTuber",
+    "encoding": "Кодирование",
+    "streaming": "Стриминг",
+    "cloud": "Облако"
+  },
+  "capture": {
+    "title": "Источники Захвата",
+    "startCapture": "Начать Захват",
+    "stopCapture": "Остановить Захват",
+    "fps": "FPS",
+    "bitrate": "Битрейт",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "kbps": "kbps"
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Ошибка",
+    "success": "Успех"
+  }
+}

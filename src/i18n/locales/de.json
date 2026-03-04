@@ -1,0 +1,52 @@
+{
+  "app": {
+    "title": "V-Streaming",
+    "version": "v0.1.0"
+  },
+  "header": {
+    "simpleMode": "Einfach",
+    "expertMode": "Experte"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "auto": "Auto"
+  },
+  "tabs": {
+    "capture": "Aufnahme",
+    "audio": "Audio",
+    "composition": "Komposition",
+    "vtuber": "VTuber",
+    "encoding": "Kodierung",
+    "streaming": "Streaming",
+    "cloud": "Cloud"
+  },
+  "capture": {
+    "title": "Aufnahmequellen",
+    "startCapture": "Aufnahme starten",
+    "stopCapture": "Aufnahme stoppen",
+    "fps": "FPS",
+    "bitrate": "Bitrate",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "kbps": "kbps",
+    "gpuInfo": {
+      "title": "GPU-Informationen",
+      "name": "Name",
+      "vendor": "Hersteller",
+      "vram": "VRAM",
+      "mb": "MB"
+    }
+  },
+  "audio": {
+    "title": "Audiomixer",
+    "masterVolume": "Gesamtlautstärke",
+    "mute": "Stumm",
+    "unmute": "Ton einschalten"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg"
+  }
+}

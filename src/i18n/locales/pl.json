@@ -1,0 +1,237 @@
+{
+  "app": {
+    "title": "V-Streaming",
+    "version": "v0.1.0"
+  },
+  "header": {
+    "simpleMode": "Prosty",
+    "expertMode": "Ekspert"
+  },
+  "theme": {
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "auto": "Auto"
+  },
+  "tabs": {
+    "capture": "Przechwytywanie",
+    "audio": "Audio",
+    "composition": "Kompozycja",
+    "vtuber": "VTuber",
+    "encoding": "Kodowanie",
+    "streaming": "Transmisja",
+    "cloud": "Chmura"
+  },
+  "capture": {
+    "title": "Źródła Przechwytywania",
+    "startCapture": "Rozpocznij Przechwytywanie",
+    "stopCapture": "Zatrzymaj Przechwytywanie",
+    "fps": "FPS",
+    "bitrate": "Przepustowość",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "kbps": "kbps",
+    "gpuInfo": {
+      "title": "Informacje o GPU",
+      "name": "Nazwa",
+      "vendor": "Producent",
+      "vram": "VRAM",
+      "mb": "MB"
+    }
+  },
+  "audio": {
+    "title": "Mikser Audio",
+    "masterVolume": "Głośność Główna",
+    "mute": "Wycisz",
+    "unmute": "Włącz dźwięk"
+  },
+  "composition": {
+    "title": "Kompozycja Sceny",
+    "active": "Aktywna",
+    "inactive": "Nieaktywna",
+    "layers": "Warstwy",
+    "layerName": "Nazwa Warstwy",
+    "layerType": "Typ",
+    "visible": "Widoczna",
+    "hidden": "Ukryta",
+    "locked": "Zablokowana",
+    "unlocked": "Odblokowana"
+  },
+  "vtuber": {
+    "title": "Silnik VTuber",
+    "modelLoaded": "Model Załadowany",
+    "noModel": "Brak załadowanego modelu",
+    "loadVrm": "Załaduj Model VRM",
+    "loadLive2D": "Załaduj Model Live2D",
+    "faceTracking": "Śledzenie Twarzy",
+    "startTracking": "Rozpocznij Śledzenie",
+    "stopTracking": "Zatrzymaj Śledzenie",
+    "model": {
+      "name": "Nazwa",
+      "type": "Typ",
+      "file": "Plik"
+    },
+    "tracking": {
+      "headRotation": "Obrót Głowy",
+      "headPosition": "Pozycja Głowy",
+      "mouthOpen": "Otwarcie Ust",
+      "confidence": "Pewność",
+      "pitch": "P",
+      "yaw": "Y",
+      "roll": "R",
+      "x": "X",
+      "y": "Y",
+      "z": "Z"
+    }
+  },
+  "encoding": {
+    "title": "Ustawienia Kodowania",
+    "encoder": "Koder",
+    "codec": "Kodek",
+    "preset": "Profil",
+    "rateControl": "Sterowanie Prędkością",
+    "bitrate": "Przepustowość (kbps)",
+    "keyframeInterval": "Interwał Keyframe",
+    "bFrames": "Klatki B",
+    "lookahead": "Lookahead",
+    "psychoVisual": "Optymalizacje Psycho-Wizualne",
+    "startEncoding": "Rozpocznij Kodowanie",
+    "stopEncoding": "Zatrzymaj Kodowanie",
+    "stats": {
+      "title": "Statystyki Kodowania",
+      "encodedFrames": "Zakodowane Klatki",
+      "droppedFrames": "Utracone Klatki",
+      "averageFrameTime": "Średni Czas Klatki",
+      "encodingTime": "Czas Kodowania"
+    },
+    "codecs": {
+      "h264": "H.264",
+      "h265": "H.265/HEVC",
+      "av1": "AV1"
+    },
+    "presets": {
+      "ultrafast": "Najszybszy",
+      "superfast": "Bardzo szybki",
+      "veryfast": "Szybki",
+      "faster": "Szybszy",
+      "fast": "Szybki",
+      "medium": "Średni",
+      "slow": "Wolny",
+      "slower": "Wolniejszy",
+      "veryslow": "Bardzo wolny",
+      "placebo": "Maksymalna jakość"
+    },
+    "rateControls": {
+      "cbr": "CBR (Stała Przepustowość)",
+      "vbr": "VBR (Zmienna Przepustowość)",
+      "cqp": "CQP (Stała Kwantyzacja)",
+      "crf": "CRF (Stały Współczynnik Prędkości)"
+    }
+  },
+  "streaming": {
+    "title": "Ustawienia Transmisji",
+    "platform": "Platforma",
+    "rtmpUrl": "URL RTMP",
+    "streamKey": "Klucz Transmisji",
+    "protocol": "Protokół",
+    "videoBitrate": "Przepustowość Wideo (kbps)",
+    "audioBitrate": "Przepustowość Audio (kbps)",
+    "lowLatency": "Tryb Niskiego Opóźnienia",
+    "adaptiveBitrate": "Adaptacyjna Przepustowość",
+    "startStreaming": "Rozpocznij Transmisję",
+    "stopStreaming": "Zatrzymaj Transmisję",
+    "stats": {
+      "title": "Statystyki Transmisji",
+      "status": "Status",
+      "live": "Na żywo",
+      "offline": "Offline",
+      "duration": "Czas trwania",
+      "networkLatency": "Opóźnienie Sieci",
+      "ms": "ms",
+      "bufferHealth": "Stan Bufora",
+      "reconnects": "Ponowne połączenia"
+    },
+    "multistreaming": {
+      "title": "Multistreaming",
+      "enable": "Włącz Multistreaming",
+      "addTarget": "Dodaj Cel",
+      "enabled": "Włączony",
+      "disabled": "Wyłączony",
+      "edit": "Edytuj",
+      "remove": "Usuń"
+    },
+    "protocols": {
+      "rtmp": "RTMP",
+      "rtps": "RTMPS",
+      "srt": "SRT",
+      "webrtc": "WebRTC",
+      "hls": "HLS",
+      "dash": "DASH"
+    }
+  },
+  "cloud": {
+    "title": "Usługi Chmurowe",
+    "connection": {
+      "title": "Status Połączenia",
+      "connected": "Połączono",
+      "disconnected": "Rozłączono",
+      "connect": "Połącz z Chmurą",
+      "disconnect": "Rozłącz"
+    },
+    "stats": {
+      "title": "Statystyki Chmury",
+      "provider": "Dostawca",
+      "uptime": "Czas pracy",
+      "hours": "godz",
+      "bytesTransferred": "Przesłane Bajty",
+      "mb": "MB",
+      "activeStreams": "Aktywne Transmisje",
+      "recordings": "Nagrania",
+      "storageUsed": "Zużycie Pamięci",
+      "gb": "GB"
+    },
+    "vod": {
+      "title": "Nagrywanie VOD",
+      "enable": "Włącz Nagrywanie VOD",
+      "format": "Format",
+      "quality": "Jakość",
+      "autoUpload": "Automatyczne Przesyłanie do Chmury",
+      "localBackup": "Zachowaj Lokalną Kopię Zapasową",
+      "startRecording": "Rozpocznij Nagrywanie",
+      "stopRecording": "Zatrzymaj Nagrywanie",
+      "status": {
+        "duration": "Czas trwania",
+        "fileSize": "Rozmiar Pliku"
+      },
+      "formats": {
+        "mp4": "MP4",
+        "mkv": "MKV",
+        "mov": "MOV",
+        "flv": "FLV"
+      },
+      "qualities": {
+        "original": "Oryginalna",
+        "high": "Wysoka",
+        "medium": "Średnia",
+        "low": "Niska"
+      }
+    }
+  },
+  "common": {
+    "loading": "Ładowanie...",
+    "error": "Błąd",
+    "success": "Sukces",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "apply": "Zastosuj",
+    "reset": "Resetuj",
+    "auto": "Auto"
+  },
+  "errors": {
+    "captureFailed": "Nie udało się uruchomić przechwytywania",
+    "encodingFailed": "Nie udało się uruchomić kodowania",
+    "streamingFailed": "Nie udało się uruchomić transmisji",
+    "recordingFailed": "Nie udało się uruchomić nagrywania",
+    "gpuInfoFailed": "Nie udało się pobrać informacji o GPU",
+    "encodersFailed": "Nie udało się pobrać dostępnych koderów"
+  }
+}

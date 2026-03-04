@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "V-Streaming",
+    "version": "v0.1.0"
+  },
+  "header": {
+    "simpleMode": "간단",
+    "expertMode": "전문가"
+  },
+  "theme": {
+    "light": "라이트",
+    "dark": "다크",
+    "auto": "자동"
+  },
+  "tabs": {
+    "capture": "캡처",
+    "audio": "오디오",
+    "composition": "컴포지션",
+    "vtuber": "VTuber",
+    "encoding": "인코딩",
+    "streaming": "스트리밍",
+    "cloud": "클라우드"
+  },
+  "capture": {
+    "title": "캡처 소스",
+    "startCapture": "캡처 시작",
+    "stopCapture": "캡처 중지",
+    "fps": "FPS",
+    "bitrate": "비트레이트",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "kbps": "kbps"
+  },
+  "common": {
+    "loading": "로딩...",
+    "error": "오류",
+    "success": "성공"
+  }
+}

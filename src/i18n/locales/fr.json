@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "V-Streaming",
+    "version": "v0.1.0"
+  },
+  "header": {
+    "simpleMode": "Simple",
+    "expertMode": "Expert"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "auto": "Auto"
+  },
+  "tabs": {
+    "capture": "Capture",
+    "audio": "Audio",
+    "composition": "Composition",
+    "vtuber": "VTuber",
+    "encoding": "Encodage",
+    "streaming": "Streaming",
+    "cloud": "Cloud"
+  },
+  "capture": {
+    "title": "Sources de Capture",
+    "startCapture": "Démarrer la Capture",
+    "stopCapture": "Arrêter la Capture",
+    "fps": "FPS",
+    "bitrate": "Bitrate",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "kbps": "kbps"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès"
+  }
+}

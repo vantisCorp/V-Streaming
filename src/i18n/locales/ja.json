@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "V-Streaming",
+    "version": "v0.1.0"
+  },
+  "header": {
+    "simpleMode": "シンプル",
+    "expertMode": "エキスパート"
+  },
+  "theme": {
+    "light": "ライト",
+    "dark": "ダーク",
+    "auto": "自動"
+  },
+  "tabs": {
+    "capture": "キャプチャ",
+    "audio": "オーディオ",
+    "composition": "コンポジション",
+    "vtuber": "VTuber",
+    "encoding": "エンコード",
+    "streaming": "ストリーミング",
+    "cloud": "クラウド"
+  },
+  "capture": {
+    "title": "キャプチャソース",
+    "startCapture": "キャプチャ開始",
+    "stopCapture": "キャプチャ停止",
+    "fps": "FPS",
+    "bitrate": "ビットレート",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "kbps": "kbps"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラー",
+    "success": "成功"
+  }
+}

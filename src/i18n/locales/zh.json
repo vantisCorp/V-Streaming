@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "V-Streaming",
+    "version": "v0.1.0"
+  },
+  "header": {
+    "simpleMode": "简单",
+    "expertMode": "专家"
+  },
+  "theme": {
+    "light": "浅色",
+    "dark": "深色",
+    "auto": "自动"
+  },
+  "tabs": {
+    "capture": "采集",
+    "audio": "音频",
+    "composition": "合成",
+    "vtuber": "VTuber",
+    "encoding": "编码",
+    "streaming": "直播",
+    "cloud": "云"
+  },
+  "capture": {
+    "title": "采集源",
+    "startCapture": "开始采集",
+    "stopCapture": "停止采集",
+    "fps": "FPS",
+    "bitrate": "码率",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "kbps": "kbps"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功"
+  }
+}

@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from './components/LanguageSwitcher';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -230,13 +232,15 @@ interface Theme {
 // ============================================================================
 
 function App() {
+  const { t } = useTranslation();
+  
   // State
   const [activeTab, setActiveTab] = useState('Capture');
   const [interfaceMode, setInterfaceMode] = useState<'Simple' | 'Expert'>('Simple');
   const [theme, setTheme] = useState<'Light' | 'Dark' | 'Auto'>('Dark');
 
   // Capture state
-  const [captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
+  const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
   const [isCapturing, setIsCapturing] = useState(false);
   const [captureStats, setCaptureStats] = useState<CaptureStats>({
     fps: 0,
@@ -525,9 +529,9 @@ function App() {
   // ============================================================================
 
   const getTabs = () => {
-    const tabs = ['Capture', 'Audio'];
+    const tabs = [t('tabs.capture'), t('tabs.audio')];
     if (interfaceMode === 'Expert') {
-      tabs.push('Composition', 'VTuber', 'Encoding', 'Streaming', 'Cloud');
+      tabs.push(t('tabs.composition'), t('tabs.vtuber'), t('tabs.encoding'), t('tabs.streaming'), t('tabs.cloud'));
     }
     return tabs;
   };
@@ -537,8 +541,8 @@ function App() {
       {/* Header */}
       <header className="header">
         <div className="header-left">
-          <h1>V-Streaming</h1>
-          <span className="version">v0.1.0</span>
+          <h1>{t('app.title')}</h1>
+          <span className="version">{t('app.version')}</span>
         </div>
         <div className="header-center">
           <div className="mode-switcher">
@@ -546,17 +550,18 @@ function App() {
               className={`mode-btn ${interfaceMode === 'Simple' ? 'active' : ''}`}
               onClick={() => setInterfaceMode('Simple')}
             >
-              Simple
+              {t('header.simpleMode')}
             </button>
             <button
               className={`mode-btn ${interfaceMode === 'Expert' ? 'active' : ''}`}
               onClick={() => setInterfaceMode('Expert')}
             >
-              Expert
+              {t('header.expertMode')}
             </button>
           </div>
         </div>
         <div className="header-right">
+          <LanguageSwitcher />
           <div className="theme-switcher">
             <button
               className={`theme-btn ${theme === 'Light' ? 'active' : ''}`}
@@ -596,53 +601,53 @@ function App() {
       {/* Main Content */}
       <main className="main-content">
         {/* Capture Tab */}
-        {activeTab === 'Capture' && (
+        {activeTab === t('tabs.capture') && (
           <div className="tab-content">
-            <h2>Capture Sources</h2>
+            <h2>{t('capture.title')}</h2>
             <div className="capture-controls">
               <button
                 className={`btn ${isCapturing ? 'btn-danger' : 'btn-primary'}`}
                 onClick={isCapturing ? handleStopCapture : handleStartCapture}
               >
-                {isCapturing ? 'Stop Capture' : 'Start Capture'}
+                {isCapturing ? t('capture.stopCapture') : t('capture.startCapture')}
               </button>
             </div>
             <div className="stats-grid">
               <div className="stat-card">
-                <h3>FPS</h3>
+                <h3>{t('capture.fps')}</h3>
                 <p className="stat-value">{captureStats.fps.toFixed(1)}</p>
               </div>
               <div className="stat-card">
-                <h3>Bitrate</h3>
-                <p className="stat-value">{captureStats.bitrate} kbps</p>
+                <h3>{t('capture.bitrate')}</h3>
+                <p className="stat-value">{captureStats.bitrate} {t('capture.kbps')}</p>
               </div>
               <div className="stat-card">
-                <h3>CPU</h3>
+                <h3>{t('capture.cpu')}</h3>
                 <p className="stat-value">{captureStats.cpu_usage.toFixed(1)}%</p>
               </div>
               <div className="stat-card">
-                <h3>GPU</h3>
+                <h3>{t('capture.gpu')}</h3>
                 <p className="stat-value">{captureStats.gpu_usage.toFixed(1)}%</p>
               </div>
             </div>
             {gpuInfo && (
               <div className="gpu-info">
-                <h3>GPU Information</h3>
-                <p><strong>Name:</strong> {gpuInfo.name}</p>
-                <p><strong>Vendor:</strong> {gpuInfo.vendor}</p>
-                <p><strong>VRAM:</strong> {gpuInfo.vram} MB</p>
+                <h3>{t('capture.gpuInfo.title')}</h3>
+                <p><strong>{t('capture.gpuInfo.name')}:</strong> {gpuInfo.name}</p>
+                <p><strong>{t('capture.gpuInfo.vendor')}:</strong> {gpuInfo.vendor}</p>
+                <p><strong>{t('capture.gpuInfo.vram')}:</strong> {gpuInfo.vram} {t('capture.gpuInfo.mb')}</p>
               </div>
             )}
           </div>
         )}
 
         {/* Audio Tab */}
-        {activeTab === 'Audio' && (
+        {activeTab === t('tabs.audio') && (
           <div className="tab-content">
-            <h2>Audio Mixer</h2>
+            <h2>{t('audio.title')}</h2>
             <div className="audio-controls">
               <div className="master-volume">
-                <label>Master Volume</label>
+                <label>{t('audio.masterVolume')}</label>
                 <input
                   type="range"
                   min="0"
@@ -688,19 +693,19 @@ function App() {
         )}
 
         {/* Composition Tab */}
-        {activeTab === 'Composition' && (
+        {activeTab === t('tabs.composition') && (
           <div className="tab-content">
-            <h2>Scene Composition</h2>
+            <h2>{t('composition.title')}</h2>
             <div className="scenes-grid">
               {scenes.map((scene) => (
                 <div key={scene.id} className={`scene-card ${scene.active ? 'active' : ''}`}>
                   <h4>{scene.name}</h4>
-                  <span className="status">{scene.active ? 'Active' : 'Inactive'}</span>
+                  <span className="status">{scene.active ? t('composition.active') : t('composition.inactive')}</span>
                 </div>
               ))}
             </div>
             <div className="layers-list">
-              <h3>Layers</h3>
+              <h3>{t('composition.layers')}</h3>
               {layers.map((layer) => (
                 <div key={layer.id} className="layer-item">
                   <span className="layer-name">{layer.name}</span>
@@ -722,47 +727,47 @@ function App() {
         )}
 
         {/* VTuber Tab */}
-        {activeTab === 'VTuber' && (
+        {activeTab === t('tabs.vtuber') && (
           <div className="tab-content">
-            <h2>VTubing Engine</h2>
+            <h2>{t('vtuber.title')}</h2>
             {modelInfo ? (
               <div className="model-info">
-                <h3>Model Loaded</h3>
-                <p><strong>Name:</strong> {modelInfo.name}</p>
-                <p><strong>Type:</strong> {modelInfo.type}</p>
-                <p><strong>File:</strong> {modelInfo.file_path}</p>
+                <h3>{t('vtuber.modelLoaded')}</h3>
+                <p><strong>{t('vtuber.model.name')}:</strong> {modelInfo.name}</p>
+                <p><strong>{t('vtuber.model.type')}:</strong> {modelInfo.type}</p>
+                <p><strong>{t('vtuber.model.file')}:</strong> {modelInfo.file_path}</p>
               </div>
             ) : (
               <div className="no-model">
-                <p>No model loaded</p>
-                <button className="btn btn-primary">Load VRM Model</button>
-                <button className="btn btn-primary">Load Live2D Model</button>
+                <p>{t('vtuber.noModel')}</p>
+                <button className="btn btn-primary">{t('vtuber.loadVrm')}</button>
+                <button className="btn btn-primary">{t('vtuber.loadLive2D')}</button>
               </div>
             )}
             <div className="face-tracking">
-              <h3>Face Tracking</h3>
+              <h3>{t('vtuber.faceTracking')}</h3>
               <button
                 className={`btn ${isFaceTrackingActive ? 'btn-danger' : 'btn-primary'}`}
               >
-                {isFaceTrackingActive ? 'Stop Tracking' : 'Start Tracking'}
+                {isFaceTrackingActive ? t('vtuber.stopTracking') : t('vtuber.startTracking')}
               </button>
               <div className="tracking-data">
-                <p><strong>Head Rotation:</strong> P:{faceTrackingData.head_rotation.pitch.toFixed(2)} Y:{faceTrackingData.head_rotation.yaw.toFixed(2)} R:{faceTrackingData.head_rotation.roll.toFixed(2)}</p>
-                <p><strong>Head Position:</strong> X:{faceTrackingData.head_position.x.toFixed(2)} Y:{faceTrackingData.head_position.y.toFixed(2)} Z:{faceTrackingData.head_position.z.toFixed(2)}</p>
-                <p><strong>Mouth Open:</strong> {faceTrackingData.mouth_open.toFixed(2)}</p>
-                <p><strong>Confidence:</strong> {(faceTrackingData.confidence * 100).toFixed(1)}%</p>
+                <p><strong>{t('vtuber.tracking.headRotation')}:</strong> {t('vtuber.tracking.pitch')}:{faceTrackingData.head_rotation.pitch.toFixed(2)} {t('vtuber.tracking.yaw')}:{faceTrackingData.head_rotation.yaw.toFixed(2)} {t('vtuber.tracking.roll')}:{faceTrackingData.head_rotation.roll.toFixed(2)}</p>
+                <p><strong>{t('vtuber.tracking.headPosition')}:</strong> {t('vtuber.tracking.x')}:{faceTrackingData.head_position.x.toFixed(2)} {t('vtuber.tracking.y')}:{faceTrackingData.head_position.y.toFixed(2)} {t('vtuber.tracking.z')}:{faceTrackingData.head_position.z.toFixed(2)}</p>
+                <p><strong>{t('vtuber.tracking.mouthOpen')}:</strong> {faceTrackingData.mouth_open.toFixed(2)}</p>
+                <p><strong>{t('vtuber.tracking.confidence')}:</strong> {(faceTrackingData.confidence * 100).toFixed(1)}%</p>
               </div>
             </div>
           </div>
         )}
 
         {/* Encoding Tab */}
-        {activeTab === 'Encoding' && (
+        {activeTab === t('tabs.encoding') && (
           <div className="tab-content">
-            <h2>Encoding Settings</h2>
+            <h2>{t('encoding.title')}</h2>
             <div className="encoding-controls">
               <div className="control-group">
-                <label>Encoder</label>
+                <label>{t('encoding.encoder')}</label>
                 <select
                   value={videoConfig.encoder}
                   onChange={(e) => setVideoConfig({ ...videoConfig, encoder: e.target.value })}
@@ -775,59 +780,59 @@ function App() {
                 </select>
               </div>
               <div className="control-group">
-                <label>Codec</label>
+                <label>{t('encoding.codec')}</label>
                 <select
                   value={videoConfig.codec}
                   onChange={(e) => setVideoConfig({ ...videoConfig, codec: e.target.value })}
                 >
-                  <option value="H264">H.264</option>
-                  <option value="H265">H.265/HEVC</option>
-                  <option value="AV1">AV1</option>
+                  <option value="H264">{t('encoding.codecs.h264')}</option>
+                  <option value="H265">{t('encoding.codecs.h265')}</option>
+                  <option value="AV1">{t('encoding.codecs.av1')}</option>
                 </select>
               </div>
               <div className="control-group">
-                <label>Preset</label>
+                <label>{t('encoding.preset')}</label>
                 <select
                   value={videoConfig.preset}
                   onChange={(e) => setVideoConfig({ ...videoConfig, preset: e.target.value })}
                 >
-                  <option value="Ultrafast">Ultrafast</option>
-                  <option value="Superfast">Superfast</option>
-                  <option value="Veryfast">Veryfast</option>
-                  <option value="Faster">Faster</option>
-                  <option value="Fast">Fast</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Slow">Slow</option>
-                  <option value="Slower">Slower</option>
-                  <option value="Veryslow">Veryslow</option>
-                  <option value="Placebo">Placebo</option>
+                  <option value="Ultrafast">{t('encoding.presets.ultrafast')}</option>
+                  <option value="Superfast">{t('encoding.presets.superfast')}</option>
+                  <option value="Veryfast">{t('encoding.presets.veryfast')}</option>
+                  <option value="Faster">{t('encoding.presets.faster')}</option>
+                  <option value="Fast">{t('encoding.presets.fast')}</option>
+                  <option value="Medium">{t('encoding.presets.medium')}</option>
+                  <option value="Slow">{t('encoding.presets.slow')}</option>
+                  <option value="Slower">{t('encoding.presets.slower')}</option>
+                  <option value="Veryslow">{t('encoding.presets.veryslow')}</option>
+                  <option value="Placebo">{t('encoding.presets.placebo')}</option>
                 </select>
               </div>
               <div className="control-group">
-                <label>Rate Control</label>
+                <label>{t('encoding.rateControl')}</label>
                 <select
                   value={videoConfig.rate_control}
                   onChange={(e) => setVideoConfig({ ...videoConfig, rate_control: e.target.value })}
                 >
-                  <option value="CBR">CBR (Constant Bitrate)</option>
-                  <option value="VBR">VBR (Variable Bitrate)</option>
-                  <option value="CQP">CQP (Constant Quantization)</option>
-                  <option value="CRF">CRF (Constant Rate Factor)</option>
+                  <option value="CBR">{t('encoding.rateControls.cbr')}</option>
+                  <option value="VBR">{t('encoding.rateControls.vbr')}</option>
+                  <option value="CQP">{t('encoding.rateControls.cqp')}</option>
+                  <option value="CRF">{t('encoding.rateControls.crf')}</option>
                 </select>
               </div>
               <div className="control-group">
-                <label>Bitrate (kbps)</label>
+                <label>{t('encoding.bitrate')}</label>
                 <input
                   type="number"
                   value={videoConfig.bitrate}
                   onChange={(e) => setVideoConfig({ ...videoConfig, bitrate: Number(e.target.value) })}
                 />
                 <button className="btn btn-secondary" onClick={handleGetRecommendedBitrate}>
-                  Auto
+                  {t('common.auto')}
                 </button>
               </div>
               <div className="control-group">
-                <label>Keyframe Interval</label>
+                <label>{t('encoding.keyframeInterval')}</label>
                 <input
                   type="number"
                   value={videoConfig.keyframe_interval}
@@ -835,7 +840,7 @@ function App() {
                 />
               </div>
               <div className="control-group">
-                <label>B-Frames</label>
+                <label>{t('encoding.bFrames')}</label>
                 <input
                   type="number"
                   min="0"
@@ -851,7 +856,7 @@ function App() {
                     checked={videoConfig.lookahead}
                     onChange={(e) => setVideoConfig({ ...videoConfig, lookahead: e.target.checked })}
                   />
-                  Lookahead
+                  {t('encoding.lookahead')}
                 </label>
               </div>
               <div className="control-group checkbox">
@@ -861,7 +866,7 @@ function App() {
                     checked={videoConfig.psycho_visual}
                     onChange={(e) => setVideoConfig({ ...videoConfig, psycho_visual: e.target.checked })}
                   />
-                  Psycho-Visual Optimizations
+                  {t('encoding.psychoVisual')}
                 </label>
               </div>
             </div>
@@ -870,34 +875,34 @@ function App() {
                 className={`btn ${isEncodingActive ? 'btn-danger' : 'btn-primary'}`}
                 onClick={isEncodingActive ? handleStopEncoding : handleStartEncoding}
               >
-                {isEncodingActive ? 'Stop Encoding' : 'Start Encoding'}
+                {isEncodingActive ? t('encoding.stopEncoding') : t('encoding.startEncoding')}
               </button>
             </div>
             <div className="encoding-stats">
-              <h3>Encoding Statistics</h3>
+              <h3>{t('encoding.stats.title')}</h3>
               <div className="stats-grid">
                 <div className="stat-card">
-                  <h3>FPS</h3>
+                  <h3>{t('capture.fps')}</h3>
                   <p className="stat-value">{encodingStats.fps.toFixed(1)}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Bitrate</h3>
-                  <p className="stat-value">{encodingStats.bitrate} kbps</p>
+                  <h3>{t('capture.bitrate')}</h3>
+                  <p className="stat-value">{encodingStats.bitrate} {t('capture.kbps')}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>CPU</h3>
+                  <h3>{t('capture.cpu')}</h3>
                   <p className="stat-value">{encodingStats.cpu_usage.toFixed(1)}%</p>
                 </div>
                 <div className="stat-card">
-                  <h3>GPU</h3>
+                  <h3>{t('capture.gpu')}</h3>
                   <p className="stat-value">{encodingStats.gpu_usage.toFixed(1)}%</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Encoded Frames</h3>
+                  <h3>{t('encoding.stats.encodedFrames')}</h3>
                   <p className="stat-value">{encodingStats.encoded_frames}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Dropped Frames</h3>
+                  <h3>{t('encoding.stats.droppedFrames')}</h3>
                   <p className="stat-value">{encodingStats.dropped_frames}</p>
                 </div>
               </div>
@@ -906,12 +911,12 @@ function App() {
         )}
 
         {/* Streaming Tab */}
-        {activeTab === 'Streaming' && (
+        {activeTab === t('tabs.streaming') && (
           <div className="tab-content">
-            <h2>Streaming Settings</h2>
+            <h2>{t('streaming.title')}</h2>
             <div className="streaming-controls">
               <div className="control-group">
-                <label>Platform</label>
+                <label>{t('streaming.platform')}</label>
                 <select
                   value={streamingConfig.platform.platform}
                   onChange={(e) => handlePlatformChange(e.target.value)}
@@ -927,7 +932,7 @@ function App() {
                 </select>
               </div>
               <div className="control-group">
-                <label>RTMP URL</label>
+                <label>{t('streaming.rtmpUrl')}</label>
                 <input
                   type="text"
                   value={streamingConfig.platform.rtmp_url}
@@ -938,7 +943,7 @@ function App() {
                 />
               </div>
               <div className="control-group">
-                <label>Stream Key</label>
+                <label>{t('streaming.streamKey')}</label>
                 <input
                   type="password"
                   value={streamingConfig.platform.stream_key}
@@ -949,21 +954,21 @@ function App() {
                 />
               </div>
               <div className="control-group">
-                <label>Protocol</label>
+                <label>{t('streaming.protocol')}</label>
                 <select
                   value={streamingConfig.protocol}
                   onChange={(e) => setStreamingConfig({ ...streamingConfig, protocol: e.target.value })}
                 >
-                  <option value="RTMP">RTMP</option>
-                  <option value="RTMPS">RTMPS</option>
-                  <option value="SRT">SRT</option>
-                  <option value="WebRTC">WebRTC</option>
-                  <option value="HLS">HLS</option>
-                  <option value="DASH">DASH</option>
+                  <option value="RTMP">{t('streaming.protocols.rtmp')}</option>
+                  <option value="RTMPS">{t('streaming.protocols.rtps')}</option>
+                  <option value="SRT">{t('streaming.protocols.srt')}</option>
+                  <option value="WebRTC">{t('streaming.protocols.webrtc')}</option>
+                  <option value="HLS">{t('streaming.protocols.hls')}</option>
+                  <option value="DASH">{t('streaming.protocols.dash')}</option>
                 </select>
               </div>
               <div className="control-group">
-                <label>Video Bitrate (kbps)</label>
+                <label>{t('streaming.videoBitrate')}</label>
                 <input
                   type="number"
                   value={streamingConfig.video_bitrate}
@@ -971,7 +976,7 @@ function App() {
                 />
               </div>
               <div className="control-group">
-                <label>Audio Bitrate (kbps)</label>
+                <label>{t('streaming.audioBitrate')}</label>
                 <input
                   type="number"
                   value={streamingConfig.audio_bitrate}
@@ -985,7 +990,7 @@ function App() {
                     checked={streamingConfig.enable_low_latency}
                     onChange={(e) => setStreamingConfig({ ...streamingConfig, enable_low_latency: e.target.checked })}
                   />
-                  Low Latency Mode
+                  {t('streaming.lowLatency')}
                 </label>
               </div>
               <div className="control-group checkbox">
@@ -995,7 +1000,7 @@ function App() {
                     checked={streamingConfig.enable_adaptive_bitrate}
                     onChange={(e) => setStreamingConfig({ ...streamingConfig, enable_adaptive_bitrate: e.target.checked })}
                   />
-                  Adaptive Bitrate
+                  {t('streaming.adaptiveBitrate')}
                 </label>
               </div>
             </div>
@@ -1004,48 +1009,48 @@ function App() {
                 className={`btn ${isStreamingActive ? 'btn-danger' : 'btn-primary'}`}
                 onClick={isStreamingActive ? handleStopStreaming : handleStartStreaming}
               >
-                {isStreamingActive ? 'Stop Streaming' : 'Start Streaming'}
+                {isStreamingActive ? t('streaming.stopStreaming') : t('streaming.startStreaming')}
               </button>
             </div>
             <div className="streaming-stats">
-              <h3>Streaming Statistics</h3>
+              <h3>{t('streaming.stats.title')}</h3>
               <div className="stats-grid">
                 <div className="stat-card">
-                  <h3>Status</h3>
-                  <p className="stat-value">{isStreamingActive ? 'Live' : 'Offline'}</p>
+                  <h3>{t('streaming.stats.status')}</h3>
+                  <p className="stat-value">{isStreamingActive ? t('streaming.stats.live') : t('streaming.stats.offline')}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Duration</h3>
+                  <h3>{t('streaming.stats.duration')}</h3>
                   <p className="stat-value">{Math.floor(streamingStats.duration / 60)}:{(streamingStats.duration % 60).toString().padStart(2, '0')}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Bitrate</h3>
-                  <p className="stat-value">{streamingStats.bitrate} kbps</p>
+                  <h3>{t('capture.bitrate')}</h3>
+                  <p className="stat-value">{streamingStats.bitrate} {t('capture.kbps')}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>FPS</h3>
+                  <h3>{t('capture.fps')}</h3>
                   <p className="stat-value">{streamingStats.fps.toFixed(1)}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Network Latency</h3>
-                  <p className="stat-value">{streamingStats.network_latency} ms</p>
+                  <h3>{t('streaming.stats.networkLatency')}</h3>
+                  <p className="stat-value">{streamingStats.network_latency} {t('streaming.stats.ms')}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Buffer Health</h3>
+                  <h3>{t('streaming.stats.bufferHealth')}</h3>
                   <p className="stat-value">{streamingStats.buffer_health.toFixed(1)}%</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Dropped Frames</h3>
+                  <h3>{t('encoding.stats.droppedFrames')}</h3>
                   <p className="stat-value">{streamingStats.dropped_frames}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Reconnects</h3>
+                  <h3>{t('streaming.stats.reconnects')}</h3>
                   <p className="stat-value">{streamingStats.reconnect_count}</p>
                 </div>
               </div>
             </div>
             <div className="multistream-section">
-              <h3>Multistreaming</h3>
+              <h3>{t('streaming.multistreaming.title')}</h3>
               <div className="control-group checkbox">
                 <label>
                   <input
@@ -1053,20 +1058,20 @@ function App() {
                     checked={multistreamEnabled}
                     onChange={(e) => setMultistreamEnabled(e.target.checked)}
                   />
-                  Enable Multistreaming
+                  {t('streaming.multistreaming.enable')}
                 </label>
               </div>
               {multistreamEnabled && (
                 <div className="multistream-targets">
-                  <button className="btn btn-primary">Add Target</button>
+                  <button className="btn btn-primary">{t('streaming.multistreaming.addTarget')}</button>
                   {multistreamTargets.map((target) => (
                     <div key={target.id} className="multistream-target">
                       <span>{target.name} ({target.platform})</span>
                       <span className={`status ${target.enabled ? 'enabled' : 'disabled'}`}>
-                        {target.enabled ? 'Enabled' : 'Disabled'}
+                        {target.enabled ? t('streaming.multistreaming.enabled') : t('streaming.multistreaming.disabled')}
                       </span>
-                      <button className="btn btn-secondary">Edit</button>
-                      <button className="btn btn-danger">Remove</button>
+                      <button className="btn btn-secondary">{t('streaming.multistreaming.edit')}</button>
+                      <button className="btn btn-danger">{t('streaming.multistreaming.remove')}</button>
                     </div>
                   ))}
                 </div>
@@ -1076,52 +1081,52 @@ function App() {
         )}
 
         {/* Cloud Tab */}
-        {activeTab === 'Cloud' && (
+        {activeTab === t('tabs.cloud') && (
           <div className="tab-content">
-            <h2>Cloud Services</h2>
+            <h2>{t('cloud.title')}</h2>
             <div className="cloud-connection">
-              <h3>Connection Status</h3>
+              <h3>{t('cloud.connection.title')}</h3>
               <div className={`status-indicator ${cloudConnected ? 'connected' : 'disconnected'}`}>
-                {cloudConnected ? 'Connected' : 'Disconnected'}
+                {cloudConnected ? t('cloud.connection.connected') : t('cloud.connection.disconnected')}
               </div>
               {!cloudConnected && (
-                <button className="btn btn-primary">Connect to Cloud</button>
+                <button className="btn btn-primary">{t('cloud.connection.connect')}</button>
               )}
               {cloudConnected && (
-                <button className="btn btn-danger">Disconnect</button>
+                <button className="btn btn-danger">{t('cloud.connection.disconnect')}</button>
               )}
             </div>
             <div className="cloud-stats">
-              <h3>Cloud Statistics</h3>
+              <h3>{t('cloud.stats.title')}</h3>
               <div className="stats-grid">
                 <div className="stat-card">
-                  <h3>Provider</h3>
+                  <h3>{t('cloud.stats.provider')}</h3>
                   <p className="stat-value">{cloudStats.provider}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Uptime</h3>
-                  <p className="stat-value">{Math.floor(cloudStats.uptime / 3600)}h</p>
+                  <h3>{t('cloud.stats.uptime')}</h3>
+                  <p className="stat-value">{Math.floor(cloudStats.uptime / 3600)}{t('cloud.stats.hours')}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Bytes Transferred</h3>
-                  <p className="stat-value">{(cloudStats.bytes_transferred / 1024 / 1024).toFixed(2)} MB</p>
+                  <h3>{t('cloud.stats.bytesTransferred')}</h3>
+                  <p className="stat-value">{(cloudStats.bytes_transferred / 1024 / 1024).toFixed(2)} {t('cloud.stats.mb')}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Active Streams</h3>
+                  <h3>{t('cloud.stats.activeStreams')}</h3>
                   <p className="stat-value">{cloudStats.active_streams}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Recordings</h3>
+                  <h3>{t('cloud.stats.recordings')}</h3>
                   <p className="stat-value">{cloudStats.recordings_count}</p>
                 </div>
                 <div className="stat-card">
-                  <h3>Storage Used</h3>
-                  <p className="stat-value">{cloudStats.storage_used_gb.toFixed(2)} GB</p>
+                  <h3>{t('cloud.stats.storageUsed')}</h3>
+                  <p className="stat-value">{cloudStats.storage_used_gb.toFixed(2)} {t('cloud.stats.gb')}</p>
                 </div>
               </div>
             </div>
             <div className="vod-section">
-              <h3>VOD Recording</h3>
+              <h3>{t('cloud.vod.title')}</h3>
               <div className="control-group checkbox">
                 <label>
                   <input
@@ -1129,31 +1134,31 @@ function App() {
                     checked={vodConfig.enabled}
                     onChange={(e) => setVodConfig({ ...vodConfig, enabled: e.target.checked })}
                   />
-                  Enable VOD Recording
+                  {t('cloud.vod.enable')}
                 </label>
               </div>
               <div className="control-group">
-                <label>Format</label>
+                <label>{t('cloud.vod.format')}</label>
                 <select
                   value={vodConfig.format}
                   onChange={(e) => setVodConfig({ ...vodConfig, format: e.target.value })}
                 >
-                  <option value="MP4">MP4</option>
-                  <option value="MKV">MKV</option>
-                  <option value="MOV">MOV</option>
-                  <option value="FLV">FLV</option>
+                  <option value="MP4">{t('cloud.vod.formats.mp4')}</option>
+                  <option value="MKV">{t('cloud.vod.formats.mkv')}</option>
+                  <option value="MOV">{t('cloud.vod.formats.mov')}</option>
+                  <option value="FLV">{t('cloud.vod.formats.flv')}</option>
                 </select>
               </div>
               <div className="control-group">
-                <label>Quality</label>
+                <label>{t('cloud.vod.quality')}</label>
                 <select
                   value={vodConfig.quality}
                   onChange={(e) => setVodConfig({ ...vodConfig, quality: e.target.value })}
                 >
-                  <option value="Original">Original</option>
-                  <option value="High">High</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Low">Low</option>
+                  <option value="Original">{t('cloud.vod.qualities.original')}</option>
+                  <option value="High">{t('cloud.vod.qualities.high')}</option>
+                  <option value="Medium">{t('cloud.vod.qualities.medium')}</option>
+                  <option value="Low">{t('cloud.vod.qualities.low')}</option>
                 </select>
               </div>
               <div className="control-group checkbox">
@@ -1163,7 +1168,7 @@ function App() {
                     checked={vodConfig.auto_upload}
                     onChange={(e) => setVodConfig({ ...vodConfig, auto_upload: e.target.checked })}
                   />
-                  Auto Upload to Cloud
+                  {t('cloud.vod.autoUpload')}
                 </label>
               </div>
               <div className="control-group checkbox">
@@ -1173,7 +1178,7 @@ function App() {
                     checked={vodConfig.local_backup}
                     onChange={(e) => setVodConfig({ ...vodConfig, local_backup: e.target.checked })}
                   />
-                  Keep Local Backup
+                  {t('cloud.vod.localBackup')}
                 </label>
               </div>
               <div className="vod-actions">
@@ -1181,13 +1186,13 @@ function App() {
                   className={`btn ${vodStatus.is_recording ? 'btn-danger' : 'btn-primary'}`}
                   onClick={vodStatus.is_recording ? handleStopVodRecording : handleStartVodRecording}
                 >
-                  {vodStatus.is_recording ? 'Stop Recording' : 'Start Recording'}
+                  {vodStatus.is_recording ? t('cloud.vod.stopRecording') : t('cloud.vod.startRecording')}
                 </button>
               </div>
               {vodStatus.is_recording && (
                 <div className="vod-status">
-                  <p><strong>Duration:</strong> {Math.floor(vodStatus.duration / 60)}:{(vodStatus.duration % 60).toString().padStart(2, '0')}</p>
-                  <p><strong>File Size:</strong> {(vodStatus.file_size / 1024 / 1024).toFixed(2)} MB</p>
+                  <p><strong>{t('cloud.vod.status.duration')}:</strong> {Math.floor(vodStatus.duration / 60)}:{(vodStatus.duration % 60).toString().padStart(2, '0')}</p>
+                  <p><strong>{t('cloud.vod.status.fileSize')}:</strong> {(vodStatus.file_size / 1024 / 1024).toFixed(2)} {t('cloud.stats.mb')}</p>
                 </div>
               )}
             </div>

@@ -1,0 +1,237 @@
+{
+  "app": {
+    "title": "V-Streaming",
+    "version": "v0.1.0"
+  },
+  "header": {
+    "simpleMode": "Simple",
+    "expertMode": "Expert"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "auto": "Auto"
+  },
+  "tabs": {
+    "capture": "Capture",
+    "audio": "Audio",
+    "composition": "Composition",
+    "vtuber": "VTuber",
+    "encoding": "Encoding",
+    "streaming": "Streaming",
+    "cloud": "Cloud"
+  },
+  "capture": {
+    "title": "Capture Sources",
+    "startCapture": "Start Capture",
+    "stopCapture": "Stop Capture",
+    "fps": "FPS",
+    "bitrate": "Bitrate",
+    "cpu": "CPU",
+    "gpu": "GPU",
+    "kbps": "kbps",
+    "gpuInfo": {
+      "title": "GPU Information",
+      "name": "Name",
+      "vendor": "Vendor",
+      "vram": "VRAM",
+      "mb": "MB"
+    }
+  },
+  "audio": {
+    "title": "Audio Mixer",
+    "masterVolume": "Master Volume",
+    "mute": "Mute",
+    "unmute": "Unmute"
+  },
+  "composition": {
+    "title": "Scene Composition",
+    "active": "Active",
+    "inactive": "Inactive",
+    "layers": "Layers",
+    "layerName": "Layer Name",
+    "layerType": "Type",
+    "visible": "Visible",
+    "hidden": "Hidden",
+    "locked": "Locked",
+    "unlocked": "Unlocked"
+  },
+  "vtuber": {
+    "title": "VTubing Engine",
+    "modelLoaded": "Model Loaded",
+    "noModel": "No model loaded",
+    "loadVrm": "Load VRM Model",
+    "loadLive2D": "Load Live2D Model",
+    "faceTracking": "Face Tracking",
+    "startTracking": "Start Tracking",
+    "stopTracking": "Stop Tracking",
+    "model": {
+      "name": "Name",
+      "type": "Type",
+      "file": "File"
+    },
+    "tracking": {
+      "headRotation": "Head Rotation",
+      "headPosition": "Head Position",
+      "mouthOpen": "Mouth Open",
+      "confidence": "Confidence",
+      "pitch": "P",
+      "yaw": "Y",
+      "roll": "R",
+      "x": "X",
+      "y": "Y",
+      "z": "Z"
+    }
+  },
+  "encoding": {
+    "title": "Encoding Settings",
+    "encoder": "Encoder",
+    "codec": "Codec",
+    "preset": "Preset",
+    "rateControl": "Rate Control",
+    "bitrate": "Bitrate (kbps)",
+    "keyframeInterval": "Keyframe Interval",
+    "bFrames": "B-Frames",
+    "lookahead": "Lookahead",
+    "psychoVisual": "Psycho-Visual Optimizations",
+    "startEncoding": "Start Encoding",
+    "stopEncoding": "Stop Encoding",
+    "stats": {
+      "title": "Encoding Statistics",
+      "encodedFrames": "Encoded Frames",
+      "droppedFrames": "Dropped Frames",
+      "averageFrameTime": "Average Frame Time",
+      "encodingTime": "Encoding Time"
+    },
+    "codecs": {
+      "h264": "H.264",
+      "h265": "H.265/HEVC",
+      "av1": "AV1"
+    },
+    "presets": {
+      "ultrafast": "Ultrafast",
+      "superfast": "Superfast",
+      "veryfast": "Veryfast",
+      "faster": "Faster",
+      "fast": "Fast",
+      "medium": "Medium",
+      "slow": "Slow",
+      "slower": "Slower",
+      "veryslow": "Veryslow",
+      "placebo": "Placebo"
+    },
+    "rateControls": {
+      "cbr": "CBR (Constant Bitrate)",
+      "vbr": "VBR (Variable Bitrate)",
+      "cqp": "CQP (Constant Quantization)",
+      "crf": "CRF (Constant Rate Factor)"
+    }
+  },
+  "streaming": {
+    "title": "Streaming Settings",
+    "platform": "Platform",
+    "rtmpUrl": "RTMP URL",
+    "streamKey": "Stream Key",
+    "protocol": "Protocol",
+    "videoBitrate": "Video Bitrate (kbps)",
+    "audioBitrate": "Audio Bitrate (kbps)",
+    "lowLatency": "Low Latency Mode",
+    "adaptiveBitrate": "Adaptive Bitrate",
+    "startStreaming": "Start Streaming",
+    "stopStreaming": "Stop Streaming",
+    "stats": {
+      "title": "Streaming Statistics",
+      "status": "Status",
+      "live": "Live",
+      "offline": "Offline",
+      "duration": "Duration",
+      "networkLatency": "Network Latency",
+      "ms": "ms",
+      "bufferHealth": "Buffer Health",
+      "reconnects": "Reconnects"
+    },
+    "multistreaming": {
+      "title": "Multistreaming",
+      "enable": "Enable Multistreaming",
+      "addTarget": "Add Target",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "edit": "Edit",
+      "remove": "Remove"
+    },
+    "protocols": {
+      "rtmp": "RTMP",
+      "rtps": "RTMPS",
+      "srt": "SRT",
+      "webrtc": "WebRTC",
+      "hls": "HLS",
+      "dash": "DASH"
+    }
+  },
+  "cloud": {
+    "title": "Cloud Services",
+    "connection": {
+      "title": "Connection Status",
+      "connected": "Connected",
+      "disconnected": "Disconnected",
+      "connect": "Connect to Cloud",
+      "disconnect": "Disconnect"
+    },
+    "stats": {
+      "title": "Cloud Statistics",
+      "provider": "Provider",
+      "uptime": "Uptime",
+      "hours": "h",
+      "bytesTransferred": "Bytes Transferred",
+      "mb": "MB",
+      "activeStreams": "Active Streams",
+      "recordings": "Recordings",
+      "storageUsed": "Storage Used",
+      "gb": "GB"
+    },
+    "vod": {
+      "title": "VOD Recording",
+      "enable": "Enable VOD Recording",
+      "format": "Format",
+      "quality": "Quality",
+      "autoUpload": "Auto Upload to Cloud",
+      "localBackup": "Keep Local Backup",
+      "startRecording": "Start Recording",
+      "stopRecording": "Stop Recording",
+      "status": {
+        "duration": "Duration",
+        "fileSize": "File Size"
+      },
+      "formats": {
+        "mp4": "MP4",
+        "mkv": "MKV",
+        "mov": "MOV",
+        "flv": "FLV"
+      },
+      "qualities": {
+        "original": "Original",
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+      }
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "reset": "Reset",
+    "auto": "Auto"
+  },
+  "errors": {
+    "captureFailed": "Failed to start capture",
+    "encodingFailed": "Failed to start encoding",
+    "streamingFailed": "Failed to start streaming",
+    "recordingFailed": "Failed to start recording",
+    "gpuInfoFailed": "Failed to get GPU info",
+    "encodersFailed": "Failed to get available encoders"
+  }
+}

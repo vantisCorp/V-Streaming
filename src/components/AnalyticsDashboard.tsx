@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { Line, Bar, Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -237,7 +237,7 @@ export const AnalyticsDashboard: React.FC = () => {
             <PerformanceScoreCard
               label="GPU"
               score={performanceMetrics.gpu_efficiency}
-              color="performanceMetrics.gpu_efficiency >= 80 ? 'green' : 'yellow'}
+              color={performanceMetrics.gpu_efficiency >= 80 ? 'green' : 'yellow'}
             />
             <PerformanceScoreCard
               label="Network"

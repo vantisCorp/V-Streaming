@@ -342,3 +342,72 @@ pub fn get_default_presets() -> Vec<CapturePreset> {
         },
     ]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_capture_engine_creation() {
+        let engine = CaptureEngine::new();
+        assert_eq!(engine.sources.len(), 0);
+    }
+
+    #[test]
+    fn test_capture_source() {
+        let source = CaptureSource {
+            id: "source_1".to_string(),
+            name: "Game Capture".to_string(),
+            source_type: CaptureSourceType::Game,
+            enabled: true,
+        };
+
+        assert_eq!(source.name, "Game Capture");
+        assert_eq!(source.source_type, CaptureSourceType::Game);
+    }
+
+    #[test]
+    fn test_capture_source_info() {
+        let info = CaptureSourceInfo {
+            id: "window_1".to_string(),
+            name: "Test Window".to_string(),
+            source_type: CaptureSourceType::Window,
+            executable: Some("test.exe".to_string()),
+        };
+
+        assert_eq!(info.name, "Test Window");
+        assert_eq!(info.executable, Some("test.exe".to_string()));
+    }
+
+    #[test]
+    fn test_capture_preset() {
+        let presets = get_default_presets();
+        assert!(!presets.is_empty());
+        
+        let first = &presets[0];
+        assert_eq!(first.name, "1080p 60fps");
+        assert_eq!(first.resolution, (1920, 1080));
+        assert_eq!(first.fps, 60);
+    }
+
+    #[test]
+    fn test_capture_performance_stats() {
+        let stats = CapturePerformanceStats {
+            fps: 60.0,
+            frame_time_ms: 16.67,
+            cpu_usage_percent: 25.0,
+            gpu_usage_percent: 40.0,
+            dropped_frames: 0,
+            total_frames: 3600,
+        };
+
+        assert_eq!(stats.fps, 60.0);
+        assert_eq!(stats.dropped_frames, 0);
+    }
+
+    #[test]
+    fn test_color_format() {
+        let format = ColorFormat::Rgba8;
+        assert!(matches!(format, ColorFormat::Rgba8));
+    }
+}

@@ -509,3 +509,71 @@ pub fn get_hardware_encoders() -> Vec<String> {
         "Auto".to_string(),
     ]
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_encoding_engine_creation() {
+        let engine = EncodingEngine::new();
+        assert_eq!(engine.encoders.len(), 0);
+    }
+
+    #[test]
+    fn test_encoder() {
+        let encoder = Encoder {
+            id: 0,
+            name: "H264 Encoder".to_string(),
+            encoder_type: EncoderType::Hardware,
+            codec: Codec::H264,
+            config: EncodingConfig::default(),
+        };
+
+        assert_eq!(encoder.name, "H264 Encoder");
+        assert_eq!(encoder.codec, Codec::H264);
+    }
+
+    #[test]
+    fn test_encoding_config() {
+        let config = EncodingConfig::default();
+        assert_eq!(config.bitrate, 6000);
+        assert_eq!(config.codec, Codec::H264);
+    }
+
+    #[test]
+    fn test_codec() {
+        assert_eq!(Codec::H264.name(), "H264");
+        assert_eq!(Codec::H265.name(), "H265");
+        assert_eq!(Codec::AV1.name(), "AV1");
+    }
+
+    #[test]
+    fn test_encoder_type() {
+        assert_eq!(EncoderType::Hardware.to_string(), "Hardware");
+        assert_eq!(EncoderType::Software.to_string(), "Software");
+    }
+
+    #[test]
+    fn test_encoding_preset() {
+        let presets = get_encoding_presets();
+        assert!(!presets.is_empty());
+        assert!(presets.contains(&"Medium".to_string()));
+    }
+
+    #[test]
+    fn test_rate_control_methods() {
+        let methods = get_rate_control_methods();
+        assert!(!methods.is_empty());
+        assert!(methods.contains(&"CBR".to_string()));
+        assert!(methods.contains(&"VBR".to_string()));
+    }
+
+    #[test]
+    fn test_video_codecs() {
+        let codecs = get_video_codecs();
+        assert!(!codecs.is_empty());
+        assert!(codecs.contains(&"H264".to_string()));
+        assert!(codecs.contains(&"H265".to_string()));
+    }
+}

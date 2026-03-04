@@ -393,3 +393,84 @@ impl Default for AudioRoutingConfig {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_audio_engine_creation() {
+        let engine = AudioEngine::new();
+        assert_eq!(engine.tracks.len(), 0);
+        assert_eq!(engine.sample_rate, 48000);
+        assert_eq!(engine.buffer_size, 1024);
+    }
+
+    #[test]
+    fn test_audio_track() {
+        let track = AudioTrack {
+            id: 0,
+            name: "Test Track".to_string(),
+            volume: 1.0,
+            muted: false,
+            solo: false,
+            pan: 0.0,
+            input_device_id: "default_input".to_string(),
+        };
+
+        assert_eq!(track.name, "Test Track");
+        assert_eq!(track.volume, 1.0);
+        assert!(!track.muted);
+    }
+
+    #[test]
+    fn test_audio_device_info() {
+        let device = AudioDeviceInfo {
+            id: "device_1".to_string(),
+            name: "Test Device".to_string(),
+            device_type: AudioDeviceType::Input,
+            sample_rates: vec![44100, 48000],
+            channels: 2,
+        };
+
+        assert_eq!(device.name, "Test Device");
+        assert_eq!(device.device_type, AudioDeviceType::Input);
+    }
+
+    #[test]
+    fn test_audio_effect() {
+        let effect = AudioEffect {
+            id: 0,
+            name: "Reverb".to_string(),
+            effect_type: AudioEffectType::Reverb,
+            enabled: true,
+            parameters: vec![("decay_time".to_string(), 2.0)],
+        };
+
+        assert_eq!(effect.name, "Reverb");
+        assert_eq!(effect.effect_type, AudioEffectType::Reverb);
+    }
+
+    #[test]
+    fn test_audio_routing_config() {
+        let config = AudioRoutingConfig::default();
+        assert_eq!(config.input_device_id, "default_input");
+        assert_eq!(config.output_device_id, "default_output");
+        assert!(!config.enable_monitoring);
+    }
+
+    #[test]
+    fn test_audio_performance_stats() {
+        let stats = AudioPerformanceStats {
+            sample_rate: 48000,
+            buffer_size: 1024,
+            latency_ms: 21.3,
+            cpu_usage_percent: 15.0,
+            dropped_samples: 0,
+            total_samples: 48000,
+        };
+
+        assert_eq!(stats.sample_rate, 48000);
+        assert_eq!(stats.latency_ms, 21.3);
+    }
+}

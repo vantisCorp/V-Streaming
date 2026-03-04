@@ -424,3 +424,76 @@ impl Shaders {
         .to_string()
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_gpu_context_creation() {
+        let context = GpuContext::new();
+        // Basic creation test
+        assert!(context.info.name.len() > 0 || context.info.name == "Unknown");
+    }
+
+    #[test]
+    fn test_gpu_info() {
+        let info = GpuInfo {
+            name: "NVIDIA RTX 4090".to_string(),
+            driver_version: "535.104".to_string(),
+            vram_bytes: 24 * 1024 * 1024 * 1024,
+            max_texture_size: 16384,
+        };
+
+        assert_eq!(info.name, "NVIDIA RTX 4090");
+        assert_eq!(info.vram_bytes, 24 * 1024 * 1024 * 1024);
+    }
+
+    #[test]
+    fn test_texture_filter() {
+        assert_eq!(TextureFilter::Linear.to_string(), "Linear");
+        assert_eq!(TextureFilter::Nearest.to_string(), "Nearest");
+    }
+
+    #[test]
+    fn test_tonemap_method() {
+        assert_eq!(TonemapMethod::Reinhard.to_string(), "Reinhard");
+        assert_eq!(TonemapMethod::ACES.to_string(), "ACES");
+        assert_eq!(TonemapMethod::Filmic.to_string(), "Filmic");
+    }
+
+    #[test]
+    fn test_color_grading() {
+        let grading = ColorGrading {
+            exposure: 1.0,
+            contrast: 1.0,
+            saturation: 1.0,
+            gamma: 2.2,
+            lift: (0.0, 0.0, 0.0),
+            gain: (1.0, 1.0, 1.0),
+            offset: (0.0, 0.0, 0.0),
+        };
+
+        assert_eq!(grading.exposure, 1.0);
+        assert_eq!(grading.gamma, 2.2);
+    }
+
+    #[test]
+    fn test_gpu_memory_usage() {
+        let usage = GpuMemoryUsage {
+            used_bytes: 8 * 1024 * 1024 * 1024,
+            total_bytes: 24 * 1024 * 1024 * 1024,
+            usage_percent: 33.3,
+        };
+
+        assert_eq!(usage.used_bytes, 8 * 1024 * 1024 * 1024);
+        assert_eq!(usage.total_bytes, 24 * 1024 * 1024 * 1024);
+    }
+
+    #[test]
+    fn test_shaders_creation() {
+        let shaders = Shaders::new();
+        // Test that shaders can be created
+        assert!(true);
+    }
+}

@@ -57,7 +57,7 @@
 - [x] telemetry.rs (7 tests)
 - [x] tip_ecosystem.rs (7 tests)
 - [x] webrtc.rs (7 tests)
-- [ ] Dodaj testy do komponentów React
+- [x] Dodaj testy do komponentów React
 
 ---
 **Status:** 🔄 W trakcie dodawania testów

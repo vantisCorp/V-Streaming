@@ -10,7 +10,7 @@
 ### ✨ New Features
 - [ ] Multi-language support expansion (Japanese, Chinese) - i18n base implemented
 - [x] Customizable hotkey system
-- [ ] Advanced scene switching automation
+- [x] Advanced scene switching automation
 - [ ] Cloud backup for settings and configurations
 - [ ] Built-in stream scheduler
 

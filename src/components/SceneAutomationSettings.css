@@ -1,0 +1,320 @@
+/**
+ * SceneAutomationSettings Component Styles
+ */
+
+/* MODAL */
+.scene-automation-settings .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.scene-automation-settings .modal-content {
+  background: #1a1a2e;
+  color: #eee;
+  border-radius: 12px;
+  width: 900px;
+  max-width: 95vw;
+  height: 700px;
+  max-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease-out;
+}
+
+.scene-automation-settings .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: #16213e;
+  border-radius: 12px 12px 0 0;
+}
+
+.scene-automation-settings .modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.scene-automation-settings .close-btn {
+  background: none;
+  border: none;
+  color: #eee;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.scene-automation-settings .close-btn:hover {
+  background: rgba(238, 238, 238, 0.1);
+}
+
+/* MODAL BODY */
+.scene-automation-settings .modal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Status Bar */
+.scene-automation-settings .automation-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 24px;
+  background: #16213e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scene-automation-settings .status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scene-automation-settings .status-label {
+  color: #888;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.scene-automation-settings .status-value {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.scene-automation-settings .status-value.active {
+  color: #4ade80;
+}
+
+.scene-automation-settings .status-value.paused {
+  color: #fbbf24;
+}
+
+.scene-automation-settings .pause-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  background: #0f3460;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #eee;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.scene-automation-settings .pause-btn:hover {
+  background: #16213e;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.scene-automation-settings .pause-btn.paused {
+  background: #b91c1c;
+  border-color: #dc2626;
+}
+
+/* Tabs */
+.scene-automation-settings .tabs {
+  display: flex;
+  gap: 2px;
+  padding: 0 24px;
+  background: #16213e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scene-automation-settings .tab {
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.scene-automation-settings .tab:hover {
+  color: #eee;
+}
+
+.scene-automation-settings .tab.active {
+  color: #4ade80;
+}
+
+.scene-automation-settings .tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #4ade80;
+}
+
+/* Tab Content */
+.scene-automation-settings .tab-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+}
+
+.scene-automation-settings .tab-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scene-automation-settings .tab-content::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.scene-automation-settings .tab-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.scene-automation-settings .tab-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Add Button */
+.scene-automation-settings .add-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background: #4ade80;
+  border: none;
+  color: #1a1a2e;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: all 0.2s;
+}
+
+.scene-automation-settings .add-btn:hover {
+  background: #22c55e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 222, 128, 0.3);
+}
+
+/* RULE CARD */
+.scene-automation-settings .automation-rule-card {
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: all 0.2s;
+}
+
+.scene-automation-settings .automation-rule-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.scene-automation-settings .automation-rule-card.disabled {
+  opacity: 0.5;
+}
+
+.scene-automation-settings .automation-rule-card.enabled {
+  border-left: 3px solid #4ade80;
+}
+
+.scene-automation-settings .rule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.scene-automation-settings .rule-title h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.scene-automation-settings .rule-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.scene-automation-settings .rule-controls button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #0f3460;
+  color: #eee;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.scene-automation-settings .rule-controls button:hover {
+  background: #16213e;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.scene-automation-settings .toggle-btn.on {
+  background: #4ade80;
+  color: #1a1a2e;
+  border-color: #4ade80;
+  font-weight: 700;
+}
+
+.scene-automation-settings .toggle-btn.off {
+  background: #6b7280;
+}
+
+.scene-automation-settings .delete-btn:hover {
+  background: #b91c1c;
+  border-color: #dc2626;
+}
+
+.scene-automation-settings .rule-description {
+  margin: 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

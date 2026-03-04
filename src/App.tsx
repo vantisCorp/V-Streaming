@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './components/LanguageSwitcher';
 import { GlobalKeyboardListener } from './components/GlobalKeyboardListener';
 import { HotkeySettings } from './components/HotkeySettings';
+import { SceneAutomationSettings } from './components/SceneAutomationSettings';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -241,6 +242,7 @@ function App() {
   const [interfaceMode, setInterfaceMode] = useState<'Simple' | 'Expert'>('Simple');
   const [theme, setTheme] = useState<'Light' | 'Dark' | 'Auto'>('Dark');
   const [showHotkeySettings, setShowHotkeySettings] = useState(false);
+  const [showSceneAutomation, setShowSceneAutomation] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -572,6 +574,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             ⌨️
+          </button>
+          <button
+            onClick={() => setShowSceneAutomation(true)}
+            className="theme-btn"
+            title="Scene Automation"
+            style={{ marginLeft: '8px' }}
+          >
+            🎬
           </button>
           <div className="theme-switcher">
             <button
@@ -1221,6 +1231,11 @@ function App() {
             <HotkeySettings onClose={() => setShowHotkeySettings(false)} />
           </div>
         </div>
+      )}
+
+      {/* Scene Automation Settings Modal */}
+      {showSceneAutomation && (
+        <SceneAutomationSettings onClose={() => setShowSceneAutomation(false)} />
       )}
     </div>
   );

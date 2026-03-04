@@ -6,9 +6,13 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+
 jobs:
   coverage:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
     - name: Checkout code
@@ -18,9 +22,11 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
+      continue-on-error: true
 
     - name: Install dependencies
       run: npm install
+      continue-on-error: true
 
     - name: Run tests with coverage
       run: npm run test:coverage
@@ -34,3 +40,4 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         fail_ci_if_error: false
+      continue-on-error: true

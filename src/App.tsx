@@ -10,6 +10,7 @@ import { StreamSchedulerSettings } from './components/StreamSchedulerSettings';
 import { AudioMixerSettings } from './components/AudioMixerSettings';
 import ThemeSettings from './components/ThemeSettings';
 import MultiPlatformSettings from './components/MultiPlatformSettings';
+import AnalyticsDashboard from './components/AnalyticsDashboard';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -253,6 +254,7 @@ function App() {
   const [showAudioMixer, setShowAudioMixer] = useState(false);
   const [showThemeSettings, setShowThemeSettings] = useState(false);
   const [showMultiPlatform, setShowMultiPlatform] = useState(false);
+  const [showAnalytics, setShowAnalytics] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -632,6 +634,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🌐
+          </button>
+          <button
+            onClick={() => setShowAnalytics(true)}
+            className="theme-btn"
+            title="Analytics Dashboard"
+            style={{ marginLeft: '8px' }}
+          >
+            📊
           </button>
           <div className="theme-switcher">
             <button
@@ -1311,6 +1321,11 @@ function App() {
       {/* Multi-Platform Settings Modal */}
       {showMultiPlatform && (
         <MultiPlatformSettings isOpen={showMultiPlatform} onClose={() => setShowMultiPlatform(false)} />
+      )}
+
+      {/* Analytics Dashboard Modal */}
+      {showAnalytics && (
+        <AnalyticsDashboard isOpen={showAnalytics} onClose={() => setShowAnalytics(false)} />
       )}
     </div>
   );

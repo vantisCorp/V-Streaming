@@ -16,6 +16,7 @@ import ArchiveManager from './components/ArchiveManager';
 import { ModerationPanel } from './components/ModerationPanel';
 import { EncoderConfiguration } from './components/EncoderConfiguration';
 import { SRTConfiguration } from './components/SRTConfiguration';
+import { VirtualCameraConfiguration } from './components/VirtualCameraConfiguration';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -265,6 +266,7 @@ function App() {
   const [showModerationPanel, setShowModerationPanel] = useState(false);
   const [showEncoderConfiguration, setShowEncoderConfiguration] = useState(false);
   const [showSRTConfiguration, setShowSRTConfiguration] = useState(false);
+  const [showVirtualCameraConfiguration, setShowVirtualCameraConfiguration] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -692,6 +694,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             📡
+          </button>
+          <button
+            onClick={() => setShowVirtualCameraConfiguration(true)}
+            className="theme-btn"
+            title="Virtual Camera"
+            style={{ marginLeft: '8px' }}
+          >
+            📷
           </button>
           <div className="theme-switcher">
             <button
@@ -1407,6 +1417,15 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowSRTConfiguration(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <SRTConfiguration onClose={() => setShowSRTConfiguration(false)} />
+          </div>
+        </div>
+      )}
+
+      {/* Virtual Camera Configuration Modal */}
+      {showVirtualCameraConfiguration && (
+        <div className="modal-overlay" onClick={() => setShowVirtualCameraConfiguration(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <VirtualCameraConfiguration onClose={() => setShowVirtualCameraConfiguration(false)} />
           </div>
         </div>
       )}

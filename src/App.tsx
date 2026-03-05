@@ -13,6 +13,7 @@ import MultiPlatformSettings from './components/MultiPlatformSettings';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import OverlayMarketplace from './components/OverlayMarketplace';
 import ArchiveManager from './components/ArchiveManager';
+import { ModerationPanel } from './components/ModerationPanel';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -259,6 +260,7 @@ function App() {
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [showOverlayMarketplace, setShowOverlayMarketplace] = useState(false);
   const [showArchiveManager, setShowArchiveManager] = useState(false);
+  const [showModerationPanel, setShowModerationPanel] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -662,6 +664,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             📁
+          </button>
+          <button
+            onClick={() => setShowModerationPanel(true)}
+            className="theme-btn"
+            title="Moderation Panel"
+            style={{ marginLeft: '8px' }}
+          >
+            🛡️
           </button>
           <div className="theme-switcher">
             <button
@@ -1356,6 +1366,11 @@ function App() {
       {/* Archive Manager Modal */}
       {showArchiveManager && (
         <ArchiveManager isOpen={showArchiveManager} onClose={() => setShowArchiveManager(false)} />
+      )}
+
+      {/* Moderation Panel Modal */}
+      {showModerationPanel && (
+        <ModerationPanel onClose={() => setShowModerationPanel(false)} />
       )}
     </div>
   );

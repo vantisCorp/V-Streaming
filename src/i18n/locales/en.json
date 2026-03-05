@@ -483,5 +483,68 @@
       "nameRequired": "Theme name is required",
       "invalidJson": "Invalid theme JSON format"
     }
+  },
+  "multiPlatform": {
+    "title": "Multi-Platform Streaming",
+    "tabs": {
+      "platforms": "Platforms",
+      "sync": "Sync Settings",
+      "chat": "Chat Integration",
+      "analytics": "Analytics"
+    },
+    "sync": {
+      "title": "Synchronization Settings",
+      "syncChat": "Sync chat across platforms",
+      "syncEmotes": "Sync emotes across platforms",
+      "syncCommands": "Sync commands across platforms",
+      "syncModeration": "Sync moderation actions",
+      "unifiedChat": "Unified chat display",
+      "crossPlatformNotifications": "Cross-platform notifications"
+    },
+    "chat": {
+      "title": "Chat Integration",
+      "enabled": "Enable chat integration",
+      "maxMessagesPerSecond": "Max Messages/Second"
+    },
+    "analytics": {
+      "title": "Platform Analytics",
+      "totalViewers": "Total Viewers",
+      "peakViewers": "Peak Viewers",
+      "totalMessages": "Total Messages",
+      "newFollowers": "New Followers",
+      "duration": "Duration"
+    },
+    "platforms": {
+      "addPlatform": "Add Platform",
+      "editPlatform": "Edit Platform",
+      "deletePlatform": "Delete Platform",
+      "confirmDelete": "Are you sure you want to remove this platform?",
+      "streaming": "Streaming",
+      "offline": "Offline",
+      "quality": "Quality",
+      "bitrate": "Bitrate",
+      "fps": "FPS",
+      "start": "Start",
+      "stop": "Stop",
+      "startAll": "Start All",
+      "stopAll": "Stop All",
+      "activeStreams": "Active Streams",
+      "configuredPlatforms": "Configured Platforms"
+    },
+    "presets": {
+      "twitch": "Twitch",
+      "youtube": "YouTube",
+      "kick": "Kick",
+      "facebook": "Facebook Gaming",
+      "tiktok": "TikTok",
+      "trovo": "Trovo",
+      "dlive": "DLive",
+      "rumble": "Rumble"
+    },
+    "errors": {
+      "connectionFailed": "Connection failed",
+      "streamStartFailed": "Failed to start stream",
+      "streamStopFailed": "Failed to stop stream"
+    }
   }
 }

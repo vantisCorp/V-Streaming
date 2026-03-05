@@ -9,6 +9,7 @@ import { CloudBackupSettings } from './components/CloudBackupSettings';
 import { StreamSchedulerSettings } from './components/StreamSchedulerSettings';
 import { AudioMixerSettings } from './components/AudioMixerSettings';
 import ThemeSettings from './components/ThemeSettings';
+import MultiPlatformSettings from './components/MultiPlatformSettings';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -251,6 +252,7 @@ function App() {
   const [showStreamScheduler, setShowStreamScheduler] = useState(false);
   const [showAudioMixer, setShowAudioMixer] = useState(false);
   const [showThemeSettings, setShowThemeSettings] = useState(false);
+  const [showMultiPlatform, setShowMultiPlatform] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -622,6 +624,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🎨
+          </button>
+          <button
+            onClick={() => setShowMultiPlatform(true)}
+            className="theme-btn"
+            title="Multi-Platform Streaming"
+            style={{ marginLeft: '8px' }}
+          >
+            🌐
           </button>
           <div className="theme-switcher">
             <button
@@ -1296,6 +1306,11 @@ function App() {
       {/* Theme Settings Modal */}
       {showThemeSettings && (
         <ThemeSettings isOpen={showThemeSettings} onClose={() => setShowThemeSettings(false)} />
+      )}
+
+      {/* Multi-Platform Settings Modal */}
+      {showMultiPlatform && (
+        <MultiPlatformSettings isOpen={showMultiPlatform} onClose={() => setShowMultiPlatform(false)} />
       )}
     </div>
   );

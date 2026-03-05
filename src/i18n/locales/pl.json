@@ -281,5 +281,68 @@
       "nameRequired": "Nazwa motywu jest wymagana",
       "invalidJson": "Nieprawidłowy format JSON motywu"
     }
+  },
+  "multiPlatform": {
+    "title": "Streamowanie Multi-Platform",
+    "tabs": {
+      "platforms": "Platformy",
+      "sync": "Ustawienia Synchronizacji",
+      "chat": "Integracja Czatu",
+      "analytics": "Analityka"
+    },
+    "sync": {
+      "title": "Ustawienia Synchronizacji",
+      "syncChat": "Synchronizuj czat między platformami",
+      "syncEmotes": "Synchronizuj emotikony między platformami",
+      "syncCommands": "Synchronizuj komendy między platformami",
+      "syncModeration": "Synchronizuj akcje moderacji",
+      "unifiedChat": "Ujednolicony wyświetlacz czatu",
+      "crossPlatformNotifications": "Powiadomienia międzyplatformowe"
+    },
+    "chat": {
+      "title": "Integracja Czatu",
+      "enabled": "Włącz integrację czatu",
+      "maxMessagesPerSecond": "Max Wiadomości/Sekundę"
+    },
+    "analytics": {
+      "title": "Analityka Platform",
+      "totalViewers": "Całkowita liczba widzów",
+      "peakViewers": "Szczytowa liczba widzów",
+      "totalMessages": "Całkowita liczba wiadomości",
+      "newFollowers": "Nowi obserwujący",
+      "duration": "Czas trwania"
+    },
+    "platforms": {
+      "addPlatform": "Dodaj Platformę",
+      "editPlatform": "Edytuj Platformę",
+      "deletePlatform": "Usuń Platformę",
+      "confirmDelete": "Czy na pewno chcesz usunąć tę platformę?",
+      "streaming": "Streamuje",
+      "offline": "Offline",
+      "quality": "Jakość",
+      "bitrate": "Bitrate",
+      "fps": "FPS",
+      "start": "Start",
+      "stop": "Stop",
+      "startAll": "Startuj Wszystkie",
+      "stopAll": "Zatrzymaj Wszystkie",
+      "activeStreams": "Aktywne Streamy",
+      "configuredPlatforms": "Skonfigurowane Platformy"
+    },
+    "presets": {
+      "twitch": "Twitch",
+      "youtube": "YouTube",
+      "kick": "Kick",
+      "facebook": "Facebook Gaming",
+      "tiktok": "TikTok",
+      "trovo": "Trovo",
+      "dlive": "DLive",
+      "rumble": "Rumble"
+    },
+    "errors": {
+      "connectionFailed": "Połączenie nieudane",
+      "streamStartFailed": "Nie udało się uruchomić streamu",
+      "streamStopFailed": "Nie udało się zatrzymać streamu"
+    }
   }
 }

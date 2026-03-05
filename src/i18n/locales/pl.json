@@ -233,5 +233,53 @@
     "recordingFailed": "Nie udało się uruchomić nagrywania",
     "gpuInfoFailed": "Nie udało się pobrać informacji o GPU",
     "encodersFailed": "Nie udało się pobrać dostępnych koderów"
+  },
+  "theme": {
+    "title": "Ustawienia Motywów",
+    "builtin": "Wbudowany",
+    "builtinThemes": "Motywy Wbudowane",
+    "customThemes": "Motywy Własne",
+    "tabs": {
+      "themes": "Motywy",
+      "create": "Utwórz",
+      "settings": "Ustawienia",
+      "importExport": "Import/Eksport"
+    },
+    "name": "Nazwa",
+    "namePlaceholder": "Wprowadź nazwę motywu",
+    "description": "Opis",
+    "descriptionPlaceholder": "Wprowadź opis motywu",
+    "colors": "Kolory",
+    "fonts": "Czcionki",
+    "primaryFont": "Główna czcionka",
+    "baseFontSize": "Podstawowy rozmiar czcionki",
+    "create": "Utwórz motyw",
+    "createNew": "Utwórz nowy motyw",
+    "duplicate": "Duplikuj",
+    "delete": "Usuń",
+    "export": "Eksportuj",
+    "import": "Importuj",
+    "exportTheme": "Eksportuj motyw",
+    "importTheme": "Importuj motyw",
+    "importFromFile": "Importuj z pliku",
+    "importFromText": "Importuj z JSON",
+    "pasteJson": "Wklej JSON motywu tutaj...",
+    "resetDefault": "Resetuj do domyślnych",
+    "autoSwitch": "Automatyczne przełączanie",
+    "autoSwitchDescription": "Automatycznie przełączaj między jasnym i ciemnym motywem w zależności od pory dnia",
+    "darkMode": "Ciemny motyw",
+    "darkModeDescription": "Użyj wariantu ciemnego motywu",
+    "dayTheme": "Motyw dzienny",
+    "dayThemeDescription": "Motyw używany w ciągu dnia (6:00 - 18:00)",
+    "nightTheme": "Motyw nocny",
+    "nightThemeDescription": "Motyw używany w nocy",
+    "showPreview": "Pokaż podgląd motywu",
+    "showPreviewDescription": "Wyświetl podgląd motywu przed zastosowaniem",
+    "confirmDelete": "Czy na pewno chcesz usunąć ten motyw?",
+    "confirmReset": "Zresetować wszystkie motywy i ustawienia do domyślnych? Spowoduje to usunięcie wszystkich własnych motywów.",
+    "errors": {
+      "nameRequired": "Nazwa motywu jest wymagana",
+      "invalidJson": "Nieprawidłowy format JSON motywu"
+    }
   }
 }

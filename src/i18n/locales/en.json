@@ -435,5 +435,53 @@
     "monitoringEnabled": "Enable Monitoring",
     "autoRouting": "Auto Routing",
     "syncWithStream": "Sync with Stream"
+  },
+  "theme": {
+    "title": "Theme Settings",
+    "builtin": "Built-in",
+    "builtinThemes": "Built-in Themes",
+    "customThemes": "Custom Themes",
+    "tabs": {
+      "themes": "Themes",
+      "create": "Create",
+      "settings": "Settings",
+      "importExport": "Import/Export"
+    },
+    "name": "Name",
+    "namePlaceholder": "Enter theme name",
+    "description": "Description",
+    "descriptionPlaceholder": "Enter theme description",
+    "colors": "Colors",
+    "fonts": "Fonts",
+    "primaryFont": "Primary Font",
+    "baseFontSize": "Base Font Size",
+    "create": "Create Theme",
+    "createNew": "Create New Theme",
+    "duplicate": "Duplicate",
+    "delete": "Delete",
+    "export": "Export",
+    "import": "Import",
+    "exportTheme": "Export Theme",
+    "importTheme": "Import Theme",
+    "importFromFile": "Import from File",
+    "importFromText": "Import from JSON",
+    "pasteJson": "Paste theme JSON here...",
+    "resetDefault": "Reset to Default",
+    "autoSwitch": "Auto-switch based on time",
+    "autoSwitchDescription": "Automatically switch between light and dark themes based on time of day",
+    "darkMode": "Dark Mode",
+    "darkModeDescription": "Use dark theme variant",
+    "dayTheme": "Day Theme",
+    "dayThemeDescription": "Theme to use during daytime (6:00 - 18:00)",
+    "nightTheme": "Night Theme",
+    "nightThemeDescription": "Theme to use during nighttime",
+    "showPreview": "Show Theme Preview",
+    "showPreviewDescription": "Display theme preview before applying",
+    "confirmDelete": "Are you sure you want to delete this theme?",
+    "confirmReset": "Reset all themes and settings to defaults? This will delete all custom themes.",
+    "errors": {
+      "nameRequired": "Theme name is required",
+      "invalidJson": "Invalid theme JSON format"
+    }
   }
 }

@@ -19,9 +19,17 @@
 - **Built-in Stream Scheduler** - Automated scheduling with notifications (PR #10)
 - **Advanced Audio Mixer** - VST plugin support and professional mixing (PR #11)
 
+### ✅ Completed Features (v0.2.0)
+
+- **Enhanced Hotkey System** - Multi-key sequences and profiles (PR #7)
+- **Scene Automation** - Custom conditions and actions (PR #8)
+- **Cloud Backup System** - Multi-provider backup with encryption (PR #9)
+- **Built-in Stream Scheduler** - Automated scheduling with notifications (PR #10)
+- **Advanced Audio Mixer** - VST plugin support and professional mixing (PR #11)
+
 ### 📋 Remaining v0.2.0 Features
 
-- **Customizable Themes** - Theme engine with multiple presets (NEXT)
+- **Customizable Themes** - Theme engine with multiple presets
 
 ## Previous Completed Features
 

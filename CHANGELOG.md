@@ -14,9 +14,85 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.3.0] - 2026-03-05
+
+### Added
+
+#### Advanced Analytics Dashboard (PR #14)
+- Comprehensive analytics type definitions (MetricType, TimeRange, ChartType, etc.)
+- AnalyticsManager service with 600+ lines of code:
+  - Real-time metrics tracking
+  - Session lifecycle management (start, end, update)
+  - Historical data storage and retrieval
+  - Dashboard widget configuration
+  - Alert rule management
+  - Export to CSV/JSON
+  - Auto-refresh capabilities
+  - Performance monitoring
+- useAnalytics React hook for state management
+- AnalyticsDashboard UI component with 5 tabs:
+  - Overview: Quick stats and real-time data
+  - Sessions: Stream session history with detailed metrics
+  - Charts: Custom widgets and visualizations
+  - Alerts: Alert rule configuration and triggered alerts
+  - Settings: Analytics preferences and options
+- Full CSS styling for analytics dashboard
+- Integration with App.tsx header (📊 button)
+- Complete i18n translations (English + Polish)
+
+#### Analytics Capabilities
+- **Engagement Metrics**: Average watch time, total messages, total likes, new followers, engagement rate
+- **Viewer Metrics**: Average viewers, peak viewers, viewer growth, viewer retention
+- **Growth Metrics**: Follow/unfollow rates, subscriber growth, engagement trends
+- **Performance Metrics**: Uptime percentage, bitrate stability, FPS stability, dropped frames, CPU/GPU efficiency, network quality
+- **Alert System**: Customizable alert rules with thresholds, conditions (above/below), and notifications
+- **Export**: CSV and JSON export with time range filtering (1h, 24h, 7d, 30d, 90d, 1y)
+- **Session Management**: Start/end sessions, track duration, platform, peak/avg viewers, followers, messages
+
+#### Technical Implementation
+- EventEmitter pattern for real-time updates
+- LocalStorage persistence for settings and configuration
+- Type-safe TypeScript implementation
+- Comprehensive error handling
+- Modular architecture following project patterns
+
+### Changed
+- Improved analytics data structure
+- Enhanced modal integration
+- Better performance metrics tracking
+
+---
+
 ## [0.2.0] - 2026-03-05
 
 ### Added
+
+#### Multi-Platform Streaming (PR #13)
+- Multi-platform streaming type definitions
+- MultiPlatformManager service:
+  - Stream lifecycle management (start, stop, start all, stop all)
+  - Platform configuration for 8 platforms
+  - Health monitoring and automatic recovery
+  - Platform analytics aggregation
+  - Connection pooling and optimization
+- useMultiPlatform React hook
+- MultiPlatformSettings UI component with 4 tabs:
+  - Platforms: Add/edit/remove streaming platforms
+  - Sync: Synchronization settings across platforms
+  - Chat: Chat integration configuration
+  - Analytics: Platform-specific analytics
+- Support for 8 streaming platforms:
+  - Twitch, YouTube, Kick, Facebook Gaming, TikTok, Trovo, DLive, Rumble
+- Platform presets with default RTMP URLs
+- Synchronization features:
+  - Chat sync across platforms
+  - Emote sync
+  - Commands sync
+  - Moderation sync
+  - Cross-platform notifications
+- Chat integration with configurable message rate limiting
+- Comprehensive analytics per platform
+- Complete i18n translations (English + Polish)
 
 #### Enhanced Hotkey System (PR #7)
 - Multi-key sequence support for hotkeys

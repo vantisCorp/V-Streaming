@@ -443,5 +443,70 @@
       "showNotifications": "Pokaż Powiadomienia",
       "alertSound": "Dźwięk Alertu"
     }
+  },
+  "overlayMarketplace": {
+    "title": "Marketplace Nakładek",
+    "tabs": {
+      "marketplace": "Marketplace",
+      "installed": "Zainstalowane",
+      "create": "Utwórz",
+      "settings": "Ustawienia"
+    },
+    "search": "Szukaj szablonów...",
+    "filterByCategory": "Filtruj według kategorii",
+    "sortBy": "Sortuj według",
+    "sortOptions": {
+      "name": "Nazwy",
+      "rating": "Oceny",
+      "downloads": "Pobrań",
+      "newest": "Najnowsze"
+    },
+    "categories": {
+      "all": "Wszystkie",
+      "gaming": "Gry",
+      "justChatting": "Rozmowa",
+      "music": "Muzyka",
+      "art": "Sztuka",
+      "irl": "IRL",
+      "tech": "Technologia",
+      "sports": "Sport"
+    },
+    "install": "Zainstaluj",
+    "preview": "Podgląd",
+    "delete": "Usuń",
+    "downloads": "Pobrania",
+    "close": "Zamknij",
+    "closePreview": "Zamknij Podgląd",
+    "createTemplate": {
+      "title": "Utwórz Szablon",
+      "name": "Nazwa Szablonu",
+      "description": "Opis",
+      "category": "Kategoria",
+      "thumbnail": "URL Miniatury",
+      "create": "Utwórz Szablon",
+      "cancel": "Anuluj",
+      "success": "Szablon utworzony pomyślnie!",
+      "error": "Nie udało się utworzyć szablonu"
+    },
+    "installedTemplates": {
+      "title": "Zainstalowane Szablony",
+      "noTemplates": "Brak zainstalowanych szablonów",
+      "installedAt": "Zainstalowano"
+    },
+    "settings": {
+      "title": "Ustawienia Nakładek",
+      "enableOverlays": "Włącz Nakładki",
+      "enableOverlaysDesc": "Włącz niestandardowe nakładki w transmisji",
+      "autoSave": "Auto Zapis",
+      "autoSaveDesc": "Automatycznie zapisuj zmiany nakładek",
+      "enableUndo": "Włącz Cofnij/Ponów",
+      "enableUndoDesc": "Pozwól na cofanie i ponawianie zmian",
+      "maxHistory": "Maks. Historia",
+      "maxHistoryDesc": "Maksymalna liczba kroków cofnij/ponów"
+    },
+    "empty": {
+      "title": "Nie znaleziono szablonów",
+      "description": "Spróbuj dostosować kryteria wyszukiwania lub filtrowania"
+    }
   }
 }

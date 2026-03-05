@@ -11,6 +11,7 @@ import { AudioMixerSettings } from './components/AudioMixerSettings';
 import ThemeSettings from './components/ThemeSettings';
 import MultiPlatformSettings from './components/MultiPlatformSettings';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
+import OverlayMarketplace from './components/OverlayMarketplace';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -255,6 +256,7 @@ function App() {
   const [showThemeSettings, setShowThemeSettings] = useState(false);
   const [showMultiPlatform, setShowMultiPlatform] = useState(false);
   const [showAnalytics, setShowAnalytics] = useState(false);
+  const [showOverlayMarketplace, setShowOverlayMarketplace] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -642,6 +644,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             📊
+          </button>
+          <button
+            onClick={() => setShowOverlayMarketplace(true)}
+            className="theme-btn"
+            title="Overlay Marketplace"
+            style={{ marginLeft: '8px' }}
+          >
+            🎨
           </button>
           <div className="theme-switcher">
             <button
@@ -1326,6 +1336,11 @@ function App() {
       {/* Analytics Dashboard Modal */}
       {showAnalytics && (
         <AnalyticsDashboard isOpen={showAnalytics} onClose={() => setShowAnalytics(false)} />
+      )}
+
+      {/* Overlay Marketplace Modal */}
+      {showOverlayMarketplace && (
+        <OverlayMarketplace isOpen={showOverlayMarketplace} onClose={() => setShowOverlayMarketplace(false)} />
       )}
     </div>
   );

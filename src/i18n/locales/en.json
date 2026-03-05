@@ -645,5 +645,70 @@
       "showNotifications": "Show Notifications",
       "alertSound": "Alert Sound"
     }
+  },
+  "overlayMarketplace": {
+    "title": "Overlay Marketplace",
+    "tabs": {
+      "marketplace": "Marketplace",
+      "installed": "Installed",
+      "create": "Create",
+      "settings": "Settings"
+    },
+    "search": "Search templates...",
+    "filterByCategory": "Filter by Category",
+    "sortBy": "Sort by",
+    "sortOptions": {
+      "name": "Name",
+      "rating": "Rating",
+      "downloads": "Downloads",
+      "newest": "Newest"
+    },
+    "categories": {
+      "all": "All",
+      "gaming": "Gaming",
+      "justChatting": "Just Chatting",
+      "music": "Music",
+      "art": "Art",
+      "irl": "IRL",
+      "tech": "Tech",
+      "sports": "Sports"
+    },
+    "install": "Install",
+    "preview": "Preview",
+    "delete": "Delete",
+    "downloads": "Downloads",
+    "close": "Close",
+    "closePreview": "Close Preview",
+    "createTemplate": {
+      "title": "Create Template",
+      "name": "Template Name",
+      "description": "Description",
+      "category": "Category",
+      "thumbnail": "Thumbnail URL",
+      "create": "Create Template",
+      "cancel": "Cancel",
+      "success": "Template created successfully!",
+      "error": "Failed to create template"
+    },
+    "installedTemplates": {
+      "title": "Installed Templates",
+      "noTemplates": "No templates installed yet",
+      "installedAt": "Installed at"
+    },
+    "settings": {
+      "title": "Overlay Settings",
+      "enableOverlays": "Enable Overlays",
+      "enableOverlaysDesc": "Enable custom overlays in your stream",
+      "autoSave": "Auto Save",
+      "autoSaveDesc": "Automatically save overlay changes",
+      "enableUndo": "Enable Undo/Redo",
+      "enableUndoDesc": "Allow undoing and redoing changes",
+      "maxHistory": "Max History",
+      "maxHistoryDesc": "Maximum number of undo/redo steps"
+    },
+    "empty": {
+      "title": "No templates found",
+      "description": "Try adjusting your search or filter criteria"
+    }
   }
 }

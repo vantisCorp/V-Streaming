@@ -1,0 +1,467 @@
+.overlay-marketplace {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.overlay-marketplace-content {
+  background: #1e1e1e;
+  border-radius: 12px;
+  width: 90vw;
+  max-width: 1400px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.overlay-marketplace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #333;
+  background: #252525;
+}
+
+.overlay-marketplace-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.overlay-marketplace-close {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.overlay-marketplace-close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.overlay-marketplace-tabs {
+  display: flex;
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+  padding: 0 24px;
+}
+
+.overlay-marketplace-tab {
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.overlay-marketplace-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.overlay-marketplace-tab.active {
+  color: #6366f1;
+  border-bottom-color: #6366f1;
+}
+
+.overlay-marketplace-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+}
+
+.overlay-marketplace-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.overlay-marketplace-search {
+  flex: 1;
+  min-width: 200px;
+}
+
+.overlay-marketplace-search input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.overlay-marketplace-search input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.overlay-marketplace-select {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.overlay-marketplace-select:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.overlay-marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.overlay-marketplace-template {
+  background: #252525;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.overlay-marketplace-template:hover {
+  border-color: #6366f1;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+}
+
+.overlay-marketplace-template-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #2a2a2a;
+}
+
+.overlay-marketplace-template-content {
+  padding: 16px;
+}
+
+.overlay-marketplace-template-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 8px 0;
+}
+
+.overlay-marketplace-template-description {
+  font-size: 13px;
+  color: #999;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.overlay-marketplace-template-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.overlay-marketplace-template-category {
+  background: #6366f1;
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.overlay-marketplace-template-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #ffd700;
+  font-size: 14px;
+}
+
+.overlay-marketplace-template-downloads {
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.overlay-marketplace-template-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.overlay-marketplace-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.overlay-marketplace-btn-primary {
+  background: #6366f1;
+  color: #fff;
+}
+
+.overlay-marketplace-btn-primary:hover {
+  background: #5558e3;
+}
+
+.overlay-marketplace-btn-secondary {
+  background: #3a3a3a;
+  color: #fff;
+}
+
+.overlay-marketplace-btn-secondary:hover {
+  background: #4a4a4a;
+}
+
+.overlay-marketplace-btn-danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.overlay-marketplace-btn-danger:hover {
+  background: #dc2626;
+}
+
+.overlay-marketplace-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay-marketplace-preview-content {
+  background: #1e1e1e;
+  border-radius: 12px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay-marketplace-preview-image {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  background: #2a2a2a;
+}
+
+.overlay-marketplace-preview-details {
+  padding: 24px;
+}
+
+.overlay-marketplace-preview-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 12px 0;
+}
+
+.overlay-marketplace-preview-description {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.6;
+  margin: 0 0 16px 0;
+}
+
+.overlay-marketplace-preview-meta {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.overlay-marketplace-preview-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #999;
+  font-size: 14px;
+}
+
+.overlay-marketplace-preview-close {
+  margin-left: auto;
+}
+
+.overlay-marketplace-form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.overlay-marketplace-form-group {
+  margin-bottom: 20px;
+}
+
+.overlay-marketplace-form-label {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.overlay-marketplace-form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.overlay-marketplace-form-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.overlay-marketplace-form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.overlay-marketplace-settings {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.overlay-marketplace-settings-section {
+  margin-bottom: 32px;
+}
+
+.overlay-marketplace-settings-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 16px 0;
+}
+
+.overlay-marketplace-settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #252525;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.overlay-marketplace-settings-label {
+  color: #fff;
+  font-size: 14px;
+}
+
+.overlay-marketplace-settings-description {
+  color: #999;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.overlay-marketplace-toggle {
+  position: relative;
+  width: 50px;
+  height: 26px;
+  background: #444;
+  border-radius: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.overlay-marketplace-toggle.active {
+  background: #6366f1;
+}
+
+.overlay-marketplace-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.overlay-marketplace-toggle.active::after {
+  left: 27px;
+}
+
+.overlay-marketplace-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.overlay-marketplace-empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.overlay-marketplace-empty-title {
+  font-size: 20px;
+  color: #fff;
+  margin: 0 0 8px 0;
+}
+
+.overlay-marketplace-empty-description {
+  font-size: 14px;
+  margin: 0;
+}

@@ -176,6 +176,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Export archive list to CSV/JSON/XML
 - Import external video files
 
+#### Integrated Chat Moderation Tools (PR #17)
+- Comprehensive moderation type definitions (moderation.ts):
+  - ModerationActionType, ModerationRuleType, ModerationSeverity, ModerationStatus, TrustLevel enums
+  - ChatMessage, ModerationRule, ModerationActionRecord, ModerationAppeal, ModerationLogEntry interfaces
+  - ModerationStatistics, ChatUserInfo, ModerationQueueEntry, ModerationSettings, SpamDetectionConfig interfaces
+  - Default values and constants for moderation configuration
+- ModerationManager service (700+ lines):
+  - Message processing with comprehensive rule checking
+  - Spam detection algorithms (repetition, caps, emotes, links, symbols, zalgo, mass mention)
+  - Action execution: timeout, ban, unban, delete message, warn, purge
+  - Moderation queue for flagged messages
+  - User info tracking with trust level progression
+  - Rule CRUD operations
+  - Appeals system with approve/reject functionality
+  - Statistics generation
+  - Settings management with LocalStorage persistence
+- useModeration React hook for state management
+- ModerationPanel UI component with 6 tabs:
+  - Overview: Statistics and recent actions
+  - Rules: Create, update, delete moderation rules
+  - Queue: Review flagged messages
+  - Users: View user information and trust levels
+  - Actions: Moderation action history
+  - Appeals: Manage user appeals
+- Full CSS styling (500+ lines)
+- Integration with App.tsx header (🛡️ button)
+- Complete i18n translations (English + Polish)
+
+#### Moderation Features
+- **Action Types**: Timeout, Ban, Unban, Delete Message, Warn, Purge, Slow Mode, Subscriber Mode, Follower Mode, Emote Only, R9K Mode
+- **Rule Types**: Profanity, Spam, Links, Caps, Emote Spam, Custom Words, URL Shorteners, Symbols, Repetition, Zalgo, Mass Mention, Raid Protection, Follower Age, Account Age
+- **Severity Levels**: Low, Medium, High, Critical
+- **Trust Levels**: New, Follower, Subscriber, VIP, Moderator, Regular
+- **Spam Detection**: Configurable thresholds for repetition, caps, emotes, links, symbols, zalgo, mass mention
+- **User Tracking**: Message count, warnings, timeouts, bans, trust level progression
+- **Appeals System**: Submit, approve, reject appeals
+- **Statistics**: Total actions, today/weekly/monthly actions, actions by type/severity, top moderators
+
 ### Changed
 - Improved analytics data structure
 - Enhanced modal integration

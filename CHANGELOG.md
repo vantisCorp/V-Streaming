@@ -11,6 +11,75 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Complete V-Streaming application with 100+ features
+
+---
+
+## [0.2.0] - 2026-03-05
+
+### Added
+
+#### Enhanced Hotkey System (PR #7)
+- Multi-key sequence support for hotkeys
+- Hotkey profiles with save/load functionality
+- Global keyboard listener with Tauri integration
+- Hotkey conflict detection and resolution
+- Import/export hotkey configurations
+
+#### Scene Automation (PR #8)
+- Custom automation rules with conditions
+- Multiple trigger types (time-based, event-based, manual)
+- Action execution engine
+- Scene transition automation
+- Automation scheduling and management
+
+#### Cloud Backup System (PR #9)
+- Multi-provider cloud backup (Google Drive, Dropbox, OneDrive, iCloud, AWS S3, Custom)
+- Encrypted backup storage with AES-256
+- Automatic backup scheduling
+- Selective backup items
+- Backup restore functionality
+- Sync between devices
+
+#### Stream Scheduler (PR #10)
+- Recurring stream schedules
+- Multiple frequency options (daily, weekly, monthly, custom)
+- Stream notifications and reminders
+- Conflict detection
+- Calendar integration
+- Schedule templates
+
+#### Advanced Audio Mixer (PR #11)
+- Professional audio mixing console
+- VST plugin support
+- Multiple audio sources and buses
+- Real-time audio processing
+- EQ with presets
+- Audio effects (compressor, gate, limiter)
+- Volume normalization
+- Audio presets management
+
+#### Customizable Themes (PR #12)
+- 9 built-in themes (Light, Dark, Cyberpunk, Ocean, Forest, Sunset, Midnight, Neon, Minimal)
+- Custom theme creator with full color palette
+- Theme import/export (JSON format)
+- Auto-switch themes based on time of day
+- Dark mode toggle
+- Font customization
+- Border radius and shadow settings
+
+### Changed
+- Improved i18n support with complete translations
+- Enhanced type safety across all modules
+- Better error handling and user feedback
+- Performance optimizations
+
+### Technical Details
+- 100% TypeScript implementation
+- Complete type definitions for all features
+- React hooks for state management
+- EventEmitter pattern for services
+- LocalStorage persistence
+- Full i18n support (English, Polish)
 - AI-powered features (highlights, captions, translation, coach)
 - VTubing engine with .VRM and Live2D support
 - Dual-output streaming (16:9 and 9:16)

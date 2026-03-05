@@ -109,6 +109,73 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Rating and download counts
 - Author information
 
+#### Stream Archive Management System (PR #16)
+- Comprehensive archive type definitions (archive.ts):
+  - ArchiveFormat, ArchiveQuality, ArchiveStatus enums
+  - ArchiveStorageType, ArchiveCategory enums
+  - Archive, ArchiveMetadata, ArchiveEvent interfaces
+  - ArchiveRecordingConfig, ArchiveStorageConfig, ArchiveAutoDeleteConfig
+  - ArchiveSearchFilters, ArchiveBatchOperation, ArchiveExportOptions
+- ArchiveManager service (908 lines):
+  - Recording management (start, stop, progress tracking)
+  - Archive CRUD operations (create, read, update, delete)
+  - Search and filter with multiple criteria
+  - Sort by various options (date, name, size, duration, views)
+  - Batch operations (delete, export, upload, download, tag, compress)
+  - Export/Import functionality (CSV, JSON, XML)
+  - Auto-upload to cloud storage
+  - Auto-delete with retention policies
+  - Storage management and monitoring
+  - Archive statistics
+  - Favorites and protection system
+  - Tags management
+  - Settings management (recording, storage, auto-delete)
+- useArchive React hook for state management (387 lines)
+- ArchiveManager UI component with 4 tabs:
+  - Archives: Browse, search, filter, and manage archives
+  - Recording: Control recording and configure settings
+  - Import: Import existing video files
+  - Settings: Storage and auto-delete configuration
+- Full CSS styling (643 lines)
+- Integration with App.tsx header (📁 button)
+- Complete i18n translations (English + Polish)
+
+#### Archive Features
+- **Formats**: MP4, MKV, MOV, FLV, WebM, TS
+- **Qualities**: Original, High (1080p), Medium (720p), Low (480p), Custom
+- **Categories**: Gaming, Just Chatting, Music, Art, IRL, Tech, Sports, Education, Other
+- **Statuses**: Recording, Processing, Completed, Failed, Uploading, Deleting
+
+#### Recording Configuration
+- Format and quality selection
+- Bitrate control (target, min, max)
+- Resolution and FPS settings
+- Auto-record toggle
+- Include chat/overlay options
+- Hardware encoding toggle
+- Split by duration or file size
+
+#### Storage Management
+- Local and cloud storage
+- Maximum storage limits
+- Retention period configuration
+- Auto-upload to cloud
+- Backup configuration
+- Auto-delete with retention policies
+- Keep favorites and protected archives
+
+#### Archive Management
+- Search by name, description, tags
+- Filter by status, category, format, quality, date range, size range, duration range
+- Sort by date, name, size, duration, views
+- Favorite and protect archives
+- View detailed archive information
+- Download and upload archives
+- Compress archives
+- Batch operations for multiple archives
+- Export archive list to CSV/JSON/XML
+- Import external video files
+
 ### Changed
 - Improved analytics data structure
 - Enhanced modal integration

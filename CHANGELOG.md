@@ -14,6 +14,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.4.0] - 2026-03-05
+
+### Added
+
+#### Hardware Encoding Support (PR #18)
+- Comprehensive encoding type definitions (EncoderBackend, CodecType, EncoderPreset, RateControlMode, etc.)
+- EncoderManager service with 600+ lines of code:
+  - Support for NVENC (NVIDIA), AMF (AMD), QuickSync (Intel), and Software encoders
+  - H.264, HEVC, and AV1 codec support
+  - 9 encoder presets (P1-P9) from Max Performance to Max Quality
+  - Rate control modes: CBR, VBR, CQP, VQVBR
+  - Backend detection and capability management
+  - Configuration management with LocalStorage persistence
+  - Real-time statistics tracking (FPS, bitrate, latency, CPU/GPU usage)
+  - Event-driven architecture using EventEmitter
+  - 5 preset configurations: Ultra Fast, Fast, Balanced, Quality, Max Quality
+  - Automatic bitrate recommendations based on resolution and framerate
+- useEncoding React hook for encoder state management (250+ lines)
+- EncoderConfiguration UI component with 3 tabs:
+  - **General**: Backend selection, codec, preset, rate control, bitrate, keyframe interval
+  - **Advanced**: H.264/HEVC profiles, B-frames, reference frames, multipass, lookahead, adaptive quantization, psycho visual tuning, spatial/temporal AQ, quality control
+  - **Presets**: Quick access to 5 predefined encoding configurations
+- Real-time statistics panel showing encoding performance
+- Backend-specific feature detection and UI adaptation
+- Toolbar button (⚙️) to open encoder configuration
+- Complete CSS styling (500+ lines) with responsive design
+- Integration with App.tsx modal system
+- Complete i18n translations (English + Polish) for all encoder-related UI
+
+#### Encoding Features
+- **NVENC**: B-frames, multipass (quarter/full), lookahead, adaptive quantization, psycho visual tuning, temporal AQ, spatial AQ, 144 FPS support, 8K support
+- **AMF**: B-frames, multipass, lookahead, adaptive quantization, 120 FPS support, 8K support
+- **QuickSync**: B-frames, multipass, adaptive quantization, 60 FPS support, 8K support
+- **Advanced Options**: H.264 profiles (Baseline, Main, High, High 4:4:4), HEVC profiles (Main, Main 10, Main 12), multipass modes (disabled, quarter, full)
+- **Quality Control**: Min/Max QP settings, adaptive quantization, psycho visual tuning, temporal and spatial AQ
+- **Statistics**: FPS, bitrate, latency, CPU usage, GPU usage, dropped frames, memory usage
+
+#### Technical Improvements
+- Added `eventemitter3` package for event-driven architecture
+- TypeScript strict mode compliance throughout
+- Support for 4K encoding (8192x8192 max resolution)
+- Maximum framerate support up to 144 FPS (NVENC)
+- LocalStorage persistence for encoder configuration
+- Automatic bitrate recommendations for common resolutions (1080p, 720p, 4K)
+
+---
+
 ## [0.3.0] - 2026-03-05
 
 ### Added

@@ -127,6 +127,82 @@
       "crf": "CRF (Stały Współczynnik Prędkości)"
     }
   },
+  "encoder": {
+    "title": "Konfiguracja Kodera",
+    "backend": "Backend Kodera",
+    "codec": "Kodek",
+    "preset": "Profil",
+    "rateControlMode": "Tryb Kontroli Przepustowości",
+    "bitrate": "Przepustowość",
+    "maxBitrate": "Maks. Przepustowość",
+    "keyframeInterval": "Interwał Klatek Kluczowych",
+    "h264Profile": "Profil H.264",
+    "hevcProfile": "Profil HEVC",
+    "bFrames": "Klatki B",
+    "referenceFrames": "Klatki Odniesienia",
+    "multipass": "Kodowanie Multipass",
+    "lookahead": "Lookahead",
+    "adaptiveQuantization": "Adaptacyjna Kwantyzacja",
+    "psychoVisualTuning": "Dostrajanie Psycho-Wizualne",
+    "temporalAQ": "Czasowa AQ",
+    "spatialAQ": "Przestrzenna AQ",
+    "minQp": "Min QP",
+    "maxQp": "Max QP",
+    "resetToDefaults": "Przywróć Domyślne",
+    "startEncoding": "Rozpocznij Kodowanie",
+    "stopEncoding": "Zatrzymaj Kodowanie",
+    "tabs": {
+      "general": "Ogólne",
+      "advanced": "Zaawansowane",
+      "presets": "Presety"
+    },
+    "status": {
+      "idle": "Nieaktywny",
+      "initializing": "Inicjalizacja...",
+      "encoding": "Kodowanie",
+      "stopping": "Zatrzymywanie...",
+      "error": "Błąd"
+    },
+    "presets": {
+      "p1": "P1 - Maks. Wydajność",
+      "p2": "P2 - Wysoka Wydajność",
+      "p3": "P3 - Wydajność",
+      "p4": "P4 - Zbalansowana Wydajność",
+      "p5": "P5 - Zbalansowany",
+      "p6": "P6 - Domyślny",
+      "p7": "P7 - Jakość",
+      "p8": "P8 - Wysoka Jakość",
+      "p9": "P9 - Maks. Jakość"
+    },
+    "rateControlModes": {
+      "cbr": "CBR - Stała Przepustowość",
+      "vbr": "VBR - Zmienna Przepustowość",
+      "cqp": "CQP - Stały QP",
+      "vqvbr": "VQVBR - Zmienna Jakość VBR"
+    },
+    "profiles": {
+      "baseline": "Baseline",
+      "main": "Main",
+      "high": "High",
+      "high444": "High 4:4:4",
+      "main10": "Main 10-bit",
+      "main12": "Main 12-bit"
+    },
+    "multipassModes": {
+      "disabled": "Wyłączony",
+      "quarter": "Ćwierć Rozdzielczości",
+      "full": "Pełna Rozdzielczość"
+    },
+    "statistics": {
+      "title": "Statystyki Czasu Rzeczywistego",
+      "fps": "FPS",
+      "bitrate": "Przepustowość",
+      "latency": "Opóźnienie",
+      "cpu": "Użycie CPU",
+      "gpu": "Użycie GPU",
+      "droppedFrames": "Porzucone Klatki"
+    }
+  },
   "streaming": {
     "title": "Ustawienia Transmisji",
     "platform": "Platforma",

@@ -127,6 +127,82 @@
       "crf": "CRF (Constant Rate Factor)"
     }
   },
+  "encoder": {
+    "title": "Encoder Configuration",
+    "backend": "Encoder Backend",
+    "codec": "Codec",
+    "preset": "Preset",
+    "rateControlMode": "Rate Control Mode",
+    "bitrate": "Bitrate",
+    "maxBitrate": "Max Bitrate",
+    "keyframeInterval": "Keyframe Interval",
+    "h264Profile": "H.264 Profile",
+    "hevcProfile": "HEVC Profile",
+    "bFrames": "B-Frames",
+    "referenceFrames": "Reference Frames",
+    "multipass": "Multipass Encoding",
+    "lookahead": "Lookahead",
+    "adaptiveQuantization": "Adaptive Quantization",
+    "psychoVisualTuning": "Psycho Visual Tuning",
+    "temporalAQ": "Temporal Adaptive Quantization",
+    "spatialAQ": "Spatial Adaptive Quantization",
+    "minQp": "Min QP",
+    "maxQp": "Max QP",
+    "resetToDefaults": "Reset to Defaults",
+    "startEncoding": "Start Encoding",
+    "stopEncoding": "Stop Encoding",
+    "tabs": {
+      "general": "General",
+      "advanced": "Advanced",
+      "presets": "Presets"
+    },
+    "status": {
+      "idle": "Idle",
+      "initializing": "Initializing...",
+      "encoding": "Encoding",
+      "stopping": "Stopping...",
+      "error": "Error"
+    },
+    "presets": {
+      "p1": "P1 - Max Performance",
+      "p2": "P2 - High Performance",
+      "p3": "P3 - Performance",
+      "p4": "P4 - Balanced Performance",
+      "p5": "P5 - Balanced",
+      "p6": "P6 - Default",
+      "p7": "P7 - Quality",
+      "p8": "P8 - High Quality",
+      "p9": "P9 - Max Quality"
+    },
+    "rateControlModes": {
+      "cbr": "CBR - Constant Bitrate",
+      "vbr": "VBR - Variable Bitrate",
+      "cqp": "CQP - Constant QP",
+      "vqvbr": "VQVBR - Variable Quality VBR"
+    },
+    "profiles": {
+      "baseline": "Baseline",
+      "main": "Main",
+      "high": "High",
+      "high444": "High 4:4:4",
+      "main10": "Main 10-bit",
+      "main12": "Main 12-bit"
+    },
+    "multipassModes": {
+      "disabled": "Disabled",
+      "quarter": "Quarter Resolution",
+      "full": "Full Resolution"
+    },
+    "statistics": {
+      "title": "Real-time Statistics",
+      "fps": "FPS",
+      "bitrate": "Bitrate",
+      "latency": "Latency",
+      "cpu": "CPU Usage",
+      "gpu": "GPU Usage",
+      "droppedFrames": "Dropped Frames"
+    }
+  },
   "streaming": {
     "title": "Streaming Settings",
     "platform": "Platform",

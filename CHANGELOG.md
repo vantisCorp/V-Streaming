@@ -14,6 +14,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.6.0] - 2026-03-05
+
+### Added
+
+#### Virtual Camera Support for Video Conferencing
+- **Virtual Camera Type Definitions** (`src/types/virtualCamera.ts`): Comprehensive type system for virtual camera configuration with enums for status, output formats, resolution presets, frame rates, aspect ratios, source types, and quality presets
+- **VirtualCameraManager Service** (`src/services/VirtualCameraManager.ts`): Virtual camera device management with device scanning, source management, quality presets, and real-time statistics tracking
+- **useVirtualCamera React Hook** (`src/hooks/useVirtualCamera.ts`): React hook for virtual camera state management, exposing all operations and statistics with automatic state updates
+- **VirtualCameraConfiguration UI Component** (`src/components/VirtualCameraConfiguration.tsx`): Three-tab interface (General, Advanced, Statistics) with device selection, quality presets, resolution settings, and performance monitoring
+- **CSS Styling** (`src/components/VirtualCameraConfiguration.css`): Gradient theme styling with responsive layout, custom scrollbars, animations, and status indicators
+- **App Integration**: Added toolbar button (📷) for quick access with modal-based configuration interface
+- **Internationalization**: Complete English and Polish translations for all virtual camera features
+
+#### Virtual Camera Features
+- **Device Management**: Automatic device scanning and selection
+- **Quality Presets**: Low (720p 30fps), Medium (1080p 30fps), High (1080p 60fps), Ultra (1440p 60fps), and Custom
+- **Resolution Support**: HD 720p, FHD 1080p, QHD 1440p, UHD 4K, and custom resolutions
+- **Frame Rate Options**: 15, 24, 30, 50, 60, 120, and 144 FPS
+- **Aspect Ratios**: 16:9, 16:10, 4:3, 1:1, 9:16, and custom
+- **Output Formats**: NV12, I420, RGB24, RGBA, YUY2, UYVY
+- **Hardware Acceleration**: Optional GPU-accelerated processing
+- **Audio Support**: Optional audio inclusion with device selection
+- **Performance Monitoring**: Real-time CPU, GPU, memory usage, frame statistics
+
+---
+
 ## [0.5.0] - 2026-03-05
 
 ### Added

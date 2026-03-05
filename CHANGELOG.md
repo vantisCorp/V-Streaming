@@ -14,6 +14,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.5.0] - 2026-03-05
+
+### Added
+
+#### SRT Protocol Support for Unstable Connections
+- **SRT Type Definitions** (`src/types/srt.ts`): Comprehensive type system for SRT configuration with enums for connection modes, latency modes, encryption types, and quality metrics interfaces
+- **SRTManager Service** (`src/services/SRTManager.ts`): Connection management service with support for multiple connection modes (Caller, Listener, Rendezvous), adaptive bitrate for network instability, automatic reconnection logic, and real-time statistics tracking
+- **useSRT React Hook** (`src/hooks/useSRT.ts`): React hook for SRT state management, exposing all SRT operations and statistics with automatic config persistence to localStorage
+- **SRTConfiguration UI Component** (`src/components/SRTConfiguration.tsx`): Three-tab interface (Connection, Advanced, Statistics) with real-time connection status display, comprehensive configuration options, and live statistics monitoring
+- **CSS Styling** (`src/components/SRTConfiguration.css`): Dark theme styling matching app design with responsive layout, custom scrollbars, animations, and status indicators
+- **App Integration**: Added toolbar button (📡) for quick access with modal-based configuration interface
+- **Internationalization**: Complete English and Polish translations for all SRT features
+
+#### SRT Features
+- **Connection Modes**: Caller (connect to listener), Listener (wait for connections), Rendezvous (bidirectional)
+- **Encryption Support**: None, AES-128, AES-192, AES-256 with optional passphrase protection
+- **Adaptive Bitrate**: Automatic adjustment based on network conditions with configurable min/max bitrate range and overhead bandwidth percentage control
+- **Reconnection Features**: Configurable maximum retry count, adjustable retry delay, and connection timeout settings
+- **Real-time Statistics**: Packets sent/received/lost/retransmitted, bytes sent/received, RTT, jitter, bitrate, and quality score monitoring
+
+---
+
 ## [0.4.0] - 2026-03-05
 
 ### Added

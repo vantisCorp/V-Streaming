@@ -111,7 +111,12 @@ interface RevenueStatistics {
 type TimePeriod = 'hour' | 'day' | 'week' | 'month';
 type TabType = 'overview' | 'viewers' | 'performance' | 'revenue' | 'alerts';
 
-export const AnalyticsDashboard: React.FC = () => {
+interface AnalyticsDashboardProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [selectedPeriod, setSelectedPeriod] = useState<TimePeriod>('hour');
   const [realTimeData, setRealTimeData] = useState<RealTimeAnalytics | null>(null);
@@ -523,86 +528,100 @@ export const AnalyticsDashboard: React.FC = () => {
     </div>
   );
 
+  if (!isOpen) {
+    return null;
+  }
+
   return (
-    <div className="p-6 bg-gray-900 min-h-screen">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold mb-2">Analytics Dashboard</h1>
-        <p className="text-gray-400">Real-time insights and performance metrics</p>
-      </div>
-
-      {/* Time Period Selector */}
-      <div className="flex gap-2 mb-6">
-        {(['hour', 'day', 'week', 'month'] as TimePeriod[]).map((period) => (
-          <button
-            key={period}
-            onClick={() => setSelectedPeriod(period)}
-            className={`px-4 py-2 rounded-lg transition ${
-              selectedPeriod === period
-                ? 'bg-purple-600 text-white'
-                : 'bg-white/10 hover:bg-white/20'
-            }`}
-          >
-            {period.charAt(0).toUpperCase() + period.slice(1)}
-          </button>
-        ))}
-      </div>
-
-      {/* Live Status Indicator */}
-      {realTimeData && (
-        <div className="mb-6 flex items-center gap-3">
-          <span className={`w-3 h-3 rounded-full ${realTimeData.live_status ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`} />
-          <span className="font-semibold">
-            {realTimeData.live_status ? 'Live' : 'Offline'}
-          </span>
-          {realTimeData.live_status && (
-            <span className="text-gray-400">
-              Uptime: {Math.floor(realTimeData.stream_uptime / 3600)}h {Math.floor((realTimeData.stream_uptime % 3600) / 60)}m
-            </span>
-          )}
-          <span className="ml-auto text-gray-400">
-            Last updated: {new Date(realTimeData.last_update).toLocaleTimeString()}
-          </span>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal analytics-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-header">
+          <h2>Analytics Dashboard</h2>
+          <button className="btn-close" onClick={onClose}>✕</button>
         </div>
-      )}
+        <div className="modal-body">
+          <div className="p-6 bg-gray-900 min-h-screen">
+            <div className="mb-6">
+              <h1 className="text-3xl font-bold mb-2">Analytics Dashboard</h1>
+              <p className="text-gray-400">Real-time insights and performance metrics</p>
+            </div>
 
-      {/* Tabs */}
-      <div className="flex gap-2 mb-6 border-b border-white/10 pb-2">
-        {([
-          { id: 'overview', label: 'Overview' },
-          { id: 'viewers', label: 'Viewers' },
-          { id: 'performance', label: 'Performance' },
-          { id: 'revenue', label: 'Revenue' },
-          { id: 'alerts', label: 'Alerts' }
-        ] as { id: TabType; label: string }[]).map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 rounded-t-lg transition ${
-              activeTab === tab.id
-                ? 'bg-white/10 border-b-2 border-purple-500'
-                : 'text-gray-400 hover:text-white'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+            {/* Time Period Selector */}
+            <div className="flex gap-2 mb-6">
+              {(['hour', 'day', 'week', 'month'] as TimePeriod[]).map((period) => (
+                <button
+                  key={period}
+                  onClick={() => setSelectedPeriod(period)}
+                  className={`px-4 py-2 rounded-lg transition ${
+                    selectedPeriod === period
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-white/10 hover:bg-white/20'
+                  }`}
+                >
+                  {period.charAt(0).toUpperCase() + period.slice(1)}
+                </button>
+              ))}
+            </div>
 
-      {/* Tab Content */}
-      {loading ? (
-        <div className="text-center py-12">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4" />
-          <p className="text-gray-400">Loading analytics data...</p>
+            {/* Live Status Indicator */}
+            {realTimeData && (
+              <div className="mb-6 flex items-center gap-3">
+                <span className={`w-3 h-3 rounded-full ${realTimeData.live_status ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`} />
+                <span className="font-semibold">
+                  {realTimeData.live_status ? 'Live' : 'Offline'}
+                </span>
+                {realTimeData.live_status && (
+                  <span className="text-gray-400">
+                    Uptime: {Math.floor(realTimeData.stream_uptime / 3600)}h {Math.floor((realTimeData.stream_uptime % 3600) / 60)}m
+                  </span>
+                )}
+                <span className="ml-auto text-gray-400">
+                  Last updated: {new Date(realTimeData.last_update).toLocaleTimeString()}
+                </span>
+              </div>
+            )}
+
+            {/* Tabs */}
+            <div className="flex gap-2 mb-6 border-b border-white/10 pb-2">
+              {([
+                { id: 'overview', label: 'Overview' },
+                { id: 'viewers', label: 'Viewers' },
+                { id: 'performance', label: 'Performance' },
+                { id: 'revenue', label: 'Revenue' },
+                { id: 'alerts', label: 'Alerts' }
+              ] as { id: TabType; label: string }[]).map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-4 py-2 rounded-t-lg transition ${
+                    activeTab === tab.id
+                      ? 'bg-white/10 border-b-2 border-purple-500'
+                      : 'text-gray-400 hover:text-white'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab Content */}
+            {loading ? (
+              <div className="text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4" />
+                <p className="text-gray-400">Loading analytics data...</p>
+              </div>
+            ) : (
+              <>
+                {activeTab === 'overview' && renderOverviewTab()}
+                {activeTab === 'viewers' && renderViewersTab()}
+                {activeTab === 'performance' && renderPerformanceTab()}
+                {activeTab === 'revenue' && renderRevenueTab()}
+                {activeTab === 'alerts' && renderAlertsTab()}
+              </>
+            )}
+          </div>
         </div>
-      ) : (
-        <>
-          {activeTab === 'overview' && renderOverviewTab()}
-          {activeTab === 'viewers' && renderViewersTab()}
-          {activeTab === 'performance' && renderPerformanceTab()}
-          {activeTab === 'revenue' && renderRevenueTab()}
-          {activeTab === 'alerts' && renderAlertsTab()}
-        </>
-      )}
+      </div>
     </div>
   );
 };
@@ -651,3 +670,5 @@ const PerformanceScoreCard: React.FC<{
     </div>
   );
 };
+
+export default AnalyticsDashboard;

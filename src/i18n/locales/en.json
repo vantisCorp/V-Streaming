@@ -546,5 +546,104 @@
       "streamStartFailed": "Failed to start stream",
       "streamStopFailed": "Failed to stop stream"
     }
+  },
+  "analytics": {
+    "title": "Advanced Analytics Dashboard",
+    "tabs": {
+      "overview": "Overview",
+      "sessions": "Sessions",
+      "charts": "Charts",
+      "alerts": "Alerts",
+      "settings": "Settings"
+    },
+    "overview": {
+      "title": "Analytics Overview"
+    },
+    "timeRange": {
+      "1h": "Last Hour",
+      "24h": "Last 24 Hours",
+      "7d": "Last 7 Days",
+      "30d": "Last 30 Days",
+      "90d": "Last 90 Days",
+      "1y": "Last Year"
+    },
+    "session": {
+      "title": "Session Control",
+      "recording": "Recording Session",
+      "startSession": "Start Session",
+      "endSession": "End Session",
+      "titlePlaceholder": "Enter session title..."
+    },
+    "metrics": {
+      "viewers": "Viewers",
+      "followers": "Followers",
+      "messages": "Messages",
+      "likes": "Likes",
+      "engagement": "Engagement",
+      "averageViewers": "Average Viewers",
+      "averageWatchTime": "Average Watch Time",
+      "totalMessages": "Total Messages",
+      "totalLikes": "Total Likes",
+      "newFollowers": "New Followers",
+      "engagementRate": "Engagement Rate",
+      "peakViewers": "Peak Viewers",
+      "uptime": "Uptime"
+    },
+    "export": {
+      "csv": "Export CSV",
+      "json": "Export JSON"
+    },
+    "sessions": {
+      "title": "Stream Sessions",
+      "noSessions": "No sessions recorded yet",
+      "status": {
+        "active": "Active",
+        "completed": "Completed",
+        "ended": "Ended"
+      },
+      "platform": "Platform",
+      "duration": "Duration",
+      "peakViewers": "Peak Viewers",
+      "avgViewers": "Avg Viewers",
+      "followers": "New Followers",
+      "messages": "Messages"
+    },
+    "charts": {
+      "title": "Custom Charts",
+      "addWidget": "Add Widget",
+      "chartPlaceholder": "Chart visualization placeholder"
+    },
+    "alerts": {
+      "title": "Alert Rules",
+      "addRule": "Add Rule",
+      "rules": "Alert Rules",
+      "triggered": "Triggered Alerts",
+      "noRules": "No alert rules configured",
+      "noTriggered": "No triggered alerts",
+      "clearAll": "Clear All",
+      "ruleName": "Rule Name",
+      "metric": "Metric",
+      "condition": "Condition",
+      "threshold": "Threshold",
+      "above": "Above",
+      "below": "Below"
+    },
+    "settings": {
+      "title": "Analytics Settings",
+      "general": "General Settings",
+      "tracking": "Tracking Options",
+      "storage": "Storage Settings",
+      "notifications": "Notification Settings",
+      "enableAnalytics": "Enable Analytics",
+      "realTimeTracking": "Real-time Tracking",
+      "privacyMode": "Privacy Mode",
+      "trackViewers": "Track Viewers",
+      "trackEngagement": "Track Engagement",
+      "trackChat": "Track Chat",
+      "trackRevenue": "Track Revenue",
+      "retentionDays": "Data Retention (Days)",
+      "showNotifications": "Show Notifications",
+      "alertSound": "Alert Sound"
+    }
   }
 }

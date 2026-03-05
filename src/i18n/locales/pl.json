@@ -344,5 +344,104 @@
       "streamStartFailed": "Nie udało się uruchomić streamu",
       "streamStopFailed": "Nie udało się zatrzymać streamu"
     }
+  },
+  "analytics": {
+    "title": "Zaawansowany Panel Analityczny",
+    "tabs": {
+      "overview": "Przegląd",
+      "sessions": "Sesje",
+      "charts": "Wykresy",
+      "alerts": "Alerty",
+      "settings": "Ustawienia"
+    },
+    "overview": {
+      "title": "Przegląd Analityki"
+    },
+    "timeRange": {
+      "1h": "Ostatnia Godzina",
+      "24h": "Ostatnie 24 Godziny",
+      "7d": "Ostatnie 7 Dni",
+      "30d": "Ostatnie 30 Dni",
+      "90d": "Ostatnie 90 Dni",
+      "1y": "Ostatni Rok"
+    },
+    "session": {
+      "title": "Kontrola Sesji",
+      "recording": "Nagrywanie Sesji",
+      "startSession": "Rozpocznij Sesję",
+      "endSession": "Zakończ Sesję",
+      "titlePlaceholder": "Wprowadź tytuł sesji..."
+    },
+    "metrics": {
+      "viewers": "Widzowie",
+      "followers": "Obserwujący",
+      "messages": "Wiadomości",
+      "likes": "Polubienia",
+      "engagement": "Zaangażowanie",
+      "averageViewers": "Średnia Liczba Widzów",
+      "averageWatchTime": "Średni Czas Oglądania",
+      "totalMessages": "Całkowita Liczba Wiadomości",
+      "totalLikes": "Całkowita Liczba Polubień",
+      "newFollowers": "Nowi Obserwujący",
+      "engagementRate": "Wskaźnik Zaangażowania",
+      "peakViewers": "Szczytowa Liczba Widzów",
+      "uptime": "Czas Działania"
+    },
+    "export": {
+      "csv": "Eksportuj CSV",
+      "json": "Eksportuj JSON"
+    },
+    "sessions": {
+      "title": "Sesje Streamowania",
+      "noSessions": "Brak zarejestrowanych sesji",
+      "status": {
+        "active": "Aktywna",
+        "completed": "Zakończona",
+        "ended": "Zakończona"
+      },
+      "platform": "Platforma",
+      "duration": "Czas Trwania",
+      "peakViewers": "Szczytowi Widzowie",
+      "avgViewers": "Średni Widzowie",
+      "followers": "Nowi Obserwujący",
+      "messages": "Wiadomości"
+    },
+    "charts": {
+      "title": "Własne Wykresy",
+      "addWidget": "Dodaj Widżet",
+      "chartPlaceholder": "Miejsce na wizualizację wykresu"
+    },
+    "alerts": {
+      "title": "Zasady Alertów",
+      "addRule": "Dodaj Zasadę",
+      "rules": "Zasady Alertów",
+      "triggered": "Aktywowane Alerty",
+      "noRules": "Brak skonfigurowanych zasad alertów",
+      "noTriggered": "Brak aktywowanych alertów",
+      "clearAll": "Wyczyść Wszystko",
+      "ruleName": "Nazwa Zasady",
+      "metric": "Metryka",
+      "condition": "Warunek",
+      "threshold": "Próg",
+      "above": "Powyżej",
+      "below": "Poniżej"
+    },
+    "settings": {
+      "title": "Ustawienia Analityki",
+      "general": "Ustawienia Ogólne",
+      "tracking": "Opcje Śledzenia",
+      "storage": "Ustawienia Przechowywania",
+      "notifications": "Ustawienia Powiadomień",
+      "enableAnalytics": "Włącz Analitykę",
+      "realTimeTracking": "Śledzenie w Czasie Rzeczywistym",
+      "privacyMode": "Tryb Prywatności",
+      "trackViewers": "Śledź Widzów",
+      "trackEngagement": "Śledź Zaangażowanie",
+      "trackChat": "Śledź Czat",
+      "trackRevenue": "Śledź Przychody",
+      "retentionDays": "Przechowywanie Danych (Dni)",
+      "showNotifications": "Pokaż Powiadomienia",
+      "alertSound": "Dźwięk Alertu"
+    }
   }
 }

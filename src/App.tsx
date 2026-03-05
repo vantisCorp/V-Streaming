@@ -12,6 +12,7 @@ import ThemeSettings from './components/ThemeSettings';
 import MultiPlatformSettings from './components/MultiPlatformSettings';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
 import OverlayMarketplace from './components/OverlayMarketplace';
+import ArchiveManager from './components/ArchiveManager';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -257,6 +258,7 @@ function App() {
   const [showMultiPlatform, setShowMultiPlatform] = useState(false);
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [showOverlayMarketplace, setShowOverlayMarketplace] = useState(false);
+  const [showArchiveManager, setShowArchiveManager] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -652,6 +654,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🎨
+          </button>
+          <button
+            onClick={() => setShowArchiveManager(true)}
+            className="theme-btn"
+            title="Archive Manager"
+            style={{ marginLeft: '8px' }}
+          >
+            📁
           </button>
           <div className="theme-switcher">
             <button
@@ -1341,6 +1351,11 @@ function App() {
       {/* Overlay Marketplace Modal */}
       {showOverlayMarketplace && (
         <OverlayMarketplace isOpen={showOverlayMarketplace} onClose={() => setShowOverlayMarketplace(false)} />
+      )}
+
+      {/* Archive Manager Modal */}
+      {showArchiveManager && (
+        <ArchiveManager isOpen={showArchiveManager} onClose={() => setShowArchiveManager(false)} />
       )}
     </div>
   );

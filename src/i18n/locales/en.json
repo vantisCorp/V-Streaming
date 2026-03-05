@@ -710,5 +710,84 @@
       "title": "No templates found",
       "description": "Try adjusting your search or filter criteria"
     }
+  },
+  "archiveManager": {
+    "title": "Archive Manager",
+    "tabs": {
+      "archives": "Archives",
+      "recording": "Recording",
+      "import": "Import",
+      "settings": "Settings"
+    },
+    "search": "Search archives...",
+    "allCategories": "All Categories",
+    "allStatuses": "All Statuses",
+    "deleteConfirm": "Are you sure you want to delete this archive?",
+    "noArchives": "No archives found",
+    "stats": {
+      "totalArchives": "Total Archives",
+      "totalSize": "Total Size",
+      "totalDuration": "Total Duration",
+      "storageUsed": "Storage Used"
+    },
+    "recording": {
+      "title": "Recording Control",
+      "recording": "Recording",
+      "idle": "Idle",
+      "duration": "Duration",
+      "size": "Size",
+      "format": "Format",
+      "quality": "Quality",
+      "startRecording": "Start Recording",
+      "stopRecording": "Stop Recording",
+      "config": "Recording Configuration",
+      "autoRecord": "Auto Record",
+      "includeChat": "Include Chat",
+      "hardwareEncoding": "Hardware Encoding",
+      "bitrate": "Bitrate"
+    },
+    "import": {
+      "title": "Import Archives",
+      "description": "Import existing video files into the archive manager",
+      "dropzone": "Drag and drop files here or click to browse",
+      "browse": "Browse Files",
+      "options": "Import Options",
+      "autoUpload": "Auto Upload to Cloud"
+    },
+    "settings": {
+      "title": "Archive Settings",
+      "storage": "Storage Settings",
+      "localPath": "Local Storage Path",
+      "maxStorage": "Maximum Storage",
+      "retentionDays": "Retention Period",
+      "days": "days",
+      "autoUpload": "Auto Upload",
+      "enableBackup": "Enable Backup",
+      "autoDelete": "Auto-Delete",
+      "enableAutoDelete": "Enable Auto-Delete",
+      "deleteOlderThan": "Delete Archives Older Than",
+      "keepFavorites": "Keep Favorites",
+      "keepProtected": "Keep Protected"
+    },
+    "detail": {
+      "status": "Status",
+      "format": "Format",
+      "quality": "Quality",
+      "size": "Size",
+      "duration": "Duration",
+      "created": "Created",
+      "completed": "Completed",
+      "platform": "Platform",
+      "category": "Category",
+      "streamInfo": "Stream Information",
+      "title": "Title",
+      "peakViewers": "Peak Viewers",
+      "avgViewers": "Average Viewers",
+      "followers": "New Followers",
+      "messages": "Messages",
+      "download": "Download",
+      "upload": "Upload to Cloud",
+      "delete": "Delete Archive"
+    }
   }
 }

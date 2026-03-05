@@ -508,5 +508,84 @@
       "title": "Nie znaleziono szablonów",
       "description": "Spróbuj dostosować kryteria wyszukiwania lub filtrowania"
     }
+  },
+  "archiveManager": {
+    "title": "Menedżer Archiwów",
+    "tabs": {
+      "archives": "Archiwa",
+      "recording": "Nagrywanie",
+      "import": "Import",
+      "settings": "Ustawienia"
+    },
+    "search": "Szukaj archiwów...",
+    "allCategories": "Wszystkie Kategorie",
+    "allStatuses": "Wszystkie Statusy",
+    "deleteConfirm": "Czy na pewno chcesz usunąć to archiwum?",
+    "noArchives": "Nie znaleziono archiwów",
+    "stats": {
+      "totalArchives": "Razem Archiwów",
+      "totalSize": "Całkowity Rozmiar",
+      "totalDuration": "Całkowity Czas",
+      "storageUsed": "Używane Miejsce"
+    },
+    "recording": {
+      "title": "Kontrola Nagrywania",
+      "recording": "Nagrywanie",
+      "idle": "Bezczynny",
+      "duration": "Czas Trwania",
+      "size": "Rozmiar",
+      "format": "Format",
+      "quality": "Jakość",
+      "startRecording": "Rozpocznij Nagrywanie",
+      "stopRecording": "Zatrzymaj Nagrywanie",
+      "config": "Konfiguracja Nagrywania",
+      "autoRecord": "Automatyczne Nagrywanie",
+      "includeChat": "Dołącz Czat",
+      "hardwareEncoding": "Kodowanie Sprzętowe",
+      "bitrate": "Bitrate"
+    },
+    "import": {
+      "title": "Import Archiwów",
+      "description": "Importuj istniejące pliki wideo do menedżera archiwów",
+      "dropzone": "Przeciągnij i upuść pliki tutaj lub kliknij, aby przeglądać",
+      "browse": "Przeglądaj Pliki",
+      "options": "Opcje Importu",
+      "autoUpload": "Automatyczny Upload do Chmury"
+    },
+    "settings": {
+      "title": "Ustawienia Archiwów",
+      "storage": "Ustawienia Przechowywania",
+      "localPath": "Lokalna Ścieżka Zapisu",
+      "maxStorage": "Maksymalne Przechowywanie",
+      "retentionDays": "Okres Retencji",
+      "days": "dni",
+      "autoUpload": "Automatyczny Upload",
+      "enableBackup": "Włącz Kopię Zapasową",
+      "autoDelete": "Automatyczne Usuwanie",
+      "enableAutoDelete": "Włącz Auto-Usuwanie",
+      "deleteOlderThan": "Usuń Archiwa Starsze Niż",
+      "keepFavorites": "Zachowaj Ulubione",
+      "keepProtected": "Zachowaj Chronione"
+    },
+    "detail": {
+      "status": "Status",
+      "format": "Format",
+      "quality": "Jakość",
+      "size": "Rozmiar",
+      "duration": "Czas Trwania",
+      "created": "Utworzone",
+      "completed": "Ukończone",
+      "platform": "Platforma",
+      "category": "Kategoria",
+      "streamInfo": "Informacje o Transmisji",
+      "title": "Tytuł",
+      "peakViewers": "Szczytowi Widzowie",
+      "avgViewers": "Średnia Widzów",
+      "followers": "Nowi Obserwujący",
+      "messages": "Wiadomości",
+      "download": "Pobierz",
+      "upload": "Upload do Chmury",
+      "delete": "Usuń Archiwum"
+    }
   }
 }

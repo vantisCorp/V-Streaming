@@ -15,6 +15,7 @@ import OverlayMarketplace from './components/OverlayMarketplace';
 import ArchiveManager from './components/ArchiveManager';
 import { ModerationPanel } from './components/ModerationPanel';
 import { EncoderConfiguration } from './components/EncoderConfiguration';
+import { SRTConfiguration } from './components/SRTConfiguration';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -263,6 +264,7 @@ function App() {
   const [showArchiveManager, setShowArchiveManager] = useState(false);
   const [showModerationPanel, setShowModerationPanel] = useState(false);
   const [showEncoderConfiguration, setShowEncoderConfiguration] = useState(false);
+  const [showSRTConfiguration, setShowSRTConfiguration] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -682,6 +684,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             ⚙️
+          </button>
+          <button
+            onClick={() => setShowSRTConfiguration(true)}
+            className="theme-btn"
+            title="SRT Configuration"
+            style={{ marginLeft: '8px' }}
+          >
+            📡
           </button>
           <div className="theme-switcher">
             <button
@@ -1388,6 +1398,15 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowEncoderConfiguration(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <EncoderConfiguration onClose={() => setShowEncoderConfiguration(false)} />
+          </div>
+        </div>
+      )}
+
+      {/* SRT Configuration Modal */}
+      {showSRTConfiguration && (
+        <div className="modal-overlay" onClick={() => setShowSRTConfiguration(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <SRTConfiguration onClose={() => setShowSRTConfiguration(false)} />
           </div>
         </div>
       )}

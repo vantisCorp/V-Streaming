@@ -56,6 +56,59 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive error handling
 - Modular architecture following project patterns
 
+#### Custom Overlays and Widgets Marketplace (PR #15)
+- Comprehensive overlay type definitions (overlays.ts):
+  - OverlayType, WidgetType, OverlayEffect enums
+  - Position, Size, Transform, BorderRadius, BoxShadow interfaces
+  - ImageOverlay, TextOverlay, ShapeOverlay, BrowserOverlay, WidgetOverlay types
+  - AnimationOverlay, VideoOverlay, CameraOverlay, GroupOverlay types
+  - OverlayScene, OverlayTemplate, WidgetConfig, OverlaySettings interfaces
+- OverlayManager service (759 lines):
+  - Scene management (create, update, delete, switch)
+  - Layer management (add, update, delete, move, resize, visibility, lock, opacity, z-index)
+  - Clipboard operations (copy, paste)
+  - Undo/Redo with history stack
+  - Widget data fetching simulation
+  - Template management
+  - Marketplace simulation with filtering and sorting
+  - Settings management
+  - Export/Import functionality
+  - Auto-save and backup
+- useOverlay React hook for state management (390 lines)
+- OverlayMarketplace UI component with 4 tabs:
+  - Marketplace: Browse, search, filter, and install templates
+  - Installed: View and manage installed templates
+  - Create: Create custom overlay templates
+  - Settings: Configure overlay preferences
+- Full CSS styling (467 lines)
+- Integration with App.tsx header (🎨 button)
+- Complete i18n translations (English + Polish)
+
+#### Overlay Types Supported
+- **Image Overlays**: Custom images with position, size, opacity, effects
+- **Text Overlays**: Customizable text with fonts, colors, effects
+- **Shape Overlays**: Rectangles, ellipses, lines with fill and stroke
+- **Browser Overlays**: Embedded web content
+- **Widget Overlays**: Pre-built widgets (chat, social, donation, etc.)
+- **Animation Overlays**: Animated elements with various effects
+- **Video Overlays**: Video clips as overlays
+- **Camera Overlays**: Webcam/camera capture
+- **Group Overlays**: Nested overlay groups
+
+#### Widget Types
+- Chat, Social, Donation, Goal, Poll, Timer, Countdown
+- Weather, Clock, Subcount, Viewercount, Followergoal
+- Schedule, Music, News
+
+#### Marketplace Features
+- Template categories: Gaming, Just Chatting, Music, Art, IRL, Tech, Sports
+- Search, filter, and sort templates
+- Template preview with detailed view
+- Install/delete templates
+- Create custom templates
+- Rating and download counts
+- Author information
+
 ### Changed
 - Improved analytics data structure
 - Enhanced modal integration

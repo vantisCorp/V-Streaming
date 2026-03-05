@@ -15,18 +15,17 @@
   - [x] Create pull request
   - [x] Merge to main
 
-- [ ] Custom Overlays and Widgets Marketplace
-  - [ ] Create overlay type definitions
-  - [ ] Create OverlayManager service
-  - [ ] Create useOverlay React hook
-  - [ ] Create Marketplace component
-  - [ ] Create OverlayEditor component
-  - [ ] Create CSS styles
-  - [ ] Integrate into App.tsx
-  - [ ] Add i18n translations
-  - [ ] Build verification
-  - [ ] Commit and push
-  - [ ] Create PR and merge
+- [x] Custom Overlays and Widgets Marketplace (PR #15)
+  - [x] Create overlay type definitions
+  - [x] Create OverlayManager service
+  - [x] Create useOverlay React hook
+  - [x] Create Marketplace component
+  - [x] Create CSS styles
+  - [x] Integrate into App.tsx
+  - [x] Add i18n translations
+  - [x] Build verification
+  - [x] Commit and push
+  - [x] Create PR and merge
 
 - [ ] Stream Archive Management System
   - [ ] Create archive type definitions

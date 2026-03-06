@@ -14,6 +14,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.7.0] - 2026-03-05
+
+### Added
+
+#### Audio Mixer Pro with Advanced Audio Processing
+- **Audio Mixer Pro Type Definitions** (`src/types/audioMixerPro.ts`): Comprehensive type system for audio mixing with 8 enums (AudioFilterType, VisualizationMode, SampleRate, BitDepth, ChannelCount, AudioTrackType, AudioBusType, EffectPreset) and 25+ interfaces for tracks, filters, effects, scenes, and settings
+- **AudioMixerProManager Service** (`src/services/AudioMixerProManager.ts`): Advanced audio mixing service with track management (add, remove, update), filter management per track, effects chain, VST plugin support, scene save/load, and real-time metering updates
+- **useAudioMixerPro React Hook** (`src/hooks/useAudioMixerPro.ts`): React hook for audio mixer state management, exposing all operations including track controls, filter management, effects, and real-time statistics
+- **AudioMixerPro UI Component** (`src/components/AudioMixerPro.tsx`): Four-tab interface (Mixer, Effects, Settings, Scenes) with track faders, VU meters, effects chain configuration, and scene management
+- **CSS Styling** (`src/components/AudioMixerPro.css`): Purple gradient theme styling with responsive layout, track cards with meters, and polished animations
+- **App Integration**: Added toolbar button (🎚️) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all audio mixer features
+
+#### Audio Mixer Pro Features
+- **Track Management**: Add/remove audio tracks, rename tracks, track type (Mic, Music, Game, Media, Browser, System, VST, Bus)
+- **Volume Control**: Faders with 0-100% range, per-track mute/solo buttons, pan control (-100 to 100)
+- **Real-time Metering**: VU meters with peak/RMS display, peak hold, level warnings (-6dB, -3dB, 0dB), decibel display (-60 to 0)
+- **Audio Filters**: 3-band EQ, 10-band EQ, Compressor, Noise Gate, Limiter, Expander, Reverb, Delay, Chorus, Flanger, Phaser, Distortion, High-pass Filter, Low-pass Filter, Compressor (Studio), Limiter (Studio), Gate (Studio)
+- **Filter Parameters**: Gain, frequency, Q factor, threshold, ratio, attack, release, makeup gain, wet/dry mix, and more
+- **Effects Chain**: Per-track effects chain with drag-and-drop reordering, enable/disable toggles, preset loading
+- **Effect Presets**: Voice Enhancement, Music Boost, Game Audio, Noise Reduction, Broadcast, Podcast, Music Production, Live Performance, Recording, Streaming
+- **VST Plugins**: Plugin management with load/unload, parameter control, presets, bypass toggle
+- **Scenes**: Save/load audio configurations, default scenes (Gaming, Just Chatting, Music, Podcast, IRL, Tech Support), scene switching
+- **Audio Settings**: Sample rate (44.1kHz, 48kHz, 88.2kHz, 96kHz), bit depth (16-bit, 24-bit, 32-bit float), channel count (Stereo, Mono, 5.1 Surround, 7.1 Surround), buffer size (64-8192 samples)
+- **Master Track**: Master volume, master mute, stereo width, limiter toggle
+- **Bus System**: Multiple audio buses with routing, volume control, and mute/solo
+- **Visualization Modes**: VU Meter, Spectrum Analyzer, Waveform, Peak/RMS, None
+- **Statistics**: CPU usage, memory usage, active tracks, sample rate, buffer size, latency
+
+---
+
 ## [0.6.0] - 2026-03-05
 
 ### Added

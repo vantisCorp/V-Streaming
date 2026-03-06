@@ -1414,5 +1414,48 @@
       "active": "Active Scene",
       "preview": "Preview"
     }
+  },
+  "streamDashboardPro": {
+    "title": "Stream Dashboard Pro",
+    "subtitle": "Professional stream monitoring with real-time analytics",
+    "tabs": {
+      "dashboard": "Dashboard",
+      "events": "Events",
+      "goals": "Goals",
+      "chat": "Chat",
+      "alerts": "Alerts",
+      "settings": "Settings"
+    },
+    "events": {
+      "title": "Stream Events",
+      "clear": "Clear Events",
+      "noEvents": "No events yet. Events will appear here during your stream."
+    },
+    "goals": {
+      "title": "Stream Goals",
+      "addGoal": "Add Goal",
+      "noGoals": "No goals set. Add a goal to track your progress."
+    },
+    "chat": {
+      "title": "Chat",
+      "clear": "Clear Chat",
+      "noMessages": "No chat messages yet."
+    },
+    "alerts": {
+      "title": "Alerts",
+      "addAlert": "Add Alert",
+      "noAlerts": "No alerts configured. Add alerts to be notified of events."
+    },
+    "settings": {
+      "general": "General Settings",
+      "display": "Display Settings",
+      "autoRefresh": "Auto Refresh",
+      "refreshInterval": "Refresh Interval",
+      "showNotifications": "Show Notifications",
+      "soundEnabled": "Sound Enabled",
+      "compactMode": "Compact Mode",
+      "darkMode": "Dark Mode",
+      "reset": "Reset Settings"
+    }
   }
 }

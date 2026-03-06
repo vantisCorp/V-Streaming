@@ -1,0 +1,756 @@
+/* ============================================================================
+   STREAM DASHBOARD PRO - STYLING
+   ============================================================================ */
+
+.stream-dashboard-pro {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+.sdp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sdp-header-left h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sdp-header-left p {
+  margin: 4px 0 0 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.sdp-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sdp-close-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sdp-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+/* ============================================================================
+   TABS
+   ============================================================================ */
+
+.sdp-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.15);
+  overflow-x: auto;
+}
+
+.sdp-tab {
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.sdp-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.sdp-tab.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ============================================================================
+   CONTENT
+   ============================================================================ */
+
+.sdp-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.sdp-tab-content {
+  height: 100%;
+}
+
+/* ============================================================================
+   DASHBOARD TAB
+   ============================================================================ */
+
+.dashboard-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.widgets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+/* ============================================================================
+   WIDGETS
+   ============================================================================ */
+
+.widget {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.widget:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.widget-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.widget-icon {
+  font-size: 20px;
+}
+
+.widget-title {
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.widget-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.widget-placeholder {
+  margin: 0;
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+/* Viewer Count Widget */
+.viewer-count-widget .viewer-count {
+  font-size: 48px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.viewer-count-widget .viewer-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Uptime Widget */
+.uptime-widget .uptime-value {
+  font-size: 32px;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.uptime-widget .uptime-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Followers Widget */
+.followers-widget .followers-count {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ff6b6b;
+}
+
+.followers-widget .followers-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Subscribers Widget */
+.subscribers-widget .subscribers-count {
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffd93d;
+}
+
+.subscribers-widget .subscribers-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Goals Widget */
+.goal-item {
+  background: rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.goal-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.goal-icon {
+  font-size: 16px;
+}
+
+.goal-title {
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.goal-progress-bar {
+  position: relative;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.goal-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.goal-percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Events Widget */
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.event-icon {
+  font-size: 16px;
+}
+
+.event-username {
+  flex: 1;
+  font-weight: 500;
+}
+
+.event-amount {
+  color: #ffd93d;
+  font-weight: 600;
+}
+
+.event-time {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+/* Quick Actions Widget */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.quick-action-btn {
+  padding: 12px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.quick-action-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.action-icon {
+  font-size: 24px;
+}
+
+.action-name {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* ============================================================================
+   EVENTS TAB
+   ============================================================================ */
+
+.events-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.events-list-full {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.event-message {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.no-events {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+}
+
+/* ============================================================================
+   GOALS TAB
+   ============================================================================ */
+
+.goals-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.goals-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.goal-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.goal-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.goal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.goal-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.goal-current {
+  color: #ffd93d;
+}
+
+.goal-divider {
+  opacity: 0.5;
+}
+
+.goal-target {
+  opacity: 0.8;
+}
+
+.no-goals {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+}
+
+/* ============================================================================
+   CHAT TAB
+   ============================================================================ */
+
+.chat-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.chat-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.chat-message.deleted {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.chat-message.special {
+  background: rgba(255, 215, 61, 0.15);
+  border-left: 3px solid #ffd93d;
+}
+
+.chat-username {
+  font-weight: 600;
+}
+
+.chat-text {
+  flex: 1;
+  word-break: break-word;
+}
+
+.chat-badge {
+  padding: 2px 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.no-messages {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+}
+
+/* ============================================================================
+   ALERTS TAB
+   ============================================================================ */
+
+.alerts-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.alerts-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 16px;
+}
+
+.alert-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.alert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.alert-event-type {
+  font-weight: 600;
+}
+
+.alert-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.alert-info {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.alert-style {
+  padding: 4px 8px;
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: 4px;
+}
+
+.alert-enabled {
+  padding: 4px 8px;
+  background: rgba(45, 206, 137, 0.3);
+  border-radius: 4px;
+}
+
+.no-alerts {
+  text-align: center;
+  padding: 40px;
+  opacity: 0.6;
+}
+
+/* ============================================================================
+   SETTINGS TAB
+   ============================================================================ */
+
+.settings-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-item label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.setting-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.setting-item input[type="number"] {
+  width: 80px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.setting-suffix {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-left: 8px;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* ============================================================================
+   BUTTONS
+   ============================================================================ */
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-danger {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 107, 107, 0.3);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+/* ============================================================================
+   SCROLLBAR
+   ============================================================================ */
+
+.sdp-content::-webkit-scrollbar,
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sdp-content::-webkit-scrollbar-track,
+.chat-messages::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.sdp-content::-webkit-scrollbar-thumb,
+.chat-messages::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.sdp-content::-webkit-scrollbar-thumb:hover,
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .widgets-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .goals-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .alerts-list {
+    grid-template-columns: 1fr;
+  }
+}

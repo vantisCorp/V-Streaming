@@ -1212,5 +1212,48 @@
       "active": "Aktywna scena",
       "preview": "Podgląd"
     }
+  },
+  "streamDashboardPro": {
+    "title": "Stream Dashboard Pro",
+    "subtitle": "Profesjonalny monitoring strumieniowania z analizą w czasie rzeczywistym",
+    "tabs": {
+      "dashboard": "Dashboard",
+      "events": "Wydarzenia",
+      "goals": "Cele",
+      "chat": "Czat",
+      "alerts": "Alerty",
+      "settings": "Ustawienia"
+    },
+    "events": {
+      "title": "Wydarzenia strumienia",
+      "clear": "Wyczyść wydarzenia",
+      "noEvents": "Brak wydarzeń. Wydarzenia pojawią się tutaj podczas strumieniowania."
+    },
+    "goals": {
+      "title": "Cele strumienia",
+      "addGoal": "Dodaj cel",
+      "noGoals": "Brak ustawionych celów. Dodaj cel, aby śledzić postępy."
+    },
+    "chat": {
+      "title": "Czat",
+      "clear": "Wyczyść czat",
+      "noMessages": "Brak wiadomości na czacie."
+    },
+    "alerts": {
+      "title": "Alerty",
+      "addAlert": "Dodaj alert",
+      "noAlerts": "Brak skonfigurowanych alertów. Dodaj alerty, aby otrzymywać powiadomienia."
+    },
+    "settings": {
+      "general": "Ustawienia ogólne",
+      "display": "Ustawienia wyświetlania",
+      "autoRefresh": "Automatyczne odświeżanie",
+      "refreshInterval": "Interwał odświeżania",
+      "showNotifications": "Pokaż powiadomienia",
+      "soundEnabled": "Dźwięk włączony",
+      "compactMode": "Tryb kompaktowy",
+      "darkMode": "Tryb ciemny",
+      "reset": "Resetuj ustawienia"
+    }
   }
 }

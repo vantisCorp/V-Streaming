@@ -20,6 +20,7 @@ import { VirtualCameraConfiguration } from './components/VirtualCameraConfigurat
 import { AudioMixerPro } from './components/AudioMixerPro';
 import RecordingEnginePro from './components/RecordingEnginePro';
 import SceneSwitcherPro from './components/SceneSwitcherPro';
+import StreamDashboardPro from './components/StreamDashboardPro';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -273,6 +274,7 @@ function App() {
   const [showAudioMixerPro, setShowAudioMixerPro] = useState(false);
   const [showRecordingEnginePro, setShowRecordingEnginePro] = useState(false);
   const [showSceneSwitcherPro, setShowSceneSwitcherPro] = useState(false);
+  const [showStreamDashboardPro, setShowStreamDashboardPro] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -732,6 +734,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🎬
+          </button>
+          <button
+            onClick={() => setShowStreamDashboardPro(true)}
+            className="theme-btn"
+            title="Stream Dashboard Pro"
+            style={{ marginLeft: '8px' }}
+          >
+            📊
           </button>
           <div className="theme-switcher">
             <button
@@ -1479,6 +1489,13 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowSceneSwitcherPro(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <SceneSwitcherPro onClose={() => setShowSceneSwitcherPro(false)} />
+          </div>
+        </div>
+      )}
+      {showStreamDashboardPro && (
+        <div className="modal-overlay" onClick={() => setShowStreamDashboardPro(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <StreamDashboardPro onClose={() => setShowStreamDashboardPro(false)} />
           </div>
         </div>
       )}

@@ -14,6 +14,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.9.0] - 2026-03-05
+
+### Added
+
+#### Scene Switcher Pro - Advanced Scene Management
+- **Scene Switcher Pro Type Definitions** (`src/types/sceneSwitcherPro.ts`): Comprehensive type system for scene management with 7 enums (TransitionType, TransitionDirection, SceneItemType, SceneVisibility, SceneLock, AutomationTrigger, AutomationAction) and 25+ interfaces for scenes, items, transitions, hotkeys, and automation
+- **SceneSwitcherProManager Service** (`src/services/SceneSwitcherProManager.ts`): Scene management service with CRUD operations, item management, transition control, hotkey mapping, automation rules, and event-driven architecture
+- **useSceneSwitcherPro React Hook** (`src/hooks/useSceneSwitcherPro.ts`): React hook for scene switcher state management, exposing all operations including scene management, switching, transitions, hotkeys, and automation
+- **SceneSwitcherPro UI Component** (`src/components/SceneSwitcherPro.tsx`): Five-tab interface (Scenes, Transitions, Hotkeys, Automation, Settings) with scene list, scene details, item management, transition configuration, hotkey mapping, and automation rules
+- **CSS Styling** (`src/components/SceneSwitcherPro.css`): Cyan gradient theme styling with scene cards, active/preview indicators, responsive layout, and polished animations
+- **App Integration**: Added toolbar button (🎬) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all scene switcher features
+
+#### Scene Switcher Pro Features
+- **Scene Management**: Create, update, delete, and duplicate scenes with thumbnails and metadata
+- **Scene Items**: Multiple item types (Video Source, Audio Source, Image, Text, Browser, Media, Game Capture, Window Capture, Camera, Color, Stinger, Group) with visibility, locking, and transform controls
+- **Scene Transitions**: Multiple transition types (None, Cut, Fade, Slide, Zoom, Wipe, Stinger) with customizable duration and direction
+- **Stinger Transitions**: Video-based transitions with audio support and customizable transition points
+- **Hotkey Mapping**: Assign hotkeys to scenes, recording, streaming, and mute/unmute actions
+- **Scene Automation**: Automation rules with triggers (Audio Level, Timer, Hotkey, Window Focus, Game State, Chat Command) and actions (Switch Scene, Toggle Visibility, Change Source, Start/Stop Recording, Start/Stop Streaming)
+- **Scene Settings**: Auto-Switch on Launch, Default Scene, Transition on Start/Stop, Preview Mode, Auto-Save, Backup/Restore, Import/Export
+
+---
+
 ## [0.8.0] - 2026-03-05
 
 ### Added

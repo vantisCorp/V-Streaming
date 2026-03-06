@@ -1457,5 +1457,96 @@
       "darkMode": "Dark Mode",
       "reset": "Reset Settings"
     }
+  },
+  "analyticsPro": {
+    "title": "Analytics Pro",
+    "subtitle": "Professional analytics with comprehensive insights",
+    "tabs": {
+      "dashboard": "Dashboard",
+      "charts": "Charts",
+      "reports": "Reports",
+      "goals": "Goals",
+      "settings": "Settings"
+    },
+    "period": "Period",
+    "periods": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "last7Days": "Last 7 Days",
+      "last30Days": "Last 30 Days",
+      "last90Days": "Last 90 Days",
+      "thisMonth": "This Month",
+      "previousMonth": "Previous Month",
+      "previousWeek": "Previous Week",
+      "allTime": "All Time"
+    },
+    "comparePeriods": "Compare Periods",
+    "comparisonResult": "Comparison Result",
+    "loading": "Loading analytics data...",
+    "metrics": {
+      "totalViews": "Total Views",
+      "totalWatchTime": "Total Watch Time",
+      "averageViewers": "Average Viewers",
+      "newFollowers": "New Followers",
+      "chatMessages": "Chat Messages",
+      "streamSessions": "Stream Sessions",
+      "newSubscribers": "New Subscribers",
+      "donations": "Donations"
+    },
+    "minutes": "minutes",
+    "viewerEngagement": "Viewer Engagement",
+    "engagement": {
+      "retentionRate": "Retention Rate",
+      "averageWatchTime": "Average Watch Time",
+      "peakViewers": "Peak Viewers"
+    },
+    "chatAnalytics": "Chat Analytics",
+    "chat": {
+      "totalMessages": "Total Messages",
+      "uniqueChatters": "Unique Chatters",
+      "emotesUsed": "Emotes Used"
+    },
+    "chartTypes": {
+      "line": "Line Chart",
+      "bar": "Bar Chart",
+      "pie": "Pie Chart",
+      "area": "Area Chart",
+      "doughnut": "Doughnut Chart"
+    },
+    "generateChart": "Generate Chart",
+    "noCharts": "No charts yet. Generate your first chart to visualize your data.",
+    "reportTypes": {
+      "summary": "Summary",
+      "detailed": "Detailed",
+      "competitive": "Competitive"
+    },
+    "generateSummaryReport": "Generate Summary Report",
+    "generateDetailedReport": "Generate Detailed Report",
+    "generateCompetitiveReport": "Generate Competitive Report",
+    "insights": "Insights",
+    "exportPDF": "Export PDF",
+    "exportExcel": "Export Excel",
+    "exportCSV": "Export CSV",
+    "noReports": "No reports yet. Generate your first report to analyze your data.",
+    "checkGoals": "Check Goals",
+    "createGoal": "Create Goal",
+    "goalTitle": "Goal Title",
+    "goalMetric": "Metric",
+    "goalTargetValue": "Target Value",
+    "goalPeriod": "Period",
+    "goalDueDate": "Due Date",
+    "goalDescription": "Description",
+    "createGoalBtn": "Create Goal",
+    "achieved": "Achieved",
+    "due": "Due",
+    "noGoals": "No goals set. Create your first goal to track your progress.",
+    "settings": "Settings",
+    "settings": {
+      "realtimeUpdates": "Real-time Updates",
+      "autoGenerateCharts": "Auto Generate Charts",
+      "goalAlerts": "Goal Alerts",
+      "includeSentiment": "Include Sentiment Analysis",
+      "defaultPeriod": "Default Period"
+    }
   }
 }

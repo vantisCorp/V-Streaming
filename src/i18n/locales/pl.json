@@ -1255,5 +1255,96 @@
       "darkMode": "Tryb ciemny",
       "reset": "Resetuj ustawienia"
     }
+  },
+  "analyticsPro": {
+    "title": "Analityka Pro",
+    "subtitle": "Profesjonalna analityka z kompleksowymi insightami",
+    "tabs": {
+      "dashboard": "Panel",
+      "charts": "Wykresy",
+      "reports": "Raporty",
+      "goals": "Cele",
+      "settings": "Ustawienia"
+    },
+    "period": "Okres",
+    "periods": {
+      "today": "Dzisiaj",
+      "yesterday": "Wczoraj",
+      "last7Days": "Ostatnie 7 dni",
+      "last30Days": "Ostatnie 30 dni",
+      "last90Days": "Ostatnie 90 dni",
+      "thisMonth": "Ten miesiąc",
+      "previousMonth": "Poprzedni miesiąc",
+      "previousWeek": "Poprzedni tydzień",
+      "allTime": "Cały czas"
+    },
+    "comparePeriods": "Porównaj okresy",
+    "comparisonResult": "Wynik porównania",
+    "loading": "Ładowanie danych analitycznych...",
+    "metrics": {
+      "totalViews": "Całkowite wyświetlenia",
+      "totalWatchTime": "Całkowity czas oglądania",
+      "averageViewers": "Średnia widzów",
+      "newFollowers": "Nowi obserwujący",
+      "chatMessages": "Wiadomości na czacie",
+      "streamSessions": "Sesje streamu",
+      "newSubscribers": "Nowi subskrybenci",
+      "donations": "Dotacje"
+    },
+    "minutes": "minuty",
+    "viewerEngagement": "Zaangażowanie widzów",
+    "engagement": {
+      "retentionRate": "Wskaźnik retencji",
+      "averageWatchTime": "Średni czas oglądania",
+      "peakViewers": "Szczytowa liczba widzów"
+    },
+    "chatAnalytics": "Analityka czatu",
+    "chat": {
+      "totalMessages": "Całkowita liczba wiadomości",
+      "uniqueChatters": "Unikalni rozmówcy",
+      "emotesUsed": "Użyte emoty"
+    },
+    "chartTypes": {
+      "line": "Wykres liniowy",
+      "bar": "Wykres słupkowy",
+      "pie": "Wykres kołowy",
+      "area": "Wykres obszarowy",
+      "doughnut": "Wykres pierścieniowy"
+    },
+    "generateChart": "Generuj wykres",
+    "noCharts": "Brak wykresów. Wygeneruj pierwszy wykres, aby wizualizować swoje dane.",
+    "reportTypes": {
+      "summary": "Podsumowanie",
+      "detailed": "Szczegółowy",
+      "competitive": "Konkurencyjny"
+    },
+    "generateSummaryReport": "Generuj raport podsumowujący",
+    "generateDetailedReport": "Generuj raport szczegółowy",
+    "generateCompetitiveReport": "Generuj raport konkurencyjny",
+    "insights": "Insighty",
+    "exportPDF": "Eksportuj PDF",
+    "exportExcel": "Eksportuj Excel",
+    "exportCSV": "Eksportuj CSV",
+    "noReports": "Brak raportów. Wygeneruj pierwszy raport, aby analizować swoje dane.",
+    "checkGoals": "Sprawdź cele",
+    "createGoal": "Utwórz cel",
+    "goalTitle": "Tytuł celu",
+    "goalMetric": "Metryka",
+    "goalTargetValue": "Wartość docelowa",
+    "goalPeriod": "Okres",
+    "goalDueDate": "Data realizacji",
+    "goalDescription": "Opis",
+    "createGoalBtn": "Utwórz cel",
+    "achieved": "Osiągnięty",
+    "due": "Termin",
+    "noGoals": "Brak ustalonych celów. Utwórz pierwszy cel, aby śledzić swoje postępy.",
+    "settings": "Ustawienia",
+    "settings": {
+      "realtimeUpdates": "Aktualizacje w czasie rzeczywistym",
+      "autoGenerateCharts": "Automatyczne generowanie wykresów",
+      "goalAlerts": "Alerty celów",
+      "includeSentiment": "Uwzględnij analizę sentymentu",
+      "defaultPeriod": "Domyślny okres"
+    }
   }
 }

@@ -14,6 +14,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.8.0] - 2026-03-05
+
+### Added
+
+#### Recording Engine Pro - Professional Recording Capabilities
+- **Recording Engine Pro Type Definitions** (`src/types/recordingEnginePro.ts`): Comprehensive type system for recording with 9 enums (RecordingFormat, RecordingQuality, RecordingStatus, RecordingMode, AudioRecordingMode, VideoCodec, AudioCodec, RecordingCategory, SplitMode) and 25+ interfaces for configurations, sessions, metadata, and settings
+- **RecordingEngineProManager Service** (`src/services/RecordingEngineProManager.ts`): Recording management service with session lifecycle (start, pause, resume, stop), replay buffer control, preset management, disk space monitoring, and real-time statistics
+- **useRecordingEnginePro React Hook** (`src/hooks/useRecordingEnginePro.ts`): React hook for recording state management, exposing all operations including recording controls, preset management, and metadata access
+- **RecordingEnginePro UI Component** (`src/components/RecordingEnginePro.tsx`): Four-tab interface (Recording, Presets, Replay Buffer, Recordings) with recording controls, video/audio settings, presets grid, replay buffer management, and recordings list
+- **CSS Styling** (`src/components/RecordingEnginePro.css`): Orange gradient theme styling with recording timer, pulsing recording indicator, responsive layout, and polished animations
+- **App Integration**: Added toolbar button (🔴) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all recording engine features
+
+#### Recording Engine Pro Features
+- **Recording Modes**: Continuous, Scheduled, Duration, Size Limit, Instant Replay, Screenshot
+- **Recording Control**: Start, Pause, Resume, Stop with real-time timer and statistics
+- **Video Settings**: Format (MP4, MKV, MOV, FLV, WEBM, TS, AVI, GIF), Quality presets (Low, Medium, High, Ultra, Original, Custom), Codec (H.264, H.265, AV1, VP9), Resolution, Frame Rate, Bitrate, Hardware encoding
+- **Audio Settings**: Codec (AAC, MP3, OPUS, FLAC, WAV, AC3), Bitrate, Sample Rate, Channels, Mode (None, All Audio, Desktop, Microphone, Separate Tracks), Normalization, Noise Reduction
+- **File Settings**: Directory, Filename pattern, Category, Tags, Auto-compress
+- **Recording Presets**: Gaming, Stream Recording, High Quality, Small File Size, Instant Replay
+- **Replay Buffer**: Configurable buffer duration (10-300 seconds), Quality setting, Save replay functionality, Hotkey support
+- **Recordings Management**: List view with thumbnails, metadata display, Play/Open Folder/Delete actions
+- **Disk Monitoring**: Real-time disk usage display, Free space indicator, Estimated recording time
+- **Recording Statistics**: Duration, File size, Bitrate, FPS, Dropped frames, CPU/GPU/Memory usage
+- **Real-time Updates**: Live timer, file size calculation, disk space monitoring
+
+---
+
 ## [0.7.0] - 2026-03-05
 
 ### Added

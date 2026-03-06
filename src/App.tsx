@@ -18,6 +18,7 @@ import { EncoderConfiguration } from './components/EncoderConfiguration';
 import { SRTConfiguration } from './components/SRTConfiguration';
 import { VirtualCameraConfiguration } from './components/VirtualCameraConfiguration';
 import { AudioMixerPro } from './components/AudioMixerPro';
+import RecordingEnginePro from './components/RecordingEnginePro';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -269,6 +270,7 @@ function App() {
   const [showSRTConfiguration, setShowSRTConfiguration] = useState(false);
   const [showVirtualCameraConfiguration, setShowVirtualCameraConfiguration] = useState(false);
   const [showAudioMixerPro, setShowAudioMixerPro] = useState(false);
+  const [showRecordingEnginePro, setShowRecordingEnginePro] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -712,6 +714,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🎚️
+          </button>
+          <button
+            onClick={() => setShowRecordingEnginePro(true)}
+            className="theme-btn"
+            title="Recording Engine Pro"
+            style={{ marginLeft: '8px' }}
+          >
+            🔴
           </button>
           <div className="theme-switcher">
             <button
@@ -1445,6 +1455,13 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowAudioMixerPro(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <AudioMixerPro onClose={() => setShowAudioMixerPro(false)} />
+          </div>
+        </div>
+      )}
+      {showRecordingEnginePro && (
+        <div className="modal-overlay" onClick={() => setShowRecordingEnginePro(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <RecordingEnginePro onClose={() => setShowRecordingEnginePro(false)} />
           </div>
         </div>
       )}

@@ -17,6 +17,7 @@ import { ModerationPanel } from './components/ModerationPanel';
 import { EncoderConfiguration } from './components/EncoderConfiguration';
 import { SRTConfiguration } from './components/SRTConfiguration';
 import { VirtualCameraConfiguration } from './components/VirtualCameraConfiguration';
+import { AudioMixerPro } from './components/AudioMixerPro';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -267,6 +268,7 @@ function App() {
   const [showEncoderConfiguration, setShowEncoderConfiguration] = useState(false);
   const [showSRTConfiguration, setShowSRTConfiguration] = useState(false);
   const [showVirtualCameraConfiguration, setShowVirtualCameraConfiguration] = useState(false);
+  const [showAudioMixerPro, setShowAudioMixerPro] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -702,6 +704,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             📷
+          </button>
+          <button
+            onClick={() => setShowAudioMixerPro(true)}
+            className="theme-btn"
+            title="Audio Mixer Pro"
+            style={{ marginLeft: '8px' }}
+          >
+            🎚️
           </button>
           <div className="theme-switcher">
             <button
@@ -1426,6 +1436,15 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowVirtualCameraConfiguration(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <VirtualCameraConfiguration onClose={() => setShowVirtualCameraConfiguration(false)} />
+          </div>
+        </div>
+      )}
+
+      {/* Audio Mixer Pro Modal */}
+      {showAudioMixerPro && (
+        <div className="modal-overlay" onClick={() => setShowAudioMixerPro(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <AudioMixerPro onClose={() => setShowAudioMixerPro(false)} />
           </div>
         </div>
       )}

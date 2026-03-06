@@ -19,6 +19,7 @@ import { SRTConfiguration } from './components/SRTConfiguration';
 import { VirtualCameraConfiguration } from './components/VirtualCameraConfiguration';
 import { AudioMixerPro } from './components/AudioMixerPro';
 import RecordingEnginePro from './components/RecordingEnginePro';
+import SceneSwitcherPro from './components/SceneSwitcherPro';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -271,6 +272,7 @@ function App() {
   const [showVirtualCameraConfiguration, setShowVirtualCameraConfiguration] = useState(false);
   const [showAudioMixerPro, setShowAudioMixerPro] = useState(false);
   const [showRecordingEnginePro, setShowRecordingEnginePro] = useState(false);
+  const [showSceneSwitcherPro, setShowSceneSwitcherPro] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -722,6 +724,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🔴
+          </button>
+          <button
+            onClick={() => setShowSceneSwitcherPro(true)}
+            className="theme-btn"
+            title="Scene Switcher Pro"
+            style={{ marginLeft: '8px' }}
+          >
+            🎬
           </button>
           <div className="theme-switcher">
             <button
@@ -1462,6 +1472,13 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowRecordingEnginePro(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <RecordingEnginePro onClose={() => setShowRecordingEnginePro(false)} />
+          </div>
+        </div>
+      )}
+      {showSceneSwitcherPro && (
+        <div className="modal-overlay" onClick={() => setShowSceneSwitcherPro(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <SceneSwitcherPro onClose={() => setShowSceneSwitcherPro(false)} />
           </div>
         </div>
       )}

@@ -1283,5 +1283,136 @@
     "noRecordings": "No recordings yet. Start recording to see your recordings here.",
     "play": "Play",
     "openFolder": "Open Folder"
+  },
+  "sceneSwitcherPro": {
+    "title": "Scene Switcher Pro",
+    "subtitle": "Advanced scene management with transitions and automation",
+    "tabs": {
+      "scenes": "Scenes",
+      "transitions": "Transitions",
+      "hotkeys": "Hotkeys",
+      "automation": "Automation",
+      "settings": "Settings"
+    },
+    "scenes": {
+      "title": "Scene Collection",
+      "addScene": "Add Scene",
+      "duplicateScene": "Duplicate Scene",
+      "deleteScene": "Delete Scene",
+      "sceneName": "Scene Name",
+      "sceneItems": "Scene Items",
+      "addItem": "Add Item",
+      "removeItem": "Remove Item",
+      "itemVisibility": "Visibility",
+      "itemLock": "Lock",
+      "itemTransform": "Transform",
+      "itemSettings": "Item Settings",
+      "noScenes": "No scenes yet. Create your first scene to get started.",
+      "active": "Active",
+      "preview": "Preview",
+      "type": {
+        "video_source": "Video Source",
+        "audio_source": "Audio Source",
+        "image": "Image",
+        "text": "Text",
+        "browser": "Browser",
+        "media": "Media",
+        "game_capture": "Game Capture",
+        "window_capture": "Window Capture",
+        "camera": "Camera",
+        "color": "Color",
+        "stinger": "Stinger",
+        "group": "Group"
+      },
+      "confirmDeleteScene": "Are you sure you want to delete this scene?"
+    },
+    "transitions": {
+      "title": "Scene Transitions",
+      "type": "Transition Type",
+      "duration": "Duration (ms)",
+      "none": "None",
+      "cut": "Cut",
+      "fade": "Fade",
+      "slide": "Slide",
+      "zoom": "Zoom",
+      "wipe": "Wipe",
+      "stinger": "Stinger",
+      "direction": {
+        "left": "Slide Left",
+        "right": "Slide Right",
+        "up": "Slide Up",
+        "down": "Slide Down"
+      },
+      "stingerPath": "Stinger Video Path",
+      "stingerAudio": "Stinger Audio",
+      "stingerTransitionPoint": "Transition Point (%)",
+      "apply": "Apply Transition"
+    },
+    "hotkeys": {
+      "title": "Hotkey Mappings",
+      "scene": "Scene",
+      "hotkey": "Hotkey",
+      "assign": "Assign",
+      "clear": "Clear",
+      "noHotkeys": "No hotkeys assigned. Press Assign to set hotkeys for scenes.",
+      "recording": "Recording",
+      "streaming": "Streaming",
+      "muteUnmute": "Mute/Unmute",
+      "start": "Start",
+      "stop": "Stop",
+      "replay": "Save Replay"
+    },
+    "automation": {
+      "title": "Scene Automation",
+      "rules": "Automation Rules",
+      "addRule": "Add Rule",
+      "deleteRule": "Delete Rule",
+      "trigger": "Trigger",
+      "action": "Action",
+      "enabled": "Enabled",
+      "triggerTypes": {
+        "audio_level": "Audio Level",
+        "timer": "Timer",
+        "hotkey": "Hotkey",
+        "window_focus": "Window Focus",
+        "game_state": "Game State",
+        "chat_command": "Chat Command"
+      },
+      "actionTypes": {
+        "switch_scene": "Switch Scene",
+        "toggle_visibility": "Toggle Visibility",
+        "change_source": "Change Source",
+        "start_recording": "Start Recording",
+        "stop_recording": "Stop Recording",
+        "start_streaming": "Start Streaming",
+        "stop_streaming": "Stop Streaming"
+      },
+      "noRules": "No automation rules. Add a rule to automate scene switching.",
+      "targetScene": "Target Scene",
+      "targetItem": "Target Item",
+      "threshold": "Threshold",
+      "interval": "Interval (s)",
+      "command": "Command"
+    },
+    "settings": {
+      "title": "Scene Switcher Settings",
+      "autoSwitch": "Auto-Switch on Launch",
+      "defaultScene": "Default Scene",
+      "transitionOnStart": "Transition on Start",
+      "transitionOnStop": "Transition on Stop",
+      "confirmDelete": "Confirm Scene Delete",
+      "showPreview": "Show Preview",
+      "lockItems": "Lock Items by Default",
+      "autoSave": "Auto-Save Scenes",
+      "backupScenes": "Backup Scene Collection",
+      "restoreBackup": "Restore from Backup",
+      "exportScenes": "Export Scenes",
+      "importScenes": "Import Scenes"
+    },
+    "status": {
+      "switching": "Switching...",
+      "active": "Active Scene",
+      "preview": "Preview"
+    }
   }
 }

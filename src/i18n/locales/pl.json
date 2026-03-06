@@ -1081,5 +1081,136 @@
     "noRecordings": "Brak nagrań. Rozpocznij nagrywanie, aby zobaczyć swoje nagrania tutaj.",
     "play": "Odtwórz",
     "openFolder": "Otwórz Folder"
+  },
+  "sceneSwitcherPro": {
+    "title": "Scene Switcher Pro",
+    "subtitle": "Zaawansowane zarządzanie scenami z przejściami i automatyzacją",
+    "tabs": {
+      "scenes": "Sceny",
+      "transitions": "Przejścia",
+      "hotkeys": "Skróty klawiszowe",
+      "automation": "Automatyzacja",
+      "settings": "Ustawienia"
+    },
+    "scenes": {
+      "title": "Kolekcja scen",
+      "addScene": "Dodaj scenę",
+      "duplicateScene": "Duplikuj scenę",
+      "deleteScene": "Usuń scenę",
+      "sceneName": "Nazwa sceny",
+      "sceneItems": "Elementy sceny",
+      "addItem": "Dodaj element",
+      "removeItem": "Usuń element",
+      "itemVisibility": "Widoczność",
+      "itemLock": "Zablokuj",
+      "itemTransform": "Transformacja",
+      "itemSettings": "Ustawienia elementu",
+      "noScenes": "Brak scen. Utwórz swoją pierwszą scenę, aby rozpocząć.",
+      "active": "Aktywna",
+      "preview": "Podgląd",
+      "type": {
+        "video_source": "Źródło wideo",
+        "audio_source": "Źródło audio",
+        "image": "Obraz",
+        "text": "Tekst",
+        "browser": "Przeglądarka",
+        "media": "Media",
+        "game_capture": "Przechwytywanie gry",
+        "window_capture": "Przechwytywanie okna",
+        "camera": "Kamera",
+        "color": "Kolor",
+        "stinger": "Stinger",
+        "group": "Grupa"
+      },
+      "confirmDeleteScene": "Czy na pewno chcesz usunąć tę scenę?"
+    },
+    "transitions": {
+      "title": "Przejścia scen",
+      "type": "Typ przejścia",
+      "duration": "Czas trwania (ms)",
+      "none": "Brak",
+      "cut": "Cięcie",
+      "fade": "Zanikanie",
+      "slide": "Przesunięcie",
+      "zoom": "Przybliżenie",
+      "wipe": "Wycieranie",
+      "stinger": "Stinger",
+      "direction": {
+        "left": "Przesunięcie w lewo",
+        "right": "Przesunięcie w prawo",
+        "up": "Przesunięcie w górę",
+        "down": "Przesunięcie w dół"
+      },
+      "stingerPath": "Ścieżka wideo stinger",
+      "stingerAudio": "Audio stinger",
+      "stingerTransitionPoint": "Punkt przejścia (%)",
+      "apply": "Zastosuj przejście"
+    },
+    "hotkeys": {
+      "title": "Mapowanie skrótów klawiszowych",
+      "scene": "Scena",
+      "hotkey": "Skrót",
+      "assign": "Przypisz",
+      "clear": "Wyczyść",
+      "noHotkeys": "Brak przypisanych skrótów. Naciśnij Przypisz, aby ustawić skróty dla scen.",
+      "recording": "Nagrywanie",
+      "streaming": "Streaming",
+      "muteUnmute": "Wycisz/Włącz dźwięk",
+      "start": "Start",
+      "stop": "Stop",
+      "replay": "Zapisz powtórkę"
+    },
+    "automation": {
+      "title": "Automatyzacja scen",
+      "rules": "Reguły automatyzacji",
+      "addRule": "Dodaj regułę",
+      "deleteRule": "Usuń regułę",
+      "trigger": "Wyzwalacz",
+      "action": "Akcja",
+      "enabled": "Włączona",
+      "triggerTypes": {
+        "audio_level": "Poziom audio",
+        "timer": "Minutnik",
+        "hotkey": "Skrót klawiszowy",
+        "window_focus": "Aktywne okno",
+        "game_state": "Stan gry",
+        "chat_command": "Komenda czatu"
+      },
+      "actionTypes": {
+        "switch_scene": "Przełącz scenę",
+        "toggle_visibility": "Przełącz widoczność",
+        "change_source": "Zmień źródło",
+        "start_recording": "Rozpocznij nagrywanie",
+        "stop_recording": "Zatrzymaj nagrywanie",
+        "start_streaming": "Rozpocznij streaming",
+        "stop_streaming": "Zatrzymaj streaming"
+      },
+      "noRules": "Brak reguł automatyzacji. Dodaj regułę, aby zautomatyzować przełączanie scen.",
+      "targetScene": "Scena docelowa",
+      "targetItem": "Element docelowy",
+      "threshold": "Próg",
+      "interval": "Interwał (s)",
+      "command": "Komenda"
+    },
+    "settings": {
+      "title": "Ustawienia przełącznika scen",
+      "autoSwitch": "Automatyczne przełączanie przy uruchomieniu",
+      "defaultScene": "Domyślna scena",
+      "transitionOnStart": "Przejście przy starcie",
+      "transitionOnStop": "Przejście przy zatrzymaniu",
+      "confirmDelete": "Potwierdź usunięcie sceny",
+      "showPreview": "Pokaż podgląd",
+      "lockItems": "Blokuj elementy domyślnie",
+      "autoSave": "Auto-zapis scen",
+      "backupScenes": "Kopia zapasowa kolekcji scen",
+      "restoreBackup": "Przywróć z kopii zapasowej",
+      "exportScenes": "Eksportuj sceny",
+      "importScenes": "Importuj sceny"
+    },
+    "status": {
+      "switching": "Przełączanie...",
+      "active": "Aktywna scena",
+      "preview": "Podgląd"
+    }
   }
 }

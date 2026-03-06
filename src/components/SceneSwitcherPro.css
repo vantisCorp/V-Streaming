@@ -1,0 +1,703 @@
+/**
+ * Scene Switcher Pro Styles
+ * Professional scene management with gradient theme
+ */
+
+/* ============================================================================
+   MAIN CONTAINER
+   ============================================================================ */
+
+.scene-switcher-pro {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 900px;
+  max-width: 1400px;
+  max-height: 85vh;
+  overflow-y: auto;
+  color: #e8e8e8;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================================
+   HEADER
+   ============================================================================ */
+
+.scene-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scene-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #00b4d8, #0096c7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================================
+   TABS
+   ============================================================================ */
+
+.scene-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  color: #a0a0a0;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e8e8e8;
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #00b4d8, #0096c7);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+}
+
+.tab-icon {
+  font-size: 16px;
+}
+
+/* ============================================================================
+   CONTENT
+   ============================================================================ */
+
+.scene-content {
+  margin-top: 16px;
+}
+
+.tab-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================================
+   SCENES TAB
+   ============================================================================ */
+
+.scenes-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.stats-info {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: #888;
+}
+
+.scenes-layout {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 20px;
+}
+
+.scenes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.scene-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.scene-card:hover {
+  background: rgba(0, 0, 0, 0.3);
+  transform: translateX(4px);
+}
+
+.scene-card.active {
+  border-color: #00b4d8;
+  background: rgba(0, 180, 216, 0.1);
+}
+
+.scene-card.preview {
+  border-color: #f7931e;
+  background: rgba(247, 147, 30, 0.1);
+}
+
+.scene-thumbnail {
+  width: 80px;
+  height: 45px;
+  background: linear-gradient(135deg, #333, #444);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.scene-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.scene-info h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #e8e8e8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scene-description {
+  margin: 0 0 4px 0;
+  font-size: 12px;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scene-meta {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: #666;
+}
+
+.active-badge {
+  color: #00b4d8;
+  font-weight: 500;
+}
+
+.preview-badge {
+  color: #f7931e;
+  font-weight: 500;
+}
+
+.scene-actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.scene-card:hover .scene-actions {
+  opacity: 1;
+}
+
+/* ============================================================================
+   SCENE DETAILS
+   ============================================================================ */
+
+.scene-details {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.details-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #00b4d8;
+}
+
+.scene-details-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.scene-properties {
+  margin-bottom: 24px;
+}
+
+.scene-items {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scene-items h4 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #e8e8e8;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.2s ease;
+}
+
+.item-card:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.item-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #333, #444);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info h5 {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  color: #e8e8e8;
+}
+
+.item-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: #888;
+}
+
+.item-actions {
+  display: flex;
+  gap: 4px;
+}
+
+/* ============================================================================
+   TRANSITIONS TAB
+   ============================================================================ */
+
+.transitions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.transition-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.transition-card.default {
+  border: 2px solid #00b4d8;
+}
+
+.transition-card h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #e8e8e8;
+}
+
+.transition-config {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scene-transitions {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.scene-transitions h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #e8e8e8;
+}
+
+.scene-transition-item {
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.scene-transition-item h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #e8e8e8;
+}
+
+/* ============================================================================
+   HOTKEYS TAB
+   ============================================================================ */
+
+.hotkeys-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.hotkey-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.hotkey-card h4 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  color: #e8e8e8;
+}
+
+.hotkey-config {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ============================================================================
+   AUTOMATION TAB
+   ============================================================================ */
+
+.automation-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.automation-rule-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.automation-rule-card h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  color: #e8e8e8;
+}
+
+.automation-rule-card p {
+  margin: 0;
+  font-size: 12px;
+  color: #888;
+}
+
+.rule-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ============================================================================
+   SETTINGS TAB
+   ============================================================================ */
+
+.settings-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.settings-section {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.settings-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  color: #e8e8e8;
+}
+
+/* ============================================================================
+   FORM ELEMENTS
+   ============================================================================ */
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #a0a0a0;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #e8e8e8;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #00b4d8;
+  box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.2);
+}
+
+.form-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #00b4d8;
+  cursor: pointer;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+/* ============================================================================
+   BUTTONS
+   ============================================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e8e8e8;
+}
+
+.btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #00b4d8, #0096c7);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #00c4db, #00a6d7);
+  box-shadow: 0 4px 20px rgba(0, 180, 216, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(100, 100, 100, 0.3);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #d32f2f, #f44336);
+  color: #fff;
+}
+
+.btn-sm {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+/* ============================================================================
+   DIALOG
+   ============================================================================ */
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.dialog-content {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 400px;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dialog-content h3 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: #e8e8e8;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* ============================================================================
+   EMPTY STATE
+   ============================================================================ */
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.empty-state p {
+  margin: 0 0 16px 0;
+  font-size: 14px;
+}
+
+/* ============================================================================
+   SCROLLBAR
+   ============================================================================ */
+
+.scene-switcher-pro::-webkit-scrollbar,
+.scenes-list::-webkit-scrollbar,
+.scene-details::-webkit-scrollbar,
+.scene-transitions::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scene-switcher-pro::-webkit-scrollbar-track,
+.scenes-list::-webkit-scrollbar-track,
+.scene-details::-webkit-scrollbar-track,
+.scene-transitions::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.scene-switcher-pro::-webkit-scrollbar-thumb,
+.scenes-list::-webkit-scrollbar-thumb,
+.scene-details::-webkit-scrollbar-thumb,
+.scene-transitions::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.scene-switcher-pro::-webkit-scrollbar-thumb:hover,
+.scenes-list::-webkit-scrollbar-thumb:hover,
+.scene-details::-webkit-scrollbar-thumb:hover,
+.scene-transitions::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+  .scene-switcher-pro {
+    min-width: 100%;
+    padding: 16px;
+  }
+  
+  .scenes-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .scenes-list {
+    max-height: 300px;
+  }
+  
+  .scene-details {
+    max-height: 400px;
+  }
+  
+  .transitions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .settings-sections {
+    grid-template-columns: 1fr;
+  }
+}

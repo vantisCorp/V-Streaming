@@ -11,6 +11,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.3.0] - 2026-03-07
+
+### Added
+
+#### Discord Bot Integration - Community Engagement Tools
+
+- **Discord Bot Types** (`src/types/discordBot.ts`): Complete type system for Discord integration with 7 enums (DiscordConnectionStatus, DiscordNotificationType, DiscordCommandPermission, DiscordEmbedColor, DiscordActivityType) and 20+ interfaces for bot config, connection state, notifications, commands, presence, messages, guilds, and statistics
+- **DiscordBotService** (`src/services/DiscordBotService.ts`): Discord bot service with singleton pattern, connection management, notification system, custom commands, presence/status management, message handling, guild/channel management, and statistics tracking
+- **useDiscordBot React Hook** (`src/hooks/useDiscordBot.ts`): React hook for Discord state management, exposing all operations including connection, notifications, commands, presence, messages, and guild management
+- **DiscordIntegration UI Component** (`src/components/DiscordIntegration.tsx`): Five-tab interface (Connection, Notifications, Commands, Presence, Settings) for comprehensive Discord bot control
+- **CSS Styling** (`src/components/DiscordIntegration.css`): Discord-inspired styling with blurple (#5865f2) accent, glassmorphism effects, responsive layout, and polished animations
+- **App Integration**: Added toolbar button (🤖) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all Discord features
+
+#### Discord Bot Features
+
+- **Connection Management**: Connect/disconnect Discord bot, configure bot token and client ID, connection status monitoring
+- **Notification System**: Configurable notifications for stream start/stop, new followers, subscribers, donations, raids, and more
+- **Custom Commands**: Create and manage custom chat commands with permission levels (Everyone, Moderator, Admin, Owner)
+- **Presence/Status Management**: Set bot activity status (Playing, Streaming, Listening, Watching, Competing), update presence dynamically
+- **Message Handling**: Send messages to Discord channels, embed support with customizable colors
+- **Guild/Channel Management**: List connected guilds and channels, select notification targets
+- **Statistics Tracking**: Track messages sent, notifications sent, commands executed, errors
+
+### Testing
+
+- **DiscordBotService Tests** (`src/services/DiscordBotService.test.ts`): 37 unit tests with 100% pass rate
+- **Total Test Coverage**: 231 tests passing, 24 skipped (integration tests), 99% pass rate
+
+---
+
 ## [1.2.0] - 2026-03-07
 
 ### Added

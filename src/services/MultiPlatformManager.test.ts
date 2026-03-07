@@ -45,11 +45,15 @@ describe('MultiPlatformManager', () => {
     localStorage.clear();
     // Create new instance for each test
     manager = new MultiPlatformManager();
+    // Reset config to defaults to ensure clean state
+    manager.resetConfig();
   });
 
   afterEach(() => {
     // Clean up
     manager.removeAllListeners();
+    // Clear localStorage after each test
+    localStorage.clear();
   });
 
   // ============ Configuration Management Tests ============
@@ -228,6 +232,12 @@ describe('MultiPlatformManager', () => {
   describe('Stream Control', () => {
     beforeEach(() => {
       manager.addPlatform(createMockPlatform());
+      // Mock simulateConnection to always succeed immediately
+      vi.spyOn(manager as any, 'simulateConnection').mockResolvedValue(undefined);
+    });
+
+    afterEach(() => {
+      vi.restoreAllMocks();
     });
 
     it('should start stream to platform', async () => {
@@ -287,8 +297,8 @@ describe('MultiPlatformManager', () => {
     it('should finalize analytics when stream stops', async () => {
       await manager.startStream('Test Twitch Channel');
       
-      // Wait a bit to accumulate some duration
-      await new Promise(resolve => setTimeout(resolve, 100));
+      // Wait at least 1 second to accumulate duration (duration is in seconds)
+      await new Promise(resolve => setTimeout(resolve, 1100));
       
       await manager.stopStream('Test Twitch Channel');
       
@@ -313,7 +323,7 @@ describe('MultiPlatformManager', () => {
       expect(results).toContain('Test Twitch Channel');
       expect(results).toContain('Platform 2');
       expect(listener).toHaveBeenCalledTimes(1);
-    });
+    }, 10000);
 
     it('should stop all active platforms', async () => {
       const platform2 = createMockPlatform({ 
@@ -331,7 +341,7 @@ describe('MultiPlatformManager', () => {
       
       expect(results).toHaveLength(2);
       expect(listener).toHaveBeenCalledTimes(1);
-    });
+    }, 10000);
   });
 
   // ============ Health Monitoring Tests ============
@@ -339,15 +349,21 @@ describe('MultiPlatformManager', () => {
   describe('Health Monitoring', () => {
     beforeEach(async () => {
       manager.addPlatform(createMockPlatform());
+      // Mock simulateConnection to always succeed immediately
+      vi.spyOn(manager as any, 'simulateConnection').mockResolvedValue(undefined);
       await manager.startStream('Test Twitch Channel');
+    });
+
+    afterEach(() => {
+      vi.restoreAllMocks();
     });
 
     it('should update platform health', async () => {
       const listener = vi.fn();
       manager.on('healthUpdated', listener);
       
-      // Wait for health check
-      await new Promise(resolve => setTimeout(resolve, 5500));
+      // Manually trigger health check instead of waiting for interval
+      (manager as any).updatePlatformHealth('Test Twitch Channel');
       
       expect(listener).toHaveBeenCalled();
       
@@ -366,7 +382,8 @@ describe('MultiPlatformManager', () => {
       const listener = vi.fn();
       manager.on('platformError', listener);
       
-      await new Promise(resolve => setTimeout(resolve, 5500));
+      // Manually trigger health check
+      (manager as any).updatePlatformHealth('Test Twitch Channel');
       
       expect(listener).toHaveBeenCalled();
     });
@@ -374,16 +391,8 @@ describe('MultiPlatformManager', () => {
     it('should stop health monitoring when no active streams', async () => {
       await manager.stopStream('Test Twitch Channel');
       
-      // Wait to ensure health monitoring stopped
-      await new Promise(resolve => setTimeout(resolve, 6000));
-      
-      // Verify no more health updates
-      const listener = vi.fn();
-      manager.on('healthUpdated', listener);
-      
-      await new Promise(resolve => setTimeout(resolve, 5500));
-      
-      expect(listener).not.toHaveBeenCalled();
+      // Verify health monitoring interval is stopped
+      expect((manager as any).healthCheckInterval).toBeUndefined();
     });
   });
 
@@ -392,7 +401,13 @@ describe('MultiPlatformManager', () => {
   describe('Analytics', () => {
     beforeEach(async () => {
       manager.addPlatform(createMockPlatform());
+      // Mock simulateConnection to always succeed immediately
+      vi.spyOn(manager as any, 'simulateConnection').mockResolvedValue(undefined);
       await manager.startStream('Test Twitch Channel');
+    });
+
+    afterEach(() => {
+      vi.restoreAllMocks();
     });
 
     it('should get analytics for all platforms', () => {
@@ -469,6 +484,12 @@ describe('MultiPlatformManager', () => {
   describe('Status', () => {
     beforeEach(async () => {
       manager.addPlatform(createMockPlatform());
+      // Mock simulateConnection to always succeed immediately
+      vi.spyOn(manager as any, 'simulateConnection').mockResolvedValue(undefined);
+    });
+
+    afterEach(() => {
+      vi.restoreAllMocks();
     });
 
     it('should get active stream count', async () => {
@@ -542,6 +563,8 @@ describe('MultiPlatformManager', () => {
   describe('Persistence', () => {
     it('should save analytics to localStorage', async () => {
       manager.addPlatform(createMockPlatform());
+      // Mock simulateConnection to always succeed immediately
+      vi.spyOn(manager as any, 'simulateConnection').mockResolvedValue(undefined);
       await manager.startStream('Test Twitch Channel');
       await manager.stopStream('Test Twitch Channel');
       

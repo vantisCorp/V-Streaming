@@ -35,7 +35,10 @@ export class MultiPlatformManager extends EventEmitter {
 
   constructor() {
     super();
-    this.config = { ...DEFAULT_MULTIPLATFORM_CONFIG };
+    this.config = {
+      ...DEFAULT_MULTIPLATFORM_CONFIG,
+      platforms: [], // Create a new empty array instead of referencing the original
+    };
     this.loadFromStorage();
   }
 
@@ -64,7 +67,10 @@ export class MultiPlatformManager extends EventEmitter {
    * Reset configuration to defaults
    */
   resetConfig(): void {
-    this.config = { ...DEFAULT_MULTIPLATFORM_CONFIG };
+    this.config = {
+      ...DEFAULT_MULTIPLATFORM_CONFIG,
+      platforms: [], // Create a new empty array instead of referencing the original
+    };
     this.saveToStorage();
     this.emit('configChanged', this.config);
   }

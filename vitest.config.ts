@@ -13,6 +13,10 @@ export default defineConfig({
         singleFork: true,
       },
     },
+    exclude: [
+      '**/node_modules/**',
+      '**/VStreamingMobile/**',
+    ],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],

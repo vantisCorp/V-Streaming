@@ -543,18 +543,24 @@ describe('MultiPlatformManager', () => {
     it('should emit platformError event on failure', async () => {
       manager.addPlatform(createMockPlatform());
       
+      // Mock simulateConnection to always fail
+      vi.spyOn(manager as any, 'simulateConnection').mockRejectedValue(new Error('Connection failed'));
+      
       const listener = vi.fn();
       manager.on('platformError', listener);
       
       try {
         await manager.startStream('Test Twitch Channel');
       } catch (error) {
-        // Expected
+        // Expected - startStream throws because simulateConnection fails
       }
       
-      // Verify platform health status is error
+      // Verify platformError event was emitted
+      expect(listener).toHaveBeenCalled();
+      
+      // Verify platform health status is error after failed stream start
       const platform = manager.getPlatform('Test Twitch Channel');
-      expect(platform?.health.status).toBe('connected'); // May fail occasionally
+      expect(platform?.health.status).toBe('error');
     });
   });
 

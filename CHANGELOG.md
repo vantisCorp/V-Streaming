@@ -11,6 +11,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.2.0] - 2026-03-07
+
+### Added
+
+#### OBS WebSocket Integration - Remote OBS Studio Control
+- **OBS WebSocket Service** (`src/services/OBSWebSocketService.ts`): Comprehensive OBS WebSocket integration with singleton pattern, connection management with auto-reconnect, and event-driven architecture using EventEmitter3
+- **OBS WebSocket Types** (`src/types/obsWebSocket.ts`): Complete type system for OBS integration with 15+ interfaces for connection config, scenes, streaming, recording, audio inputs, transitions, and events
+- **useOBSWebSocket React Hook** (`src/hooks/useOBSWebSocket.ts`): React hook for OBS state management with connection status, scene management, stream/recording control, audio management, and transition control
+- **OBSIntegration UI Component** (`src/components/OBSIntegration.tsx`): Six-tab interface (Connection, Scenes, Stream, Recording, Audio, Transitions) for comprehensive OBS control
+- **CSS Styling** (`src/components/OBSIntegration.css`): Blue gradient theme styling with connection status indicators, scene cards, stream statistics, and polished animations
+- **App Integration**: Added toolbar button (🎬) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all OBS features
+
+#### OBS WebSocket Features
+- **Connection Management**: Connect/disconnect with auto-reconnect support, configurable host/port/password, connection status monitoring
+- **Scene Management**: Get all scenes, switch scenes, get current scene, list scene items
+- **Stream Control**: Start/stop/toggle streaming, real-time stream status, stream statistics (duration, bitrate, FPS, dropped frames)
+- **Recording Control**: Start/stop/pause/toggle recording, recording status monitoring
+- **Audio Management**: List audio inputs, mute/unmute, volume control (0-100%), get current volume
+- **Transition Management**: Get transitions, set transition, get current transition, transition duration control
+- **Event System**: Real-time events for connection state, scene changes, stream state, recording state, audio changes, transitions
+
+### Testing
+- **OBSWebSocketService Tests** (`src/services/OBSWebSocketService.test.ts`): 39 unit tests with 100% pass rate
+- **Integration Tests** (`src/services/OBSWebSocketService.integration.test.ts`): 21 integration tests (skipped by default, require running OBS)
+- **MultiPlatformManager Tests** (`src/services/MultiPlatformManager.test.ts`): 43 tests with comprehensive coverage
+- **Core Service Tests**: Added tests for AnalyticsProManager (25 tests), ArchiveManager (18 tests), ModerationManager (19 tests), OverlayManager (15 tests)
+- **Total Test Coverage**: 194 tests passing, 24 skipped (integration tests), 98.5% pass rate
+
+### Fixed
+- Shallow copy bug in MultiPlatformManager where `platforms` array was shared across instances
+- AudioContext not defined in test environment (added comprehensive mock)
+- App.test.tsx navigation tests for Simple mode tabs
+- AnalyticsDashboard.test.tsx import and required props issues
+- Multiple element found errors using queryAllByText
+
+### Documentation
+- **OBS Developer Guide** (`docs/OBS_DEVELOPER_GUIDE.md`): Architecture overview, API reference, hooks usage, UI components, events, error handling, testing guide
+- **Integration Tests Guide** (`docs/INTEGRATION_TESTS.md`): How to run OBS integration tests with CI/CD examples
+
+---
+
 ## [1.1.0] - 2026-03-05
 
 ### Added

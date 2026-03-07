@@ -1831,5 +1831,98 @@
       "resetConfirm": "Are you sure you want to reset all settings?",
       "resetAll": "Reset All Notifications"
     }
+  },
+  "tiktok": {
+    "title": "TikTok Live Integration",
+    "description": "Connect to TikTok Live to engage with your audience, track gifts, and manage interactions.",
+    "tabs": {
+      "connection": "Connection",
+      "live": "Live",
+      "engagement": "Engagement",
+      "notifications": "Notifications",
+      "settings": "Settings"
+    },
+    "connection": {
+      "title": "Connect to TikTok Live",
+      "uniqueId": "TikTok Username (uniqueId)",
+      "uniqueIdPlaceholder": "Enter TikTok username without @",
+      "roomId": "Room ID (optional)",
+      "roomIdPlaceholder": "Leave empty to auto-detect",
+      "displayName": "Display Name",
+      "displayNamePlaceholder": "Your display name",
+      "connect": "Connect",
+      "connecting": "Connecting...",
+      "disconnect": "Disconnect"
+    },
+    "status": {
+      "disconnected": "Disconnected",
+      "connecting": "Connecting...",
+      "connected": "Connected",
+      "reconnecting": "Reconnecting...",
+      "error": "Error"
+    },
+    "statistics": {
+      "title": "Live Statistics",
+      "viewers": "Viewers",
+      "peakViewers": "Peak",
+      "likes": "Likes",
+      "diamonds": "Diamonds",
+      "gifts": "Gifts",
+      "newFollowers": "New Followers",
+      "comments": "Comments",
+      "duration": "Duration"
+    },
+    "live": {
+      "giftGoal": "Gift Goal",
+      "setGoal": "Set Goal (diamonds)",
+      "updateGoal": "Update Goal",
+      "enableGiftGoal": "Enable Gift Goal Display",
+      "streamInfo": "Stream Info",
+      "roomId": "Room ID",
+      "title": "Title",
+      "viewers": "Viewers",
+      "likes": "Likes",
+      "displaySettings": "Display Settings",
+      "showViewerCount": "Show Viewer Count",
+      "showGiftNotifications": "Show Gift Notifications",
+      "showFollowerNotifications": "Show Follower Notifications",
+      "enableChatDisplay": "Enable Chat Display"
+    },
+    "engagement": {
+      "title": "Auto-Engagement Settings",
+      "autoReply": "Enable Auto-Reply",
+      "thankFollowers": "Thank New Followers",
+      "thankGifters": "Thank Gifters",
+      "welcomeViewers": "Welcome New Viewers",
+      "templates": "Response Templates",
+      "autoReplyTemplate": "Auto-Reply Template",
+      "thankTemplate": "Thank Follower Template",
+      "giftThankTemplate": "Thank Gifter Template",
+      "welcomeTemplate": "Welcome Template"
+    },
+    "notifications": {
+      "addTitle": "Add Notification",
+      "type": "Event Type",
+      "cooldown": "Cooldown (seconds)",
+      "template": "Message Template",
+      "templatePlaceholder": "Enter message template with {placeholders}",
+      "includeMedia": "Include Media",
+      "addButton": "Add Notification",
+      "listTitle": "Active Notifications",
+      "noNotifications": "No notifications configured"
+    },
+    "settings": {
+      "connection": "Connection Settings",
+      "reconnectInterval": "Reconnect Interval (ms)",
+      "maxReconnectAttempts": "Max Reconnect Attempts",
+      "autoConnect": "Auto-connect on startup",
+      "streamAnnouncements": "Stream Announcements",
+      "announceStart": "Announce Stream Start",
+      "announceEnd": "Announce Stream End",
+      "announcementTemplate": "Announcement Template",
+      "dangerZone": "Danger Zone",
+      "resetConfirm": "Are you sure you want to reset all settings?",
+      "resetAll": "Reset All Notifications"
+    }
   }
 }

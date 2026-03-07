@@ -1524,5 +1524,119 @@
       "resetConfirm": "Czy na pewno chcesz zresetować wszystkie ustawienia?",
       "resetAll": "Zresetuj wszystkie powiadomienia i komendy"
     }
+  },
+  "twitter": {
+    "title": "Integracja Twitter/X",
+    "description": "Zarządzaj powiadomieniami Twitter/X i automatyzacją dla Twojego streamu",
+    "tabs": {
+      "connection": "Połączenie",
+      "tweets": "Tweety",
+      "notifications": "Powiadomienia",
+      "engagement": "Angażowanie",
+      "settings": "Ustawienia"
+    },
+    "connection": {
+      "title": "Konfiguracja połączenia",
+      "description": "Połącz swoje konto Twitter/X, aby włączyć funkcje streamingu",
+      "status": "Status połączenia",
+      "connected": "Połączono",
+      "disconnected": "Rozłączono",
+      "connecting": "Łączenie...",
+      "error": "Błąd",
+      "apiKey": "Klucz API",
+      "apiSecret": "Sekret API",
+      "bearerToken": "Token Bearer",
+      "accessToken": "Token dostępu",
+      "accessSecret": "Sekret dostępu",
+      "connect": "Połącz",
+      "disconnect": "Rozłącz",
+      "reconnect": "Połącz ponownie",
+      "testConnection": "Testuj połączenie",
+      "connectionSuccess": "Pomyślnie połączono z Twitter/X",
+      "connectionFailed": "Nie udało się połączyć z Twitter/X"
+    },
+    "status": {
+      "active": "Aktywny",
+      "inactive": "Nieaktywny",
+      "streaming": "Strumieniowanie",
+      "idle": "Bezczynny"
+    },
+    "statistics": {
+      "title": "Statystyki",
+      "tweetsSent": "Wysłane tweety",
+      "likes": "Polubienia",
+      "retweets": "Retweety",
+      "replies": "Odpowiedzi",
+      "followers": "Obserwujący",
+      "engagementRate": "Wskaźnik zaangażowania"
+    },
+    "tweets": {
+      "title": "Zarządzanie tweetami",
+      "composeTweet": "Utwórz tweet",
+      "tweetPlaceholder": "Co się dzieje?",
+      "mediaUrl": "URL mediów (opcjonalnie)",
+      "schedule": "Zaplanuj",
+      "scheduleTime": "Czas planowania",
+      "sendNow": "Wyślij teraz",
+      "cancel": "Anuluj",
+      "scheduled": "Zaplanowane tweety",
+      "noScheduled": "Brak zaplanowanych tweetów",
+      "tweetSent": "Tweet wysłany pomyślnie",
+      "tweetScheduled": "Tweet zaplanowany pomyślnie",
+      "tweetCancelled": "Tweet anulowany",
+      "characterCount": "{{count}}/{{max}} znaków"
+    },
+    "notifications": {
+      "title": "Powiadomienia streamu",
+      "streamStart": "Powiadomienie o początku streamu",
+      "streamEnd": "Powiadomienie o zakończeniu streamu",
+      "streamStartMessage": "Wiadomość o początku streamu",
+      "streamEndMessage": "Wiadomość o zakończeniu streamu",
+      "autoNotify": "Automatyczne powiadomienia",
+      "notifyOnStart": "Powiadom o początku streamu",
+      "notifyOnEnd": "Powiadom o zakończeniu streamu",
+      "includeThumbnail": "Dołącz miniaturę",
+      "includeViewerCount": "Dołącz liczbę widzów",
+      "notifyFollowers": "Powiadom obserwujących"
+    },
+    "engagement": {
+      "title": "Automatyczne zaangażowanie",
+      "autoLike": "Automatyczne polubienia",
+      "autoRetweet": "Automatyczne retweety",
+      "autoReply": "Automatyczne odpowiedzi",
+      "likeMentions": "Polub wzmianki",
+      "retweetMentions": "Retweetuj wzmianki",
+      "replyToMentions": "Odpowiadaj na wzmianki",
+      "replyTemplate": "Szablon odpowiedzi",
+      "keywords": "Słowa kluczowe do śledzenia",
+      "addKeyword": "Dodaj słowo kluczowe",
+      "removeKeyword": "Usuń słowo kluczowe"
+    },
+    "settings": {
+      "title": "Ustawienia Twitter/X",
+      "enabled": "Włącz integrację Twitter/X",
+      "debugMode": "Tryb debugowania",
+      "rateLimit": "Limit zapytań",
+      "requestsPerWindow": "Zapytania na okno czasowe",
+      "windowSize": "Rozmiar okna czasowego (minuty)",
+      "retryAttempts": "Próby ponowienia",
+      "retryDelay": "Opóźnienie ponowienia (ms)",
+      "resetSettings": "Zresetuj ustawienia",
+      "settingsSaved": "Ustawienia zapisane",
+      "settingsReset": "Ustawienia zresetowane"
+    },
+    "errors": {
+      "notConnected": "Nie połączono z Twitter/X",
+      "apiError": "Błąd API Twitter/X",
+      "rateLimitExceeded": "Przekroczono limit zapytań",
+      "invalidCredentials": "Nieprawidłowe dane uwierzytelniające",
+      "tweetTooLong": "Tweet przekracza limit 280 znaków",
+      "mediaUploadFailed": "Nie udało się przesłać mediów",
+      "scheduleFailed": "Nie udało się zaplanować tweeta",
+      "connectionTimeout": "Przekroczono limit czasu połączenia"
+    },
+    "confirmation": {
+      "resetAll": "Zresetuj wszystkie powiadomienia i ustawienia"
+    }
   }
 }

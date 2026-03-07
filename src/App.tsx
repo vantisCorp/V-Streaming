@@ -281,6 +281,7 @@ function App() {
   const [showAnalyticsPro, setShowAnalyticsPro] = useState(false);
   const [showOBSIntegration, setShowOBSIntegration] = useState(false);
   const [showDiscordIntegration, setShowDiscordIntegration] = useState(false);
+  const [showTwitterXIntegration, setShowTwitterXIntegration] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -1547,6 +1548,13 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowDiscordIntegration(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <DiscordIntegration onClose={() => setShowDiscordIntegration(false)} />
+          </div>
+        </div>
+      )}
+      {showTwitterXIntegration && (
+        <div className="modal-overlay" onClick={() => setShowTwitterXIntegration(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <TwitterXIntegration onClose={() => setShowTwitterXIntegration(false)} />
           </div>
         </div>
       )}

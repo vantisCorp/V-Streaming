@@ -1736,5 +1736,100 @@
       "resetConfirm": "Are you sure you want to reset all settings?",
       "resetAll": "Reset All Notifications & Commands"
     }
+  },
+  "twitter": {
+    "title": "Twitter/X Integration",
+    "description": "Connect your Twitter/X account to manage tweets, notifications, and engagement.",
+    "tabs": {
+      "connection": "Connection",
+      "tweets": "Tweets",
+      "notifications": "Notifications",
+      "engagement": "Engagement",
+      "settings": "Settings"
+    },
+    "connection": {
+      "title": "API Credentials",
+      "apiKey": "API Key",
+      "apiKeyPlaceholder": "Enter your Twitter API key",
+      "apiSecret": "API Secret",
+      "apiSecretPlaceholder": "Enter your Twitter API secret",
+      "bearerToken": "Bearer Token",
+      "bearerTokenPlaceholder": "Enter your Twitter bearer token",
+      "accessToken": "Access Token",
+      "accessTokenPlaceholder": "Access token",
+      "accessTokenSecret": "Access Token Secret",
+      "accessTokenSecretPlaceholder": "Access token secret",
+      "username": "Username",
+      "usernamePlaceholder": "Your Twitter username",
+      "connect": "Connect",
+      "connecting": "Connecting...",
+      "disconnect": "Disconnect"
+    },
+    "status": {
+      "disconnected": "Disconnected",
+      "connecting": "Connecting...",
+      "connected": "Connected",
+      "reconnecting": "Reconnecting...",
+      "error": "Error"
+    },
+    "statistics": {
+      "title": "Statistics",
+      "tweetsSent": "Tweets Sent",
+      "likes": "Likes",
+      "retweets": "Retweets",
+      "newFollowers": "New Followers",
+      "mentions": "Mentions",
+      "uptime": "Uptime"
+    },
+    "tweets": {
+      "compose": "Compose Tweet",
+      "placeholder": "What's happening?",
+      "scheduleDate": "Schedule Date (optional)",
+      "scheduleTime": "Schedule Time (optional)",
+      "schedule": "Schedule Tweet",
+      "send": "Send Tweet",
+      "scheduled": "Scheduled Tweets",
+      "scheduledFor": "Scheduled for"
+    },
+    "notifications": {
+      "addTitle": "Add Notification",
+      "type": "Type",
+      "cooldown": "Cooldown (seconds)",
+      "template": "Tweet Template",
+      "templatePlaceholder": "Enter tweet template with {placeholders}",
+      "includeMedia": "Include Media",
+      "addButton": "Add Notification",
+      "listTitle": "Active Notifications",
+      "noNotifications": "No notifications configured"
+    },
+    "engagement": {
+      "title": "Auto-Engagement Settings",
+      "autoLikeMentions": "Auto-like mentions",
+      "autoRetweetMentions": "Auto-retweet mentions",
+      "autoReply": "Enable auto-reply",
+      "thankFollowers": "Thank new followers",
+      "autoReplyTemplate": "Auto-reply template",
+      "thankTemplate": "Thank you template",
+      "streamSettings": "Stream Tweet Settings",
+      "autoTweetStart": "Auto-tweet on stream start",
+      "autoTweetEnd": "Auto-tweet on stream end",
+      "includeLink": "Include stream link",
+      "tweetTemplate": "Tweet template",
+      "hashtags": "Hashtags (comma-separated)"
+    },
+    "settings": {
+      "title": "Connection Settings",
+      "reconnectInterval": "Reconnect Interval (ms)",
+      "maxReconnectAttempts": "Max Reconnect Attempts",
+      "autoConnect": "Auto-connect on startup",
+      "autoPost": "Auto-Post Settings",
+      "enableAutoPost": "Enable auto-posting",
+      "postFollowers": "Post about new followers",
+      "postMilestones": "Post about milestones",
+      "milestoneThresholds": "Milestone Thresholds (comma-separated)",
+      "dangerZone": "Danger Zone",
+      "resetConfirm": "Are you sure you want to reset all settings?",
+      "resetAll": "Reset All Notifications"
+    }
   }
 }

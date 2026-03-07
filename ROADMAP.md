@@ -129,6 +129,7 @@ This document outlines the planned features, improvements, and milestones for V-
 | v1.2.0 OBS Integration | ✅ Completed | Released |
 | v1.3.0 Discord Integration | ✅ Completed | Released |
 | v1.4.0 Twitter/X Integration | ✅ Completed | Released |
+| v1.5.0 TikTok Live Integration | ✅ Completed | Released |
 | v2.0.0 Major Update | Q4 2026 | Vision |
 
 ---

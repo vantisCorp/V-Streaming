@@ -1638,5 +1638,98 @@
     "confirmation": {
       "resetAll": "Zresetuj wszystkie powiadomienia i ustawienia"
     }
+  },
+  "tiktok": {
+    "title": "Integracja TikTok Live",
+    "description": "Połącz się z TikTok Live, aby wchodzić w interakcję z widzami, śledzić prezenty i zarządzać interakcjami.",
+    "tabs": {
+      "connection": "Połączenie",
+      "live": "Na żywo",
+      "engagement": "Interakcje",
+      "notifications": "Powiadomienia",
+      "settings": "Ustawienia"
+    },
+    "connection": {
+      "title": "Połącz z TikTok Live",
+      "uniqueId": "Nazwa użytkownika TikTok (uniqueId)",
+      "uniqueIdPlaceholder": "Wprowadź nazwę użytkownika TikTok bez @",
+      "roomId": "ID pokoju (opcjonalnie)",
+      "roomIdPlaceholder": "Zostaw puste, aby wykryć automatycznie",
+      "displayName": "Wyświetlana nazwa",
+      "displayNamePlaceholder": "Twoja wyświetlana nazwa",
+      "connect": "Połącz",
+      "connecting": "Łączenie...",
+      "disconnect": "Rozłącz"
+    },
+    "status": {
+      "disconnected": "Rozłączono",
+      "connecting": "Łączenie...",
+      "connected": "Połączono",
+      "reconnecting": "Ponowne łączenie...",
+      "error": "Błąd"
+    },
+    "statistics": {
+      "title": "Statystyki na żywo",
+      "viewers": "Widzowie",
+      "peakViewers": "Szczyt",
+      "likes": "Polubienia",
+      "diamonds": "Diamenty",
+      "gifts": "Prezenty",
+      "newFollowers": "Nowi obserwujący",
+      "comments": "Komentarze",
+      "duration": "Czas trwania"
+    },
+    "live": {
+      "giftGoal": "Cel prezentów",
+      "setGoal": "Ustaw cel (diamenty)",
+      "updateGoal": "Aktualizuj cel",
+      "enableGiftGoal": "Włącz wyświetlanie celu prezentów",
+      "streamInfo": "Informacje o strumieniu",
+      "roomId": "ID pokoju",
+      "title": "Tytuł",
+      "viewers": "Widzowie",
+      "likes": "Polubienia",
+      "displaySettings": "Ustawienia wyświetlania",
+      "showViewerCount": "Pokaż liczbę widzów",
+      "showGiftNotifications": "Pokaż powiadomienia o prezentach",
+      "showFollowerNotifications": "Pokaż powiadomienia o obserwujących",
+      "enableChatDisplay": "Włącz wyświetlanie czatu"
+    },
+    "engagement": {
+      "title": "Ustawienia automatycznych interakcji",
+      "autoReply": "Włącz automatyczne odpowiedzi",
+      "thankFollowers": "Dziękuj nowym obserwującym",
+      "thankGifters": "Dziękuj za prezenty",
+      "welcomeViewers": "Witaj nowych widzów",
+      "templates": "Szablony odpowiedzi",
+      "autoReplyTemplate": "Szablon automatycznej odpowiedzi",
+      "thankTemplate": "Szablon podziękowania dla obserwujących",
+      "giftThankTemplate": "Szablon podziękowania za prezenty",
+      "welcomeTemplate": "Szablon powitania"
+    },
+    "notifications": {
+      "addTitle": "Dodaj powiadomienie",
+      "type": "Typ zdarzenia",
+      "cooldown": "Czas oczekiwania (sekundy)",
+      "template": "Szablon wiadomości",
+      "templatePlaceholder": "Wprowadź szablon wiadomości z {placeholderami}",
+      "includeMedia": "Dołącz media",
+      "addButton": "Dodaj powiadomienie",
+      "listTitle": "Aktywne powiadomienia",
+      "noNotifications": "Brak skonfigurowanych powiadomień"
+    },
+    "settings": {
+      "connection": "Ustawienia połączenia",
+      "reconnectInterval": "Interwał ponownego połączenia (ms)",
+      "maxReconnectAttempts": "Maksymalna liczba prób ponownego połączenia",
+      "autoConnect": "Automatyczne połączenie przy starcie",
+      "streamAnnouncements": "Ogłoszenia streamu",
+      "announceStart": "Ogłoś początek streamu",
+      "announceEnd": "Ogłoś koniec streamu",
+      "announcementTemplate": "Szablon ogłoszenia",
+      "dangerZone": "Strefa niebezpieczna",
+      "resetConfirm": "Czy na pewno chcesz zresetować wszystkie ustawienia?",
+      "resetAll": "Zresetuj wszystkie powiadomienia"
+    }
   }
 }

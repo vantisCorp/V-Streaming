@@ -24,6 +24,8 @@ import StreamDashboardPro from './components/StreamDashboardPro';
 import AnalyticsPro from './components/AnalyticsPro';
 import OBSIntegration from './components/OBSIntegration';
 import DiscordIntegration from './components/DiscordIntegration';
+import TwitterXIntegration from './components/TwitterXIntegration';
+import TikTokLiveIntegration from './components/TikTokLiveIntegration';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -282,6 +284,7 @@ function App() {
   const [showOBSIntegration, setShowOBSIntegration] = useState(false);
   const [showDiscordIntegration, setShowDiscordIntegration] = useState(false);
   const [showTwitterXIntegration, setShowTwitterXIntegration] = useState(false);
+  const [showTikTokLiveIntegration, setShowTikTokLiveIntegration] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -773,6 +776,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🤖
+          </button>
+          <button
+            onClick={() => setShowTikTokLiveIntegration(true)}
+            className="theme-btn"
+            title="TikTok Live"
+            style={{ marginLeft: '8px' }}
+          >
+            🎵
           </button>
           <div className="theme-switcher">
             <button
@@ -1555,6 +1566,13 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowTwitterXIntegration(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <TwitterXIntegration onClose={() => setShowTwitterXIntegration(false)} />
+          </div>
+        </div>
+      )}
+      {showTikTokLiveIntegration && (
+        <div className="modal-overlay" onClick={() => setShowTikTokLiveIntegration(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <TikTokLiveIntegration onClose={() => setShowTikTokLiveIntegration(false)} />
           </div>
         </div>
       )}

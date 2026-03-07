@@ -11,6 +11,65 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.5.0] - 2026-03-07
+
+### Added
+
+#### TikTok Live Streaming Support
+
+- **TikTok Live Types** (`src/types/tiktokLive.ts`): Complete type system for TikTok Live integration with 4 enums (TikTokConnectionStatus, TikTokStreamStatus, TikTokEventType, TikTokGiftType) and 15+ interfaces for config, connection state, user, gift, comment, room info, statistics, and event data
+- **TikTokLiveService** (`src/services/TikTokLiveService.ts`): TikTok Live service with singleton pattern, connection management with 2% simulated failure rate, real-time event handling (comments, gifts, likes, follows, joins, shares), gift goal tracking with diamond counting, and comprehensive statistics
+- **useTikTokLive React Hook** (`src/hooks/useTikTokLive.ts`): React hook for TikTok Live state management, exposing connection operations, engagement features (send comments, thank gifters/followers, welcome viewers), and gift goal management
+- **TikTokLiveIntegration UI Component** (`src/components/TikTokLiveIntegration.tsx`): Five-tab interface (Connection, Live, Engagement, Notifications, Settings) for comprehensive TikTok Live control with real-time statistics display and gift goal progress bar
+- **CSS Styling** (`src/components/TikTokLiveIntegration.css`): TikTok-inspired dark theme styling with brand colors (primary #fe2c55 red/pink, secondary #25f4ee cyan), glassmorphism effects, and smooth animations
+- **App Integration**: Added toolbar button (🎵) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all TikTok Live features
+
+#### TikTok Live Features
+
+- **Connection Management**: Connect to TikTok Live rooms by uniqueId, configure session settings, connection status monitoring with auto-reconnect support
+- **Real-Time Events**: Live stream of comments, gifts (with diamond values), likes, follows, viewer joins, and shares
+- **Gift Goal Tracking**: Set gift diamond goals with visual progress bar, track progress towards targets
+- **Engagement Tools**: Send comments to live chat, thank gifters and followers, welcome new viewers
+- **Auto-Engagement Settings**: Configurable auto-reply, auto-thank for gifts/follows, auto-welcome viewers
+- **Notification System**: Customizable notifications for gifts, follows, comments, and other events
+- **Statistics Tracking**: Real-time viewer count, diamonds earned, gifts received, comments, likes, follows, shares
+
+### Testing
+
+- **TikTokLiveService Tests** (`src/services/TikTokLiveService.test.ts`): 29 unit tests with 100% pass rate
+
+---
+
+## [1.4.0] - 2026-03-07
+
+### Added
+
+#### Twitter/X Integration - Social Media Streaming Tools
+
+- **Twitter/X Types** (`src/types/twitterX.ts`): Complete type system for Twitter/X integration with 6 enums (TwitterConnectionStatus, TwitterStreamStatus, TwitterNotificationType, TwitterSpaceState, TwitterMediaType, TwitterScheduledTweetStatus) and 20+ interfaces for config, connection state, user, tweet, space, notification, and statistics
+- **TwitterXService** (`src/services/TwitterXService.ts`): Twitter/X service with singleton pattern, connection management with 2% simulated failure rate, tweet scheduling, Spaces hosting, notification system, and comprehensive engagement features
+- **useTwitterX React Hook** (`src/hooks/useTwitterX.ts`): React hook for Twitter/X state management, exposing connection operations, tweet management, Spaces control, and notification handling
+- **TwitterXIntegration UI Component** (`src/components/TwitterXIntegration.tsx`): Five-tab interface (Connection, Tweets, Spaces, Notifications, Settings) for comprehensive Twitter/X control
+- **CSS Styling** (`src/components/TwitterXIntegration.css`): Twitter/X-inspired dark theme styling with brand colors (primary #1da1f2 blue), glassmorphism effects, and smooth animations
+- **App Integration**: Added toolbar button (🐦) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all Twitter/X features
+
+#### Twitter/X Features
+
+- **Connection Management**: Connect to Twitter/X API with OAuth credentials, connection status monitoring
+- **Tweet Management**: Send tweets, schedule tweets for later, manage media attachments
+- **Twitter Spaces**: Create and manage audio spaces, invite speakers, control participant settings
+- **Auto-Post**: Configurable auto-tweet on stream start/end, follower milestones, and custom events
+- **Engagement Tools**: Auto-like mentions, auto-retweet, auto-reply templates
+- **Notification System**: Customizable notifications for stream events, followers, and engagement
+
+### Testing
+
+- **TwitterXService Tests** (`src/services/TwitterXService.test.ts`): Comprehensive unit tests with 100% pass rate
+
+---
+
 ## [1.3.0] - 2026-03-07
 
 ### Added

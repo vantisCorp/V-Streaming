@@ -9,6 +9,7 @@ import {
   TwitterTweet,
   TwitterUser,
   TwitterSpace,
+  TwitterSpaceState,
   TwitterNotificationEvent,
   TwitterStatistics,
   TwitterScheduledTweet,
@@ -90,7 +91,7 @@ export class TwitterXService extends EventEmitter<TwitterXEvents> {
       // In a real implementation, this would use Twitter API v2
       await this.simulateConnection();
 
-      this.currentUser = await this.getCurrentUser();
+      this.currentUser = await this.fetchCurrentUser();
 
       this.updateConnectionStatus(TwitterConnectionStatus.CONNECTED, {
         connectedAt: new Date(),
@@ -156,7 +157,7 @@ export class TwitterXService extends EventEmitter<TwitterXEvents> {
     });
   }
 
-  private async getCurrentUser(): Promise<TwitterUser> {
+  private async fetchCurrentUser(): Promise<TwitterUser> {
     // Return mock user data for demo purposes
     // In real implementation, would call Twitter API v2 /users/me
     return {
@@ -589,7 +590,7 @@ export class TwitterXService extends EventEmitter<TwitterXEvents> {
 
     const space: TwitterSpace = {
       id: this.generateId(),
-      state: scheduledStart ? 'not_started' : 'live',
+      state: scheduledStart ? TwitterSpaceState.NOT_STARTED : TwitterSpaceState.LIVE,
       title,
       creatorId: this.currentUser?.id || '',
       creatorUsername: this.currentUser?.username || '',

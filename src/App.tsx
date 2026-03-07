@@ -22,6 +22,7 @@ import RecordingEnginePro from './components/RecordingEnginePro';
 import SceneSwitcherPro from './components/SceneSwitcherPro';
 import StreamDashboardPro from './components/StreamDashboardPro';
 import AnalyticsPro from './components/AnalyticsPro';
+import OBSIntegration from './components/OBSIntegration';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -277,6 +278,7 @@ function App() {
   const [showSceneSwitcherPro, setShowSceneSwitcherPro] = useState(false);
   const [showStreamDashboardPro, setShowStreamDashboardPro] = useState(false);
   const [showAnalyticsPro, setShowAnalyticsPro] = useState(false);
+  const [showOBSIntegration, setShowOBSIntegration] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -752,6 +754,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             📈
+          </button>
+          <button
+            onClick={() => setShowOBSIntegration(true)}
+            className="theme-btn"
+            title="OBS Integration"
+            style={{ marginLeft: '8px' }}
+          >
+            🎬
           </button>
           <div className="theme-switcher">
             <button
@@ -1513,6 +1523,13 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowAnalyticsPro(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <AnalyticsPro onClose={() => setShowAnalyticsPro(false)} />
+          </div>
+        </div>
+      )}
+      {showOBSIntegration && (
+        <div className="modal-overlay" onClick={() => setShowOBSIntegration(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <OBSIntegration onClose={() => setShowOBSIntegration(false)} />
           </div>
         </div>
       )}

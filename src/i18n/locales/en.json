@@ -1548,5 +1548,103 @@
       "includeSentiment": "Include Sentiment Analysis",
       "defaultPeriod": "Default Period"
     }
+  },
+  "obsIntegration": {
+    "title": "OBS WebSocket Integration",
+    "subtitle": "Control OBS Studio remotely",
+    "tabs": {
+      "connection": "Connection",
+      "scenes": "Scenes",
+      "stream": "Stream",
+      "recording": "Recording",
+      "audio": "Audio",
+      "transitions": "Transitions"
+    },
+    "connection": {
+      "title": "OBS Connection",
+      "address": "Address",
+      "port": "Port",
+      "password": "Password",
+      "connect": "Connect",
+      "disconnect": "Disconnect",
+      "autoReconnect": "Auto Reconnect",
+      "saveSettings": "Save Settings",
+      "status": {
+        "disconnected": "Disconnected",
+        "connecting": "Connecting...",
+        "connected": "Connected",
+        "authenticated": "Authenticated",
+        "error": "Error"
+      }
+    },
+    "scenes": {
+      "title": "Scene Control",
+      "currentScene": "Current Scene",
+      "switchScene": "Switch Scene",
+      "noScenes": "No scenes available",
+      "sceneItems": "Scene Items"
+    },
+    "stream": {
+      "title": "Stream Control",
+      "status": "Status",
+      "start": "Start Stream",
+      "stop": "Stop Stream",
+      "toggle": "Toggle Stream",
+      "duration": "Duration",
+      "congestion": "Congestion",
+      "droppedFrames": "Dropped Frames",
+      "bitrate": "Bitrate",
+      "fps": "FPS",
+      "offline": "Offline",
+      "live": "Live",
+      "starting": "Starting...",
+      "stopping": "Stopping..."
+    },
+    "recording": {
+      "title": "Recording Control",
+      "status": "Status",
+      "start": "Start Recording",
+      "stop": "Stop Recording",
+      "pause": "Pause",
+      "resume": "Resume",
+      "toggle": "Toggle Recording",
+      "duration": "Duration",
+      "fileSize": "File Size",
+      "stopped": "Stopped",
+      "recording": "Recording",
+      "paused": "Paused"
+    },
+    "audio": {
+      "title": "Audio Inputs",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "volume": "Volume",
+      "noInputs": "No audio inputs available",
+      "inputName": "Input Name",
+      "type": "Type"
+    },
+    "transitions": {
+      "title": "Transitions",
+      "currentTransition": "Current Transition",
+      "duration": "Duration",
+      "transition": "Transition",
+      "noTransitions": "No transitions available"
+    },
+    "errors": {
+      "connectionFailed": "Failed to connect to OBS",
+      "authenticationFailed": "Authentication failed",
+      "sceneSwitchFailed": "Failed to switch scene",
+      "streamStartFailed": "Failed to start stream",
+      "streamStopFailed": "Failed to stop stream",
+      "recordingStartFailed": "Failed to start recording",
+      "recordingStopFailed": "Failed to stop recording",
+      "audioMuteFailed": "Failed to mute audio",
+      "transitionFailed": "Failed to apply transition"
+    },
+    "success": {
+      "connected": "Successfully connected to OBS",
+      "disconnected": "Successfully disconnected from OBS",
+      "settingsSaved": "Settings saved successfully"
+    }
   }
 }

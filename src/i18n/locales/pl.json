@@ -1346,5 +1346,103 @@
       "includeSentiment": "Uwzględnij analizę sentymentu",
       "defaultPeriod": "Domyślny okres"
     }
+  },
+  "obsIntegration": {
+    "title": "Integracja OBS WebSocket",
+    "subtitle": "Steruj OBS Studio zdalnie",
+    "tabs": {
+      "connection": "Połączenie",
+      "scenes": "Sceny",
+      "stream": "Stream",
+      "recording": "Nagrywanie",
+      "audio": "Audio",
+      "transitions": "Przejścia"
+    },
+    "connection": {
+      "title": "Połączenie OBS",
+      "address": "Adres",
+      "port": "Port",
+      "password": "Hasło",
+      "connect": "Połącz",
+      "disconnect": "Rozłącz",
+      "autoReconnect": "Automatyczne ponowne połączenie",
+      "saveSettings": "Zapisz ustawienia",
+      "status": {
+        "disconnected": "Rozłączony",
+        "connecting": "Łączenie...",
+        "connected": "Połączono",
+        "authenticated": "Uwierzytelniono",
+        "error": "Błąd"
+      }
+    },
+    "scenes": {
+      "title": "Kontrola scen",
+      "currentScene": "Aktualna scena",
+      "switchScene": "Przełącz scenę",
+      "noScenes": "Brak dostępnych scen",
+      "sceneItems": "Elementy sceny"
+    },
+    "stream": {
+      "title": "Kontrola streamu",
+      "status": "Status",
+      "start": "Rozpocznij stream",
+      "stop": "Zatrzymaj stream",
+      "toggle": "Przełącz stream",
+      "duration": "Czas trwania",
+      "congestion": "Przeciążenie",
+      "droppedFrames": "Utracone klatki",
+      "bitrate": "Bitrate",
+      "fps": "FPS",
+      "offline": "Offline",
+      "live": "Na żywo",
+      "starting": "Rozpoczynanie...",
+      "stopping": "Zatrzymywanie..."
+    },
+    "recording": {
+      "title": "Kontrola nagrywania",
+      "status": "Status",
+      "start": "Rozpocznij nagrywanie",
+      "stop": "Zatrzymaj nagrywanie",
+      "pause": "Pauza",
+      "resume": "Wznów",
+      "toggle": "Przełącz nagrywanie",
+      "duration": "Czas trwania",
+      "fileSize": "Rozmiar pliku",
+      "stopped": "Zatrzymano",
+      "recording": "Nagrywanie",
+      "paused": "Wstrzymano"
+    },
+    "audio": {
+      "title": "Wejścia audio",
+      "mute": "Wycisz",
+      "unmute": "Włącz dźwięk",
+      "volume": "Głośność",
+      "noInputs": "Brak dostępnych wejść audio",
+      "inputName": "Nazwa wejścia",
+      "type": "Typ"
+    },
+    "transitions": {
+      "title": "Przejścia",
+      "currentTransition": "Aktualne przejście",
+      "duration": "Czas trwania",
+      "transition": "Przejście",
+      "noTransitions": "Brak dostępnych przejść"
+    },
+    "errors": {
+      "connectionFailed": "Nie udało się połączyć z OBS",
+      "authenticationFailed": "Uwierzytelnianie nie powiodło się",
+      "sceneSwitchFailed": "Nie udało się przełączyć sceny",
+      "streamStartFailed": "Nie udało się rozpocząć streamu",
+      "streamStopFailed": "Nie udało się zatrzymać streamu",
+      "recordingStartFailed": "Nie udało się rozpocząć nagrywania",
+      "recordingStopFailed": "Nie udało się zatrzymać nagrywania",
+      "audioMuteFailed": "Nie udało się wyciszyć audio",
+      "transitionFailed": "Nie udało się zastosować przejścia"
+    },
+    "success": {
+      "connected": "Pomyślnie połączono z OBS",
+      "disconnected": "Pomyślnie rozłączono z OBS",
+      "settingsSaved": "Ustawienia zostały zapisane"
+    }
   }
 }

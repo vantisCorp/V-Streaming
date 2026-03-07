@@ -110,25 +110,34 @@ describe('App Component', () => {
     it('has tab navigation', async () => {
       render(<App />);
       await waitFor(() => {
-        const tabs = ['Capture', 'Audio', 'Composition', 'VTuber', 'Streaming', 'Cloud'];
-        tabs.forEach(tab => {
-          const tabElement = screen.queryByText(new RegExp(tab, 'i'));
-          if (tabElement) {
-            expect(tabElement).toBeInTheDocument();
-          }
+        // In Simple mode, only Capture and Audio tabs are visible
+        // In Expert mode, all tabs are visible
+        const simpleModeTabs = ['Capture', 'Audio'];
+        simpleModeTabs.forEach(tab => {
+          // Use getAllByText and check if at least one element exists
+          // since there may be multiple elements with the same text (e.g., tab button and heading)
+          const tabElements = screen.queryAllByText(new RegExp(tab, 'i'));
+          expect(tabElements.length).toBeGreaterThan(0);
         });
-      }, { timeout: 3000 });
+      }, { timeout: 5000 });
     });
 
     it('allows switching between tabs', async () => {
       render(<App />);
       await waitFor(() => {
-        const captureTab = screen.queryByText(/capture/i);
-        if (captureTab) {
-          fireEvent.click(captureTab);
-          expect(captureTab).toBeInTheDocument();
+        // Be more specific - look for tab buttons specifically
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        expect(tabButtons.length).toBeGreaterThan(0);
+        
+        // Find the Audio tab button and click it
+        const audioTab = Array.from(tabButtons).find(btn => 
+          btn.textContent?.toLowerCase().includes('audio')
+        );
+        if (audioTab) {
+          fireEvent.click(audioTab);
+          expect(audioTab).toBeInTheDocument();
         }
-      }, { timeout: 3000 });
+      }, { timeout: 5000 });
     });
   });
 

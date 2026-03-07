@@ -23,6 +23,7 @@ import SceneSwitcherPro from './components/SceneSwitcherPro';
 import StreamDashboardPro from './components/StreamDashboardPro';
 import AnalyticsPro from './components/AnalyticsPro';
 import OBSIntegration from './components/OBSIntegration';
+import DiscordIntegration from './components/DiscordIntegration';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -279,6 +280,7 @@ function App() {
   const [showStreamDashboardPro, setShowStreamDashboardPro] = useState(false);
   const [showAnalyticsPro, setShowAnalyticsPro] = useState(false);
   const [showOBSIntegration, setShowOBSIntegration] = useState(false);
+  const [showDiscordIntegration, setShowDiscordIntegration] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -762,6 +764,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🎬
+          </button>
+          <button
+            onClick={() => setShowDiscordIntegration(true)}
+            className="theme-btn"
+            title="Discord Bot"
+            style={{ marginLeft: '8px' }}
+          >
+            🤖
           </button>
           <div className="theme-switcher">
             <button
@@ -1530,6 +1540,13 @@ function App() {
         <div className="modal-overlay" onClick={() => setShowOBSIntegration(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <OBSIntegration onClose={() => setShowOBSIntegration(false)} />
+          </div>
+        </div>
+      )}
+      {showDiscordIntegration && (
+        <div className="modal-overlay" onClick={() => setShowDiscordIntegration(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <DiscordIntegration onClose={() => setShowDiscordIntegration(false)} />
           </div>
         </div>
       )}

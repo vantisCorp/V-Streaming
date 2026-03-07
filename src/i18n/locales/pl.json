@@ -8,9 +8,52 @@
     "expertMode": "Ekspert"
   },
   "theme": {
-    "light": "Jasny",
-    "dark": "Ciemny",
-    "auto": "Auto"
+    "title": "Ustawienia Motywów",
+    "builtin": "Wbudowany",
+    "builtinThemes": "Motywy Wbudowane",
+    "customThemes": "Motywy Własne",
+    "tabs": {
+      "themes": "Motywy",
+      "create": "Utwórz",
+      "settings": "Ustawienia",
+      "importExport": "Import/Eksport"
+    },
+    "name": "Nazwa",
+    "namePlaceholder": "Wprowadź nazwę motywu",
+    "description": "Opis",
+    "descriptionPlaceholder": "Wprowadź opis motywu",
+    "colors": "Kolory",
+    "fonts": "Czcionki",
+    "primaryFont": "Główna czcionka",
+    "baseFontSize": "Podstawowy rozmiar czcionki",
+    "create": "Utwórz motyw",
+    "createNew": "Utwórz nowy motyw",
+    "duplicate": "Duplikuj",
+    "delete": "Usuń",
+    "export": "Eksportuj",
+    "import": "Importuj",
+    "exportTheme": "Eksportuj motyw",
+    "importTheme": "Importuj motyw",
+    "importFromFile": "Importuj z pliku",
+    "importFromText": "Importuj z JSON",
+    "pasteJson": "Wklej JSON motywu tutaj...",
+    "resetDefault": "Resetuj do domyślnych",
+    "autoSwitch": "Automatyczne przełączanie",
+    "autoSwitchDescription": "Automatycznie przełączaj między jasnym i ciemnym motywem w zależności od pory dnia",
+    "darkMode": "Ciemny motyw",
+    "darkModeDescription": "Użyj wariantu ciemnego motywu",
+    "dayTheme": "Motyw dzienny",
+    "dayThemeDescription": "Motyw używany w ciągu dnia (6:00 - 18:00)",
+    "nightTheme": "Motyw nocny",
+    "nightThemeDescription": "Motyw używany w nocy",
+    "showPreview": "Pokaż podgląd motywu",
+    "showPreviewDescription": "Wyświetl podgląd motywu przed zastosowaniem",
+    "confirmDelete": "Czy na pewno chcesz usunąć ten motyw?",
+    "confirmReset": "Zresetować wszystkie motywy i ustawienia do domyślnych? Spowoduje to usunięcie wszystkich własnych motywów.",
+    "errors": {
+      "nameRequired": "Nazwa motywu jest wymagana",
+      "invalidJson": "Nieprawidłowy format JSON motywu"
+    }
   },
   "tabs": {
     "capture": "Przechwytywanie",
@@ -309,54 +352,6 @@
     "recordingFailed": "Nie udało się uruchomić nagrywania",
     "gpuInfoFailed": "Nie udało się pobrać informacji o GPU",
     "encodersFailed": "Nie udało się pobrać dostępnych koderów"
-  },
-  "theme": {
-    "title": "Ustawienia Motywów",
-    "builtin": "Wbudowany",
-    "builtinThemes": "Motywy Wbudowane",
-    "customThemes": "Motywy Własne",
-    "tabs": {
-      "themes": "Motywy",
-      "create": "Utwórz",
-      "settings": "Ustawienia",
-      "importExport": "Import/Eksport"
-    },
-    "name": "Nazwa",
-    "namePlaceholder": "Wprowadź nazwę motywu",
-    "description": "Opis",
-    "descriptionPlaceholder": "Wprowadź opis motywu",
-    "colors": "Kolory",
-    "fonts": "Czcionki",
-    "primaryFont": "Główna czcionka",
-    "baseFontSize": "Podstawowy rozmiar czcionki",
-    "create": "Utwórz motyw",
-    "createNew": "Utwórz nowy motyw",
-    "duplicate": "Duplikuj",
-    "delete": "Usuń",
-    "export": "Eksportuj",
-    "import": "Importuj",
-    "exportTheme": "Eksportuj motyw",
-    "importTheme": "Importuj motyw",
-    "importFromFile": "Importuj z pliku",
-    "importFromText": "Importuj z JSON",
-    "pasteJson": "Wklej JSON motywu tutaj...",
-    "resetDefault": "Resetuj do domyślnych",
-    "autoSwitch": "Automatyczne przełączanie",
-    "autoSwitchDescription": "Automatycznie przełączaj między jasnym i ciemnym motywem w zależności od pory dnia",
-    "darkMode": "Ciemny motyw",
-    "darkModeDescription": "Użyj wariantu ciemnego motywu",
-    "dayTheme": "Motyw dzienny",
-    "dayThemeDescription": "Motyw używany w ciągu dnia (6:00 - 18:00)",
-    "nightTheme": "Motyw nocny",
-    "nightThemeDescription": "Motyw używany w nocy",
-    "showPreview": "Pokaż podgląd motywu",
-    "showPreviewDescription": "Wyświetl podgląd motywu przed zastosowaniem",
-    "confirmDelete": "Czy na pewno chcesz usunąć ten motyw?",
-    "confirmReset": "Zresetować wszystkie motywy i ustawienia do domyślnych? Spowoduje to usunięcie wszystkich własnych motywów.",
-    "errors": {
-      "nameRequired": "Nazwa motywu jest wymagana",
-      "invalidJson": "Nieprawidłowy format JSON motywu"
-    }
   },
   "multiPlatform": {
     "title": "Streamowanie Multi-Platform",
@@ -919,7 +914,6 @@
     },
     "deviceSettings": "Ustawienia Urządzenia",
     "device": "Urządzenie Wirtualnej Kamery",
-    "qualityPresets": "Presety Jakości",
     "qualityPresets": {
       "low": "Najlepsze dla starszych komputerów",
       "medium": "Zbalansowana jakość i wydajność",
@@ -1021,21 +1015,6 @@
     "audioSettings": "Ustawienia Audio",
     "fileSettings": "Ustawienia Plików",
     "format": "Format",
-    "quality": "Jakość",
-    "codec": "Kodek",
-    "resolution": "Rozdzielczość",
-    "frameRate": "Klatkaż",
-    "audioCodec": "Kodek Audio",
-    "audioBitrate": "Bitrate Audio",
-    "audioMode": "Tryb Audio",
-    "normalizeAudio": "Normalizuj Audio",
-    "noiseReduction": "Redukcja Szumów",
-    "directory": "Katalog",
-    "category": "Kategoria",
-    "autoCompress": "Automatyczna Kompresja",
-    "diskInfo": "Informacje o Dysku",
-    "freeSpace": "Wolne Miejsce",
-    "estimatedTime": "Szac. Czas Nagrywania",
     "quality": {
       "low": "Niska (720p 30fps)",
       "medium": "Średnia (1080p 30fps)",
@@ -1044,6 +1023,11 @@
       "original": "Oryginalna",
       "custom": "Niestandardowa"
     },
+    "codec": "Kodek",
+    "resolution": "Rozdzielczość",
+    "frameRate": "Klatkaż",
+    "audioCodec": "Kodek Audio",
+    "audioBitrate": "Bitrate Audio",
     "audioMode": {
       "none": "Brak",
       "all_audio": "Wszystkie Dźwięki",
@@ -1051,6 +1035,9 @@
       "microphone": "Tylko Mikrofon",
       "separate_tracks": "Osobne Ścieżki"
     },
+    "normalizeAudio": "Normalizuj Audio",
+    "noiseReduction": "Redukcja Szumów",
+    "directory": "Katalog",
     "category": {
       "gaming": "Gry",
       "just_chatting": "Rozmowy",
@@ -1062,6 +1049,10 @@
       "event": "Wydarzenie",
       "other": "Inne"
     },
+    "autoCompress": "Automatyczna Kompresja",
+    "diskInfo": "Informacje o Dysku",
+    "freeSpace": "Wolne Miejsce",
+    "estimatedTime": "Szac. Czas Nagrywania",
     "apply": "Zastosuj",
     "delete": "Usuń",
     "confirmDelete": "Czy na pewno chcesz usunąć to nagranie?",
@@ -1338,7 +1329,6 @@
     "achieved": "Osiągnięty",
     "due": "Termin",
     "noGoals": "Brak ustalonych celów. Utwórz pierwszy cel, aby śledzić swoje postępy.",
-    "settings": "Ustawienia",
     "settings": {
       "realtimeUpdates": "Aktualizacje w czasie rzeczywistym",
       "autoGenerateCharts": "Automatyczne generowanie wykresów",
@@ -1443,6 +1433,96 @@
       "connected": "Pomyślnie połączono z OBS",
       "disconnected": "Pomyślnie rozłączono z OBS",
       "settingsSaved": "Ustawienia zostały zapisane"
+    }
+  },
+  "discord": {
+    "title": "Integracja bota Discord",
+    "description": "Połącz swojego bota Discord, aby zarządzać powiadomieniami, komendami i statusem.",
+    "tabs": {
+      "connection": "Połączenie",
+      "notifications": "Powiadomienia",
+      "commands": "Komendy",
+      "presence": "Status",
+      "settings": "Ustawienia"
+    },
+    "connection": {
+      "title": "Ustawienia połączenia",
+      "botToken": "Token bota",
+      "botTokenPlaceholder": "Wprowadź token swojego bota Discord",
+      "clientId": "ID klienta",
+      "clientIdPlaceholder": "Wprowadź ID aplikacji Discord",
+      "prefix": "Prefiks komend",
+      "connect": "Połącz",
+      "disconnect": "Rozłącz",
+      "connecting": "Łączenie..."
+    },
+    "status": {
+      "disconnected": "Rozłączono",
+      "connecting": "Łączenie...",
+      "connected": "Połączono",
+      "reconnecting": "Ponowne łączenie...",
+      "error": "Błąd"
+    },
+    "statistics": {
+      "title": "Statystyki",
+      "messagesSent": "Wysłane wiadomości",
+      "commandsExecuted": "Wykonane komendy",
+      "notificationsSent": "Wysłane powiadomienia",
+      "uptime": "Czas działania",
+      "servers": "Serwery",
+      "latency": "Opóźnienie"
+    },
+    "notifications": {
+      "addTitle": "Dodaj powiadomienie",
+      "type": "Typ",
+      "channel": "Kanał",
+      "selectChannel": "Wybierz kanał",
+      "template": "Szablon wiadomości",
+      "templatePlaceholder": "Wprowadź szablon z {placeholderami}",
+      "embedColor": "Kolor osadzenia",
+      "cooldown": "Czas odnowienia (sekundy)",
+      "useEmbed": "Użyj osadzenia",
+      "mentionEveryone": "Oznacz @everyone",
+      "addButton": "Dodaj powiadomienie",
+      "listTitle": "Aktywne powiadomienia",
+      "noNotifications": "Brak skonfigurowanych powiadomień"
+    },
+    "commands": {
+      "addTitle": "Dodaj komendę",
+      "name": "Nazwa komendy",
+      "description": "Opis",
+      "descriptionPlaceholder": "Co robi ta komenda?",
+      "response": "Odpowiedź",
+      "responsePlaceholder": "Odpowiedź bota. Użyj {user}, {args}, itp.",
+      "aliases": "Aliasy (rozdzielone przecinkami)",
+      "cooldown": "Czas odnowienia (sekundy)",
+      "addButton": "Dodaj komendę",
+      "listTitle": "Aktywne komendy",
+      "noCommands": "Brak skonfigurowanych komend"
+    },
+    "presence": {
+      "title": "Status bota",
+      "enablePresence": "Włącz własny status",
+      "status": "Status",
+      "activityType": "Typ aktywności",
+      "activityName": "Nazwa aktywności",
+      "activityNamePlaceholder": "np. Live Stream",
+      "streamUrl": "URL streamu",
+      "streamStatus": "Automatyczna aktualizacja statusu streamu"
+    },
+    "settings": {
+      "title": "Ustawienia bota",
+      "reconnectInterval": "Interwał ponownego łączenia (ms)",
+      "maxReconnectAttempts": "Maksymalna liczba prób ponownego łączenia",
+      "autoConnect": "Automatyczne łączenie przy starcie",
+      "embedSettings": "Domyślne ustawienia osadzeń",
+      "defaultColor": "Domyślny kolor osadzenia",
+      "footerText": "Tekst stopki",
+      "showTimestamp": "Pokaż znacznik czasu",
+      "showFooter": "Pokaż stopkę",
+      "dangerZone": "Strefa zagrożona",
+      "resetConfirm": "Czy na pewno chcesz zresetować wszystkie ustawienia?",
+      "resetAll": "Zresetuj wszystkie powiadomienia i komendy"
     }
   }
 }

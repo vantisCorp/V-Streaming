@@ -1646,5 +1646,95 @@
       "disconnected": "Successfully disconnected from OBS",
       "settingsSaved": "Settings saved successfully"
     }
+  },
+  "discord": {
+    "title": "Discord Bot Integration",
+    "description": "Connect your Discord bot to manage notifications, commands, and presence.",
+    "tabs": {
+      "connection": "Connection",
+      "notifications": "Notifications",
+      "commands": "Commands",
+      "presence": "Presence",
+      "settings": "Settings"
+    },
+    "connection": {
+      "title": "Connection Settings",
+      "botToken": "Bot Token",
+      "botTokenPlaceholder": "Enter your Discord bot token",
+      "clientId": "Client ID",
+      "clientIdPlaceholder": "Enter your Discord application client ID",
+      "prefix": "Command Prefix",
+      "connect": "Connect",
+      "disconnect": "Disconnect",
+      "connecting": "Connecting..."
+    },
+    "status": {
+      "disconnected": "Disconnected",
+      "connecting": "Connecting...",
+      "connected": "Connected",
+      "reconnecting": "Reconnecting...",
+      "error": "Error"
+    },
+    "statistics": {
+      "title": "Statistics",
+      "messagesSent": "Messages Sent",
+      "commandsExecuted": "Commands Executed",
+      "notificationsSent": "Notifications Sent",
+      "uptime": "Uptime",
+      "servers": "Servers",
+      "latency": "Latency"
+    },
+    "notifications": {
+      "addTitle": "Add Notification",
+      "type": "Type",
+      "channel": "Channel",
+      "selectChannel": "Select channel",
+      "template": "Message Template",
+      "templatePlaceholder": "Enter message template with {placeholders}",
+      "embedColor": "Embed Color",
+      "cooldown": "Cooldown (seconds)",
+      "useEmbed": "Use Embed",
+      "mentionEveryone": "Mention @everyone",
+      "addButton": "Add Notification",
+      "listTitle": "Active Notifications",
+      "noNotifications": "No notifications configured"
+    },
+    "commands": {
+      "addTitle": "Add Command",
+      "name": "Command Name",
+      "description": "Description",
+      "descriptionPlaceholder": "What does this command do?",
+      "response": "Response",
+      "responsePlaceholder": "Bot response. Use {user}, {args}, etc.",
+      "aliases": "Aliases (comma-separated)",
+      "cooldown": "Cooldown (seconds)",
+      "addButton": "Add Command",
+      "listTitle": "Active Commands",
+      "noCommands": "No commands configured"
+    },
+    "presence": {
+      "title": "Bot Presence",
+      "enablePresence": "Enable Custom Presence",
+      "status": "Status",
+      "activityType": "Activity Type",
+      "activityName": "Activity Name",
+      "activityNamePlaceholder": "e.g., Live Stream",
+      "streamUrl": "Stream URL",
+      "streamStatus": "Auto-update with Stream Status"
+    },
+    "settings": {
+      "title": "Bot Settings",
+      "reconnectInterval": "Reconnect Interval (ms)",
+      "maxReconnectAttempts": "Max Reconnect Attempts",
+      "autoConnect": "Auto-connect on startup",
+      "embedSettings": "Default Embed Settings",
+      "defaultColor": "Default Embed Color",
+      "footerText": "Footer Text",
+      "showTimestamp": "Show Timestamp",
+      "showFooter": "Show Footer",
+      "dangerZone": "Danger Zone",
+      "resetConfirm": "Are you sure you want to reset all settings?",
+      "resetAll": "Reset All Notifications & Commands"
+    }
   }
 }

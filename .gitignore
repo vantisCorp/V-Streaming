@@ -29,3 +29,12 @@ Cargo.lock
 
 # Tauri
 src-tauri/target/
+# Test/Analysis files
+*_TEST*.md
+*_RESULTS*.md
+*_ANALYSIS*.md
+*_SUMMARY*.md
+test_results.txt
+coverage/
+.tmp/
+.cache/

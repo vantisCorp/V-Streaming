@@ -11,6 +11,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.10.0] - 2026-03-09
+
+### Added
+
+#### VTuber Full Body Tracking Integration
+
+- **Body Tracking Types** (`src/types/vtuber.ts`): Extended VTuber types with BodyTrackingMode, IKSolveMethod, BodyLandmark enums and FullBodyPose, IKTarget, IKSolveResult, BodyTrackingConfig, BodyTrackingCalibration, BodyTrackingStatistics, BodyTrackingState interfaces
+- **BodyTrackingService** (`src/services/BodyTrackingService.ts`): Full body tracking service with MediaPipe Pose integration, IK solving (FABRIK, CCD, Two-Bone, Analytical), calibration system, and pose estimation
+- **useBodyTracking Hook** (`src/hooks/useBodyTracking.ts`): React hook for body tracking with IK control and calibration
+- **BodyTrackingPreview Component** (`src/components/BodyTrackingPreview.tsx`): Visual body pose preview with skeleton rendering and confidence display
+- **VTuberStudio Integration**: Added new "Body" tab for full body tracking control
+
+#### Body Tracking Features
+
+- **Tracking Modes**: Full Body, Upper Body, Hands Only, Face and Hands
+- **IK Solving Methods**: FABRIK, CCD IK, Two-Bone, Analytical
+- **IK Targets**: Shoulder IK, Arm IK, Leg IK, Spine IK
+- **Calibration System**: T-pose and A-pose calibration with body measurement estimation
+- **Pose Visualization**: Real-time skeleton rendering with landmark visibility
+
+#### Statistics Tracking
+
+- Average FPS and confidence
+- Tracking time
+- IK solve count and average solve time
+- Landmark detection rate
+
+---
+
 ## [1.9.0] - 2026-03-09
 
 ### Added

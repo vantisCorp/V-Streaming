@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useVTuberModel } from '../hooks/useVTuberModel';
 import { useTracking } from '../hooks/useTracking';
 import { useExpressions } from '../hooks/useExpressions';
+import { useBodyTracking } from '../hooks/useBodyTracking';
 import {
   ModelType,
   ModelStatus,
@@ -10,10 +11,13 @@ import {
   TrackingQuality,
   ExpressionCategory,
   BlendShapeBinding,
+  BodyTrackingMode,
+  IKSolveMethod,
 } from '../types/vtuber';
+import { BodyTrackingPreview } from './BodyTrackingPreview';
 import './VTuberStudio.css';
 
-type TabType = 'models' | 'tracking' | 'expressions' | 'settings';
+type TabType = 'models' | 'tracking' | 'expressions' | 'body' | 'settings';
 
 /**
  * VTuberStudio Component
@@ -28,6 +32,7 @@ export const VTuberStudio: React.FC = () => {
   const model = useVTuberModel();
   const tracking = useTracking();
   const expressions = useExpressions();
+  const bodyTracking = useBodyTracking();
 
   return (
     <div className="vtuber-studio">
@@ -63,6 +68,12 @@ export const VTuberStudio: React.FC = () => {
           😊 Expressions
         </button>
         <button
+          className={`tab ${activeTab === 'body' ? 'active' : ''}`}
+          onClick={() => setActiveTab('body')}
+        >
+          🏃 Body
+        </button>
+        <button
           className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
           onClick={() => setActiveTab('settings')}
         >
@@ -79,6 +90,9 @@ export const VTuberStudio: React.FC = () => {
         )}
         {activeTab === 'expressions' && (
           <ExpressionsTab model={model} expressions={expressions} />
+        )}
+        {activeTab === 'body' && (
+          <BodyTrackingTab bodyTracking={bodyTracking} />
         )}
         {activeTab === 'settings' && (
           <SettingsTab model={model} tracking={tracking} expressions={expressions} />
@@ -566,6 +580,184 @@ const SettingsTab: React.FC<SettingsTabProps> = ({ model, tracking, expressions 
         <div className="export-actions">
           <button className="btn-secondary">Export Configuration</button>
           <button className="btn-secondary">Import Configuration</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ============ Body Tracking Tab ============
+
+interface BodyTrackingTabProps {
+  bodyTracking: ReturnType<typeof useBodyTracking>;
+}
+
+const BodyTrackingTab: React.FC<BodyTrackingTabProps> = ({ bodyTracking }) => {
+  const handleStartTracking = useCallback(() => {
+    bodyTracking.startTracking();
+  }, [bodyTracking]);
+
+  const handleCalibrate = useCallback(() => {
+    bodyTracking.calibrate('t-pose');
+  }, [bodyTracking]);
+
+  return (
+    <div className="body-tracking-tab">
+      <div className="section-header">
+        <h3>Full Body Tracking</h3>
+      </div>
+
+      <div className="tracking-controls">
+        <div className="control-group">
+          <label>Tracking Mode</label>
+          <select
+            value={bodyTracking.config.mode}
+            onChange={(e) => bodyTracking.updateConfig({ mode: e.target.value as BodyTrackingMode })}
+            disabled={bodyTracking.isTracking}
+          >
+            <option value={BodyTrackingMode.FULL_BODY}>Full Body</option>
+            <option value={BodyTrackingMode.UPPER_BODY}>Upper Body</option>
+            <option value={BodyTrackingMode.HANDS_ONLY}>Hands Only</option>
+            <option value={BodyTrackingMode.FACE_AND_HANDS}>Face and Hands</option>
+          </select>
+        </div>
+
+        <div className="control-group">
+          <label>IK Method</label>
+          <select
+            value={bodyTracking.config.ikMethod}
+            onChange={(e) => bodyTracking.updateConfig({ ikMethod: e.target.value as IKSolveMethod })}
+          >
+            <option value={IKSolveMethod.FABRIK}>FABRIK</option>
+            <option value={IKSolveMethod.CCD_IK}>CCD IK</option>
+            <option value={IKSolveMethod.TWO_BONE}>Two Bone</option>
+            <option value={IKSolveMethod.ANALYTICAL}>Analytical</option>
+          </select>
+        </div>
+
+        <div className="control-group">
+          <label>Smoothing: {Math.round(bodyTracking.config.smoothing * 100)}%</label>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={bodyTracking.config.smoothing * 100}
+            onChange={(e) => bodyTracking.updateConfig({ smoothing: parseInt(e.target.value) / 100 })}
+          />
+        </div>
+
+        <div className="checkbox-group">
+          <label>
+            <input
+              type="checkbox"
+              checked={bodyTracking.config.ikEnabled}
+              onChange={(e) => bodyTracking.updateConfig({ ikEnabled: e.target.checked })}
+            />
+            Enable IK
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={bodyTracking.config.shoulderIKEnabled}
+              onChange={(e) => bodyTracking.updateConfig({ shoulderIKEnabled: e.target.checked })}
+            />
+            Shoulder IK
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={bodyTracking.config.armIKEnabled}
+              onChange={(e) => bodyTracking.updateConfig({ armIKEnabled: e.target.checked })}
+            />
+            Arm IK
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={bodyTracking.config.legIKEnabled}
+              onChange={(e) => bodyTracking.updateConfig({ legIKEnabled: e.target.checked })}
+            />
+            Leg IK
+          </label>
+        </div>
+      </div>
+
+      <div className="tracking-actions">
+        {!bodyTracking.isTracking ? (
+          <button className="btn-primary" onClick={handleStartTracking}>
+            Start Body Tracking
+          </button>
+        ) : (
+          <>
+            <button className="btn-secondary" onClick={() => bodyTracking.stopTracking()}>
+              Stop Tracking
+            </button>
+            {bodyTracking.isPaused ? (
+              <button className="btn-primary" onClick={() => bodyTracking.resumeTracking()}>
+                Resume
+              </button>
+            ) : (
+              <button className="btn-secondary" onClick={() => bodyTracking.pauseTracking()}>
+                Pause
+              </button>
+            )}
+            <button className="btn-secondary" onClick={handleCalibrate}>
+              Calibrate (T-Pose)
+            </button>
+          </>
+        )}
+      </div>
+
+      <div className="body-tracking-content">
+        <div className="preview-section">
+          <h4>Body Preview</h4>
+          <BodyTrackingPreview
+            pose={bodyTracking.currentPose}
+            width={300}
+            height={450}
+            showLandmarks={true}
+            showSkeleton={true}
+            showConfidence={true}
+          />
+        </div>
+
+        <div className="stats-section">
+          <h4>Tracking Statistics</h4>
+          <div className="stats-grid">
+            <div className="stat-item">
+              <span className="stat-label">FPS</span>
+              <span className="stat-value">{bodyTracking.statistics.averageFPS.toFixed(1)}</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">Confidence</span>
+              <span className="stat-value">
+                {(bodyTracking.statistics.averageConfidence * 100).toFixed(0)}%
+              </span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">Tracking Time</span>
+              <span className="stat-value">{Math.floor(bodyTracking.statistics.trackingTime)}s</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-label">IK Solves</span>
+              <span className="stat-value">{bodyTracking.statistics.ikSolveCount}</span>
+            </div>
+          </div>
+
+          {bodyTracking.isCalibrated && bodyTracking.calibration && (
+            <div className="calibration-info">
+              <h4>Calibration Data</h4>
+              <div className="calibration-stats">
+                <span>User Height: {(bodyTracking.calibration.userHeight * 100).toFixed(0)}cm</span>
+                <span>Arm Span: {(bodyTracking.calibration.armSpan * 100).toFixed(0)}cm</span>
+                <span>Shoulder Width: {(bodyTracking.calibration.shoulderWidth * 100).toFixed(0)}cm</span>
+              </div>
+            </div>
+          )}
+
+          <button className="btn-secondary" onClick={() => bodyTracking.resetStatistics()}>
+            Reset Statistics
+          </button>
         </div>
       </div>
     </div>

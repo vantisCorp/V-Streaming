@@ -11,6 +11,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.8.0] - 2026-03-08
+
+### Added
+
+#### Extended AI Features
+
+- **AI Content Recommendations** (`src/services/AIContentRecommendationService.ts`): AI-powered content recommendation service with content analysis, peak moment detection, and personalized recommendations based on viewer preferences and engagement patterns
+- **Highlight Compilation** (`src/services/HighlightCompilationService.ts`): Automated highlight detection and compilation service with peak moment identification, manual highlight marking, compilation creation, and progress tracking
+- **Engagement Suggestions** (`src/services/EngagementSuggestionsService.ts`): Smart audience engagement suggestion service with context-aware recommendations, real-time suggestion generation, and engagement optimization tips
+- **useContentRecommendations Hook** (`src/hooks/useContentRecommendations.ts`): React hook for content recommendation service with state management and recommendation operations
+- **useHighlightCompilation Hook** (`src/hooks/useHighlightCompilation.ts`): React hook for highlight compilation service with highlight management and compilation controls
+- **useEngagementSuggestions Hook** (`src/hooks/useEngagementSuggestions.ts`): React hook for engagement suggestions with context updates and suggestion management
+- **AIFeatures UI Component** (`src/components/AIFeatures.tsx`): Unified AI dashboard with 4 tabs (Translation, Recommendations, Highlights, Engagement) for comprehensive AI feature management
+- **AIFeatures CSS Styling** (`src/components/AIFeatures.css`): Styling for unified AI dashboard with consistent cyan/blue theme and responsive design
+
+#### Extended AI Types
+
+- **RecommendationServiceStatus Enum**: Status states for recommendation service (idle, analyzing, generating, error)
+- **HighlightServiceStatus Enum**: Status states for highlight service (idle, scanning, compiling, error)
+- **EngagementServiceStatus Enum**: Status states for engagement service (idle, generating, applying, error)
+- **ContentAnalysis Interface**: Content analysis result with engagement metrics and peak moments
+- **ContentRecommendation Interface**: Personalized content recommendation with reasoning
+- **HighlightCompilation Interface**: Highlight compilation with segments and metadata
+- **EngagementContext Interface**: Context for engagement suggestions with viewer and stream data
+
+---
+
 ## [1.7.0] - 2026-03-08
 
 ### Added

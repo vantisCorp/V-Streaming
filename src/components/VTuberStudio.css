@@ -719,3 +719,15 @@
     grid-template-columns: 1fr;
   }
 }
+/* ============ Expression Editor Tab ============ */
+
+.expression-editor-tab {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.expression-editor-tab .expression-editor {
+  flex: 1;
+  min-height: 0;
+}

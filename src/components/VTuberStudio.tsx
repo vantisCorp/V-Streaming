@@ -15,9 +15,10 @@ import {
   IKSolveMethod,
 } from '../types/vtuber';
 import { BodyTrackingPreview } from './BodyTrackingPreview';
+import { ExpressionEditor } from './ExpressionEditor';
 import './VTuberStudio.css';
 
-type TabType = 'models' | 'tracking' | 'expressions' | 'body' | 'settings';
+type TabType = 'models' | 'tracking' | 'expressions' | 'editor' | 'body' | 'settings';
 
 /**
  * VTuberStudio Component
@@ -68,6 +69,12 @@ export const VTuberStudio: React.FC = () => {
           😊 Expressions
         </button>
         <button
+          className={`tab ${activeTab === 'editor' ? 'active' : ''}`}
+          onClick={() => setActiveTab('editor')}
+        >
+          🎨 Editor
+        </button>
+        <button
           className={`tab ${activeTab === 'body' ? 'active' : ''}`}
           onClick={() => setActiveTab('body')}
         >
@@ -90,6 +97,9 @@ export const VTuberStudio: React.FC = () => {
         )}
         {activeTab === 'expressions' && (
           <ExpressionsTab model={model} expressions={expressions} />
+        )}
+        {activeTab === 'editor' && (
+          <ExpressionEditorTab />
         )}
         {activeTab === 'body' && (
           <BodyTrackingTab bodyTracking={bodyTracking} />
@@ -582,6 +592,16 @@ const SettingsTab: React.FC<SettingsTabProps> = ({ model, tracking, expressions 
           <button className="btn-secondary">Import Configuration</button>
         </div>
       </div>
+    </div>
+  );
+};
+
+// ============ Expression Editor Tab ============
+
+const ExpressionEditorTab: React.FC = () => {
+  return (
+    <div className="expression-editor-tab">
+      <ExpressionEditor />
     </div>
   );
 };

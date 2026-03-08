@@ -11,6 +11,48 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.16.0] - 2026-03-09
+
+### Added
+
+#### Hardware Acceleration
+
+- **HardwareAccelerationPanel Component** (`src/components/HardwareAccelerationPanel.tsx`): Main UI component for managing GPU encoding/decoding with tabbed interface for GPU devices, encoder, decoder, and benchmark
+- **HardwareAccelerationService** (`src/services/HardwareAccelerationService.ts`): Service layer for GPU detection, hardware encoding/decoding, and performance monitoring
+- **useHardwareAcceleration Hook** (`src/hooks/useHardwareAcceleration.ts`): React hook for hardware acceleration state management
+- **Hardware Acceleration Types** (`src/types/hardwareAcceleration.ts`): Comprehensive type definitions for hardware acceleration features
+
+#### GPU Management Features
+
+- **Multi-GPU Support**: Detect and manage multiple GPUs
+- **Vendor Support**: NVIDIA (NVENC/NVDEC), AMD (AMF), Intel (QuickSync), Apple (VideoToolbox)
+- **Auto GPU Selection**: Automatically select the best GPU for streaming
+- **GPU Statistics**: Real-time monitoring of GPU utilization, temperature, memory, and power
+
+#### Encoder Features
+
+- **Hardware Encoder Support**: NVENC (H.264, HEVC, AV1), AMF (H.264, HEVC), QuickSync (H.264, HEVC, AV1)
+- **Software Fallback**: x264, x265, SVT-AV1 software encoders
+- **Encoder Presets**: P1-P7 for NVENC, Speed/Balanced/Quality for AMF
+- **Rate Control**: CBR, VBR, CQP, and lookahead modes
+- **Multi-Pass Encoding**: Quarter and full resolution multi-pass
+- **B-Frames Support**: Configurable B-frame count
+
+#### Decoder Features
+
+- **Hardware Decoding**: NVIDIA NVDEC, AMD, Intel QuickSync, Apple VideoToolbox
+- **Low Latency Mode**: Optimized decoding for real-time streaming
+- **Multi-Instance Support**: Configure maximum decoder instances
+
+#### Benchmark
+
+- **GPU Benchmark**: Test encoding performance with different settings
+- **Resolution Options**: 720p, 1080p, 1440p, 4K
+- **Frame Rate Options**: 30, 60, 120 fps
+- **Performance Metrics**: FPS, latency, GPU usage, power consumption, quality score
+
+---
+
 ## [1.15.0] - 2026-03-09
 
 ### Added

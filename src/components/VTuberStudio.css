@@ -731,3 +731,16 @@
   flex: 1;
   min-height: 0;
 }
+
+/* ============ Marketplace Tab ============ */
+
+.marketplace-tab {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.marketplace-tab .marketplace {
+  flex: 1;
+  min-height: 0;
+}

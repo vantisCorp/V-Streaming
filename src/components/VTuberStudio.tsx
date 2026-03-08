@@ -16,9 +16,10 @@ import {
 } from '../types/vtuber';
 import { BodyTrackingPreview } from './BodyTrackingPreview';
 import { ExpressionEditor } from './ExpressionEditor';
+import { Marketplace } from './Marketplace';
 import './VTuberStudio.css';
 
-type TabType = 'models' | 'tracking' | 'expressions' | 'editor' | 'body' | 'settings';
+type TabType = 'models' | 'tracking' | 'expressions' | 'editor' | 'body' | 'marketplace' | 'settings';
 
 /**
  * VTuberStudio Component
@@ -81,6 +82,12 @@ export const VTuberStudio: React.FC = () => {
           🏃 Body
         </button>
         <button
+          className={`tab ${activeTab === 'marketplace' ? 'active' : ''}`}
+          onClick={() => setActiveTab('marketplace')}
+        >
+          🛒 Marketplace
+        </button>
+        <button
           className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
           onClick={() => setActiveTab('settings')}
         >
@@ -103,6 +110,9 @@ export const VTuberStudio: React.FC = () => {
         )}
         {activeTab === 'body' && (
           <BodyTrackingTab bodyTracking={bodyTracking} />
+        )}
+        {activeTab === 'marketplace' && (
+          <MarketplaceTab />
         )}
         {activeTab === 'settings' && (
           <SettingsTab model={model} tracking={tracking} expressions={expressions} />
@@ -602,6 +612,16 @@ const ExpressionEditorTab: React.FC = () => {
   return (
     <div className="expression-editor-tab">
       <ExpressionEditor />
+    </div>
+  );
+};
+
+// ============ Marketplace Tab ============
+
+const MarketplaceTab: React.FC = () => {
+  return (
+    <div className="marketplace-tab">
+      <Marketplace />
     </div>
   );
 };

@@ -11,6 +11,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.6.0] - 2026-03-07
+
+### Added
+
+#### Plugin System - Extensible Plugin Architecture
+
+- **Plugin Types** (`src/types/plugin.ts`): Complete type system for plugin ecosystem with 6 enums (PluginStatus, PluginType, PluginHookType, PluginPermission, PluginAPIAccess) and 20+ interfaces for manifest, config, state, context, hooks, statistics, and extension points
+- **PluginManagerService** (`src/services/PluginManagerService.ts`): Plugin management service with singleton pattern, plugin lifecycle management (register, unregister, enable, disable, load, unload), hook system for event interception, dependency resolution, version compatibility checking, and localStorage persistence
+- **usePluginManager React Hook** (`src/hooks/usePluginManager.ts`): React hook for plugin manager state management, exposing plugins, statistics, configuration, and all management methods
+- **PluginManager UI Component** (`src/components/PluginManager.tsx`): Four-tab interface (Installed, Available, Settings, Statistics) for comprehensive plugin control with plugin cards, settings modal, and marketplace placeholder
+- **CSS Styling** (`src/components/PluginManager.css`): Plugin manager styling with purple gradient accents, glassmorphism effects, status badges, toggle switches, and statistics charts
+- **App Integration**: Added toolbar button (🧩) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all plugin features
+
+#### Plugin System Features
+
+- **Plugin Lifecycle**: Complete lifecycle management with states (uninstalled, installed, enabled, running, error, disabled)
+- **Plugin Registration**: Register plugins with manifest validation, dependency checking, and compatibility verification
+- **Hook System**: Event-based hook system with pre/post stream, scene, audio, video, chat, and plugin lifecycle hooks
+- **Dependency Management**: Required and optional dependencies with version constraints
+- **Compatibility Checking**: Min/max app version validation and incompatible plugin detection
+- **Settings Schema**: Plugin-specific settings with validation (string, number, boolean, select, multiselect, color, file, directory)
+- **Permission System**: Permission levels (none, read, write, execute, admin) and API access levels (none, basic, standard, advanced, full)
+- **Statistics Tracking**: Real-time plugin counts by type, status, and resource usage
+- **Auto-load**: Configurable auto-loading of enabled plugins with autoStart flag
+- **Plugin Context**: Logger, storage, API, and events interfaces for plugin instances
+
+### Testing
+
+- **PluginManagerService Tests** (`src/__tests__/PluginManagerService.test.ts`): 18 unit tests with 100% pass rate
+
+---
+
 ## [1.5.0] - 2026-03-07
 
 ### Added

@@ -105,7 +105,8 @@ This document outlines the planned features, improvements, and milestones for V-
 
 - [x] Discord bot integration
 - [x] Twitter/X streaming integration
-- [ ] TikTok live streaming support
+- [x] TikTok live streaming support
+- [x] Plugin system for custom platform extensions
 - [ ] Custom platform plugins
 
 ### 🔧 Technical Features

@@ -26,6 +26,7 @@ import OBSIntegration from './components/OBSIntegration';
 import DiscordIntegration from './components/DiscordIntegration';
 import TwitterXIntegration from './components/TwitterXIntegration';
 import TikTokLiveIntegration from './components/TikTokLiveIntegration';
+import PluginManager from './components/PluginManager';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -285,6 +286,7 @@ function App() {
   const [showDiscordIntegration, setShowDiscordIntegration] = useState(false);
   const [showTwitterXIntegration, setShowTwitterXIntegration] = useState(false);
   const [showTikTokLiveIntegration, setShowTikTokLiveIntegration] = useState(false);
+  const [showPluginManager, setShowPluginManager] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -784,6 +786,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🎵
+          </button>
+          <button
+            onClick={() => setShowPluginManager(true)}
+            className="theme-btn"
+            title="Plugin Manager"
+            style={{ marginLeft: '8px' }}
+          >
+            🧩
           </button>
           <div className="theme-switcher">
             <button
@@ -1575,6 +1585,9 @@ function App() {
             <TikTokLiveIntegration onClose={() => setShowTikTokLiveIntegration(false)} />
           </div>
         </div>
+      )}
+      {showPluginManager && (
+        <PluginManager onClose={() => setShowPluginManager(false)} />
       )}
     </div>
   );

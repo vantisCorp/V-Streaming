@@ -745,7 +745,7 @@ mod tests {
             fps: 60.0,
             uptime_seconds: 3600,
             chat_messages_per_minute: 50.0,
-            donations: vec![],
+            donations: 0.0,
         };
 
         engine.add_data_point(data_point.clone());
@@ -772,7 +772,7 @@ mod tests {
                 fps: 60.0,
                 uptime_seconds: 3600,
                 chat_messages_per_minute: 50.0,
-                donations: vec![],
+                donations: 0.0,
             };
             engine.add_data_point(data_point);
         }
@@ -807,7 +807,7 @@ mod tests {
             fps: 60.0,
             uptime_seconds: 3600,
             chat_messages_per_minute: 50.0,
-            donations: vec![],
+            donations: 0.0,
         };
 
         engine.add_data_point(data_point);
@@ -834,7 +834,7 @@ mod tests {
             fps: 60.0,
             uptime_seconds: 3600,
             chat_messages_per_minute: 50.0,
-            donations: vec![],
+            donations: 0.0,
         };
         engine.add_data_point(data_point);
 

@@ -173,7 +173,7 @@ impl TelemetryEngine {
             error_type,
             message,
             stack_trace,
-            severity,
+            severity: severity.clone(),
             timestamp: std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
                 .unwrap()

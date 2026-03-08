@@ -212,7 +212,7 @@ impl GameStateEngine {
     pub fn add_event(&mut self, event_type: GameEventType, description: String, data: HashMap<String, String>) -> Result<GameEvent, String> {
         let event = GameEvent {
             id: uuid::Uuid::new_v4().to_string(),
-            event_type,
+            event_type: event_type.clone(),
             description,
             timestamp: std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)

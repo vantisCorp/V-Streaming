@@ -153,11 +153,11 @@ impl InteractionEngine {
 
     /// Add interaction trigger
     pub fn add_trigger(&mut self, trigger: InteractionTrigger) -> Result<(), String> {
-        self.triggers.push(trigger);
         self.stats.total_triggers += 1;
         if trigger.enabled {
             self.stats.active_triggers += 1;
         }
+        self.triggers.push(trigger);
         Ok(())
     }
 

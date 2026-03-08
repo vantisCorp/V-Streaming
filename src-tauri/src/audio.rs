@@ -157,8 +157,8 @@ impl AudioEngine {
     pub fn apply_effect(&self, track_id: usize, effect: AudioEffect) -> Result<(), AudioError> {
         let mut tracks = self.tracks.lock().unwrap();
         if let Some(track) = tracks.get_mut(&track_id) {
-            track.effects.push(effect);
             tracing::info!("Applied effect to track {}: {:?}", track_id, effect);
+            track.effects.push(effect);
             Ok(())
         } else {
             Err(AudioError::TrackNotFound(track_id))

@@ -464,7 +464,8 @@ fn execute_config_action(ctx: &CliContext, action: ConfigAction) -> Result<(), C
     match action {
         ConfigAction::Show => {
             ctx.info("Current configuration:");
-            let config = ctx.config.as_ref().unwrap_or(&AppConfig::default());
+            let default_config = AppConfig::default();
+            let config = ctx.config.as_ref().unwrap_or(&default_config);
             let json = serde_json::to_string_pretty(config)?;
             println!("{}", json);
             ctx.success("Configuration displayed");
@@ -478,7 +479,8 @@ fn execute_config_action(ctx: &CliContext, action: ConfigAction) -> Result<(), C
         }
         ConfigAction::Export { output } => {
             ctx.info(&format!("Exporting configuration to: {:?}", output));
-            let config = ctx.config.as_ref().unwrap_or(&AppConfig::default());
+            let default_config = AppConfig::default();
+            let config = ctx.config.as_ref().unwrap_or(&default_config);
             let content = serde_json::to_string_pretty(config)?;
             if let Some(parent) = output.parent() {
                 fs::create_dir_all(parent)?;
@@ -496,7 +498,8 @@ fn execute_config_action(ctx: &CliContext, action: ConfigAction) -> Result<(), C
         }
         ConfigAction::Validate => {
             ctx.info("Validating configuration...");
-            let config = ctx.config.as_ref().unwrap_or(&AppConfig::default());
+            let default_config = AppConfig::default();
+            let config = ctx.config.as_ref().unwrap_or(&default_config);
             
             // Validate general settings
             if config.general.language.is_empty() {
@@ -840,9 +843,10 @@ fn execute_export(ctx: &CliContext, format: ExportFormat, output: PathBuf) -> Re
         fs::create_dir_all(parent)?;
     }
     
+    let default_config = AppConfig::default();
     let content = match format {
         ExportFormat::Config => {
-            let config = ctx.config.as_ref().unwrap_or(&AppConfig::default());
+            let config = ctx.config.as_ref().unwrap_or(&default_config);
             serde_json::to_string_pretty(config)?
         }
         ExportFormat::Scenes => {
@@ -857,7 +861,7 @@ fn execute_export(ctx: &CliContext, format: ExportFormat, output: PathBuf) -> Re
         }
         ExportFormat::All => {
             serde_json::to_string_pretty(&serde_json::json!({
-                "config": ctx.config.as_ref().unwrap_or(&AppConfig::default()),
+                "config": ctx.config.as_ref().unwrap_or(&default_config),
                 "plugins": ctx.plugin_manager.get_plugins(),
                 "exported_at": chrono::Utc::now().to_rfc3339()
             }))?

@@ -33,16 +33,16 @@ jobs:
       run: npm install
 
     - name: Run Rust tests
-      run: cd src-tauri && cargo test --verbose
       continue-on-error: true
+      run: cd src-tauri && cargo test --verbose
 
     - name: Run Rust linter
-      run: cd src-tauri && cargo clippy --all-targets --all-features -- -D warnings
       continue-on-error: true
+      run: cd src-tauri && cargo clippy --all-targets --all-features -- -D warnings
 
     - name: Check Rust formatting
-      run: cd src-tauri && cargo fmt --all -- --check
       continue-on-error: true
+      run: cd src-tauri && cargo fmt --all -- --check
 
     - name: Run frontend lint
       run: npm run lint

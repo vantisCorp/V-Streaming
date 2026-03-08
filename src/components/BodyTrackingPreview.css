@@ -1,0 +1,46 @@
+/* Body Tracking Preview Component Styles */
+
+.body-tracking-preview {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1a1a2e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tracking-canvas {
+  display: block;
+  border-radius: 12px;
+}
+
+.pose-info {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.confidence-badge {
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .body-tracking-preview {
+    width: 100%;
+    height: auto;
+  }
+
+  .tracking-canvas {
+    width: 100%;
+    height: auto;
+  }
+}

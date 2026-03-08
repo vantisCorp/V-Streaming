@@ -11,6 +11,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.13.0] - 2026-03-09
+
+### Added
+
+#### Remote Stream Management via Web Interface
+
+- **Remote Types** (`src/types/remote.ts`): Complete type system for remote management with RemoteConnectionStatus, RemoteCommand, RemotePermission, RemoteSessionType enums and 15+ interfaces for server config, clients, sessions, commands, dashboard data, and statistics
+- **RemoteManagementService** (`src/services/RemoteManagementService.ts`): Core service for remote stream management with server start/stop, client connections, command execution, status updates, and session management
+- **useRemoteManagement Hook** (`src/hooks/useRemoteManagement.ts`): React hook for remote management with stream control shortcuts and status updates
+- **RemoteDashboard Component** (`src/components/RemoteDashboard.tsx`): Web-based remote control dashboard with server management, stream status, scene switching, audio mixer, and client management
+- **RemoteDashboard Styles** (`src/components/RemoteDashboard.css`): Comprehensive styling for remote dashboard with responsive design
+- **VTuberStudio Integration**: Added new "Remote" tab for remote stream management
+
+#### Remote Management Features
+
+- **Server Control**: Start/stop remote management server with configurable port and security settings
+- **Authentication**: Access token generation and regeneration for secure connections
+- **QR Code**: Easy connection via QR code for mobile devices
+- **Stream Control**: Start/stop stream, start/stop recording, take snapshots
+- **Scene Management**: Switch between scenes remotely
+- **Audio Mixer**: Volume control and mute toggling for audio sources
+- **Client Management**: View connected clients, permissions, and disconnect clients
+- **Statistics**: Connection counts, commands executed, response times, uptime
+
+#### Configuration Options
+
+- Configurable port and HTTPS settings
+- Authentication requirements
+- Session timeout and max connections
+- Rate limiting and CORS settings
+
+---
+
 ## [1.10.0] - 2026-03-09
 
 ### Added

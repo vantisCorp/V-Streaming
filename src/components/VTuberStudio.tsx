@@ -17,9 +17,10 @@ import {
 import { BodyTrackingPreview } from './BodyTrackingPreview';
 import { ExpressionEditor } from './ExpressionEditor';
 import { Marketplace } from './Marketplace';
+import { RemoteDashboard } from './RemoteDashboard';
 import './VTuberStudio.css';
 
-type TabType = 'models' | 'tracking' | 'expressions' | 'editor' | 'body' | 'marketplace' | 'settings';
+type TabType = 'models' | 'tracking' | 'expressions' | 'editor' | 'body' | 'marketplace' | 'remote' | 'settings';
 
 /**
  * VTuberStudio Component
@@ -88,6 +89,12 @@ export const VTuberStudio: React.FC = () => {
           🛒 Marketplace
         </button>
         <button
+          className={`tab ${activeTab === 'remote' ? 'active' : ''}`}
+          onClick={() => setActiveTab('remote')}
+        >
+          🌐 Remote
+        </button>
+        <button
           className={`tab ${activeTab === 'settings' ? 'active' : ''}`}
           onClick={() => setActiveTab('settings')}
         >
@@ -113,6 +120,9 @@ export const VTuberStudio: React.FC = () => {
         )}
         {activeTab === 'marketplace' && (
           <MarketplaceTab />
+        )}
+        {activeTab === 'remote' && (
+          <RemoteDashboardTab />
         )}
         {activeTab === 'settings' && (
           <SettingsTab model={model} tracking={tracking} expressions={expressions} />
@@ -622,6 +632,16 @@ const MarketplaceTab: React.FC = () => {
   return (
     <div className="marketplace-tab">
       <Marketplace />
+    </div>
+  );
+};
+
+// ============ Remote Dashboard Tab ============
+
+const RemoteDashboardTab: React.FC = () => {
+  return (
+    <div className="remote-dashboard-tab">
+      <RemoteDashboard />
     </div>
   );
 };

@@ -11,6 +11,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.0] - 2026-03-09
+
+### Added
+
+#### VTuber Enhancements - 3D Model Support
+
+- **VTuber Types** (`src/types/vtuber.ts`): Complete type system for VTuber features with 9 enums (ModelType, ModelStatus, TrackingProvider, TrackingStatus, ExpressionCategory, BlendShapeBinding, BoneType, TrackingQuality) and 20+ interfaces for model config, tracking data, expressions, and statistics
+- **VTuberModelService** (`src/services/VTuberModelService.ts`): Model management service with singleton pattern, VRM/Live2D model loading, expression management, blend shape control, and localStorage persistence
+- **TrackingService** (`src/services/TrackingService.ts`): Face/body tracking service with multiple provider support (MediaPipe, WebRTC, Face API, Open See Face, VMC), calibration system, and real-time tracking data
+- **ExpressionService** (`src/services/ExpressionService.ts`): Expression management service with transitions, auto-blink, layered expressions, and history tracking
+- **useVTuberModel Hook** (`src/hooks/useVTuberModel.ts`): React hook for model management with state synchronization
+- **useTracking Hook** (`src/hooks/useTracking.ts`): React hook for tracking with real-time data updates
+- **useExpressions Hook** (`src/hooks/useExpressions.ts`): React hook for expression control with auto-blink management
+- **VTuberStudio Component** (`src/components/VTuberStudio.tsx`): Unified VTuber dashboard with 4 tabs (Models, Tracking, Expressions, Settings) for comprehensive VTuber control
+- **VTuberStudio Styling** (`src/components/VTuberStudio.css`): Modern UI styling with pink/magenta gradient accents and responsive design
+
+#### Model Features
+
+- **Model Types**: VRM, Live2D, VRM-Ready, Custom model support
+- **Model Management**: Load, unload, switch between multiple models
+- **Model Configuration**: Scale, position, rotation, physics, look-at, auto-blink, lip-sync settings
+- **Expression System**: Pre-built expressions (Neutral, Happy, Sad, Surprised, Angry, Blink) with custom expression creation
+
+#### Tracking Features
+
+- **Multiple Providers**: MediaPipe, WebRTC, Face API, Open See Face, VMC Protocol
+- **Quality Levels**: Low, Medium, High, Ultra
+- **Tracking Types**: Face tracking, body tracking, hand tracking
+- **Calibration**: Automatic calibration for neutral face pose
+- **Smoothing**: Configurable smoothing and prediction for natural movement
+
+#### Expression Features
+
+- **Expression Triggers**: Click-to-trigger expressions with transitions
+- **Auto-Blink**: Configurable automatic blinking with random variation
+- **Layered Expressions**: Combine multiple expressions with intensity control
+- **Category Quick Actions**: Trigger by category (Happy, Sad, Angry, Surprised, Neutral)
+- **Expression History**: Track recently triggered expressions
+
+---
+
 ## [1.8.0] - 2026-03-08
 
 ### Added

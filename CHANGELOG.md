@@ -11,6 +11,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.7.0] - 2026-03-08
+
+### Added
+
+#### AI Features - Real-time Translation
+
+- **AI Types** (`src/types/ai.ts`): Complete type system for AI features with 7 enums (TranslationServiceStatus, SourceLanguage, TranslationMode, TranslationQuality, AIServiceProvider, RecommendationType, HighlightType, EngagementSuggestionType) and 10+ interfaces for config, translation result, request, statistics, state, and future features
+- **AITranslationService** (`src/services/AITranslationService.ts`): Translation management service with singleton pattern, multiple provider support (OpenAI, DeepL, Google, Azure, Local), translation caching, statistics tracking, and localStorage persistence
+- **useAITranslation React Hook** (`src/hooks/useAITranslation.ts`): React hook for translation service state management, exposing config, translation state, statistics, and all translation methods
+- **AITranslation UI Component** (`src/components/AITranslation.tsx`): Four-tab interface (Translate, Languages, Settings, Statistics) for comprehensive translation control with language selection, translation history, and provider configuration
+- **CSS Styling** (`src/components/AITranslation.css`): Translation interface styling with cyan/blue gradient accents, glassmorphism effects, status badges, and responsive design
+- **App Integration**: Added toolbar button (🌐) for quick access with modal-based interface
+- **Internationalization**: Complete English and Polish translations for all translation features
+
+#### Translation Features
+
+- **Multi-provider Support**: OpenAI, DeepL, Google Translate, Azure Translator, Local Model, Custom API
+- **Language Support**: 20 languages including English, Spanish, French, German, Italian, Portuguese, Russian, Japanese, Korean, Chinese (Simplified/Traditional), Arabic, Hindi, Polish, Dutch, Turkish, Vietnamese, Thai, Indonesian
+- **Translation Modes**: Real-time, On-demand, Batch
+- **Quality Levels**: Basic (Fast), Standard, Premium (Best)
+- **Auto-detection**: Automatic source language detection
+- **Translation Caching**: Configurable cache with TTL for improved performance
+- **Statistics Tracking**: Total translations, characters translated, average latency, cache hit rate, error rate
+- **Profanity Filter**: Optional profanity filtering for translations
+- **Show Original**: Option to display original text alongside translation
+- **Recent Translations**: History of recent translations for quick reference
+
+---
+
 ## [1.6.0] - 2026-03-07
 
 ### Added

@@ -1989,5 +1989,82 @@
       "totalHooks": "Total Hooks",
       "byType": "Plugins by Type"
     }
+  },
+  "aiTranslation": {
+    "title": "AI Translation",
+    "tabs": {
+      "translate": "Translate",
+      "languages": "Languages",
+      "settings": "Settings",
+      "statistics": "Statistics"
+    },
+    "status": {
+      "idle": "Idle",
+      "connecting": "Connecting",
+      "ready": "Ready",
+      "translating": "Translating",
+      "error": "Error"
+    },
+    "translate": {
+      "sourceLanguage": "Source Language",
+      "targetLanguage": "Target Language",
+      "enterText": "Enter text to translate...",
+      "translationWillAppear": "Translation will appear here...",
+      "translate": "Translate",
+      "translating": "Translating...",
+      "clear": "Clear",
+      "characters": "characters",
+      "recentTranslations": "Recent Translations",
+      "noRecentTranslations": "No recent translations"
+    },
+    "languages": {
+      "title": "Supported Languages",
+      "autoDetect": "Auto-detect"
+    },
+    "settings": {
+      "serviceConfiguration": "Service Configuration",
+      "translationSettings": "Translation Settings",
+      "translationProvider": "Translation Provider",
+      "apiKey": "API Key",
+      "enterApiKey": "Enter API key...",
+      "translationMode": "Translation Mode",
+      "qualityLevel": "Quality Level",
+      "autoDetectSource": "Auto-detect source language",
+      "showOriginal": "Show original text",
+      "cacheTranslations": "Cache translations",
+      "profanityFilter": "Profanity filter",
+      "cacheManagement": "Cache Management",
+      "cachedTranslations": "Cached translations",
+      "clearCache": "Clear Cache"
+    },
+    "statistics": {
+      "totalTranslations": "Total Translations",
+      "charactersTranslated": "Characters Translated",
+      "averageLatency": "Average Latency",
+      "cacheHitRate": "Cache Hit Rate",
+      "errorRate": "Error Rate",
+      "cachedItems": "Cached Items",
+      "translationsByLanguage": "Translations by Language",
+      "noData": "No translation data yet",
+      "resetStatistics": "Reset Statistics"
+    },
+    "providers": {
+      "openai": "OpenAI",
+      "deepl": "DeepL",
+      "google": "Google Translate",
+      "azure": "Azure Translator",
+      "local": "Local Model",
+      "custom": "Custom API"
+    },
+    "modes": {
+      "realTime": "Real-time",
+      "onDemand": "On-demand",
+      "batch": "Batch"
+    },
+    "quality": {
+      "basic": "Basic (Fast)",
+      "standard": "Standard",
+      "premium": "Premium (Best)"
+    }
   }
 }

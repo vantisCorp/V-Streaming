@@ -48,7 +48,7 @@ export enum PluginHookType {
   // Stream lifecycle hooks
   PRE_STREAM_START = 'pre_stream_start',
   POST_STREAM_START = 'post_stream_start',
-  PRE_STREAM_END = 'post_stream_end',
+  PRE_STREAM_END = 'pre_stream_end',
   POST_STREAM_END = 'post_stream_end',
   
   // Scene hooks

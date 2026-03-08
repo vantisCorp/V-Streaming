@@ -11,6 +11,42 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.15.0] - 2026-03-09
+
+### Added
+
+#### Cloud-based Rendering Options
+
+- **CloudRenderingPanel Component** (`src/components/CloudRenderingPanel.tsx`): Main UI component for managing cloud rendering with tabbed interface for connection, jobs, instances, and pricing
+- **CloudRenderingService** (`src/services/CloudRenderingService.ts`): Service layer for cloud provider interactions including AWS, GCP, and Azure
+- **useCloudRendering Hook** (`src/hooks/useCloudRendering.ts`): React hook for cloud rendering state management
+- **Cloud Rendering Types** (`src/types/cloudRendering.ts`): Comprehensive type definitions for cloud rendering features
+
+#### Cloud Rendering Features
+
+- **Multi-Provider Support**: AWS, Google Cloud Platform, and Microsoft Azure integration
+- **Instance Management**: Start/stop cloud instances with different CPU/GPU configurations
+- **Render Jobs**: Create and manage render jobs with customizable settings
+- **Job Queue**: Queue management for multiple render jobs
+- **Pricing Display**: Real-time pricing information for different instance types
+- **Statistics Tracking**: Track total jobs, completed jobs, failed jobs, and costs
+
+#### Supported Instance Types
+
+- CPU instances: Small, Medium, Large
+- GPU instances: Small, Medium, Large (NVIDIA T4 and similar)
+- Configurable hourly rates and cost tracking
+
+#### Render Configuration
+
+- Multiple codec support: H.264, H.265 (HEVC), VP9, AV1
+- Quality presets: Low, Medium, High, Ultra
+- Resolution options: 720p, 1080p, 1440p, 4K
+- Frame rate selection: 24, 30, 60 fps
+- Customizable bitrate settings
+
+---
+
 ## [1.14.0] - 2026-03-09
 
 ### Added

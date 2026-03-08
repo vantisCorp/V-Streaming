@@ -1167,3 +1167,45 @@ For questions or issues:
 - Support for 13 blend shape bindings
 - Support for 6 easing functions
 - Configurable auto-save and undo history
+
+## [1.12.0] - VTuber Marketplace and Sharing Platform
+
+### Added
+- **MarketplaceService** - Full marketplace service
+  - Browse, search, and filter content
+  - Featured items section
+  - Download and favorite management
+  - Upload and share content
+  - Review and rating system
+  - Collection management
+
+- **useMarketplace Hook** - React hook for marketplace
+  - State management for items and filters
+  - Download and favorite actions
+  - Upload functionality
+  - Collection management
+
+- **Marketplace Component** - Full marketplace UI
+  - Featured items grid
+  - Search and filter controls
+  - Type and category filters
+  - Sort options (relevance, newest, popular, downloads, rating, price)
+  - Item cards with preview
+  - Item detail modal
+  - Upload modal with form
+  - Pagination support
+
+- **Marketplace Content Types**
+  - Expressions, Avatars, Animations
+  - Backgrounds, Props, Plugins
+  - Free, Paid, Premium, Community, Official categories
+
+- **VTuberStudio Integration**
+  - New "🛒 Marketplace" tab
+  - Seamless integration with VTuber features
+
+### Technical
+- Added 20+ new types for marketplace
+- Mock data for testing and demo
+- Filter and sort functionality
+- Responsive design for all screen sizes

@@ -978,3 +978,296 @@ export const EXPRESSION_PRESETS: ExpressionPreset[] = [
     ]),
   },
 ];
+
+// ============ Marketplace Types ============
+
+/**
+ * Marketplace item type
+ */
+export enum MarketplaceItemType {
+  EXPRESSION = 'expression',
+  AVATAR = 'avatar',
+  ANIMATION = 'animation',
+  BACKGROUND = 'background',
+  PROP = 'prop',
+  PLUGIN = 'plugin',
+}
+
+/**
+ * Marketplace item status
+ */
+export enum MarketplaceItemStatus {
+  DRAFT = 'draft',
+  PENDING = 'pending',
+  APPROVED = 'approved',
+  REJECTED = 'rejected',
+  REMOVED = 'removed',
+}
+
+/**
+ * Marketplace category
+ */
+export enum MarketplaceCategory {
+  FREE = 'free',
+  PAID = 'paid',
+  PREMIUM = 'premium',
+  COMMUNITY = 'community',
+  OFFICIAL = 'official',
+}
+
+/**
+ * Marketplace item author
+ */
+export interface MarketplaceAuthor {
+  /** Author ID */
+  id: string;
+  /** Author username */
+  username: string;
+  /** Author display name */
+  displayName: string;
+  /** Author avatar URL */
+  avatarUrl: string | null;
+  /** Is verified author */
+  isVerified: boolean;
+  /** Author bio */
+  bio: string | null;
+  /** Follower count */
+  followers: number;
+  /** Total downloads */
+  totalDownloads: number;
+}
+
+/**
+ * Marketplace item rating
+ */
+export interface MarketplaceRating {
+  /** Average rating (0-5) */
+  average: number;
+  /** Total ratings count */
+  count: number;
+  /** Rating distribution (1-5 stars) */
+  distribution: {
+    1: number;
+    2: number;
+    3: number;
+    4: number;
+    5: number;
+  };
+}
+
+/**
+ * Marketplace item review
+ */
+export interface MarketplaceReview {
+  /** Review ID */
+  id: string;
+  /** Author ID */
+  authorId: string;
+  /** Author name */
+  authorName: string;
+  /** Rating (1-5) */
+  rating: number;
+  /** Review text */
+  text: string;
+  /** Created timestamp */
+  createdAt: number;
+  /** Helpful votes */
+  helpfulVotes: number;
+}
+
+/**
+ * Marketplace item
+ */
+export interface MarketplaceItem {
+  /** Item ID */
+  id: string;
+  /** Item name */
+  name: string;
+  /** Item description */
+  description: string;
+  /** Item type */
+  type: MarketplaceItemType;
+  /** Category */
+  category: MarketplaceCategory;
+  /** Status */
+  status: MarketplaceItemStatus;
+  /** Author */
+  author: MarketplaceAuthor;
+  /** Preview images */
+  previewImages: string[];
+  /** Thumbnail URL */
+  thumbnailUrl: string | null;
+  /** Tags */
+  tags: string[];
+  /** Version */
+  version: string;
+  /** Download count */
+  downloads: number;
+  /** Rating */
+  rating: MarketplaceRating;
+  /** Price (0 for free) */
+  price: number;
+  /** Currency */
+  currency: string;
+  /** File size in bytes */
+  fileSize: number;
+  /** File URL */
+  fileUrl: string | null;
+  /** Created timestamp */
+  createdAt: number;
+  /** Updated timestamp */
+  updatedAt: number;
+  /** Is featured */
+  isFeatured: boolean;
+  /** Compatible model types */
+  compatibleModels: ModelType[];
+  /** Reviews */
+  reviews: MarketplaceReview[];
+  /** Changelog */
+  changelog: string[];
+}
+
+/**
+ * Marketplace collection
+ */
+export interface MarketplaceCollection {
+  /** Collection ID */
+  id: string;
+  /** Collection name */
+  name: string;
+  /** Collection description */
+  description: string;
+  /** Author */
+  author: MarketplaceAuthor;
+  /** Items in collection */
+  items: MarketplaceItem[];
+  /** Is public */
+  isPublic: boolean;
+  /** Created timestamp */
+  createdAt: number;
+  /** Updated timestamp */
+  updatedAt: number;
+}
+
+/**
+ * Marketplace search filters
+ */
+export interface MarketplaceFilters {
+  /** Search query */
+  query: string;
+  /** Item types */
+  types: MarketplaceItemType[];
+  /** Categories */
+  categories: MarketplaceCategory[];
+  /** Price range (min, max) */
+  priceRange: [number, number];
+  /** Rating minimum */
+  ratingMin: number;
+  /** Tags */
+  tags: string[];
+  /** Author ID */
+  authorId: string | null;
+  /** Sort by */
+  sortBy: MarketplaceSortBy;
+  /** Sort order */
+  sortOrder: 'asc' | 'desc';
+  /** Compatible model type */
+  compatibleWith: ModelType | null;
+}
+
+/**
+ * Marketplace sort options
+ */
+export enum MarketplaceSortBy {
+  RELEVANCE = 'relevance',
+  NEWEST = 'newest',
+  POPULAR = 'popular',
+  DOWNLOADS = 'downloads',
+  RATING = 'rating',
+  PRICE_LOW = 'price_low',
+  PRICE_HIGH = 'price_high',
+}
+
+/**
+ * Marketplace upload data
+ */
+export interface MarketplaceUpload {
+  /** Item name */
+  name: string;
+  /** Item description */
+  description: string;
+  /** Item type */
+  type: MarketplaceItemType;
+  /** Category */
+  category: MarketplaceCategory;
+  /** Price */
+  price: number;
+  /** Tags */
+  tags: string[];
+  /** Preview images */
+  previewImages: File[];
+  /** File to upload */
+  file: File | null;
+  /** Compatible model types */
+  compatibleModels: ModelType[];
+}
+
+/**
+ * Marketplace state
+ */
+export interface MarketplaceState {
+  /** Current items */
+  items: MarketplaceItem[];
+  /** Featured items */
+  featured: MarketplaceItem[];
+  /** User's items */
+  myItems: MarketplaceItem[];
+  /** User's favorites */
+  favorites: string[];
+  /** User's downloads */
+  downloads: string[];
+  /** Current filters */
+  filters: MarketplaceFilters;
+  /** Selected item */
+  selectedItem: MarketplaceItem | null;
+  /** Is loading */
+  isLoading: boolean;
+  /** Error message */
+  error: string | null;
+  /** Total items count */
+  totalCount: number;
+  /** Current page */
+  currentPage: number;
+  /** Items per page */
+  itemsPerPage: number;
+}
+
+// ============ Marketplace Defaults ============
+
+export const DEFAULT_MARKETPLACE_FILTERS: MarketplaceFilters = {
+  query: '',
+  types: [],
+  categories: [],
+  priceRange: [0, 1000],
+  ratingMin: 0,
+  tags: [],
+  authorId: null,
+  sortBy: MarketplaceSortBy.RELEVANCE,
+  sortOrder: 'desc',
+  compatibleWith: null,
+};
+
+export const DEFAULT_MARKETPLACE_STATE: MarketplaceState = {
+  items: [],
+  featured: [],
+  myItems: [],
+  favorites: [],
+  downloads: [],
+  filters: DEFAULT_MARKETPLACE_FILTERS,
+  selectedItem: null,
+  isLoading: false,
+  error: null,
+  totalCount: 0,
+  currentPage: 1,
+  itemsPerPage: 20,
+};

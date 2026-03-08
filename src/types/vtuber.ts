@@ -650,3 +650,331 @@ export const DEFAULT_BODY_TRACKING_STATE: BodyTrackingState = {
   isCalibrated: false,
   statistics: DEFAULT_BODY_TRACKING_STATISTICS,
 };
+// ============ Expression Editor Types ============
+
+/**
+ * Expression layer for blending multiple expressions
+ */
+export interface ExpressionLayer {
+  /** Layer ID */
+  id: string;
+  /** Layer name */
+  name: string;
+  /** Blend shapes in this layer */
+  blendShapes: Map<BlendShapeBinding, number>;
+  /** Layer opacity (0-1) */
+  opacity: number;
+  /** Layer blend mode */
+  blendMode: ExpressionBlendMode;
+  /** Is layer visible */
+  visible: boolean;
+  /** Is layer locked */
+  locked: boolean;
+}
+
+/**
+ * Expression blend modes
+ */
+export enum ExpressionBlendMode {
+  NORMAL = 'normal',
+  ADD = 'add',
+  MULTIPLY = 'multiply',
+  OVERRIDE = 'override',
+}
+
+/**
+ * Expression keyframe for animations
+ */
+export interface ExpressionKeyframe {
+  /** Keyframe ID */
+  id: string;
+  /** Time in milliseconds */
+  time: number;
+  /** Blend shape values */
+  values: Map<BlendShapeBinding, number>;
+  /** Easing function */
+  easing: EasingFunction;
+}
+
+/**
+ * Easing functions for keyframe interpolation
+ */
+export enum EasingFunction {
+  LINEAR = 'linear',
+  EASE_IN = 'easeIn',
+  EASE_OUT = 'easeOut',
+  EASE_IN_OUT = 'easeInOut',
+  BOUNCE = 'bounce',
+  ELASTIC = 'elastic',
+  BACK = 'back',
+}
+
+/**
+ * Expression animation
+ */
+export interface ExpressionAnimation {
+  /** Animation ID */
+  id: string;
+  /** Animation name */
+  name: string;
+  /** Duration in milliseconds */
+  duration: number;
+  /** Keyframes */
+  keyframes: ExpressionKeyframe[];
+  /** Loop animation */
+  loop: boolean;
+  /** Loop count (-1 for infinite) */
+  loopCount: number;
+}
+
+/**
+ * Custom expression definition
+ */
+export interface CustomExpression {
+  /** Expression ID */
+  id: string;
+  /** Expression name */
+  name: string;
+  /** Expression category */
+  category: ExpressionCategory;
+  /** Description */
+  description: string;
+  /** Preview image (base64) */
+  previewImage: string | null;
+  /** Blend shape values */
+  blendShapes: Map<BlendShapeBinding, number>;
+  /** Expression layers */
+  layers: ExpressionLayer[];
+  /** Associated animation */
+  animation: ExpressionAnimation | null;
+  /** Hotkey to trigger */
+  hotkey: string | null;
+  /** Tags for search */
+  tags: string[];
+  /** Created timestamp */
+  createdAt: number;
+  /** Updated timestamp */
+  updatedAt: number;
+  /** Is default expression */
+  isDefault: boolean;
+  /** Is favorite */
+  isFavorite: boolean;
+}
+
+/**
+ * Expression editor tool
+ */
+export enum ExpressionEditorTool {
+  SELECT = 'select',
+  MOVE = 'move',
+  SCALE = 'scale',
+  ROTATE = 'rotate',
+  BRUSH = 'brush',
+  ERASER = 'eraser',
+  EYEDROPPER = 'eyedropper',
+}
+
+/**
+ * Expression editor configuration
+ */
+export interface ExpressionEditorConfig {
+  /** Grid enabled */
+  gridEnabled: boolean;
+  /** Grid size */
+  gridSize: number;
+  /** Snap to grid */
+  snapToGrid: boolean;
+  /** Show symmetry guides */
+  symmetryGuides: boolean;
+  /** Auto-save enabled */
+  autoSave: boolean;
+  /** Auto-save interval in seconds */
+  autoSaveInterval: number;
+  /** Undo history size */
+  undoHistorySize: number;
+  /** Default expression category */
+  defaultCategory: ExpressionCategory;
+  /** Preview FPS */
+  previewFPS: number;
+}
+
+/**
+ * Expression editor state
+ */
+export interface ExpressionEditorState {
+  /** Current expression being edited */
+  currentExpression: CustomExpression | null;
+  /** Selected tool */
+  selectedTool: ExpressionEditorTool;
+  /** Selected layer ID */
+  selectedLayerId: string | null;
+  /** Selected keyframe ID */
+  selectedKeyframeId: string | null;
+  /** Zoom level */
+  zoom: number;
+  /** Pan offset X */
+  panX: number;
+  /** Pan offset Y */
+  panY: number;
+  /** Is playing animation */
+  isPlaying: boolean;
+  /** Current animation time */
+  currentTime: number;
+  /** Undo stack */
+  undoStack: ExpressionEditorAction[];
+  /** Redo stack */
+  redoStack: ExpressionEditorAction[];
+  /** Has unsaved changes */
+  hasUnsavedChanges: boolean;
+}
+
+/**
+ * Expression editor action for undo/redo
+ */
+export interface ExpressionEditorAction {
+  /** Action ID */
+  id: string;
+  /** Action type */
+  type: ExpressionEditorActionType;
+  /** Action description */
+  description: string;
+  /** Previous state */
+  previousState: unknown;
+  /** New state */
+  newState: unknown;
+  /** Timestamp */
+  timestamp: number;
+}
+
+/**
+ * Expression editor action types
+ */
+export enum ExpressionEditorActionType {
+  ADD_LAYER = 'addLayer',
+  REMOVE_LAYER = 'removeLayer',
+  MODIFY_LAYER = 'modifyLayer',
+  REORDER_LAYERS = 'reorderLayers',
+  ADD_KEYFRAME = 'addKeyframe',
+  REMOVE_KEYFRAME = 'removeKeyframe',
+  MODIFY_KEYFRAME = 'modifyKeyframe',
+  MODIFY_BLEND_SHAPE = 'modifyBlendShape',
+  MODIFY_EXPRESSION = 'modifyExpression',
+}
+
+/**
+ * Expression preset for quick start
+ */
+export interface ExpressionPreset {
+  /** Preset ID */
+  id: string;
+  /** Preset name */
+  name: string;
+  /** Category */
+  category: ExpressionCategory;
+  /** Preview image */
+  previewImage: string;
+  /** Blend shape values */
+  blendShapes: Map<BlendShapeBinding, number>;
+}
+
+// ============ Expression Editor Defaults ============
+
+export const DEFAULT_EXPRESSION_EDITOR_CONFIG: ExpressionEditorConfig = {
+  gridEnabled: true,
+  gridSize: 10,
+  snapToGrid: true,
+  symmetryGuides: true,
+  autoSave: true,
+  autoSaveInterval: 30,
+  undoHistorySize: 50,
+  defaultCategory: ExpressionCategory.CUSTOM,
+  previewFPS: 30,
+};
+
+export const DEFAULT_EXPRESSION_EDITOR_STATE: ExpressionEditorState = {
+  currentExpression: null,
+  selectedTool: ExpressionEditorTool.SELECT,
+  selectedLayerId: null,
+  selectedKeyframeId: null,
+  zoom: 1,
+  panX: 0,
+  panY: 0,
+  isPlaying: false,
+  currentTime: 0,
+  undoStack: [],
+  redoStack: [],
+  hasUnsavedChanges: false,
+};
+
+export const EXPRESSION_PRESETS: ExpressionPreset[] = [
+  {
+    id: 'preset-neutral',
+    name: 'Neutral',
+    category: ExpressionCategory.NEUTRAL,
+    previewImage: '',
+    blendShapes: new Map([
+      [BlendShapeBinding.MOUTH_OPEN, 0],
+      [BlendShapeBinding.MOUTH_SMILE, 0],
+      [BlendShapeBinding.EYE_BLINK_LEFT, 0],
+      [BlendShapeBinding.EYE_BLINK_RIGHT, 0],
+    ]),
+  },
+  {
+    id: 'preset-happy',
+    name: 'Happy',
+    category: ExpressionCategory.HAPPY,
+    previewImage: '',
+    blendShapes: new Map([
+      [BlendShapeBinding.MOUTH_SMILE, 0.8],
+      [BlendShapeBinding.EYE_BLINK_LEFT, 0.3],
+      [BlendShapeBinding.EYE_BLINK_RIGHT, 0.3],
+    ]),
+  },
+  {
+    id: 'preset-sad',
+    name: 'Sad',
+    category: ExpressionCategory.SAD,
+    previewImage: '',
+    blendShapes: new Map([
+      [BlendShapeBinding.BROW_DOWN_LEFT, 0.5],
+      [BlendShapeBinding.BROW_DOWN_RIGHT, 0.5],
+      [BlendShapeBinding.MOUTH_SMILE, -0.3],
+    ]),
+  },
+  {
+    id: 'preset-angry',
+    name: 'Angry',
+    category: ExpressionCategory.ANGRY,
+    previewImage: '',
+    blendShapes: new Map([
+      [BlendShapeBinding.BROW_DOWN_LEFT, 0.8],
+      [BlendShapeBinding.BROW_DOWN_RIGHT, 0.8],
+      [BlendShapeBinding.EYE_WIDE_LEFT, 0.3],
+      [BlendShapeBinding.EYE_WIDE_RIGHT, 0.3],
+    ]),
+  },
+  {
+    id: 'preset-surprised',
+    name: 'Surprised',
+    category: ExpressionCategory.SURPRISED,
+    previewImage: '',
+    blendShapes: new Map([
+      [BlendShapeBinding.EYE_WIDE_LEFT, 0.8],
+      [BlendShapeBinding.EYE_WIDE_RIGHT, 0.8],
+      [BlendShapeBinding.MOUTH_OPEN, 0.6],
+      [BlendShapeBinding.BROW_UP_LEFT, 0.7],
+      [BlendShapeBinding.BROW_UP_RIGHT, 0.7],
+    ]),
+  },
+  {
+    id: 'preset-wink',
+    name: 'Wink',
+    category: ExpressionCategory.CUSTOM,
+    previewImage: '',
+    blendShapes: new Map([
+      [BlendShapeBinding.EYE_BLINK_LEFT, 1],
+      [BlendShapeBinding.EYE_BLINK_RIGHT, 0],
+      [BlendShapeBinding.MOUTH_SMILE, 0.5],
+    ]),
+  },
+];

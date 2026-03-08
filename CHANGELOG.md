@@ -1128,3 +1128,42 @@ For questions or issues:
 ## License
 
 © 2025 VantisCorp. All rights reserved.
+## [1.11.0] - Expression Editor
+
+### Added
+- **ExpressionEditorService** - Full-featured expression editor service
+  - Create, edit, delete, and duplicate expressions
+  - Layer system with blend modes (Normal, Add, Multiply, Override)
+  - Blend shape editing with all standard bindings
+  - Animation system with keyframes and easing functions
+  - Undo/Redo functionality with configurable history
+  - Export/Import expressions as JSON
+  - Expression presets for quick start
+
+- **useExpressionEditor Hook** - React hook for expression editor
+  - State management for current expression
+  - Layer selection and manipulation
+  - Animation playback controls
+  - Keyframe management
+  - Preset application
+
+- **ExpressionEditor Component** - Full expression editor UI
+  - Three-panel layout (expressions, editor, layers)
+  - Blend shape sliders with percentage display
+  - Quick preset buttons
+  - Layer management with visibility and lock controls
+  - Animation timeline with keyframe editing
+  - Undo/Redo buttons
+  - Export modal with copy to clipboard
+  - Create expression modal with category selection
+
+- **VTuberStudio Integration**
+  - New "🎨 Editor" tab for expression editor
+  - Seamless integration with existing VTuber features
+
+### Technical
+- Added 18 new types for expression editor
+- Added 6 expression presets (Neutral, Happy, Sad, Angry, Surprised, Wink)
+- Support for 13 blend shape bindings
+- Support for 6 easing functions
+- Configurable auto-save and undo history

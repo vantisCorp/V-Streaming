@@ -10,7 +10,17 @@ import {
   OBSRecordStatus,
   OBSTransition,
   OBSInput,
-  OBSVolumeMeter
+  OBSVolumeMeter,
+  OBSSceneCollection,
+  OBSProfile,
+  OBSFilter,
+  OBSSceneItemTransform,
+  OBSReplayBufferStatus,
+  OBSVirtualCameraStatus,
+  OBSStudioModeStatus,
+  OBSMediaInputStatus,
+  OBSStats,
+  OBSMonitorType,
 } from '../types/obsWebSocket';
 
 export interface UseOBSWebSocketReturn {
@@ -71,6 +81,71 @@ export interface UseOBSWebSocketReturn {
   // Volume Meters
   volumeMeters: OBSVolumeMeter[];
   
+  // Scene Collection Management
+  sceneCollections: OBSSceneCollection[];
+  currentSceneCollection: string;
+  getSceneCollections: () => Promise<OBSSceneCollection[]>;
+  setCurrentSceneCollection: (collectionName: string) => Promise<void>;
+  createSceneCollection: (collectionName: string) => Promise<void>;
+  
+  // Profile Management
+  profiles: OBSProfile[];
+  currentProfile: string;
+  getProfiles: () => Promise<OBSProfile[]>;
+  setCurrentProfile: (profileName: string) => Promise<void>;
+  createProfile: (profileName: string) => Promise<void>;
+  
+  // Scene Item Management
+  createSceneItem: (sceneName: string, sourceName: string, transform?: OBSSceneItemTransform) => Promise<number>;
+  removeSceneItem: (sceneName: string, sceneItemId: number) => Promise<void>;
+  setSceneItemTransform: (sceneName: string, sceneItemId: number, transform: Partial<OBSSceneItemTransform>) => Promise<void>;
+  setSceneItemEnabled: (sceneName: string, sceneItemId: number, enabled: boolean) => Promise<void>;
+  
+  // Filter Management
+  getSourceFilters: (sourceName: string) => Promise<OBSFilter[]>;
+  createSourceFilter: (sourceName: string, filterName: string, filterKind: string, settings?: Record<string, unknown>) => Promise<void>;
+  removeSourceFilter: (sourceName: string, filterName: string) => Promise<void>;
+  setSourceFilterEnabled: (sourceName: string, filterName: string, enabled: boolean) => Promise<void>;
+  setSourceFilterSettings: (sourceName: string, filterName: string, settings: Record<string, unknown>) => Promise<void>;
+  
+  // Replay Buffer
+  replayBufferStatus: OBSReplayBufferStatus | null;
+  getReplayBufferStatus: () => Promise<OBSReplayBufferStatus>;
+  startReplayBuffer: () => Promise<void>;
+  stopReplayBuffer: () => Promise<void>;
+  saveReplayBuffer: () => Promise<void>;
+  
+  // Virtual Camera
+  virtualCameraStatus: OBSVirtualCameraStatus | null;
+  getVirtualCameraStatus: () => Promise<OBSVirtualCameraStatus>;
+  startVirtualCamera: () => Promise<void>;
+  stopVirtualCamera: () => Promise<void>;
+  
+  // Studio Mode
+  studioModeStatus: OBSStudioModeStatus | null;
+  getStudioModeStatus: () => Promise<OBSStudioModeStatus>;
+  setStudioModeEnabled: (enabled: boolean) => Promise<void>;
+  setPreviewScene: (sceneName: string) => Promise<void>;
+  triggerStudioModeTransition: () => Promise<void>;
+  
+  // Media Inputs
+  getMediaInputStatus: (inputName: string) => Promise<OBSMediaInputStatus>;
+  playMediaInput: (inputName: string) => Promise<void>;
+  pauseMediaInput: (inputName: string) => Promise<void>;
+  stopMediaInput: (inputName: string) => Promise<void>;
+  restartMediaInput: (inputName: string) => Promise<void>;
+  
+  // Stats
+  stats: OBSStats | null;
+  getStats: () => Promise<OBSStats>;
+  
+  // Recording Advanced
+  resumeRecording: () => Promise<void>;
+  splitRecordFile: () => Promise<void>;
+  
+  // Hotkeys
+  triggerHotkey: (hotkeyName: string) => Promise<void>;
+  
   // Event Handlers
   onSceneChanged: (callback: (sceneName: string) => void) => void;
   onStreamStarted: (callback: () => void) => void;
@@ -112,6 +187,26 @@ export function useOBSWebSocket(): UseOBSWebSocketReturn {
   
   // Volume Meters
   const [volumeMeters, setVolumeMeters] = useState<OBSVolumeMeter[]>([]);
+  
+  // Scene Collection State
+  const [sceneCollections, setSceneCollections] = useState<OBSSceneCollection[]>([]);
+  const [currentSceneCollection, setCurrentSceneCollection] = useState<string>('');
+  
+  // Profile State
+  const [profiles, setProfiles] = useState<OBSProfile[]>([]);
+  const [currentProfile, setCurrentProfile] = useState<string>('');
+  
+  // Replay Buffer State
+  const [replayBufferStatus, setReplayBufferStatus] = useState<OBSReplayBufferStatus | null>(null);
+  
+  // Virtual Camera State
+  const [virtualCameraStatus, setVirtualCameraStatus] = useState<OBSVirtualCameraStatus | null>(null);
+  
+  // Studio Mode State
+  const [studioModeStatus, setStudioModeStatus] = useState<OBSStudioModeStatus | null>(null);
+  
+  // Stats State
+  const [stats, setStats] = useState<OBSStats | null>(null);
   
   // Event Handlers Refs
   const eventHandlersRef = useRef<{
@@ -451,6 +546,253 @@ export function useOBSWebSocket(): UseOBSWebSocketReturn {
   }, []);
   
   // ==========================================================================
+  // SCENE COLLECTION MANAGEMENT
+  // ==========================================================================
+  
+  const getSceneCollectionsCallback = useCallback(async (): Promise<OBSSceneCollection[]> => {
+    const service = serviceRef.current;
+    const collections = await service.getSceneCollections();
+    setSceneCollections(collections);
+    return collections;
+  }, []);
+  
+  const setCurrentSceneCollectionCallback = useCallback(async (collectionName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.setCurrentSceneCollection(collectionName);
+    setCurrentSceneCollection(collectionName);
+  }, []);
+  
+  const createSceneCollectionCallback = useCallback(async (collectionName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.createSceneCollection(collectionName);
+    const collections = await service.getSceneCollections();
+    setSceneCollections(collections);
+  }, []);
+  
+  // ==========================================================================
+  // PROFILE MANAGEMENT
+  // ==========================================================================
+  
+  const getProfilesCallback = useCallback(async (): Promise<OBSProfile[]> => {
+    const service = serviceRef.current;
+    const profileList = await service.getProfiles();
+    setProfiles(profileList);
+    return profileList;
+  }, []);
+  
+  const setCurrentProfileCallback = useCallback(async (profileName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.setCurrentProfile(profileName);
+    setCurrentProfile(profileName);
+  }, []);
+  
+  const createProfileCallback = useCallback(async (profileName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.createProfile(profileName);
+    const profileList = await service.getProfiles();
+    setProfiles(profileList);
+  }, []);
+  
+  // ==========================================================================
+  // SCENE ITEM MANAGEMENT
+  // ==========================================================================
+  
+  const createSceneItemCallback = useCallback(async (sceneName: string, sourceName: string, transform?: OBSSceneItemTransform): Promise<number> => {
+    const service = serviceRef.current;
+    return await service.createSceneItem(sceneName, sourceName, transform);
+  }, []);
+  
+  const removeSceneItemCallback = useCallback(async (sceneName: string, sceneItemId: number): Promise<void> => {
+    const service = serviceRef.current;
+    await service.removeSceneItem(sceneName, sceneItemId);
+  }, []);
+  
+  const setSceneItemTransformCallback = useCallback(async (sceneName: string, sceneItemId: number, transform: Partial<OBSSceneItemTransform>): Promise<void> => {
+    const service = serviceRef.current;
+    await service.setSceneItemTransform(sceneName, sceneItemId, transform);
+  }, []);
+  
+  const setSceneItemEnabledCallback = useCallback(async (sceneName: string, sceneItemId: number, enabled: boolean): Promise<void> => {
+    const service = serviceRef.current;
+    await service.setSceneItemEnabled(sceneName, sceneItemId, enabled);
+  }, []);
+  
+  // ==========================================================================
+  // FILTER MANAGEMENT
+  // ==========================================================================
+  
+  const getSourceFiltersCallback = useCallback(async (sourceName: string): Promise<OBSFilter[]> => {
+    const service = serviceRef.current;
+    return await service.getSourceFilters(sourceName);
+  }, []);
+  
+  const createSourceFilterCallback = useCallback(async (sourceName: string, filterName: string, filterKind: string, settings?: Record<string, unknown>): Promise<void> => {
+    const service = serviceRef.current;
+    await service.createSourceFilter(sourceName, filterName, filterKind, settings);
+  }, []);
+  
+  const removeSourceFilterCallback = useCallback(async (sourceName: string, filterName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.removeSourceFilter(sourceName, filterName);
+  }, []);
+  
+  const setSourceFilterEnabledCallback = useCallback(async (sourceName: string, filterName: string, enabled: boolean): Promise<void> => {
+    const service = serviceRef.current;
+    await service.setSourceFilterEnabled(sourceName, filterName, enabled);
+  }, []);
+  
+  const setSourceFilterSettingsCallback = useCallback(async (sourceName: string, filterName: string, settings: Record<string, unknown>): Promise<void> => {
+    const service = serviceRef.current;
+    await service.setSourceFilterSettings(sourceName, filterName, settings);
+  }, []);
+  
+  // ==========================================================================
+  // REPLAY BUFFER
+  // ==========================================================================
+  
+  const getReplayBufferStatusCallback = useCallback(async (): Promise<OBSReplayBufferStatus> => {
+    const service = serviceRef.current;
+    const status = await service.getReplayBufferStatus();
+    setReplayBufferStatus(status);
+    return status;
+  }, []);
+  
+  const startReplayBufferCallback = useCallback(async (): Promise<void> => {
+    const service = serviceRef.current;
+    await service.startReplayBuffer();
+    const status = await service.getReplayBufferStatus();
+    setReplayBufferStatus(status);
+  }, []);
+  
+  const stopReplayBufferCallback = useCallback(async (): Promise<void> => {
+    const service = serviceRef.current;
+    await service.stopReplayBuffer();
+    const status = await service.getReplayBufferStatus();
+    setReplayBufferStatus(status);
+  }, []);
+  
+  const saveReplayBufferCallback = useCallback(async (): Promise<void> => {
+    const service = serviceRef.current;
+    await service.saveReplayBuffer();
+  }, []);
+  
+  // ==========================================================================
+  // VIRTUAL CAMERA
+  // ==========================================================================
+  
+  const getVirtualCameraStatusCallback = useCallback(async (): Promise<OBSVirtualCameraStatus> => {
+    const service = serviceRef.current;
+    const status = await service.getVirtualCameraStatus();
+    setVirtualCameraStatus(status);
+    return status;
+  }, []);
+  
+  const startVirtualCameraCallback = useCallback(async (): Promise<void> => {
+    const service = serviceRef.current;
+    await service.startVirtualCamera();
+    const status = await service.getVirtualCameraStatus();
+    setVirtualCameraStatus(status);
+  }, []);
+  
+  const stopVirtualCameraCallback = useCallback(async (): Promise<void> => {
+    const service = serviceRef.current;
+    await service.stopVirtualCamera();
+    const status = await service.getVirtualCameraStatus();
+    setVirtualCameraStatus(status);
+  }, []);
+  
+  // ==========================================================================
+  // STUDIO MODE
+  // ==========================================================================
+  
+  const getStudioModeStatusCallback = useCallback(async (): Promise<OBSStudioModeStatus> => {
+    const service = serviceRef.current;
+    const status = await service.getStudioModeStatus();
+    setStudioModeStatus(status);
+    return status;
+  }, []);
+  
+  const setStudioModeEnabledCallback = useCallback(async (enabled: boolean): Promise<void> => {
+    const service = serviceRef.current;
+    await service.setStudioModeEnabled(enabled);
+    const status = await service.getStudioModeStatus();
+    setStudioModeStatus(status);
+  }, []);
+  
+  const setPreviewSceneCallback = useCallback(async (sceneName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.setPreviewScene(sceneName);
+  }, []);
+  
+  const triggerStudioModeTransitionCallback = useCallback(async (): Promise<void> => {
+    const service = serviceRef.current;
+    await service.triggerTransition();
+  }, []);
+  
+  // ==========================================================================
+  // MEDIA INPUTS
+  // ==========================================================================
+  
+  const getMediaInputStatusCallback = useCallback(async (inputName: string): Promise<OBSMediaInputStatus> => {
+    const service = serviceRef.current;
+    return await service.getMediaInputStatus(inputName);
+  }, []);
+  
+  const playMediaInputCallback = useCallback(async (inputName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.playMediaInput(inputName);
+  }, []);
+  
+  const pauseMediaInputCallback = useCallback(async (inputName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.pauseMediaInput(inputName);
+  }, []);
+  
+  const stopMediaInputCallback = useCallback(async (inputName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.stopMediaInput(inputName);
+  }, []);
+  
+  const restartMediaInputCallback = useCallback(async (inputName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.restartMediaInput(inputName);
+  }, []);
+  
+  // ==========================================================================
+  // STATS
+  // ==========================================================================
+  
+  const getStatsCallback = useCallback(async (): Promise<OBSStats> => {
+    const service = serviceRef.current;
+    const statsData = await service.getStats();
+    setStats(statsData);
+    return statsData;
+  }, []);
+  
+  // ==========================================================================
+  // RECORDING (Advanced)
+  // ==========================================================================
+  
+  const resumeRecordingCallback = useCallback(async (): Promise<void> => {
+    const service = serviceRef.current;
+    await service.resumeRecording();
+  }, []);
+  
+  const splitRecordFileCallback = useCallback(async (): Promise<void> => {
+    const service = serviceRef.current;
+    await service.splitRecordFile();
+  }, []);
+  
+  // ==========================================================================
+  // HOTKEYS
+  // ==========================================================================
+  
+  const triggerHotkeyCallback = useCallback(async (hotkeyName: string): Promise<void> => {
+    const service = serviceRef.current;
+    await service.triggerHotkey(hotkeyName);
+  }, []);
+  
+  // ==========================================================================
   // EVENT HANDLERS
   // ==========================================================================
   
@@ -543,6 +885,71 @@ export function useOBSWebSocket(): UseOBSWebSocketReturn {
     
     // Volume Meters
     volumeMeters,
+    
+    // Scene Collection Management
+    sceneCollections,
+    currentSceneCollection,
+    getSceneCollections: getSceneCollectionsCallback,
+    setCurrentSceneCollection: setCurrentSceneCollectionCallback,
+    createSceneCollection: createSceneCollectionCallback,
+    
+    // Profile Management
+    profiles,
+    currentProfile,
+    getProfiles: getProfilesCallback,
+    setCurrentProfile: setCurrentProfileCallback,
+    createProfile: createProfileCallback,
+    
+    // Scene Item Management
+    createSceneItem: createSceneItemCallback,
+    removeSceneItem: removeSceneItemCallback,
+    setSceneItemTransform: setSceneItemTransformCallback,
+    setSceneItemEnabled: setSceneItemEnabledCallback,
+    
+    // Filter Management
+    getSourceFilters: getSourceFiltersCallback,
+    createSourceFilter: createSourceFilterCallback,
+    removeSourceFilter: removeSourceFilterCallback,
+    setSourceFilterEnabled: setSourceFilterEnabledCallback,
+    setSourceFilterSettings: setSourceFilterSettingsCallback,
+    
+    // Replay Buffer
+    replayBufferStatus,
+    getReplayBufferStatus: getReplayBufferStatusCallback,
+    startReplayBuffer: startReplayBufferCallback,
+    stopReplayBuffer: stopReplayBufferCallback,
+    saveReplayBuffer: saveReplayBufferCallback,
+    
+    // Virtual Camera
+    virtualCameraStatus,
+    getVirtualCameraStatus: getVirtualCameraStatusCallback,
+    startVirtualCamera: startVirtualCameraCallback,
+    stopVirtualCamera: stopVirtualCameraCallback,
+    
+    // Studio Mode
+    studioModeStatus,
+    getStudioModeStatus: getStudioModeStatusCallback,
+    setStudioModeEnabled: setStudioModeEnabledCallback,
+    setPreviewScene: setPreviewSceneCallback,
+    triggerStudioModeTransition: triggerStudioModeTransitionCallback,
+    
+    // Media Inputs
+    getMediaInputStatus: getMediaInputStatusCallback,
+    playMediaInput: playMediaInputCallback,
+    pauseMediaInput: pauseMediaInputCallback,
+    stopMediaInput: stopMediaInputCallback,
+    restartMediaInput: restartMediaInputCallback,
+    
+    // Stats
+    stats,
+    getStats: getStatsCallback,
+    
+    // Recording Advanced
+    resumeRecording: resumeRecordingCallback,
+    splitRecordFile: splitRecordFileCallback,
+    
+    // Hotkeys
+    triggerHotkey: triggerHotkeyCallback,
     
     // Event Handlers
     onSceneChanged,

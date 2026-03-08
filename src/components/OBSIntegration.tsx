@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useOBSWebSocket } from '../hooks/useOBSWebSocket';
 import { OBSConnectionConfig, OBSConnectionStatus } from '../types/obsWebSocket';
+import { AdvancedOBSControls } from './AdvancedOBSControls';
+import { SourceFilters } from './SourceFilters';
+import { ReplayBufferControls } from './ReplayBufferControls';
+import { SceneCollectionManager } from './SceneCollectionManager';
 import './OBSIntegration.css';
 
 // ============================================================================
@@ -13,7 +17,7 @@ interface OBSIntegrationProps {
 
 export const OBSIntegration: React.FC<OBSIntegrationProps> = ({ onClose }) => {
   const obs = useOBSWebSocket();
-  const [activeTab, setActiveTab] = useState<'connection' | 'scenes' | 'stream' | 'recording' | 'inputs' | 'transitions'>('connection');
+  const [activeTab, setActiveTab] = useState<'connection' | 'scenes' | 'stream' | 'recording' | 'inputs' | 'transitions' | 'advanced'>('connection');
   const [connectionConfig, setConnectionConfig] = useState<OBSConnectionConfig>({
     address: '127.0.0.1',
     port: 4455,
@@ -447,6 +451,12 @@ export const OBSIntegration: React.FC<OBSIntegrationProps> = ({ onClose }) => {
         >
           🔄 Transitions
         </button>
+        <button
+          className={`obs-integration__tab ${activeTab === 'advanced' ? 'obs-integration__tab--active' : ''}`}
+          onClick={() => setActiveTab('advanced')}
+        >
+          ⚙️ Advanced
+        </button>
       </div>
       
       <div className={`obs-integration__tab-content ${activeTab === 'connection' ? 'obs-integration__tab-content--active' : ''}`}>
@@ -471,6 +481,10 @@ export const OBSIntegration: React.FC<OBSIntegrationProps> = ({ onClose }) => {
       
       <div className={`obs-integration__tab-content ${activeTab === 'transitions' ? 'obs-integration__tab-content--active' : ''}`}>
         {renderTransitionsTab()}
+      </div>
+      
+      <div className={`obs-integration__tab-content ${activeTab === 'advanced' ? 'obs-integration__tab-content--active' : ''}`}>
+        <AdvancedOBSControls />
       </div>
     </div>
   );

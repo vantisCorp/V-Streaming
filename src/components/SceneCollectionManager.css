@@ -1,0 +1,332 @@
+/**
+ * Scene Collection Manager Styles
+ */
+
+.scene-collection-manager {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  padding: 20px;
+  min-height: 400px;
+}
+
+.scm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.scm-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.scm-subtitle {
+  margin: 4px 0 0;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.scm-header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.scm-refresh-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.scm-refresh-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.scm-refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scm-create-btn {
+  background: #6c5ce7;
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.scm-create-btn:hover:not(:disabled) {
+  background: #5b4cdb;
+}
+
+.scm-create-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scm-close-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #888;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.scm-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.scm-loading-bar {
+  height: 3px;
+  background: linear-gradient(90deg, #6c5ce7, #a29bfe, #6c5ce7);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.scm-collections {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scm-collection-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.scm-collection-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.scm-collection-item.current {
+  background: rgba(108, 92, 231, 0.15);
+  border-color: rgba(108, 92, 231, 0.3);
+}
+
+.scm-collection-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scm-collection-icon {
+  font-size: 1.5rem;
+}
+
+.scm-collection-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.scm-collection-name {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.scm-current-badge {
+  background: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.scm-active-indicator {
+  color: #2ecc71;
+  font-size: 1.3rem;
+}
+
+.scm-collection-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.scm-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.scm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scm-btn.primary {
+  background: #6c5ce7;
+}
+
+.scm-btn.primary:hover:not(:disabled) {
+  background: #5b4cdb;
+}
+
+/* Dialog */
+.scm-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.scm-dialog {
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.scm-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.scm-dialog-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.scm-dialog-close {
+  background: transparent;
+  border: none;
+  color: #888;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.scm-dialog-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.scm-dialog-content {
+  padding: 20px;
+}
+
+.scm-field {
+  margin-bottom: 16px;
+}
+
+.scm-field label {
+  display: block;
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.scm-field input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.scm-field input:focus {
+  outline: none;
+  border-color: #6c5ce7;
+}
+
+.scm-field input::placeholder {
+  color: #555;
+}
+
+.scm-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Empty State */
+.scm-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #888;
+}
+
+.scm-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.scm-empty p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Warning */
+.scm-warning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(243, 156, 18, 0.1);
+  border: 1px solid rgba(243, 156, 18, 0.3);
+  border-radius: 8px;
+  padding: 16px;
+  color: #f39c12;
+}
+
+.scm-warning-icon {
+  font-size: 1.5rem;
+}

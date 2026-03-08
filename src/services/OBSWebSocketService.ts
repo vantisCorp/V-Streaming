@@ -12,7 +12,17 @@ import {
   OBSRecordStatus,
   OBSTransition,
   OBSInput,
-  OBSVolumeMeter
+  OBSVolumeMeter,
+  OBSSceneCollection,
+  OBSProfile,
+  OBSFilter,
+  OBSSceneItemTransform,
+  OBSReplayBufferStatus,
+  OBSVirtualCameraStatus,
+  OBSStudioModeStatus,
+  OBSMediaInputStatus,
+  OBSStats,
+  OBSMonitorType,
 } from '../types/obsWebSocket';
 
 // ============================================================================
@@ -467,6 +477,506 @@ export class OBSWebSocketService extends EventEmitter<IOBSWebSocketEvents> imple
     }
     
     await this.obs.call('TriggerStudioModeTransition');
+  }
+  
+  // ==========================================================================
+  // SCENE COLLECTION MANAGEMENT
+  // ==========================================================================
+  
+  public async getSceneCollections(): Promise<any[]> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetSceneCollectionList');
+    return response.sceneCollections || [];
+  }
+  
+  public async getCurrentSceneCollection(): Promise<string> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetSceneCollectionList');
+    return response.currentSceneCollectionName || '';
+  }
+  
+  public async setCurrentSceneCollection(collectionName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetCurrentSceneCollection', { sceneCollectionName: collectionName });
+  }
+  
+  public async createSceneCollection(collectionName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('CreateSceneCollection', { sceneCollectionName: collectionName });
+  }
+  
+  // ==========================================================================
+  // PROFILE MANAGEMENT
+  // ==========================================================================
+  
+  public async getProfiles(): Promise<any[]> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetProfileList');
+    return response.profiles || [];
+  }
+  
+  public async getCurrentProfile(): Promise<string> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetProfileList');
+    return response.currentProfileName || '';
+  }
+  
+  public async setCurrentProfile(profileName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetCurrentProfile', { profileName });
+  }
+  
+  public async createProfile(profileName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('CreateProfile', { profileName });
+  }
+  
+  // ==========================================================================
+  // SCENE ITEM MANAGEMENT (Advanced)
+  // ==========================================================================
+  
+  public async createSceneItem(sceneName: string, sourceName: string, sceneItemEnabled?: boolean): Promise<number> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('CreateSceneItem', {
+      sceneName,
+      sourceName,
+      sceneItemEnabled: sceneItemEnabled ?? true
+    });
+    return response.sceneItemId;
+  }
+  
+  public async removeSceneItem(sceneName: string, sceneItemId: number): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('RemoveSceneItem', { sceneName, sceneItemId });
+  }
+  
+  public async setSceneItemTransform(sceneName: string, sceneItemId: number, transform: any): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetSceneItemTransform', {
+      sceneName,
+      sceneItemId,
+      sceneItemTransform: transform
+    });
+  }
+  
+  public async setSceneItemEnabled(sceneName: string, sceneItemId: number, enabled: boolean): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetSceneItemEnabled', {
+      sceneName,
+      sceneItemId,
+      sceneItemEnabled: enabled
+    });
+  }
+  
+  public async getSceneItemTransform(sceneName: string, sceneItemId: number): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetSceneItemTransform', { sceneName, sceneItemId });
+    return response.sceneItemTransform;
+  }
+  
+  // ==========================================================================
+  // FILTER MANAGEMENT
+  // ==========================================================================
+  
+  public async getSourceFilters(sourceName: string): Promise<any[]> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetSourceFilterList', { sourceName });
+    return response.filters || [];
+  }
+  
+  public async getSourceFilter(sourceName: string, filterName: string): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetSourceFilter', { sourceName, filterName });
+    return response;
+  }
+  
+  public async createSourceFilter(sourceName: string, filterName: string, filterKind: string, filterSettings?: any): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('CreateSourceFilter', {
+      sourceName,
+      filterName,
+      filterKind,
+      filterSettings: filterSettings || {}
+    });
+  }
+  
+  public async removeSourceFilter(sourceName: string, filterName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('RemoveSourceFilter', { sourceName, filterName });
+  }
+  
+  public async setSourceFilterEnabled(sourceName: string, filterName: string, filterEnabled: boolean): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetSourceFilterEnabled', { sourceName, filterName, filterEnabled });
+  }
+  
+  public async setSourceFilterIndex(sourceName: string, filterName: string, filterIndex: number): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetSourceFilterIndex', { sourceName, filterName, filterIndex });
+  }
+  
+  public async setSourceFilterSettings(sourceName: string, filterName: string, filterSettings: any): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetSourceFilterSettings', { sourceName, filterName, filterSettings });
+  }
+  
+  // ==========================================================================
+  // REPLAY BUFFER
+  // ==========================================================================
+  
+  public async getReplayBufferStatus(): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetReplayBufferStatus');
+    return {
+      outputActive: response.outputActive || false,
+      isSaving: response.isSaving || false
+    };
+  }
+  
+  public async startReplayBuffer(): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('StartReplayBuffer');
+  }
+  
+  public async stopReplayBuffer(): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('StopReplayBuffer');
+  }
+  
+  public async saveReplayBuffer(): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SaveReplayBuffer');
+  }
+  
+  // ==========================================================================
+  // VIRTUAL CAMERA
+  // ==========================================================================
+  
+  public async getVirtualCameraStatus(): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetVirtualCamStatus');
+    return {
+      outputActive: response.outputActive || false
+    };
+  }
+  
+  public async startVirtualCamera(): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('StartVirtualCam');
+  }
+  
+  public async stopVirtualCamera(): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('StopVirtualCam');
+  }
+  
+  // ==========================================================================
+  // STUDIO MODE
+  // ==========================================================================
+  
+  public async getStudioModeStatus(): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetStudioModeEnabled');
+    return {
+      studioModeEnabled: response.studioModeEnabled || false,
+      previewSceneName: response.previewSceneName
+    };
+  }
+  
+  public async setStudioModeEnabled(enabled: boolean): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetStudioModeEnabled', { studioModeEnabled: enabled });
+  }
+  
+  public async setPreviewScene(sceneName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetCurrentPreviewScene', { sceneName });
+  }
+  
+  public async getPreviewScene(): Promise<string> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetCurrentPreviewScene');
+    return response.currentPreviewSceneName || '';
+  }
+  
+  // ==========================================================================
+  // AUDIO MONITORING
+  // ==========================================================================
+  
+  public async setInputAudioMonitor(inputName: string, monitorType: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetInputAudioMonitorType', { inputName, monitorType });
+  }
+  
+  public async getAudioMonitor(inputName: string): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetInputAudioMonitorType', { inputName });
+    return {
+      sourceName: inputName,
+      monitorType: response.monitorType
+    };
+  }
+  
+  // ==========================================================================
+  // MEDIA INPUTS
+  // ==========================================================================
+  
+  public async getMediaInputStatus(inputName: string): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetMediaInputStatus', { inputName });
+    return {
+      mediaState: response.mediaState,
+      mediaDuration: response.mediaDuration || 0,
+      mediaCursor: response.mediaCursor || 0
+    };
+  }
+  
+  public async playMediaInput(inputName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('TriggerMediaInputAction', { inputName, mediaAction: 'OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PLAY' });
+  }
+  
+  public async pauseMediaInput(inputName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('TriggerMediaInputAction', { inputName, mediaAction: 'OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PAUSE' });
+  }
+  
+  public async restartMediaInput(inputName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('TriggerMediaInputAction', { inputName, mediaAction: 'OBS_WEBSOCKET_MEDIA_INPUT_ACTION_RESTART' });
+  }
+  
+  public async stopMediaInput(inputName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('TriggerMediaInputAction', { inputName, mediaAction: 'OBS_WEBSOCKET_MEDIA_INPUT_ACTION_STOP' });
+  }
+  
+  public async nextMediaInput(inputName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('TriggerMediaInputAction', { inputName, mediaAction: 'OBS_WEBSOCKET_MEDIA_INPUT_ACTION_NEXT' });
+  }
+  
+  public async previousMediaInput(inputName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('TriggerMediaInputAction', { inputName, mediaAction: 'OBS_WEBSOCKET_MEDIA_INPUT_ACTION_PREVIOUS' });
+  }
+  
+  public async setMediaInputCursor(inputName: string, cursor: number): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SetMediaInputCursor', { inputName, mediaCursor: cursor });
+  }
+  
+  // ==========================================================================
+  // STATS
+  // ==========================================================================
+  
+  public async getStats(): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetStats');
+    return {
+      activeFps: response.activeFps || 0,
+      averageFrameTime: response.averageFrameTime || 0,
+      cpuUsage: response.cpuUsage || 0,
+      memoryUsage: response.memoryUsage || 0,
+      freeDiskSpace: response.freeDiskSpace || 0,
+      renderMissedFrames: response.renderMissedFrames || 0,
+      renderTotalFrames: response.renderTotalFrames || 0,
+      outputSkippedFrames: response.outputSkippedFrames || 0,
+      outputTotalFrames: response.outputTotalFrames || 0,
+      averageFrameRenderTime: response.averageFrameRenderTime || 0
+    };
+  }
+  
+  // ==========================================================================
+  // RECORDING (Advanced)
+  // ==========================================================================
+  
+  public async resumeRecording(): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('ResumeRecord');
+  }
+  
+  public async splitRecordFile(): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('SplitRecordFile');
+  }
+  
+  // ==========================================================================
+  // HOTKEYS
+  // ==========================================================================
+  
+  public async triggerHotkey(hotkeyName: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    await this.obs.call('TriggerHotkeyByName', { hotkeyName });
+  }
+  
+  public async triggerHotkeyByName(hotkeyName: string, sceneName?: string, sourceName?: string): Promise<void> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const params: any = { hotkeyName };
+    if (sceneName) params.sceneName = sceneName;
+    if (sourceName) params.sourceName = sourceName;
+    
+    await this.obs.call('TriggerHotkeyByName', params);
+  }
+  
+  // ==========================================================================
+  // OUTPUTS
+  // ==========================================================================
+  
+  public async getOutputs(): Promise<any[]> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetOutputList');
+    return response.outputs || [];
+  }
+  
+  public async getOutput(outputName: string): Promise<any> {
+    if (!this.obs || !this.isConnected()) {
+      throw new Error('Not connected to OBS');
+    }
+    
+    const response: any = await this.obs.call('GetOutputStatus', { outputName });
+    return response;
   }
   
   // ==========================================================================

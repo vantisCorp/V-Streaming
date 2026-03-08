@@ -11,6 +11,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.14.0] - 2026-03-09
+
+### Added
+
+#### Advanced OBS Studio Integration
+
+- **AdvancedOBSControls Component** (`src/components/AdvancedOBSControls.tsx`): Main advanced controls component with tabbed interface for quick controls, scene collections, profiles, and statistics
+- **SourceFilters Component** (`src/components/SourceFilters.tsx`): Source filter management with add, edit, and remove functionality for audio/video filters
+- **ReplayBufferControls Component** (`src/components/ReplayBufferControls.tsx`): Dedicated replay buffer controls with start/stop/save functionality
+- **SceneCollectionManager Component** (`src/components/SceneCollectionManager.tsx`): Scene collection management with switch and create capabilities
+
+#### Advanced OBS Features
+
+- **Replay Buffer**: Start/stop replay buffer, save replay with one click
+- **Virtual Camera**: Toggle virtual camera output for video conferencing
+- **Studio Mode**: Enable/disable studio mode for preview/edit workflow
+- **Scene Collections**: View, switch between, and create new scene collections
+- **Profile Management**: View and switch between OBS profiles
+- **Source Filters**: Add, configure, and remove filters from audio/video sources
+- **Statistics Display**: Real-time CPU usage, memory usage, frame timing, and more
+
+#### Service Layer Updates
+
+- **OBSWebSocketService**: Added methods for replay buffer control, virtual camera, studio mode, scene collections, profiles, and filter management
+- **Media Input Actions**: Fixed media playback controls using TriggerMediaInputAction API
+- **Scene Item Creation**: Fixed createSceneItem to use correct OBS WebSocket 5.x API
+
+#### Integration
+
+- Added "Advanced" tab to OBSIntegration component for centralized access to all advanced controls
+
+---
+
 ## [1.13.0] - 2026-03-09
 
 ### Added

@@ -1,27 +1,38 @@
-# v1.13.0 Remote Stream Management Implementation
+# v1.14.0 Advanced OBS Studio Integration Implementation
 
-## Phase 1: Setup & Types
-- [x] Create feature/remote-stream-management branch
-- [x] Create types for remote management (src/types/remote.ts)
-- [x] Create RemoteManagementService.ts
+## Phase 1: Planning & Setup
+- [x] Create feature/advanced-obs-integration branch
+- [x] Analyze existing OBS integration
+- [x] Design advanced features
 
-## Phase 2: React Hook
-- [x] Create useRemoteManagement.ts hook
+## Phase 2: Types & Interfaces
+- [x] Extend OBS types with advanced features
+- [x] Add scene collection management types
+- [x] Add source transformation types
+- [x] Add filter management types
 
-## Phase 3: Components
-- [x] Create RemoteDashboard.tsx component
-- [x] Create RemoteDashboard.css styling
-- [ ] Create RemoteControls.tsx for stream controls
-- [ ] Create StreamStatus.tsx for status display
+## Phase 3: Services
+- [x] Extend OBS service with advanced features
+- [x] Add scene collection management
+- [x] Add source transformation
+- [x] Add filter management
+- [x] Add replay buffer control
+- [x] Add virtual camera control
 
-## Phase 4: Integration
-- [x] Integrate into VTuberStudio.tsx
-- [x] Verify TypeScript compilation
-- [x] Run build
+## Phase 4: Components
+- [ ] Create AdvancedOBSControls.tsx
+- [ ] Create SceneCollectionManager.tsx
+- [ ] Create SourceFilters.tsx
+- [ ] Create ReplayBufferControls.tsx
 
-## Phase 5: Release
-- [x] Update version to 1.13.0
-- [x] Update CHANGELOG.md
+## Phase 5: Integration
+- [ ] Integrate into existing OBS components
+- [ ] Verify TypeScript compilation
+- [ ] Run build
+
+## Phase 6: Release
+- [ ] Update version to 1.14.0
+- [ ] Update CHANGELOG.md
 - [ ] Commit and push changes
 - [ ] Create PR
 - [ ] Merge and create release

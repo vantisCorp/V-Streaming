@@ -93,6 +93,7 @@ This document outlines the planned features, improvements, and milestones for V-
 - [x] Full body tracking integration (v1.10.0)
 - [x] Custom expression editor (v1.11.0)
 - [x] VTuber marketplace and sharing platform (v1.12.0)
+- [x] Remote stream management via web interface (v1.13.0)
 
 
 ### 🤖 AI Features
@@ -112,7 +113,7 @@ This document outlines the planned features, improvements, and milestones for V-
 
 ### 🔧 Technical Features
 
-- [ ] Remote stream management via web interface
+- [x] Remote stream management via web interface (v1.13.0)
 - [ ] Advanced OBS Studio integration
 - [ ] Cloud-based rendering options
 - [ ] Hardware acceleration for all features
@@ -139,6 +140,7 @@ This document outlines the planned features, improvements, and milestones for V-
 | v1.10.0 Full Body Tracking | ✅ Completed | Released |
 | v1.11.0 Expression Editor | ✅ Completed | Released |
 | v1.12.0 Marketplace | ✅ Completed | Released |
+| v1.13.0 Remote Stream Management | ✅ Completed | Released |
 | v2.0.0 Major Update | Q4 2026 | Vision |
 
 ---

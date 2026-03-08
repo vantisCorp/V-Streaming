@@ -1,0 +1,481 @@
+/* Cloud Rendering Panel Styles */
+
+.cloud-rendering {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.cloud-rendering__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.cloud-rendering__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.cloud-rendering__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cloud-rendering__status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.cloud-rendering__status-dot--connected {
+  background: #22c55e;
+}
+
+.cloud-rendering__status-dot--rendering {
+  background: #f59e0b;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Tabs */
+.cloud-rendering__tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #374151;
+  padding-bottom: 12px;
+}
+
+.cloud-rendering__tab {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cloud-rendering__tab:hover {
+  background: #374151;
+  color: #fff;
+}
+
+.cloud-rendering__tab--active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  color: #fff;
+}
+
+/* Tab Content */
+.cloud-rendering__tab-content {
+  display: none;
+}
+
+.cloud-rendering__tab-content--active {
+  display: block;
+}
+
+/* Connection Section */
+.cloud-rendering__connection {
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.cloud-rendering__section-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 16px 0;
+}
+
+.cloud-rendering__form {
+  display: grid;
+  gap: 16px;
+}
+
+.cloud-rendering__form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.cloud-rendering__form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cloud-rendering__form-group--full {
+  grid-column: 1 / -1;
+}
+
+.cloud-rendering__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #9ca3af;
+}
+
+.cloud-rendering__input,
+.cloud-rendering__select {
+  padding: 10px 12px;
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.cloud-rendering__input:focus,
+.cloud-rendering__select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.cloud-rendering__input--error {
+  border-color: #ef4444;
+}
+
+/* Buttons */
+.cloud-rendering__button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cloud-rendering__button--primary {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.cloud-rendering__button--primary:hover {
+  background: #2563eb;
+}
+
+.cloud-rendering__button--secondary {
+  background: #374151;
+  color: #fff;
+}
+
+.cloud-rendering__button--secondary:hover {
+  background: #4b5563;
+}
+
+.cloud-rendering__button--danger {
+  background: #ef4444;
+  color: #fff;
+}
+
+.cloud-rendering__button--danger:hover {
+  background: #dc2626;
+}
+
+.cloud-rendering__button--success {
+  background: #22c55e;
+  color: #fff;
+}
+
+.cloud-rendering__button--success:hover {
+  background: #16a34a;
+}
+
+.cloud-rendering__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cloud-rendering__button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* Stats Grid */
+.cloud-rendering__stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cloud-rendering__stat-card {
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.cloud-rendering__stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.cloud-rendering__stat-label {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* Instances List */
+.cloud-rendering__instances {
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.cloud-rendering__instance-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cloud-rendering__instance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #111827;
+  border-radius: 8px;
+}
+
+.cloud-rendering__instance-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cloud-rendering__instance-id {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.cloud-rendering__instance-type {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.cloud-rendering__instance-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.cloud-rendering__instance-status--running {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.cloud-rendering__instance-status--pending {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+.cloud-rendering__instance-status--terminating {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* Jobs List */
+.cloud-rendering__jobs {
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.cloud-rendering__job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cloud-rendering__job-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: #111827;
+  border-radius: 8px;
+}
+
+.cloud-rendering__job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cloud-rendering__job-id {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.cloud-rendering__job-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.cloud-rendering__job-status--pending {
+  background: rgba(156, 163, 175, 0.2);
+  color: #9ca3af;
+}
+
+.cloud-rendering__job-status--queued {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.cloud-rendering__job-status--processing {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
+}
+
+.cloud-rendering__job-status--completed {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.cloud-rendering__job-status--failed {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* Progress Bar */
+.cloud-rendering__progress {
+  width: 100%;
+  height: 8px;
+  background: #374151;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cloud-rendering__progress-bar {
+  height: 100%;
+  background: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+/* Pricing Table */
+.cloud-rendering__pricing {
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.cloud-rendering__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cloud-rendering__table th,
+.cloud-rendering__table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #374151;
+}
+
+.cloud-rendering__table th {
+  font-size: 14px;
+  font-weight: 600;
+  color: #9ca3af;
+}
+
+.cloud-rendering__table td {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Queue */
+.cloud-rendering__queue-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #111827;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.cloud-rendering__queue-position {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #374151;
+  border-radius: 50%;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* Error Message */
+.cloud-rendering__error {
+  padding: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  border-radius: 6px;
+  color: #ef4444;
+  margin-bottom: 16px;
+}
+
+/* Empty State */
+.cloud-rendering__empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #9ca3af;
+}
+
+.cloud-rendering__empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+/* Create Job Form */
+.cloud-rendering__create-job {
+  background: #1f2937;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.cloud-rendering__job-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cloud-rendering__stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .cloud-rendering__form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .cloud-rendering__job-options {
+    grid-template-columns: 1fr;
+  }
+}

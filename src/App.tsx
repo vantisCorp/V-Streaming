@@ -26,7 +26,8 @@ import OBSIntegration from './components/OBSIntegration';
 import DiscordIntegration from './components/DiscordIntegration';
 import TwitterXIntegration from './components/TwitterXIntegration';
 import TikTokLiveIntegration from './components/TikTokLiveIntegration';
-import PluginManager from './components/PluginManager';
+import PluginManager from './components/PluginManager'
+import AITranslation from './components/AITranslation';
 
 // ============================================================================
 // TYPE DEFINITIONS
@@ -287,6 +288,7 @@ function App() {
   const [showTwitterXIntegration, setShowTwitterXIntegration] = useState(false);
   const [showTikTokLiveIntegration, setShowTikTokLiveIntegration] = useState(false);
   const [showPluginManager, setShowPluginManager] = useState(false);
+  const [showAITranslation, setShowAITranslation] = useState(false);
 
   // Capture state
   const [_captureSources, setCaptureSources] = useState<CaptureSource[]>([]);
@@ -794,6 +796,14 @@ function App() {
             style={{ marginLeft: '8px' }}
           >
             🧩
+          </button>
+          <button
+            onClick={() => setShowAITranslation(true)}
+            className="theme-btn"
+            title="AI Translation"
+            style={{ marginLeft: '8px' }}
+          >
+            🌐
           </button>
           <div className="theme-switcher">
             <button
@@ -1588,6 +1598,13 @@ function App() {
       )}
       {showPluginManager && (
         <PluginManager onClose={() => setShowPluginManager(false)} />
+      )}
+      {showAITranslation && (
+        <div className="modal-overlay" onClick={() => setShowAITranslation(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <AITranslation onClose={() => setShowAITranslation(false)} />
+          </div>
+        </div>
       )}
     </div>
   );

@@ -1796,5 +1796,82 @@
       "totalHooks": "Łącznie Haków",
       "byType": "Wtyczki według typu"
     }
+  },
+  "aiTranslation": {
+    "title": "Tłumaczenie AI",
+    "tabs": {
+      "translate": "Tłumacz",
+      "languages": "Języki",
+      "settings": "Ustawienia",
+      "statistics": "Statystyki"
+    },
+    "status": {
+      "idle": "Bezczynny",
+      "connecting": "Łączenie",
+      "ready": "Gotowy",
+      "translating": "Tłumaczenie",
+      "error": "Błąd"
+    },
+    "translate": {
+      "sourceLanguage": "Język źródłowy",
+      "targetLanguage": "Język docelowy",
+      "enterText": "Wprowadź tekst do przetłumaczenia...",
+      "translationWillAppear": "Tłumaczenie pojawi się tutaj...",
+      "translate": "Tłumacz",
+      "translating": "Tłumaczenie...",
+      "clear": "Wyczyść",
+      "characters": "znaków",
+      "recentTranslations": "Ostatnie tłumaczenia",
+      "noRecentTranslations": "Brak ostatnich tłumaczeń"
+    },
+    "languages": {
+      "title": "Obsługiwane języki",
+      "autoDetect": "Auto-wykrywanie"
+    },
+    "settings": {
+      "serviceConfiguration": "Konfiguracja usługi",
+      "translationSettings": "Ustawienia tłumaczenia",
+      "translationProvider": "Dostawca tłumaczeń",
+      "apiKey": "Klucz API",
+      "enterApiKey": "Wprowadź klucz API...",
+      "translationMode": "Tryb tłumaczenia",
+      "qualityLevel": "Poziom jakości",
+      "autoDetectSource": "Auto-wykrywanie języka źródłowego",
+      "showOriginal": "Pokaż oryginalny tekst",
+      "cacheTranslations": "Buforuj tłumaczenia",
+      "profanityFilter": "Filtr wulgaryzmów",
+      "cacheManagement": "Zarządzanie pamięcią podręczną",
+      "cachedTranslations": "Zbuforowane tłumaczenia",
+      "clearCache": "Wyczyść pamięć podręczną"
+    },
+    "statistics": {
+      "totalTranslations": "Łącznie tłumaczeń",
+      "charactersTranslated": "Przetłumaczonych znaków",
+      "averageLatency": "Średnie opóźnienie",
+      "cacheHitRate": "Wskaźnik trafień pamięci podręcznej",
+      "errorRate": "Wskaźnik błędów",
+      "cachedItems": "Zbuforowane elementy",
+      "translationsByLanguage": "Tłumaczenia według języka",
+      "noData": "Brak danych tłumaczeń",
+      "resetStatistics": "Zresetuj statystyki"
+    },
+    "providers": {
+      "openai": "OpenAI",
+      "deepl": "DeepL",
+      "google": "Google Translate",
+      "azure": "Azure Translator",
+      "local": "Model lokalny",
+      "custom": "Niestandardowe API"
+    },
+    "modes": {
+      "realTime": "Czas rzeczywisty",
+      "onDemand": "Na żądanie",
+      "batch": "Wsadowy"
+    },
+    "quality": {
+      "basic": "Podstawowa (Szybka)",
+      "standard": "Standardowa",
+      "premium": "Premium (Najlepsza)"
+    }
   }
 }

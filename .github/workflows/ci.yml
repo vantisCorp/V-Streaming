@@ -23,38 +23,29 @@ jobs:
       with:
         toolchain: stable
         components: rustfmt, clippy
-      continue-on-error: true
 
     - name: Install Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
-      continue-on-error: true
 
     - name: Install frontend dependencies
       run: npm install
-      continue-on-error: true
 
     - name: Run Rust tests
       run: cd src-tauri && cargo test --verbose
-      continue-on-error: true
 
     - name: Run Rust linter
       run: cd src-tauri && cargo clippy --all-targets --all-features -- -D warnings
-      continue-on-error: true
 
     - name: Check Rust formatting
       run: cd src-tauri && cargo fmt --all -- --check
-      continue-on-error: true
 
     - name: Run frontend lint
       run: npm run lint
-      continue-on-error: true
 
     - name: Build frontend
       run: npm run build
-      continue-on-error: true
 
     - name: Build Tauri app
       run: cd src-tauri && cargo build --verbose
-      continue-on-error: true

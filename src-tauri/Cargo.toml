@@ -1,6 +1,6 @@
 [package]
 name = "v-streaming"
-version = "0.1.0"
+version = "1.16.0"
 description = "A high-performance streaming application for Kick, Twitch and other platforms"
 authors = ["you"]
 license = ""

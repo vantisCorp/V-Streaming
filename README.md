@@ -14,7 +14,7 @@
 <!-- V - Versioning Badge -->
 <div align="center">
 
-[![Version](https://img.shields.io/badge/version-v1.3.0-red?style=for-the-badge&logo=github&logoColor=black)](https://github.com/vantisCorp/V-Streaming/releases/latest)
+[![Version](https://img.shields.io/badge/version-v1.16.0-red?style=for-the-badge&logo=github&logoColor=black)](https://github.com/vantisCorp/V-Streaming/releases/latest)
 [![License](https://img.shields.io/badge/license-MIT-red?style=for-the-badge&logo=opensource&logoColor=black)](LICENSE.md)
 [![Platform](https://img.shields.io/badge/platform-Windows-black?style=for-the-badge&logo=windows&logoColor=white)](https://docs.v-streaming.com/installation)
 [![Build](https://img.shields.io/badge/build-passing-red?style=for-the-badge&logo=github&logoColor=black)](https://github.com/vantisCorp/V-Streaming/actions)

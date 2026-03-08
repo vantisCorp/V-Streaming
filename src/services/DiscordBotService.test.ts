@@ -8,7 +8,6 @@ import {
 
 describe('DiscordBotService', () => {
   let service: DiscordBotService;
-  let originalRandom: () => number;
 
   beforeEach(() => {
     // Clear localStorage
@@ -18,20 +17,14 @@ describe('DiscordBotService', () => {
     (DiscordBotService as any).instance = null;
     service = DiscordBotService.getInstance();
     
-    // Mock Math.random to always return 0 (no failures in simulateConnection, fast connection)
-    // 0 > 0.02 is false, so connection will succeed
-    // connectionTime = 0 * 1000 + 500 = 500ms for fast tests
-    originalRandom = Math.random;
-    Math.random = vi.fn(() => 0);
+    // Mock simulateConnection to always succeed immediately
+    (service as any).simulateConnection = vi.fn().mockResolvedValue(undefined);
   });
 
   afterEach(() => {
     service.disconnect();
     service.destroy();
     (DiscordBotService as any).instance = null;
-    
-    // Restore original Math.random
-    Math.random = originalRandom;
   });
 
   describe('Singleton Pattern', () => {

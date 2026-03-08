@@ -89,7 +89,7 @@ This document outlines the planned features, improvements, and milestones for V-
 
 ### 🎨 VTuber Enhancements
 
-- [ ] 3D model support (VRM, Live2D)
+- [x] 3D model support (VRM, Live2D) (v1.9.0)
 - [ ] Full body tracking integration
 - [ ] Custom expression editor
 - [ ] VTuber marketplace and sharing platform
@@ -134,6 +134,7 @@ This document outlines the planned features, improvements, and milestones for V-
 | v1.6.0 Plugin System | ✅ Completed | Released |
 | v1.7.0 AI Features | ✅ Completed | Released |
 | v1.8.0 Extended AI Features | ✅ Completed | Released |
+| v1.9.0 VTuber Enhancements | ✅ Completed | Released |
 | v2.0.0 Major Update | Q4 2026 | Vision |
 
 ---

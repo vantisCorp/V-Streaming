@@ -1924,5 +1924,70 @@
       "resetConfirm": "Are you sure you want to reset all settings?",
       "resetAll": "Reset All Notifications"
     }
+  },
+  "plugin": {
+    "title": "Plugin Manager",
+    "tabs": {
+      "installed": "Installed",
+      "available": "Available",
+      "settings": "Settings",
+      "statistics": "Statistics"
+    },
+    "by": "by",
+    "searchPlaceholder": "Search plugins...",
+    "allTypes": "All Types",
+    "allStatuses": "All Statuses",
+    "noPlugins": "No plugins installed. Browse the marketplace to find plugins!",
+    "confirmRemove": "Are you sure you want to remove this plugin?",
+    "enable": "Enable",
+    "disable": "Disable",
+    "settings": "Settings",
+    "remove": "Remove",
+    "noSettings": "This plugin has no configurable settings.",
+    "managerSettings": "Plugin Manager Settings",
+    "status": {
+      "uninstalled": "Uninstalled",
+      "installed": "Installed",
+      "enabled": "Enabled",
+      "running": "Running",
+      "error": "Error",
+      "disabled": "Disabled"
+    },
+    "types": {
+      "streaming_platform": "Streaming Platform",
+      "overlay": "Overlay",
+      "widget": "Widget",
+      "encoder": "Encoder",
+      "audio_processor": "Audio Processor",
+      "video_filter": "Video Filter",
+      "chatbot": "Chatbot",
+      "analytics": "Analytics",
+      "moderation": "Moderation",
+      "notification": "Notification",
+      "integration": "Integration",
+      "theme": "Theme",
+      "utility": "Utility",
+      "custom": "Custom"
+    },
+    "settings": {
+      "autoLoadPlugins": "Auto-load plugins on startup",
+      "allowRemotePlugins": "Allow remote plugins",
+      "sandboxEnabled": "Enable plugin sandbox",
+      "maxPlugins": "Maximum plugins"
+    },
+    "marketplace": {
+      "title": "Plugin Marketplace",
+      "description": "Discover and install plugins to extend V-Streaming functionality.",
+      "comingSoon": "Coming Soon",
+      "comingSoonDescription": "The plugin marketplace is currently under development. Check back later for community plugins!"
+    },
+    "stats": {
+      "totalPlugins": "Total Plugins",
+      "enabledPlugins": "Enabled",
+      "runningPlugins": "Running",
+      "errorPlugins": "Errors",
+      "totalHooks": "Total Hooks",
+      "byType": "Plugins by Type"
+    }
   }
 }

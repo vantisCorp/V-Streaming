@@ -1731,5 +1731,70 @@
       "resetConfirm": "Czy na pewno chcesz zresetować wszystkie ustawienia?",
       "resetAll": "Zresetuj wszystkie powiadomienia"
     }
+  },
+  "plugin": {
+    "title": "Menedżer Wtyczek",
+    "tabs": {
+      "installed": "Zainstalowane",
+      "available": "Dostępne",
+      "settings": "Ustawienia",
+      "statistics": "Statystyki"
+    },
+    "by": "przez",
+    "searchPlaceholder": "Szukaj wtyczek...",
+    "allTypes": "Wszystkie typy",
+    "allStatuses": "Wszystkie statusy",
+    "noPlugins": "Brak zainstalowanych wtyczek. Przeglądaj marketplace, aby znaleźć wtyczki!",
+    "confirmRemove": "Czy na pewno chcesz usunąć tę wtyczkę?",
+    "enable": "Włącz",
+    "disable": "Wyłącz",
+    "settings": "Ustawienia",
+    "remove": "Usuń",
+    "noSettings": "Ta wtyczka nie ma konfigurowalnych ustawień.",
+    "managerSettings": "Ustawienia Menedżera Wtyczek",
+    "status": {
+      "uninstalled": "Odinstalowana",
+      "installed": "Zainstalowana",
+      "enabled": "Włączona",
+      "running": "Uruchomiona",
+      "error": "Błąd",
+      "disabled": "Wyłączona"
+    },
+    "types": {
+      "streaming_platform": "Platforma Streamingowa",
+      "overlay": "Nakładka",
+      "widget": "Widżet",
+      "encoder": "Koder",
+      "audio_processor": "Procesor Audio",
+      "video_filter": "Filtr Wideo",
+      "chatbot": "Chatbot",
+      "analytics": "Analityka",
+      "moderation": "Moderacja",
+      "notification": "Powiadomienia",
+      "integration": "Integracja",
+      "theme": "Motyw",
+      "utility": "Narzędzie",
+      "custom": "Niestandardowa"
+    },
+    "settings": {
+      "autoLoadPlugins": "Automatyczne ładowanie wtyczek przy starcie",
+      "allowRemotePlugins": "Zezwalaj na zdalne wtyczki",
+      "sandboxEnabled": "Włącz piaskownicę wtyczek",
+      "maxPlugins": "Maksymalna liczba wtyczek"
+    },
+    "marketplace": {
+      "title": "Marketplace Wtyczek",
+      "description": "Odkrywaj i instaluj wtyczki, aby rozszerzyć funkcjonalność V-Streaming.",
+      "comingSoon": "Wkrótce",
+      "comingSoonDescription": "Marketplace wtyczek jest obecnie w trakcie rozwoju. Sprawdź później, aby znaleźć wtyczki społeczności!"
+    },
+    "stats": {
+      "totalPlugins": "Łącznie Wtyczek",
+      "enabledPlugins": "Włączonych",
+      "runningPlugins": "Uruchomionych",
+      "errorPlugins": "Błędów",
+      "totalHooks": "Łącznie Haków",
+      "byType": "Wtyczki według typu"
+    }
   }
 }

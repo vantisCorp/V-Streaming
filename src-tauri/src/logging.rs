@@ -5,6 +5,7 @@
 
 use chrono::{DateTime, Local};
 use serde::{Deserialize, Serialize};
+use std::fmt;
 use std::fs::{File, OpenOptions};
 use std::io::Write;
 use std::path::PathBuf;
@@ -44,6 +45,18 @@ impl LogLevel {
             Self::Info => tracing::Level::INFO,
             Self::Warn => tracing::Level::WARN,
             Self::Error => tracing::Level::ERROR,
+        }
+    }
+}
+
+impl fmt::Display for LogLevel {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            Self::Trace => write!(f, "TRACE"),
+            Self::Debug => write!(f, "DEBUG"),
+            Self::Info => write!(f, "INFO"),
+            Self::Warn => write!(f, "WARN"),
+            Self::Error => write!(f, "ERROR"),
         }
     }
 }

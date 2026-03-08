@@ -29,6 +29,8 @@ pub struct AppConfig {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GeneralConfig {
+    /// Application name
+    pub app_name: String,
     /// Application language
     pub language: String,
     /// Auto-save interval in seconds (0 = disabled)
@@ -48,6 +50,7 @@ pub struct GeneralConfig {
 impl Default for GeneralConfig {
     fn default() -> Self {
         Self {
+            app_name: "V-Streaming".to_string(),
             language: "en".to_string(),
             auto_save_interval: 60,
             check_updates: true,

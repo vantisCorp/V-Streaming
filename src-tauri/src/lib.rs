@@ -71,8 +71,8 @@ impl AppState {
             capture: CaptureEngine::new()?,
             composition: CompositionEngine::new()?,
             audio: AudioEngine::new()?,
-            encoding: EncodingEngine::new()?,
-            streaming: StreamingEngine::new()?,
+            encoding: EncodingEngine::new(),
+            streaming: StreamingEngine::new(),
             plugin: PluginManager::new()?,
             gpu: GpuContext::new()?,
             vtuber: VtuberEngine::new()?,
@@ -100,7 +100,9 @@ mod tests {
 
     #[test]
     fn test_error_creation() {
-        let error = errors::AppError::new(errors::ErrorKind::Configuration, "Test error");
+        let error = errors::AppError::Config(errors::ConfigError::Generic {
+            message: "Test error".to_string(),
+        });
         assert!(error.to_string().contains("Test error"));
     }
 }

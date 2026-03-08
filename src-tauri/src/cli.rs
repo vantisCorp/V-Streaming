@@ -446,7 +446,7 @@ impl CliContext {
 
 /// Execute CLI command
 pub fn execute_command(args: Cli) -> Result<(), CliError> {
-    let ctx = CliContext::new(args.verbose, args.config)?;
+    let mut ctx = CliContext::new(args.verbose, args.config)?;
     
     match args.command {
         Commands::Config { action } => execute_config_action(&ctx, action),

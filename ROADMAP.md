@@ -115,7 +115,7 @@ This document outlines the planned features, improvements, and milestones for V-
 
 - [x] Remote stream management via web interface (v1.13.0)
 - [x] Advanced OBS Studio integration (v1.14.0)
-- [ ] Cloud-based rendering options
+- [x] Cloud-based rendering options (v1.15.0)
 - [ ] Hardware acceleration for all features
 
 ---
@@ -142,6 +142,7 @@ This document outlines the planned features, improvements, and milestones for V-
 | v1.12.0 Marketplace | ✅ Completed | Released |
 | v1.13.0 Remote Stream Management | ✅ Completed | Released |
 | v1.14.0 Advanced OBS Integration | ✅ Completed | Released |
+| v1.15.0 Cloud Rendering | ✅ Completed | Released |
 | v2.0.0 Major Update | Q4 2026 | Vision |
 
 ---

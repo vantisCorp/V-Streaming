@@ -96,10 +96,10 @@ This document outlines the planned features, improvements, and milestones for V-
 
 ### 🤖 AI Features
 
-- [ ] Real-time translation for global streaming
-- [ ] AI-powered content recommendations
-- [ ] Automated highlight compilation
-- [ ] Smart audience engagement suggestions
+- [x] Real-time translation for global streaming (v1.7.0)
+- [x] AI-powered content recommendations (v1.8.0)
+- [x] Automated highlight compilation (v1.8.0)
+- [x] Smart audience engagement suggestions (v1.8.0)
 
 ### 🌐 Platform Integration
 
@@ -133,6 +133,7 @@ This document outlines the planned features, improvements, and milestones for V-
 | v1.5.0 TikTok Live Integration | ✅ Completed | Released |
 | v1.6.0 Plugin System | ✅ Completed | Released |
 | v1.7.0 AI Features | ✅ Completed | Released |
+| v1.8.0 Extended AI Features | ✅ Completed | Released |
 | v2.0.0 Major Update | Q4 2026 | Vision |
 
 ---
@@ -178,7 +179,7 @@ This roadmap is updated regularly based on:
 - Market trends and competitor analysis
 - Development resource availability
 
-**Last Updated:** March 7, 2026
+**Last Updated:** March 8, 2026
 
 ---
 

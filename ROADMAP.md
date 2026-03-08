@@ -94,7 +94,6 @@ This document outlines the planned features, improvements, and milestones for V-
 - [x] Custom expression editor (v1.11.0)
 - [x] VTuber marketplace and sharing platform (v1.12.0)
 
-- [ ] VTuber marketplace and sharing platform
 
 ### 🤖 AI Features
 

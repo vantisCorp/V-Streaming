@@ -16,10 +16,10 @@ pub fn init_analytics() -> AnalyticsEngine {
 pub async fn analytics_get_real_time(
     state: State<'_, AnalyticsState>
 ) -> Result<RealTimeAnalytics, String> {
-    state.0.lock()
+    Ok(state.0.lock()
         .unwrap()
         .get_real_time()
-        .await
+        .await)
 }
 
 #[tauri::command]
@@ -45,21 +45,21 @@ pub fn analytics_get_aggregated(
 pub fn analytics_get_performance_metrics(
     state: State<'_, AnalyticsState>
 ) -> Result<Option<crate::analytics::PerformanceMetrics>, String> {
-    Ok(state.0.lock().unwrap().get_performance_metrics().cloned())
+    Ok(state.0.lock().unwrap().get_performance_metrics())
 }
 
 #[tauri::command]
 pub fn analytics_get_viewer_statistics(
     state: State<'_, AnalyticsState>
 ) -> Result<Option<crate::analytics::ViewerStatistics>, String> {
-    Ok(state.0.lock().unwrap().get_viewer_statistics().cloned())
+    Ok(state.0.lock().unwrap().get_viewer_statistics())
 }
 
 #[tauri::command]
 pub fn analytics_get_revenue_statistics(
     state: State<'_, AnalyticsState>
 ) -> Result<Option<crate::analytics::RevenueStatistics>, String> {
-    Ok(state.0.lock().unwrap().get_revenue_statistics().cloned())
+    Ok(state.0.lock().unwrap().get_revenue_statistics())
 }
 
 #[tauri::command]

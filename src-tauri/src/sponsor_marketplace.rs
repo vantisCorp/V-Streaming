@@ -1,7 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::sync::{Arc, Mutex};
-use tauri::State;
 use crate::AppState;
 
 // ============================================================================
@@ -159,6 +156,11 @@ impl SponsorMarketplaceEngine {
     }
 
     /// Get all sponsorships
+
+    pub fn get_sponsorship(&self, sponsorship_id: String) -> Option<Sponsorship> {
+        self.sponsorships.iter().find(|s| s.id == sponsorship_id).cloned()
+    }
+
     pub fn get_sponsorships(&self) -> Vec<Sponsorship> {
         self.sponsorships.clone()
     }

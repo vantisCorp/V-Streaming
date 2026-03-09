@@ -177,7 +177,7 @@ impl CommandExecutor {
     pub async fn execute(
         &self,
         command: &str,
-        params: serde_json::Value,
+        _params: serde_json::Value,
     ) -> Result<serde_json::Value, PluginError> {
         // This would communicate with the main application
         // For now, return a mock response

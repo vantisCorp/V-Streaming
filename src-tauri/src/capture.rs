@@ -48,11 +48,14 @@ impl CaptureEngine {
             let mut counter = 0;
 
             unsafe {
+                let lparam = windows::Win32::Foundation::LPARAM(
+                    &mut windows as *mut Vec<CaptureSourceInfo> as isize,
+                );
                 EnumWindows(
                     Some(enumerate_windows_callback),
-                    &mut windows as *mut Vec<CaptureSourceInfo> as isize,
+                    lparam,
                 )
-                .ok()?;
+                .ok().ok_or(CaptureError::CaptureFailed("EnumWindows failed".to_string()))?;
             }
 
             return Ok(windows);
@@ -159,7 +162,7 @@ impl CaptureEngine {
 #[cfg(target_os = "windows")]
 unsafe extern "system" fn enumerate_windows_callback(
     hwnd: windows::Win32::Foundation::HWND,
-    lparam: isize,
+    lparam: windows::Win32::Foundation::LPARAM,
 ) -> windows::Win32::Foundation::BOOL {
     use windows::Win32::UI::WindowsAndMessaging::{GetWindowTextW, IsWindowVisible};
     use windows::core::PWSTR;
@@ -169,11 +172,11 @@ unsafe extern "system" fn enumerate_windows_callback(
     }
 
     let mut buffer = [0u16; 256];
-    let length = GetWindowTextW(hwnd, PWSTR(buffer.as_mut_ptr()), 256);
+    let length = GetWindowTextW(hwnd, &mut buffer);
 
     if length > 0 {
         let name = String::from_utf16_lossy(&buffer[..length as usize]);
-        let windows = &mut *(lparam as *mut Vec<CaptureSourceInfo>);
+        let windows = &mut *(lparam.0 as *mut Vec<CaptureSourceInfo>);
 
         windows.push(CaptureSourceInfo {
             id: format!("window_{}", hwnd.0),
@@ -349,21 +352,19 @@ mod tests {
 
     #[test]
     fn test_capture_engine_creation() {
-        let engine = CaptureEngine::new();
-        assert_eq!(engine.sources.len(), 0);
+        let engine = CaptureEngine::new().expect("Failed to create capture engine");
+        assert!(!engine.is_capturing());
     }
 
     #[test]
     fn test_capture_source() {
-        let source = CaptureSource {
-            id: "source_1".to_string(),
-            name: "Game Capture".to_string(),
-            source_type: CaptureSourceType::Game,
-            enabled: true,
+        let source = CaptureSource::Window {
+            window_handle: 12345,
+            window_name: "Game Capture".to_string(),
         };
 
-        assert_eq!(source.name, "Game Capture");
-        assert_eq!(source.source_type, CaptureSourceType::Game);
+        let id = source.get_id();
+        assert_eq!(id, "window_12345");
     }
 
     #[test]
@@ -372,11 +373,13 @@ mod tests {
             id: "window_1".to_string(),
             name: "Test Window".to_string(),
             source_type: CaptureSourceType::Window,
-            executable: Some("test.exe".to_string()),
+            width: 1920,
+            height: 1080,
+            refresh_rate: 60,
         };
 
         assert_eq!(info.name, "Test Window");
-        assert_eq!(info.executable, Some("test.exe".to_string()));
+        assert_eq!(info.width, 1920);
     }
 
     #[test]
@@ -395,10 +398,11 @@ mod tests {
         let stats = CapturePerformanceStats {
             fps: 60.0,
             frame_time_ms: 16.67,
-            cpu_usage_percent: 25.0,
-            gpu_usage_percent: 40.0,
             dropped_frames: 0,
             total_frames: 3600,
+            capture_latency_ms: 2.5,
+            cpu_usage_percent: 25.0,
+            gpu_usage_percent: 40.0,
         };
 
         assert_eq!(stats.fps, 60.0);

@@ -191,19 +191,21 @@ impl InteractionEngine {
 
     /// Trigger interaction
     pub fn trigger_interaction(&mut self, trigger_id: String) -> Result<InteractionAction, String> {
-        let trigger = self
+        // Clone needed data to avoid borrow conflict
+        let trigger_data = self
             .triggers
             .iter()
             .find(|t| t.id == trigger_id && t.enabled)
+            .map(|t| (t.last_triggered, t.cooldown, t.action.clone()))
             .ok_or("Trigger not found or disabled")?;
 
         // Check cooldown
-        if let Some(last_triggered) = trigger.last_triggered {
+        if let Some(last_triggered) = trigger_data.0 {
             let now = std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)
                 .unwrap()
                 .as_secs();
-            if now - last_triggered < trigger.cooldown as u64 {
+            if now - last_triggered < trigger_data.1 as u64 {
                 return Err("Trigger is on cooldown".to_string());
             }
         }
@@ -218,7 +220,7 @@ impl InteractionEngine {
             );
         }
 
-        Ok(trigger.action.clone())
+        Ok(trigger_data.2)
     }
 
     /// Create mini-game
@@ -267,10 +269,10 @@ impl InteractionEngine {
     pub fn submit_mini_game_answer(
         &mut self,
         game_id: String,
-        username: String,
-        answer: String,
+        _username: String,
+        _answer: String,
     ) -> Result<(), String> {
-        if let Some(game) = self.mini_games.iter_mut().find(|g| g.id == game_id) {
+        if let Some(_game) = self.mini_games.iter_mut().find(|g| g.id == game_id) {
             // Process answer
             // In production, this would validate the answer and update results
             Ok(())
@@ -600,7 +602,7 @@ mod tests {
 
     #[test]
     fn test_mini_game_creation() {
-        let game = MiniGame {
+        let _game = MiniGame {
             id: "game123".to_string(),
             name: "Trivia Game".to_string(),
             game_type: MiniGameType::Trivia,

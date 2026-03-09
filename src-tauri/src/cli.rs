@@ -11,7 +11,7 @@ use serde_json;
 
 // Re-export from other modules
 use crate::config::{AppConfig, ConfigError};
-use crate::pdk::{PluginManager, PluginMetadata, BasePlugin, PluginState};
+use crate::pdk::{PluginManager, PluginMetadata, PluginCategory, BasePlugin, PluginState};
 use crate::plugin_metadata;
 
 #[derive(Parser, Debug)]
@@ -294,7 +294,7 @@ pub struct CliContext {
 
 /// Stream configuration
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-struct StreamConfig {
+pub struct StreamConfig {
     name: String,
     platform: String,
     server_url: String,
@@ -306,7 +306,7 @@ struct StreamConfig {
 
 /// User profile
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-struct UserProfile {
+pub struct UserProfile {
     name: String,
     resolution: String,
     framerate: u32,
@@ -535,7 +535,7 @@ fn execute_config_action(ctx: &CliContext, action: ConfigAction) -> Result<(), C
 
 fn execute_stream_action(ctx: &mut CliContext, action: StreamAction) -> Result<(), CliError> {
     match action {
-        StreamAction::Start { platform, key } => {
+        StreamAction::Start { platform, key: _ } => {
             ctx.info(&format!("Starting stream to {}...", platform));
             ctx.warning("Stream start requires backend integration");
             ctx.success("Stream started successfully (mock)");
@@ -652,12 +652,12 @@ fn execute_plugin_action(ctx: &mut CliContext, action: PluginAction) -> Result<(
         }
         PluginAction::Enable { name } => {
             ctx.info(&format!("Enabling plugin '{}'...", name));
-            ctx.plugin_manager.start_plugin(name)?;
+            ctx.plugin_manager.start_plugin(&name)?;
             ctx.success("Plugin enabled");
         }
         PluginAction::Disable { name } => {
             ctx.info(&format!("Disabling plugin '{}'...", name));
-            ctx.plugin_manager.stop_plugin(name)?;
+            ctx.plugin_manager.stop_plugin(&name)?;
             ctx.success("Plugin disabled");
         }
         PluginAction::Update { name } => {
@@ -710,7 +710,7 @@ fn execute_diagnostic_action(ctx: &CliContext, action: DiagnosticAction) -> Resu
             println!("  Cores: {}", num_cpus::get());
             
             // Check memory
-            let sys_mem = sys_info::mem_info();
+            let sys_mem = sys_info::mem_info().map_err(|e| CliError::CommandFailed(format!("Failed to get memory info: {}", e)))?;
             println!("✓ Memory: Available");
             println!("  Total: {} MB", sys_mem.total / 1024);
             
@@ -729,7 +729,7 @@ fn execute_diagnostic_action(ctx: &CliContext, action: DiagnosticAction) -> Resu
         DiagnosticAction::CheckRequirements => {
             ctx.info("Checking system requirements...");
             
-            let sys_mem = sys_info::mem_info();
+            let sys_mem = sys_info::mem_info().map_err(|e| CliError::CommandFailed(format!("Failed to get memory info: {}", e)))?;
             let total_mem_mb = sys_mem.total / 1024;
             let cpu_cores = num_cpus::get();
             
@@ -782,7 +782,7 @@ fn execute_diagnostic_action(ctx: &CliContext, action: DiagnosticAction) -> Resu
             println!("  Hardware acceleration: ✓ Available");
             ctx.success("Encoding working correctly");
         }
-        DiagnosticAction::TestStream { server, key } => {
+        DiagnosticAction::TestStream { server, key: _ } => {
             ctx.info(&format!("Testing streaming connection to {}...", server));
             println!("  Connection: ✓ Success");
             println!("  Authentication: ✓ Success");
@@ -794,7 +794,7 @@ fn execute_diagnostic_action(ctx: &CliContext, action: DiagnosticAction) -> Resu
             println!("OS: {}", std::env::consts::OS);
             println!("Arch: {}", std::env::consts::ARCH);
             println!("CPU cores: {}", num_cpus::get());
-            println!("Host: {}", gethostname::gethostname().unwrap_or_else(|_| "unknown".to_string()));
+            println!("Host: {}", gethostname::gethostname().to_string_lossy());
             
             if let Ok(disk) = sys_info::disk_info() {
                 println!("Disk total: {} GB", disk.total / 1024 / 1024);
@@ -1093,6 +1093,12 @@ pub enum CliError {
 impl From<ConfigError> for CliError {
     fn from(error: ConfigError) -> Self {
         CliError::ConfigError(error.to_string())
+    }
+}
+
+impl From<crate::pdk::PluginError> for CliError {
+    fn from(error: crate::pdk::PluginError) -> Self {
+        CliError::PluginError(error.to_string())
     }
 }
 

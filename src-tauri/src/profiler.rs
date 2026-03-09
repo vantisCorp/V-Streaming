@@ -709,9 +709,22 @@ impl Profiler {
             max_memory_mb: max_mem,
             min_memory_mb: min_mem,
             memory_growth_mb: mem_growth,
-            avg_gpu_usage: samples.iter().filter_map(|s| s.gpu_usage).sum::<f32>() 
-                / samples.iter().filter(|s| s.gpu_usage.is_some()).count().max(1) as f32,
-            max_gpu_usage: samples.iter().filter_map(|s| s.gpu_usage).fold(0.0, f32::max),
+            avg_gpu_usage: {
+                let gpu_samples: Vec<f32> = samples.iter().filter_map(|s| s.gpu_usage).collect();
+                if gpu_samples.is_empty() {
+                    None
+                } else {
+                    Some(gpu_samples.iter().sum::<f32>() / gpu_samples.len() as f32)
+                }
+            },
+            max_gpu_usage: {
+                let gpu_samples: Vec<f32> = samples.iter().filter_map(|s| s.gpu_usage).collect();
+                if gpu_samples.is_empty() {
+                    None
+                } else {
+                    Some(gpu_samples.iter().cloned().fold(f32::MIN, f32::max))
+                }
+            },
             avg_gpu_memory_mb: None,
             max_gpu_memory_mb: None,
             total_frames,

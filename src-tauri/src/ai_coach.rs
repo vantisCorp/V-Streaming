@@ -1,7 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::sync::{Arc, Mutex};
-use tauri::State;
 use crate::AppState;
 
 // ============================================================================
@@ -21,7 +18,7 @@ pub enum CoachTipType {
 }
 
 /// Coach tip priority
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, PartialOrd, Ord)]
 #[serde(rename_all = "lowercase")]
 pub enum CoachTipPriority {
     Low,

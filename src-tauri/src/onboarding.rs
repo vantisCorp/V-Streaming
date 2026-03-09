@@ -95,7 +95,7 @@ impl OnboardingEngine {
             let prev = step.previous();
             
             if let Some(prev_step) = prev {
-                if let Some(last_completed) = completed.pop() {
+                if let Some(_last_completed) = completed.pop() {
                     progress.completed_steps -= 1;
                     progress.current_step_index -= 1;
                 }

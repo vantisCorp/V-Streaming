@@ -95,7 +95,7 @@ impl GpuContext {
     }
 
     /// Apply a shader to a texture
-    pub fn apply_shader(&self, texture_id: u32, shader: Shader) -> Result<(), GpuError> {
+    pub fn apply_shader(&self, texture_id: u32, _shader: Shader) -> Result<(), GpuError> {
         tracing::info!("Applied shader to texture {}", texture_id);
         Ok(())
     }
@@ -205,7 +205,7 @@ pub struct Texture {
 }
 
 /// Texture format
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub enum TextureFormat {
     Rgba8Unorm,
     Bgra8Unorm,

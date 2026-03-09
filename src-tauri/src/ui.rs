@@ -219,6 +219,8 @@ impl UiEngine {
         Ok(UndoRedoInfo {
             undo_count: undo.len(),
             redo_count: redo.len(),
+            can_undo: !undo.is_empty(),
+            can_redo: !redo.is_empty(),
         })
     }
 
@@ -322,7 +324,7 @@ impl Default for UserSettings {
 }
 
 /// Settings update options
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct SettingsUpdate {
     pub interface_mode: Option<InterfaceMode>,
     pub theme: Option<Theme>,
@@ -335,7 +337,7 @@ pub struct SettingsUpdate {
 }
 
 /// UI state
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UiState {
     pub active_tab: String,
     pub dock_layout: DockLayout,
@@ -357,7 +359,7 @@ impl Default for UiState {
 }
 
 /// UI state update options
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct UiStateUpdate {
     pub active_tab: Option<String>,
     pub dock_layout: Option<DockLayout>,
@@ -445,7 +447,7 @@ pub struct DockArea {
 }
 
 /// Dock layout
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DockLayout {
     pub panels: Vec<String>,
     pub layout_type: LayoutType,
@@ -466,7 +468,7 @@ impl Default for DockLayout {
 }
 
 /// Layout type
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum LayoutType {
     Grid,
     Horizontal,
@@ -475,7 +477,7 @@ pub enum LayoutType {
 }
 
 /// Panel visibility
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PanelVisibility {
     pub preview: bool,
     pub controls: bool,
@@ -499,7 +501,7 @@ impl Default for PanelVisibility {
 }
 
 /// UI action for undo/redo
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum UiAction {
     LayerAdded { scene_id: usize, layer_id: usize },
     LayerRemoved { scene_id: usize, layer: usize },
@@ -511,10 +513,12 @@ pub enum UiAction {
 }
 
 /// Undo/Redo info
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UndoRedoInfo {
     pub undo_count: usize,
     pub redo_count: usize,
+    pub can_undo: bool,
+    pub can_redo: bool,
 }
 
 #[cfg(test)]

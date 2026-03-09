@@ -1,7 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::sync::{Arc, Mutex};
-use tauri::State;
 use crate::AppState;
 
 // ============================================================================
@@ -295,7 +292,7 @@ impl BusinessEngine {
 
     /// Subscribe to plan
     pub fn subscribe(&mut self, user_id: String, tier: SubscriptionTier, yearly: bool) -> Result<UserSubscription, String> {
-        let plan = self.plans.iter().find(|p| p.tier == tier).ok_or("Plan not found")?;
+        let _plan = self.plans.iter().find(|p| p.tier == tier).ok_or("Plan not found")?;
         
         let duration_days = if yearly { 365 } else { 30 };
         

@@ -1,7 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use std::sync::{Arc, Mutex};
-use tauri::State;
 use crate::AppState;
 
 // ============================================================================
@@ -216,8 +213,9 @@ impl SocialMediaEngine {
             self.config.default_hashtags.join(" ")
         );
         
-        for platform in &self.config.platforms {
-            let _ = self.create_post(platform.clone(), content.clone(), Vec::new());
+        let platforms: Vec<_> = self.config.platforms.clone();
+        for platform in platforms {
+            let _ = self.create_post(platform, content.clone(), Vec::new());
             // In real implementation, would post immediately
         }
         
@@ -240,8 +238,9 @@ impl SocialMediaEngine {
             self.config.default_hashtags.join(" ")
         );
         
-        for platform in &self.config.platforms {
-            let _ = self.create_post(platform.clone(), content.clone(), Vec::new());
+        let platforms: Vec<_> = self.config.platforms.clone();
+        for platform in platforms {
+            let _ = self.create_post(platform, content.clone(), Vec::new());
             // In real implementation, would post immediately
         }
         

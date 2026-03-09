@@ -3,7 +3,7 @@
 
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
-use std::time::{Duration, SystemTime};
+use std::time::Duration;
 use chrono::{DateTime, Utc};
 use tokio::sync::RwLock;
 
@@ -25,7 +25,7 @@ pub struct AnalyticsDataPoint {
 }
 
 /// Analytics aggregation period
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub enum AggregationPeriod {
     Minute,
     FiveMinutes,
@@ -147,7 +147,7 @@ pub struct ComparisonData {
 }
 
 /// Real-time analytics
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct RealTimeAnalytics {
     pub current_viewers: u64,
     pub chat_messages_per_minute: u64,
@@ -438,7 +438,7 @@ impl AnalyticsEngine {
 
         let unique_viewers = self.data_points.iter().map(|p| p.viewers).max().unwrap_or(0);
         let total_chat_messages = self.data_points.iter().map(|p| p.chat_messages).sum::<u64>();
-        let total_followers = self.data_points.iter().map(|p| p.new_followers).sum::<u64>();
+        let _total_followers = self.data_points.iter().map(|p| p.new_followers).sum::<u64>();
         
         let chat_participation_rate = if unique_viewers > 0 {
             (total_chat_messages as f64 / unique_viewers as f64) * 100.0
@@ -492,7 +492,7 @@ impl AnalyticsEngine {
         }
 
         let count = self.data_points.len() as f64;
-        let avg_bitrate = self.data_points.iter().map(|p| p.bitrate).sum::<u64>() as f64 / count;
+        let _avg_bitrate = self.data_points.iter().map(|p| p.bitrate).sum::<u64>() as f64 / count;
         let avg_fps = self.data_points.iter().map(|p| p.fps).sum::<f64>() / count;
         let avg_cpu = self.data_points.iter().map(|p| p.cpu_usage).sum::<f64>() / count;
         let avg_gpu = self.data_points.iter().map(|p| p.gpu_usage).sum::<f64>() / count;

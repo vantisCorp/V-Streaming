@@ -33,7 +33,7 @@ image = "0.25"
 thiserror = "1.0"
 tracing = "0.1"
 uuid = { version = "1.0", features = ["v4", "serde"] }
-tracing-subscriber = "0.3"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 # Additional dependencies for profiler, CLI, PDK, and configuration
 tracing-appender = "0.2"
 chrono = { version = "0.4", features = ["serde"] }

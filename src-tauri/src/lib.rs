@@ -47,6 +47,7 @@ pub use analytics::{AnalyticsEngine, AnalyticsDataPoint, AggregatedAnalytics, Re
 pub use cli::{Cli, CliContext, run_cli};
 pub use config::{AppConfig, GeneralConfig, CaptureConfig, AudioConfig, EncodingConfig, StreamingConfig, UIConfig, AIConfig};
 pub use pdk::{BasePlugin, PluginMetadata, PluginState, PluginConfig, PluginContext, PluginError};
+pub use pdk::plugin_metadata;
 pub use logging::{Logger, LogLevel, LogEntry};
 pub use profiler::{Profiler, ProfilingSession};
 pub use errors::AppError;

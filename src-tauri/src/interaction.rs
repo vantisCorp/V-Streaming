@@ -269,10 +269,10 @@ impl InteractionEngine {
     pub fn submit_mini_game_answer(
         &mut self,
         game_id: String,
-        username: String,
-        answer: String,
+        _username: String,
+        _answer: String,
     ) -> Result<(), String> {
-        if let Some(game) = self.mini_games.iter_mut().find(|g| g.id == game_id) {
+        if let Some(_game) = self.mini_games.iter_mut().find(|g| g.id == game_id) {
             // Process answer
             // In production, this would validate the answer and update results
             Ok(())
@@ -602,7 +602,7 @@ mod tests {
 
     #[test]
     fn test_mini_game_creation() {
-        let game = MiniGame {
+        let _game = MiniGame {
             id: "game123".to_string(),
             name: "Trivia Game".to_string(),
             game_type: MiniGameType::Trivia,

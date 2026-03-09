@@ -15,7 +15,7 @@ impl PluginManager {
     }
 
     /// Load a plugin
-    pub fn load_plugin(&self, path: String) -> Result<Plugin, String> {
+    pub fn load_plugin(&self, _path: String) -> Result<Plugin, String> {
         Ok(Plugin {
             id: "plugin_1".to_string(),
             name: "Example Plugin".to_string(),
@@ -26,17 +26,17 @@ impl PluginManager {
     }
 
     /// Unload a plugin
-    pub fn unload_plugin(&self, plugin_id: String) -> Result<(), String> {
+    pub fn unload_plugin(&self, _plugin_id: String) -> Result<(), String> {
         Ok(())
     }
 
     /// Enable a plugin
-    pub fn enable_plugin(&self, plugin_id: String) -> Result<(), String> {
+    pub fn enable_plugin(&self, _plugin_id: String) -> Result<(), String> {
         Ok(())
     }
 
     /// Disable a plugin
-    pub fn disable_plugin(&self, plugin_id: String) -> Result<(), String> {
+    pub fn disable_plugin(&self, _plugin_id: String) -> Result<(), String> {
         Ok(())
     }
 

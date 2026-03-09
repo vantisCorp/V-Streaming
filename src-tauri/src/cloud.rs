@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use tauri::State;
 
@@ -467,8 +466,8 @@ pub fn get_vod_qualities() -> Vec<String> {
 /// Test cloud connection
 #[tauri::command]
 pub fn test_cloud_connection(
-    provider: String,
-    api_key: String,
+    _provider: String,
+    _api_key: String,
 ) -> Result<bool, String> {
     // Simulate connection test
     // In production, this would actually test the connection

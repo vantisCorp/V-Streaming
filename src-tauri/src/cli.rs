@@ -294,7 +294,7 @@ pub struct CliContext {
 
 /// Stream configuration
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-struct StreamConfig {
+pub struct StreamConfig {
     name: String,
     platform: String,
     server_url: String,
@@ -306,7 +306,7 @@ struct StreamConfig {
 
 /// User profile
 #[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
-struct UserProfile {
+pub struct UserProfile {
     name: String,
     resolution: String,
     framerate: u32,
@@ -535,7 +535,7 @@ fn execute_config_action(ctx: &CliContext, action: ConfigAction) -> Result<(), C
 
 fn execute_stream_action(ctx: &mut CliContext, action: StreamAction) -> Result<(), CliError> {
     match action {
-        StreamAction::Start { platform, key } => {
+        StreamAction::Start { platform, key: _ } => {
             ctx.info(&format!("Starting stream to {}...", platform));
             ctx.warning("Stream start requires backend integration");
             ctx.success("Stream started successfully (mock)");
@@ -782,7 +782,7 @@ fn execute_diagnostic_action(ctx: &CliContext, action: DiagnosticAction) -> Resu
             println!("  Hardware acceleration: ✓ Available");
             ctx.success("Encoding working correctly");
         }
-        DiagnosticAction::TestStream { server, key } => {
+        DiagnosticAction::TestStream { server, key: _ } => {
             ctx.info(&format!("Testing streaming connection to {}...", server));
             println!("  Connection: ✓ Success");
             println!("  Authentication: ✓ Success");

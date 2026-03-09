@@ -1,5 +1,4 @@
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use tauri::State;
 
@@ -529,8 +528,8 @@ pub fn get_srt_default_config() -> SRTConfig {
 /// Test stream connection
 #[tauri::command]
 pub fn test_stream_connection(
-    rtmp_url: String,
-    stream_key: String,
+    _rtmp_url: String,
+    _stream_key: String,
 ) -> Result<bool, String> {
     // Simulate connection test
     // In production, this would actually test the connection

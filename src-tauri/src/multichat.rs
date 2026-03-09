@@ -609,9 +609,9 @@ pub fn get_chat_users(state: State<Arc<Mutex<MultichatEngine>>>) -> Vec<ChatUser
 /// Send chat message
 #[tauri::command]
 pub fn send_chat_message(
-    platform: String,
-    message: String,
-    state: State<Arc<Mutex<MultichatEngine>>>,
+    _platform: String,
+    _message: String,
+    _state: State<Arc<Mutex<MultichatEngine>>>,
 ) -> Result<(), String> {
     // In production, this would send the message to the platform
     Ok(())

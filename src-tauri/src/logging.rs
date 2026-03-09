@@ -6,11 +6,9 @@
 use chrono::{DateTime, Local};
 use serde::{Deserialize, Serialize};
 use std::fmt;
-use std::fs::{File, OpenOptions};
-use std::io::Write;
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
-use tracing::{debug, error, info, trace, warn};
+
 use tracing_appender::{non_blocking, rolling};
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 

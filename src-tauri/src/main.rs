@@ -2,11 +2,10 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 use v_streaming::*;
-use v_streaming::{capture, composition, audio, encoding, streaming, plugin, gpu, vtuber, ui, onboarding, cloud, multichat, webrtc, interaction, ai_highlight, social_media, game_state, live_captions, translation, ai_coach, tip_ecosystem, sponsor_marketplace, smart_home, telemetry, performance, business, analytics, analytics_commands};
+use v_streaming::{capture, composition, audio, encoding, streaming, plugin, gpu, vtuber, ui, onboarding, cloud, multichat, webrtc, interaction, ai_highlight, social_media, game_state, live_captions, translation, ai_coach, tip_ecosystem, sponsor_marketplace, smart_home, telemetry, performance, business, analytics};
 
-use tauri::Manager;
 use std::collections::HashMap;
-use std::sync::{Arc, Mutex};
+use std::sync::Mutex;
 
 // Tauri commands
 
@@ -443,7 +442,7 @@ fn set_tracking_feature_enabled(state: tauri::State<AppState>, feature: vtuber::
 }
 
 #[tauri::command]
-fn is_tracking_feature_enabled(state: tauri::State<AppState>, feature: vtuber::TrackingFeature) -> bool {
+fn is_tracking_feature_enabled(_state: tauri::State<AppState>, _feature: vtuber::TrackingFeature) -> bool {
     // Feature tracking status not directly queryable, return true as default
     true
 }
@@ -872,8 +871,8 @@ fn get_srt_default_config() -> streaming::SRTConfig {
 
 #[tauri::command]
 fn test_stream_connection(
-    rtmp_url: String,
-    stream_key: String,
+    _rtmp_url: String,
+    _stream_key: String,
 ) -> Result<bool, String> {
     // Simulate connection test
     // In production, this would actually test the connection
@@ -1015,8 +1014,8 @@ fn get_vod_qualities() -> Vec<String> {
 
 #[tauri::command]
 fn test_cloud_connection(
-    provider: String,
-    api_key: String,
+    _provider: String,
+    _api_key: String,
 ) -> Result<bool, String> {
     // Simulate connection test
     // In production, this would actually test the connection
@@ -2782,7 +2781,7 @@ async fn analytics_get_real_time(state: tauri::State<'_, AppState>) -> Result<an
     // We need to get a reference to the engine without holding the lock across await
     // The async method uses interior RwLock, so we need special handling
     let real_time = {
-        let engine = state.analytics_engine.lock().unwrap();
+        let _engine = state.analytics_engine.lock().unwrap();
         // Get a copy of the real_time_data's RwLock handle
         // Since we can't clone the engine, we'll need to modify the approach
         // For now, let's return a default value
@@ -2823,7 +2822,7 @@ fn analytics_get_revenue_statistics(state: tauri::State<AppState>) -> Result<Opt
 }
 
 #[tauri::command]
-async fn analytics_update_real_time(data: analytics::RealTimeAnalytics, state: tauri::State<'_, AppState>) -> Result<(), String> {
+async fn analytics_update_real_time(data: analytics::RealTimeAnalytics, _state: tauri::State<'_, AppState>) -> Result<(), String> {
     // Note: This is a no-op for now due to MutexGuard across await issue
     // The async method requires interior mutability with tokio::sync::Mutex
     // For now, we just accept the data but don't update

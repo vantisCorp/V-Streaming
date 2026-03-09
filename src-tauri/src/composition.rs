@@ -319,7 +319,7 @@ impl CompositionEngine {
         Ok(())
     }
 
-    pub fn set_layer_locked(&self, scene_id: usize, layer_id: usize, locked: bool) -> Result<(), String> {
+    pub fn set_layer_locked(&self, scene_id: usize, layer_id: usize, _locked: bool) -> Result<(), String> {
         // Layers don't have a locked field yet, but we accept the call
         let scenes = self.scenes.lock().map_err(|e| e.to_string())?;
         let scene = scenes.get(&scene_id).ok_or("Scene not found")?;

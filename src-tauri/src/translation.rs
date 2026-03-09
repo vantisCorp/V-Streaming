@@ -33,6 +33,32 @@ pub enum TranslationLanguage {
     Custom,
 }
 
+impl std::fmt::Display for TranslationLanguage {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            TranslationLanguage::English => write!(f, "English"),
+            TranslationLanguage::Spanish => write!(f, "Spanish"),
+            TranslationLanguage::French => write!(f, "French"),
+            TranslationLanguage::German => write!(f, "German"),
+            TranslationLanguage::Italian => write!(f, "Italian"),
+            TranslationLanguage::Portuguese => write!(f, "Portuguese"),
+            TranslationLanguage::Russian => write!(f, "Russian"),
+            TranslationLanguage::Japanese => write!(f, "Japanese"),
+            TranslationLanguage::Korean => write!(f, "Korean"),
+            TranslationLanguage::Chinese => write!(f, "Chinese"),
+            TranslationLanguage::Arabic => write!(f, "Arabic"),
+            TranslationLanguage::Hindi => write!(f, "Hindi"),
+            TranslationLanguage::Dutch => write!(f, "Dutch"),
+            TranslationLanguage::Polish => write!(f, "Polish"),
+            TranslationLanguage::Turkish => write!(f, "Turkish"),
+            TranslationLanguage::Vietnamese => write!(f, "Vietnamese"),
+            TranslationLanguage::Thai => write!(f, "Thai"),
+            TranslationLanguage::Indonesian => write!(f, "Indonesian"),
+            TranslationLanguage::Custom => write!(f, "Custom"),
+        }
+    }
+}
+
 /// Translation service
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 #[serde(rename_all = "lowercase")]

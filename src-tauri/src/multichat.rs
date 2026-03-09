@@ -20,6 +20,36 @@ pub enum ChatPlatform {
     DLive,
 }
 
+impl std::fmt::Display for ChatPlatform {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ChatPlatform::Twitch => write!(f, "Twitch"),
+            ChatPlatform::YouTube => write!(f, "YouTube"),
+            ChatPlatform::Kick => write!(f, "Kick"),
+            ChatPlatform::Facebook => write!(f, "Facebook"),
+            ChatPlatform::TikTok => write!(f, "TikTok"),
+            ChatPlatform::Trovo => write!(f, "Trovo"),
+            ChatPlatform::DLive => write!(f, "DLive"),
+        }
+    }
+}
+
+impl std::str::FromStr for ChatPlatform {
+    type Err = String;
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s.to_lowercase().as_str() {
+            "twitch" => Ok(ChatPlatform::Twitch),
+            "youtube" => Ok(ChatPlatform::YouTube),
+            "kick" => Ok(ChatPlatform::Kick),
+            "facebook" => Ok(ChatPlatform::Facebook),
+            "tiktok" => Ok(ChatPlatform::TikTok),
+            "trovo" => Ok(ChatPlatform::Trovo),
+            "dlive" => Ok(ChatPlatform::DLive),
+            _ => Err(format!("Unknown chat platform: {}", s)),
+        }
+    }
+}
+
 /// Chat message
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ChatMessage {

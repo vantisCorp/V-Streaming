@@ -33,6 +33,8 @@ pub mod errors;
 pub mod logging;
 pub mod profiler;
 
+use std::sync::Mutex;
+
 pub use capture::{CaptureEngine, CaptureSource, CaptureSourceInfo, CapturePerformanceStats, CapturePreset, get_default_presets};
 pub use composition::{CompositionEngine, Scene, Layer, Filter, OutputFormat, LayerUpdate, LayerSource, BlendMode, LayerMask, LayerGroup, SceneTransition, CanvasOutputs, ComposedFrame, CompositionStats};
 pub use audio::{AudioEngine, AudioTrack, AudioDeviceInfo, AudioEffect, TrackUpdate, AudioPerformanceStats, AudioRoutingConfig};
@@ -43,55 +45,64 @@ pub use gpu::{GpuContext, GpuInfo, Texture, Shader, TonemapMethod, ColorGrading,
 pub use vtuber::{VtuberEngine, VtuberModel, VtuberModelType, Animation, Expression, BoneTransform, FaceTracker, TrackingFeature, FaceTrackingData, MouthShape, VtuberStats};
 pub use ui::{UiEngine, UserSettings, SettingsUpdate, UiState, UiStateUpdate, InterfaceMode, Theme, WindowLayout, PanelConfig, DockLayout, PanelVisibility, UiAction, UndoRedoInfo};
 pub use onboarding::{OnboardingEngine, OnboardingStep, StepContent, UserPreferences, OnboardingProgress, OnboardingData};
+pub use cloud::CloudEngine;
+pub use multichat::MultichatEngine;
+pub use webrtc::WebRTCEngine;
+pub use interaction::InteractionEngine;
+pub use ai_highlight::AiHighlightEngine;
+pub use social_media::SocialMediaEngine;
+pub use game_state::GameStateEngine;
+pub use live_captions::LiveCaptionsEngine;
+pub use translation::TranslationEngine;
+pub use ai_coach::AiCoachEngine;
+pub use tip_ecosystem::TipEcosystemEngine;
+pub use sponsor_marketplace::SponsorMarketplaceEngine;
+pub use smart_home::SmartHomeEngine;
+pub use telemetry::TelemetryEngine;
+pub use performance::PerformanceEngine;
+pub use business::BusinessEngine;
 pub use analytics::{AnalyticsEngine, AnalyticsDataPoint, AggregatedAnalytics, RealTimeAnalytics, PerformanceMetrics, ViewerStatistics, RevenueStatistics, AggregationPeriod, ExportFormat};
 pub use cli::{Cli, CliContext, run_cli};
 pub use config::{AppConfig, GeneralConfig, CaptureConfig, AudioConfig, EncodingConfig, StreamingConfig, UIConfig, AIConfig};
-pub use pdk::{BasePlugin, PluginMetadata, PluginState, PluginConfig, PluginContext, PluginError};
-pub use pdk::plugin_metadata;
+pub use pdk::{BasePlugin, PluginMetadata, PluginState, PluginConfig, PluginContext, PluginError, PluginManager as PdkPluginManager};
 pub use logging::{Logger, LogLevel, LogEntry};
 pub use profiler::{Profiler, ProfilingSession};
 pub use errors::AppError;
 
-/// Core application state
+/// Core application state - shared between library and binary
 pub struct AppState {
-    pub capture: CaptureEngine,
-    pub composition: CompositionEngine,
-    pub audio: AudioEngine,
-    pub encoding: EncodingEngine,
-    pub streaming: StreamingEngine,
-    pub plugin: PluginManager,
-    pub gpu: GpuContext,
-    pub vtuber: VtuberEngine,
-    pub ui: UiEngine,
-    pub onboarding: OnboardingEngine,
+    pub capture_engine: Mutex<CaptureEngine>,
+    pub composition_engine: Mutex<CompositionEngine>,
+    pub audio_engine: Mutex<AudioEngine>,
+    pub encoding_engine: Mutex<EncodingEngine>,
+    pub streaming_engine: Mutex<StreamingEngine>,
+    pub plugin_manager: Mutex<plugin::PluginManager>,
+    pub gpu_context: Mutex<GpuContext>,
+    pub vtuber_engine: Mutex<VtuberEngine>,
+    pub ui_engine: Mutex<UiEngine>,
+    pub onboarding_engine: Mutex<OnboardingEngine>,
+    pub cloud_engine: Mutex<CloudEngine>,
+    pub multichat_engine: Mutex<MultichatEngine>,
+    pub webrtc_engine: Mutex<WebRTCEngine>,
+    pub interaction_engine: Mutex<InteractionEngine>,
+    pub ai_highlight_engine: Mutex<AiHighlightEngine>,
+    pub social_media_engine: Mutex<SocialMediaEngine>,
+    pub game_state_engine: Mutex<GameStateEngine>,
+    pub live_captions_engine: Mutex<LiveCaptionsEngine>,
+    pub translation_engine: Mutex<TranslationEngine>,
+    pub ai_coach_engine: Mutex<AiCoachEngine>,
+    pub tip_ecosystem_engine: Mutex<TipEcosystemEngine>,
+    pub sponsor_marketplace_engine: Mutex<SponsorMarketplaceEngine>,
+    pub smart_home_engine: Mutex<SmartHomeEngine>,
+    pub telemetry_engine: Mutex<TelemetryEngine>,
+    pub performance_engine: Mutex<PerformanceEngine>,
+    pub business_engine: Mutex<BusinessEngine>,
+    pub analytics_engine: Mutex<AnalyticsEngine>,
 }
 
-impl AppState {
-    pub fn new() -> Result<Self, Box<dyn std::error::Error>> {
-        Ok(Self {
-            capture: CaptureEngine::new()?,
-            composition: CompositionEngine::new()?,
-            audio: AudioEngine::new()?,
-            encoding: EncodingEngine::new(),
-            streaming: StreamingEngine::new(),
-            plugin: PluginManager::new()?,
-            gpu: GpuContext::new()?,
-            vtuber: VtuberEngine::new()?,
-            ui: UiEngine::new()?,
-            onboarding: OnboardingEngine::new()?,
-        })
-    }
-}
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn test_app_state_creation() {
-        // This is a placeholder test
-        // In a real application, this would test actual functionality
-        assert!(true);
-    }
 
     #[test]
     fn test_config_default() {

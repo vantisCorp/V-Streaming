@@ -25,7 +25,7 @@ pub struct AnalyticsDataPoint {
 }
 
 /// Analytics aggregation period
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub enum AggregationPeriod {
     Minute,
     FiveMinutes,
@@ -147,7 +147,7 @@ pub struct ComparisonData {
 }
 
 /// Real-time analytics
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct RealTimeAnalytics {
     pub current_viewers: u64,
     pub chat_messages_per_minute: u64,

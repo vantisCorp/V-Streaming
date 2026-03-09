@@ -287,6 +287,13 @@ impl PerformanceEngine {
     }
 
     /// Get all profiles
+
+    pub fn delete_profile(&mut self, profile_id: String) -> Result<(), String> {
+        let idx = self.profiles.iter().position(|p| p.id == profile_id).ok_or("Profile not found")?;
+        self.profiles.remove(idx);
+        Ok(())
+    }
+
     pub fn get_profiles(&self) -> Vec<PerformanceProfile> {
         self.profiles.clone()
     }

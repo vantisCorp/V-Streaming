@@ -58,6 +58,7 @@ pub struct ErrorReport {
     pub app_version: String,
     pub os_version: String,
     pub hardware_info: HashMap<String, String>,
+    pub acknowledged: bool,
 }
 
 /// Performance metric
@@ -184,6 +185,7 @@ impl TelemetryEngine {
             app_version: env!("CARGO_PKG_VERSION").to_string(),
             os_version: std::env::consts::OS.to_string(),
             hardware_info: HashMap::new(),
+            acknowledged: false,
         };
         
         self.errors.push(error.clone());
@@ -269,6 +271,26 @@ impl TelemetryEngine {
     }
 
     /// Get config
+
+    pub fn get_error_reports(&self) -> Vec<ErrorReport> {
+        self.errors.clone()
+    }
+
+    pub fn get_recent_error_reports(&self, count: usize) -> Vec<ErrorReport> {
+        let len = self.errors.len();
+        if count >= len {
+            self.errors.clone()
+        } else {
+            self.errors[len - count..].to_vec()
+        }
+    }
+
+    pub fn acknowledge_error(&mut self, error_id: String) -> Result<(), String> {
+        let error = self.errors.iter_mut().find(|e| e.id == error_id).ok_or("Error not found")?;
+        error.acknowledged = true;
+        Ok(())
+    }
+
     pub fn get_config(&self) -> TelemetryConfig {
         self.config.clone()
     }
@@ -486,6 +508,7 @@ mod tests {
             app_version: "1.0.0".to_string(),
             os_version: "Windows 11".to_string(),
             hardware_info: hardware_info,
+            acknowledged: false,
         };
 
         assert_eq!(error.id, "error1");
@@ -567,6 +590,7 @@ mod tests {
             app_version: "1.0.0".to_string(),
             os_version: "Linux".to_string(),
             hardware_info: HashMap::new(),
+            acknowledged: false,
         };
 
         // Test that struct can be serialized (compile-time check)

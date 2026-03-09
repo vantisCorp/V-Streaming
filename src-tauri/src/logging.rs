@@ -12,7 +12,7 @@ use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 use tracing::{debug, error, info, trace, warn};
 use tracing_appender::{non_blocking, rolling};
-use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
+use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
 /// Log levels
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -141,7 +141,7 @@ impl Logger {
 
         // Console layer
         if config.console {
-            let console_layer = fmt::layer()
+            let console_layer = tracing_subscriber::fmt::layer()
                 .with_ansi(true)
                 .with_target(true)
                 .with_thread_ids(true)
@@ -162,7 +162,7 @@ impl Logger {
             let file_appender = rolling::daily(log_dir, "v-streaming.log");
             let (non_blocking, _guard) = non_blocking(file_appender);
 
-            let file_layer = fmt::layer()
+            let file_layer = tracing_subscriber::fmt::layer()
                 .with_writer(non_blocking)
                 .with_ansi(false)
                 .with_target(true)

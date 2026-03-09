@@ -1,3 +1,4 @@
+use serde::{Serialize, Deserialize};
 use std::sync::{Arc, Mutex};
 use std::collections::HashMap;
 
@@ -46,7 +47,7 @@ impl PluginManager {
 }
 
 /// Plugin information
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Plugin {
     pub id: String,
     pub name: String,
@@ -71,7 +72,7 @@ pub trait PluginApi {
 }
 
 /// Plugin information
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PluginInfo {
     pub name: String,
     pub version: String,

@@ -205,7 +205,7 @@ pub struct Texture {
 }
 
 /// Texture format
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub enum TextureFormat {
     Rgba8Unorm,
     Bgra8Unorm,

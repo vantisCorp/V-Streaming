@@ -283,6 +283,19 @@ impl TipEcosystemEngine {
     }
 
     /// Get config
+
+    pub fn update_goal(&mut self, goal_id: String, amount: f64) -> Result<(), String> {
+        let goal = self.goals.iter_mut().find(|g| g.id == goal_id).ok_or("Goal not found")?;
+        goal.current_amount = amount;
+        Ok(())
+    }
+
+    pub fn update_reward(&mut self, reward_id: String, enabled: bool) -> Result<(), String> {
+        let reward = self.rewards.iter_mut().find(|r| r.id == reward_id).ok_or("Reward not found")?;
+        reward.enabled = enabled;
+        Ok(())
+    }
+
     pub fn get_config(&self) -> TipConfig {
         self.config.clone()
     }

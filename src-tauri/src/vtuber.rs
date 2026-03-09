@@ -1,3 +1,4 @@
+use serde::{Serialize, Deserialize};
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 
@@ -341,7 +342,7 @@ impl VtuberEngine {
 }
 
 /// VTuber model
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VtuberModel {
     pub id: usize,
     pub name: String,
@@ -362,14 +363,14 @@ pub struct VtuberModel {
 }
 
 /// VTuber model type
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum VtuberModelType {
     VRM,
     Live2D,
 }
 
 /// Animation
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Animation {
     pub name: String,
     pub duration_ms: u32,
@@ -377,7 +378,7 @@ pub struct Animation {
 }
 
 /// Expression
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Expression {
     pub name: String,
     pub blend_shapes: HashMap<String, f32>,
@@ -385,7 +386,7 @@ pub struct Expression {
 }
 
 /// Bone transform
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct BoneTransform {
     pub position: (f32, f32, f32),
     pub rotation: (f32, f32, f32),
@@ -393,7 +394,7 @@ pub struct BoneTransform {
 }
 
 /// Face tracker
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct FaceTracker {
     pub is_active: bool,
     pub confidence_threshold: f32,
@@ -402,7 +403,7 @@ pub struct FaceTracker {
 }
 
 /// Tracking features
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum TrackingFeature {
     HeadRotation,
     HeadPosition,
@@ -415,7 +416,7 @@ pub enum TrackingFeature {
 }
 
 /// Face tracking data
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct FaceTrackingData {
     pub head_rotation: (f32, f32, f32), // pitch, yaw, roll
     pub head_position: (f32, f32, f32),
@@ -432,7 +433,7 @@ pub struct FaceTrackingData {
 }
 
 /// Mouth shape
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum MouthShape {
     Neutral,
     A,
@@ -447,7 +448,7 @@ pub enum MouthShape {
 }
 
 /// VTuber statistics
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct VtuberStats {
     pub total_models: usize,
     pub active_model_id: Option<usize>,

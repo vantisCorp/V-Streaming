@@ -192,7 +192,7 @@ impl LiveCaptionsEngine {
         let total_words: usize = self.segments.iter().map(|s| s.text.split_whitespace().count()).sum();
         let total_minutes = self.stats.total_duration / 60.0;
         if total_minutes > 0.0 {
-            self.stats.words_per_minute = total_words as f32 / total_minutes;
+            self.stats.words_per_minute = total_words as f32 / total_minutes as f32;
         }
         
         self.stats.active_language = Some(self.config.language.clone());

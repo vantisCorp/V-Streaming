@@ -2,6 +2,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use tauri::State;
+use crate::AppState;
 
 // ============================================================================
 // AI STREAM COACH - Real-time Streaming Advice and Analytics

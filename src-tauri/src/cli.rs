@@ -11,7 +11,7 @@ use serde_json;
 
 // Re-export from other modules
 use crate::config::{AppConfig, ConfigError};
-use crate::pdk::{PluginManager, PluginMetadata, BasePlugin, PluginState};
+use crate::pdk::{PluginManager, PluginMetadata, BasePlugin, PluginState, plugin_metadata};
 
 #[derive(Parser, Debug)]
 #[command(name = "vstreaming")]
